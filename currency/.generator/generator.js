@@ -261,19 +261,19 @@ let oas3Promise = xml2js
                         type: "string",
                         format: "iso4217-currency-code",
                         enum: [...new Set(result.map((currency) => currency.code))],
-                        "x-go-type": "github.com/mikekonan/go-currencies.Code",
+                        "x-go-type": "github.com/mikekonan/go-types/currency.Code",
                     },
                     CurrencyName: {
                         example: "Euro",
                         type: "string",
                         enum: [...new Set(result.map((currency) => currency.currency))],
-                        "x-go-type": "github.com/mikekonan/go-currencies.Currency",
+                        "x-go-type": "github.com/mikekonan/go-types/currency.Currency",
                     },
                     CurrencyCountry: {
                         example: "PUERTO RICO",
                         type: "string",
                         enum: [...new Set(result.map((currency) => currency.country))],
-                        "x-go-type": "github.com/mikekonan/go-currencies.Country",
+                        "x-go-type": "github.com/mikekonan/go-types/currency.Country",
                     },
                     CurrencyNumber: {
                         example: "840",
