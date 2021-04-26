@@ -1,0 +1,13 @@
+{
+  "name": "go-countries",
+  "version": "1.0.0",
+  "description": "codegenerator",
+  "main": "app.js",
+  "scripts": {
+    "generate": "docker run --rm mikekonan/iso-3166-country-codes-scrapper:latest | docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c \"cd /app && npm install && node app.js\" && docker run --rm -v $(pwd):/app golang:1.15.3-alpine3.12 sh -c \"cd /app && go fmt ./...\""
+  },
+  "dependencies": {
+    "transliteration": "^2.2.0",
+    "yaml": "^1.10.2"
+  }
+}

@@ -1,0 +1,13 @@
+language: go
+
+go:
+  - 1.16.x
+
+before_script:
+  go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.39.0
+
+script:
+  - make fmt lint test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

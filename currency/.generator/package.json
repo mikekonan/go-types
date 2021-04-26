@@ -1,0 +1,17 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "go-currencies code generator",
+  "main": "generator.js",
+  "scripts": {
+    "generate": "node generator.js"
+  },
+  "author": "MikeKonan",
+  "license": "MIT",
+  "dependencies": {
+    "node-html-parser": "^1.2.20",
+    "sync-request": "^6.1.0",
+    "xml2js": "^0.4.23",
+    "yaml": "^1.10.2"
+  }
+}

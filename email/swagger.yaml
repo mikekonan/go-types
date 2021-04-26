@@ -1,0 +1,8 @@
+openapi: 3.0.0
+components:
+  schemas:
+    Email:
+      example: user@example.com
+      type: string
+      format: email
+      x-go-type: github.com/mikekonan/go-types/email.Email

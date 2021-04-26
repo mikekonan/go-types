@@ -1,1 +1,2 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/mikekonan/go-types)](https://goreportcard.com/report/github.com/mikekonan/go-types) [![Build Status](https://travis-ci.com/mikekonan/go-types.svg?branch=main)](https://travis-ci.com/mikekonan/go-types) [![codecov](https://codecov.io/gh/mikekonan/go-types/branch/main/graph/badge.svg?token=83Q04OW4I1)](https://codecov.io/gh/mikekonan/go-types)
 # go-types

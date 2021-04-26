@@ -1,0 +1,8 @@
+openapi: 3.0.0
+components:
+  schemas:
+    URL:
+      example: https://google.com
+      type: string
+      format: uri
+      x-go-type: github.com/mikekonan/go-types/url.URL

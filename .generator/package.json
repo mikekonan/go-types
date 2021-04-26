@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "glob": "^7.1.6",
+    "glob-promise": "^4.1.0",
+    "yaml": "^1.10.2"
+  }
+}
