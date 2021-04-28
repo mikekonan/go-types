@@ -37,5 +37,7 @@ This library has been created with the purpose to facilitate the store, validati
 	}
   
 ## Links:
-- [ISO 4217](https://www.currency-iso.org/en/home/tables/table-a1.html)
-- [ISO 3166](https://www.iso.org/iso-3166-country-codes.html)
+- Currency Codes [(ISO 4217)](https://www.currency-iso.org/en/home/tables/table-a1.html) - [wiki](https://en.wikipedia.org/wiki/ISO_4217)
+- Country Codes [(ISO 3166)](https://www.iso.org/iso-3166-country-codes.html) - [wiki](https://en.wikipedia.org/wiki/ISO_3166-2)
+- URL [(standard)](https://url.spec.whatwg.org/) - [wiki](https://en.wikipedia.org/wiki/URL)
+- Email [(part of RFC5322)](https://tools.ietf.org/html/rfc5322) - [wiki](https://en.wikipedia.org/wiki/Email_address)
