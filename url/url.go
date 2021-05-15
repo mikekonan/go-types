@@ -14,7 +14,7 @@ import (
 	"github.com/asaskevich/govalidator"
 )
 
-// URL represents a URL type with schema
+// URL represents a URL type
 type URL string
 
 //Value implementation of driver.Valuer
@@ -32,7 +32,7 @@ func (url URL) Value() (value driver.Value, err error) {
 
 //Validate implementation of ozzo-validation Validate interface
 func (url URL) Validate() error {
-	if !govalidator.IsRequestURL(url.String()) {
+	if !govalidator.IsURL(url.String()) {
 		return fmt.Errorf("'%s' is not valid url", url)
 	}
 
