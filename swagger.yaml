@@ -1557,3 +1557,8 @@ components:
       type: string
       format: uri
       x-go-type: github.com/mikekonan/go-types/url.URL
+    HttpURL:
+      example: http(s)://google.com
+      type: string
+      format: uri
+      x-go-type: github.com/mikekonan/go-types/url.HttpURL
