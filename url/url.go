@@ -79,7 +79,7 @@ func (url HttpURL) Value() (value driver.Value, err error) {
 
 //Validate implementation of ozzo-validation Validate interface
 func (url HttpURL) Validate() error {
-	if !strings.HasPrefix(url.String(), "http:") || !strings.HasPrefix(url.String(), "https:") {
+	if !strings.HasPrefix(url.String(), "http:") && !strings.HasPrefix(url.String(), "https:") {
 		return fmt.Errorf("'%s' is not a valid http schema", url)
 	}
 

@@ -36,7 +36,7 @@ func TestHttpURLJsonUnmarshal(t *testing.T) {
 	for _, testCase := range testHttpUrlCases {
 		jsonStr := fmt.Sprintf(`{"url":"%s"}`, testCase.url)
 		var emailStruct struct {
-			Email URL `json:"url"`
+			Email HttpURL `json:"url"`
 		}
 
 		actualErr := json.Unmarshal([]byte(jsonStr), &emailStruct)
