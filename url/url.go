@@ -61,7 +61,7 @@ func (url URL) String() string {
 	return string(url)
 }
 
-// URL represents a URL type with schema
+// HttpURL represents a URL type with http/https schema
 type HttpURL string
 
 //Value implementation of driver.Valuer
