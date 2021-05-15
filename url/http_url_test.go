@@ -21,6 +21,11 @@ var testHttpUrlCases = []struct {
 	{"acap://1server.a.en", true},
 	{"attachment://1server.a.en", true},
 	{"aw://host:1234/aw-server.com", true},
+	{"http://[2001:db8:a0b:12f0::1]/index.html", false},
+	{"ftp://[1200:0000:AB00:1234:0000:2552:7777:1313]", true},
+	{"https://user:pass@[::1]:9093/a/b/c/?a=v#abc", false},
+	{"user:pass@[::1]:9093/a/b/c/?a=v#abc", true},
+	{"https://127.0.0.1/a/b/c?a=v&c=11d", false},
 }
 
 func TestHttpURLValidate(t *testing.T) {
