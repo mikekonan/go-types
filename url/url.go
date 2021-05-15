@@ -83,7 +83,7 @@ func (url HttpURL) Validate() error {
 		return fmt.Errorf("'%s' is not a valid http schema", url)
 	}
 
-	if !govalidator.IsRequestURL(url.String()) {
+	if !govalidator.IsURL(url.String()) {
 		return fmt.Errorf("'%s' is not a valid http url", url)
 	}
 
