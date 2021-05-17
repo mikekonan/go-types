@@ -65,49 +65,45 @@ func (url URL) String() string {
 type HttpURL string
 
 //Value implementation of driver.Valuer
-func (url HttpURL) Value() (value driver.Value, err error) {
-	if url == "" {
+func (httpUrl HttpURL) Value() (value driver.Value, err error) {
+	if httpUrl == "" {
 		return "", nil
 	}
 
-	if err = url.Validate(); err != nil {
+	if err = httpUrl.Validate(); err != nil {
 		return nil, err
 	}
 
-	return url.String(), nil
+	return httpUrl.String(), nil
 }
 
 //Validate implementation of ozzo-validation Validate interface
-func (url HttpURL) Validate() error {
-	if !strings.HasPrefix(url.String(), "http:") && !strings.HasPrefix(url.String(), "https:") {
-		return fmt.Errorf("'%s' is not a valid http schema", url)
+func (httpUrl HttpURL) Validate() error {
+	if !strings.HasPrefix(httpUrl.String(), "http:") && !strings.HasPrefix(httpUrl.String(), "https:") {
+		return fmt.Errorf("'%s' is not a valid http schema", httpUrl)
 	}
 
-	if !govalidator.IsURL(url.String()) {
-		return fmt.Errorf("'%s' is not a valid http url", url)
-	}
-
-	return nil
+	return URL(httpUrl).Validate()
 }
 
 //UnmarshalJSON unmarshall implementation for Email
-func (url *HttpURL) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
+func (httpUrl *HttpURL) UnmarshalJSON(data []byte) error {
+	var url string
+	if err := json.Unmarshal(data, &url); err != nil {
 		return err
 	}
 
-	value := HttpURL(str)
+	value := HttpURL(url)
 	if err := value.Validate(); err != nil {
 		return err
 	}
 
-	*url = value
+	*httpUrl = value
 
 	return nil
 }
 
 //String implementation of Stringer interface
-func (url HttpURL) String() string {
-	return string(url)
+func (httpUrl HttpURL) String() string {
+	return string(httpUrl)
 }
