@@ -1553,7 +1553,12 @@ components:
       format: email
       x-go-type: github.com/mikekonan/go-types/email.Email
     URL:
-      example: https://google.com
+      example: (ftp|http(s)|mail...)://google.com
       type: string
       format: uri
       x-go-type: github.com/mikekonan/go-types/url.URL
+    HttpURL:
+      example: http(s)://google.com
+      type: string
+      format: uri
+      x-go-type: github.com/mikekonan/go-types/url.HttpURL

@@ -107,7 +107,7 @@ func TestURLValidate(t *testing.T) {
 	}
 }
 
-func TestEmailJsonUnmarshal(t *testing.T) {
+func TestURLJsonUnmarshal(t *testing.T) {
 	for _, testCase := range testCases {
 		jsonStr := fmt.Sprintf(`{"url":"%s"}`, testCase.url)
 		var emailStruct struct {
@@ -121,7 +121,7 @@ func TestEmailJsonUnmarshal(t *testing.T) {
 	}
 }
 
-func TestEmailValue(t *testing.T) {
+func TestURLValue(t *testing.T) {
 	for _, testCase := range testCases {
 		actualValue, actualErr := testCase.url.Value()
 
