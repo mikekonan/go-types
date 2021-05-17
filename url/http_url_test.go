@@ -26,6 +26,9 @@ var testHttpUrlCases = []struct {
 	{"https://user:pass@[::1]:9093/a/b/c/?a=v#abc", false},
 	{"user:pass@[::1]:9093/a/b/c/?a=v#abc", true},
 	{"https://127.0.0.1/a/b/c?a=v&c=11d", false},
+	{",foo.com", true},
+	{"http://myservice.:9093/", false},
+	{"https://pbs.twimg.com/profile_images/560826135676588032/j8fWrmYY_normal.jpeg", false},
 }
 
 func TestHttpURLValidate(t *testing.T) {
