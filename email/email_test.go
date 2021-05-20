@@ -26,6 +26,7 @@ var testCases = []struct {
 	{emailUnderTest: "email@x", expectingValidateError: true, expectingValueError: true},
 	{emailUnderTest: "email@@example.com", expectingValidateError: true, expectingValueError: true},
 	{emailUnderTest: ".email@example.com", expectingValidateError: true, expectingValueError: true},
+	{emailUnderTest: "email.com", expectingValidateError: true, expectingValueError: true},
 	{emailUnderTest: "email.@example.com", expectingValidateError: true, expectingValueError: true},
 	{emailUnderTest: "email..test@example.com", expectingValidateError: true, expectingValueError: true},
 	{emailUnderTest: ".email..test.@example.com", expectingValidateError: true, expectingValueError: true},

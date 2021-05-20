@@ -38,6 +38,10 @@ func (email Email) Validate() error {
 	}
 
 	atPos := strings.LastIndex(email.String(), "@")
+	if atPos == -1 {
+		return fmt.Errorf("email string must contain %q", "@")
+	}
+
 	dotPos := strings.Index(email.String()[atPos:], ".")
 
 	if atPos <= 0 || atPos > 64 || atPos == len(email)-1 || dotPos == -1 || !regex.MatchString(email.String()) {
