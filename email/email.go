@@ -8,6 +8,7 @@ package email
 import (
 	"database/sql/driver"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -39,7 +40,7 @@ func (email Email) Validate() error {
 
 	atPos := strings.LastIndex(email.String(), "@")
 	if atPos == -1 {
-		return fmt.Errorf("email string must contain %q", "@")
+		return errors.New(fmt.Sprintf("email string must contain %q", "@"))
 	}
 
 	dotPos := strings.Index(email.String()[atPos:], ".")
