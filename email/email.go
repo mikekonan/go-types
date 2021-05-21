@@ -40,7 +40,7 @@ func (email Email) Validate() error {
 
 	atPos := strings.LastIndex(email.String(), "@")
 	if atPos == -1 {
-		return errors.New(fmt.Sprintf("email string must contain %q", "@"))
+		return errors.New(`email string must contain "@"`)
 	}
 
 	dotPos := strings.Index(email.String()[atPos:], ".")
