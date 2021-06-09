@@ -26,6 +26,7 @@ let render = (currencies) => {
                 currency: c.currency,
                 code: c.code,
                 number: c.number,
+                decimalPlaces: c.decimalPlaces,
             };
 
             return;
@@ -41,6 +42,7 @@ let render = (currencies) => {
                 currency: c.currency,
                 code: c.code,
                 number: c.number,
+                decimalPlaces: c.decimalPlaces,
             };
 
             return;
@@ -69,6 +71,7 @@ let render = (currencies) => {
                 currency: c.currency,
                 code: c.code,
                 number: c.number,
+                decimalPlaces: c.decimalPlaces,
             };
 
             return;
@@ -92,6 +95,7 @@ let render = (currencies) => {
                         currency:   \`${c.currency}\`,
                         code:       \`${c.code}\`,
                         number:     \`${c.number}\`,
+                        decimalPlaces:     ${c.decimalPlaces},
                         }`;
                     })
                     .join(`,`)},
@@ -106,9 +110,10 @@ let render = (currencies) => {
       countries:  Countries{${currenciesMap[key].countries
                 .map((country) => `\`${country}\``)
                 .join(", ")}},
-      currency:   \`${currenciesMap[key].currency}\`,
-      code:       \`${currenciesMap[key].code}\`,
-      number:     \`${currenciesMap[key].number}\`,
+      currency:     \`${currenciesMap[key].currency}\`,
+      code:         \`${currenciesMap[key].code}\`,
+      number:       \`${currenciesMap[key].number}\`,
+      decimalPlaces: ${currenciesMap[key].decimalPlaces},
     }`
         ).join(`,
     `);
@@ -172,6 +177,7 @@ let normalizeCurrency = (currency) => {
             currency: currency.currency,
             code: currency.code,
             number: currency.number,
+            decimalPlaces: currency.decimalPlaces,
         };
     }
 
@@ -201,6 +207,7 @@ let goCodePromise = xml2js
                         : row["CcyNm"][0]["_"],
                 code: row["Ccy"][0],
                 number: row["CcyNbr"][0],
+                decimalPlaces: isNaN(row["CcyMnrUnts"]) ? 0 : parseInt(row["CcyMnrUnts"]),
             };
         });
 
