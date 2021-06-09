@@ -183,6 +183,11 @@ func (code Code) String() string {
 	return string(code)
 }
 
+// Places returns number of digits after the dot. E.g. 2 for USD, 0 for for currencies which do not support fractions
+func (code Code) Places() int {
+	return currenciesByCode[string(code)].decimalPlaces
+}
+
 //Number represents a number type from ISO-4217
 type Number string
 
@@ -236,10 +241,11 @@ func (number Number) String() string {
 }
 
 type currency struct {
-	countries Countries
-	currency  Currency
-	code      Code
-	number    Number
+	countries     Countries
+	currency      Currency
+	code          Code
+	number        Number
+	decimalPlaces int
 }
 
 type currencies []currency
