@@ -21,7 +21,7 @@ func main() {
 	//3. check is set
 	user.Country.IsSet() //check user country is provided
 	//4. validate using ozzo-validation
-	if err := validation.ValidateStruct(&user, validation.Field(&user.ountry, validation.Required, user.Country)); err != nil {
+	if err := validation.ValidateStruct(&user, validation.Field(&user.Country, validation.Required)); err != nil {
 		log.Fatal(err)
 	}
 	//5. lookup by alpha2, alpha3, country name
