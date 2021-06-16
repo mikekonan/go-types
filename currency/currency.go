@@ -88,7 +88,7 @@ func (currency Currency) Value() (value driver.Value, err error) {
 		return "", nil
 	}
 
-	if err = currency.Validate(nil); err != nil {
+	if err = currency.Validate(); err != nil {
 		return nil, err
 	}
 
@@ -113,7 +113,7 @@ func (currency *Currency) UnmarshalJSON(data []byte) error {
 }
 
 //Validate implementation of ozzo-validation Validate interface
-func (currency Currency) Validate(_ interface{}) error {
+func (currency Currency) Validate() error {
 	if _, ok := ByCurrencyStr(string(currency)); !ok {
 		return fmt.Errorf("'%s' is not valid ISO-4217 currency", currency)
 	}
@@ -140,7 +140,7 @@ func (code Code) Value() (value driver.Value, err error) {
 		return "", nil
 	}
 
-	if err = code.Validate(nil); err != nil {
+	if err = code.Validate(); err != nil {
 		return nil, err
 	}
 
@@ -165,7 +165,7 @@ func (code *Code) UnmarshalJSON(data []byte) error {
 }
 
 //Validate implementation of ozzo-validation Validate interface
-func (code Code) Validate(_ interface{}) error {
+func (code Code) Validate() error {
 	if _, ok := ByCodeStr(string(code)); !ok {
 		return fmt.Errorf("'%s' is not valid ISO-4217 code", code)
 	}
@@ -197,7 +197,7 @@ func (number Number) Value() (value driver.Value, err error) {
 		return "", nil
 	}
 
-	if err = number.Validate(nil); err != nil {
+	if err = number.Validate(); err != nil {
 		return nil, err
 	}
 
@@ -222,7 +222,7 @@ func (number *Number) UnmarshalJSON(data []byte) error {
 }
 
 //Validate implementation of ozzo-validation Validate interface
-func (number Number) Validate(_ interface{}) error {
+func (number Number) Validate() error {
 	if _, ok := ByNumberStr(string(number)); !ok {
 		return fmt.Errorf("'%s' is not valid ISO-4217 number", number)
 	}
@@ -250,7 +250,7 @@ type currency struct {
 
 type currencies []currency
 
-//IsCurrencyIn checks is currency in
+//CurrencyByCurrency get currency by currency
 func (currencies currencies) CurrencyByCurrency(curr string) (currency, bool) {
 	for _, c := range currencies {
 		if string(c.currency) == curr {
@@ -261,7 +261,7 @@ func (currencies currencies) CurrencyByCurrency(curr string) (currency, bool) {
 	return currency{}, false
 }
 
-//IsCurrencyIn checks is code in
+//CurrencyByCode gets currency by code
 func (currencies currencies) CurrencyByCode(code string) (currency, bool) {
 	for _, c := range currencies {
 		if string(c.code) == code {
@@ -272,7 +272,7 @@ func (currencies currencies) CurrencyByCode(code string) (currency, bool) {
 	return currency{}, false
 }
 
-//IsCurrencyIn checks is number in
+//CurrencyByNumber gets currency by number
 func (currencies currencies) CurrencyByNumber(number string) (currency, bool) {
 	for _, c := range currencies {
 		if string(c.number) == number {

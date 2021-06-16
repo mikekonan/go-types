@@ -10,7 +10,7 @@ var testHttpUrlCases = []struct {
 	url         HttpURL
 	isExpectErr bool
 }{
-	{"", false},
+	{"", true},
 	{"http://google.com", false},
 	{"https://google.com#top", false},
 	{"http://google.fist.com", false},
