@@ -266,6 +266,8 @@ let oas3Promise = xml2js
                     CurrencyCode: {
                         example: "EUR",
                         type: "string",
+                        minLength: 3,
+                        maxLength: 3,
                         format: "iso4217-currency-code",
                         enum: [...new Set(result.map((currency) => currency.code))],
                         "x-go-type": "github.com/mikekonan/go-types/currency.Code",
@@ -285,6 +287,8 @@ let oas3Promise = xml2js
                     CurrencyNumber: {
                         example: "840",
                         type: "string",
+                        minLength: 3,
+                        maxLength: 3,
                         enum: [...new Set(result.map((currency) => currency.number))],
                     },
                 },
