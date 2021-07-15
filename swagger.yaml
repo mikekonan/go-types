@@ -773,6 +773,8 @@ components:
     CurrencyCode:
       example: EUR
       type: string
+      minLength: 3
+      maxLength: 3
       format: iso4217-currency-code
       enum:
         - AFN
@@ -1377,6 +1379,8 @@ components:
     CurrencyNumber:
       example: "840"
       type: string
+      minLength: 3
+      maxLength: 3
       enum:
         - "971"
         - "978"
