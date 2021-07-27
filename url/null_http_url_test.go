@@ -6,11 +6,11 @@ import (
 	"testing"
 )
 
-var testHttpUrlCases = []struct {
-	url         HttpURL
+var testNullHttpUrlCases = []struct {
+	url         NullHttpURL
 	isExpectErr bool
 }{
-	{"", true},
+	{"", false},
 	{"http://google.com", false},
 	{"https://google.com#top", false},
 	{"http://google.fist.com", false},
@@ -31,8 +31,8 @@ var testHttpUrlCases = []struct {
 	{"https://pbs.twimg.com/profile_images/560826135676588032/j8fWrmYY_normal.jpeg", false},
 }
 
-func TestHttpURLValidate(t *testing.T) {
-	for _, testCase := range testHttpUrlCases {
+func TestNullHttpURLValidate(t *testing.T) {
+	for _, testCase := range testNullHttpUrlCases {
 		actualErr := testCase.url.Validate()
 		if (actualErr == nil) == testCase.isExpectErr {
 			t.Errorf(`Validate: '%s'. expecting error - '%v' but was opposite`, testCase.url, testCase.isExpectErr)
@@ -40,22 +40,22 @@ func TestHttpURLValidate(t *testing.T) {
 	}
 }
 
-func TestHttpURLJsonUnmarshal(t *testing.T) {
-	for _, testCase := range testHttpUrlCases {
+func TestNullHttpURLJsonUnmarshal(t *testing.T) {
+	for _, testCase := range testNullHttpUrlCases {
 		jsonStr := fmt.Sprintf(`{"url":"%s"}`, testCase.url)
-		var urlStruct struct {
-			URL HttpURL `json:"url"`
+		var nullUrlStruct struct {
+			URL NullHttpURL `json:"url"`
 		}
 
-		actualErr := json.Unmarshal([]byte(jsonStr), &urlStruct)
+		actualErr := json.Unmarshal([]byte(jsonStr), &nullUrlStruct)
 		if (actualErr == nil) == testCase.isExpectErr {
 			t.Errorf(`JsonUnmarshal: '%s'. expecting error - '%v' but was opposite`, testCase.url, testCase.isExpectErr)
 		}
 	}
 }
 
-func TestHttpURLValue(t *testing.T) {
-	for _, testCase := range testHttpUrlCases {
+func TestNullHttpURLValue(t *testing.T) {
+	for _, testCase := range testNullHttpUrlCases {
 		actualValue, actualErr := testCase.url.Value()
 
 		if testCase.url == "" {
