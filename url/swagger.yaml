@@ -11,3 +11,8 @@ components:
       type: string
       format: uri
       x-go-type: github.com/mikekonan/go-types/url.HttpURL
+    NullHttpURL:
+      example: http(s)://google.com
+      type: string
+      format: uri
+      x-go-type: github.com/mikekonan/go-types/url.NullHttpURL

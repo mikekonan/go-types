@@ -78,13 +78,13 @@ func (httpUrl HttpURL) Value() (value driver.Value, err error) {
 }
 
 //Validate implementation of ozzo-validation Validate interface
-func (httpUrl HttpURL) Validate() error {
+func (httpUrl HttpURL) Validate() (err error) {
 	if len(httpUrl) == 0 {
 		return fmt.Errorf("'%s' is not a valid http url", httpUrl)
 	}
 
-	if !strings.HasPrefix(httpUrl.String(), "http:") && !strings.HasPrefix(httpUrl.String(), "https:") {
-		return fmt.Errorf("'%s' is not a valid http schema", httpUrl)
+	if err = validateSchema(httpUrl.String()); err != nil {
+		return err
 	}
 
 	return URL(httpUrl).Validate()
@@ -110,4 +110,64 @@ func (httpUrl *HttpURL) UnmarshalJSON(data []byte) error {
 //String implementation of Stringer interface
 func (httpUrl HttpURL) String() string {
 	return string(httpUrl)
+}
+
+// NullHttpURL represents a URL type with http/https schema
+// Can be empty
+type NullHttpURL string
+
+//Value implementation of driver.Valuer
+func (nullHttpURL NullHttpURL) Value() (value driver.Value, err error) {
+	if nullHttpURL == "" {
+		return "", nil
+	}
+
+	if err = nullHttpURL.Validate(); err != nil {
+		return nil, err
+	}
+
+	return nullHttpURL.String(), nil
+}
+
+//Validate implementation of ozzo-validation Validate interface
+func (nullHttpURL NullHttpURL) Validate() (err error) {
+	if len(nullHttpURL) == 0 {
+		return nil
+	}
+
+	if err = validateSchema(nullHttpURL.String()); err != nil {
+		return err
+	}
+
+	return URL(nullHttpURL).Validate()
+}
+
+//UnmarshalJSON unmarshall implementation for Email
+func (nullHttpURL *NullHttpURL) UnmarshalJSON(data []byte) error {
+	var url string
+	if err := json.Unmarshal(data, &url); err != nil {
+		return err
+	}
+
+	value := NullHttpURL(url)
+	if err := value.Validate(); err != nil {
+		return err
+	}
+
+	*nullHttpURL = value
+
+	return nil
+}
+
+//String implementation of Stringer interface
+func (nullHttpURL NullHttpURL) String() string {
+	return string(nullHttpURL)
+}
+
+func validateSchema(url string) error {
+	if !strings.HasPrefix(url, "http:") && !strings.HasPrefix(url, "https:") {
+		return fmt.Errorf("'%s' is not a valid http schema", url)
+	}
+
+	return nil
 }
