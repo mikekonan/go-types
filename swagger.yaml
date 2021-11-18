@@ -1,6 +1,10 @@
 openapi: 3.0.0
 components:
   schemas:
+    CardDate:
+      example: 01/06
+      type: string
+      x-go-type: github.com/mikekonan/go-types/card.CardDate
     CountryName:
       example: Austria
       type: string
@@ -942,6 +946,7 @@ components:
         - UZS
         - VUV
         - VES
+        - VED
         - VND
         - YER
         - ZMW
@@ -1547,6 +1552,7 @@ components:
         - "860"
         - "548"
         - "928"
+        - "926"
         - "704"
         - "886"
         - "967"
