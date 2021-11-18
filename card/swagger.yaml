@@ -1,0 +1,7 @@
+openapi: 3.0.0
+components:
+  schemas:
+    CardDate:
+      example: 01/06
+      type: string
+      x-go-type: github.com/mikekonan/go-types/card.CardDate
