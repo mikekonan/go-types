@@ -57,7 +57,7 @@ func (cardDate CardDate) Validate() error {
 
 	var realYear, realMonth, err = cardDate.parseDate()
 	if err != nil {
-		return err
+		return fmt.Errorf("ivalid CardDate: %w", err)
 	}
 
 	var leftYear, leftMonth, _ = time.Now().Date()
@@ -84,12 +84,22 @@ func (cardDate CardDate) parseDate() (year int, month time.Month, err error) {
 }
 
 func (cardDate CardDate) ToTime() (time.Time, error) {
-	return time.Parse(fullYearLayout, avoidUnixYear(cardDate))
+	date, err := avoidUnixYear(cardDate)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.Parse(fullYearLayout, date)
 }
 
-func avoidUnixYear(cardDate CardDate) string {
+func avoidUnixYear(cardDate CardDate) (string, error) {
+	if len(cardDate) != 5 {
+		return "", fmt.Errorf("invalid CardDate format. Format: MM/YY")
+	}
 	separated := strings.Split(cardDate.String(), dateSeparator)
+	if len(separated) != 2 {
+		return "", fmt.Errorf("invalid CardDate format. Format: MM/YY")
+	}
 	parsedMonth := separated[0]
 	parsedYear := separated[1]
-	return fmt.Sprintf("%s/%d%s", parsedMonth, gatewayCentury-1, parsedYear)
+	return fmt.Sprintf("%s/%d%s", parsedMonth, gatewayCentury-1, parsedYear), nil
 }
