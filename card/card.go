@@ -8,7 +8,12 @@ import (
 	"time"
 )
 
-const layout = "01/06"
+const (
+	layout         = "01/06"
+	fullYearLayout = "01/2006"
+	dateSeparator  = "/"
+	gatewayCentury = 21
+)
 
 //CardDate represents as expired card date type with format MM/YY
 type CardDate string
@@ -29,7 +34,7 @@ func (cardDate *CardDate) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	var indexSplit = strings.Index(str, "/")
+	var indexSplit = strings.Index(str, dateSeparator)
 	if indexSplit != 2 || len(str) != 5 {
 		return fmt.Errorf("invalid CardDate format. Format: MM/YY")
 	}
@@ -79,5 +84,12 @@ func (cardDate CardDate) parseDate() (year int, month time.Month, err error) {
 }
 
 func (cardDate CardDate) ToTime() (time.Time, error) {
-	return time.Parse(layout, cardDate.String())
+	return time.Parse(fullYearLayout, avoidUnixYear(cardDate))
+}
+
+func avoidUnixYear(cardDate CardDate) string {
+	separated := strings.Split(cardDate.String(), dateSeparator)
+	parsedMonth := separated[0]
+	parsedYear := separated[1]
+	return fmt.Sprintf("%s/%d%s", parsedMonth, gatewayCentury-1, parsedYear)
 }
