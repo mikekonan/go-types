@@ -63,11 +63,15 @@ var testCasesValidation = []struct {
 	{"nil", true},
 	{"01/2021", true},
 	{"13/21", true},
+	{"00/99", true},
 	{"year", true},
 	{CardDate(time.Now().AddDate(-1, 0, 0).Format(layout)), true},
 	{CardDate(time.Now().AddDate(0, -1, 0).Format(layout)), true},
 
 	// no err
+	{"01/68", false},
+	{"12/69", false},
+	{"01/99", false},
 	{CardDate(time.Now().Format(layout)), false},
 	{CardDate(time.Now().AddDate(1, 0, 0).Format(layout)), false},
 	{CardDate(time.Now().AddDate(0, 1, 0).Format(layout)), false},
