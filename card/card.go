@@ -4,11 +4,17 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 	"time"
 )
 
-const layout = "01/06"
+const (
+	layout                = "01/06"
+	dateSeparator         = "/"
+	maxCardDateExpireYear = 2099
+	gatewayCentury        = 21
+)
 
 //CardDate represents as expired card date type with format MM/YY
 type CardDate string
@@ -29,7 +35,7 @@ func (cardDate *CardDate) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	var indexSplit = strings.Index(str, "/")
+	var indexSplit = strings.Index(str, dateSeparator)
 	if indexSplit != 2 || len(str) != 5 {
 		return fmt.Errorf("invalid CardDate format. Format: MM/YY")
 	}
@@ -52,12 +58,15 @@ func (cardDate CardDate) Validate() error {
 
 	var realYear, realMonth, err = cardDate.parseDate()
 	if err != nil {
-		return err
+		return fmt.Errorf("ivalid CardDate: %w", err)
 	}
 
 	var leftYear, leftMonth, _ = time.Now().Date()
 	if leftYear > realYear || (leftYear == realYear && leftMonth > realMonth) {
 		return fmt.Errorf("ivalid CardDate: card expired")
+	}
+	if realYear < leftYear || realYear > maxCardDateExpireYear {
+		return fmt.Errorf("invalid CardDate format: year is not valid")
 	}
 
 	return nil
@@ -69,15 +78,28 @@ func (cardDate CardDate) String() string {
 }
 
 func (cardDate CardDate) parseDate() (year int, month time.Month, err error) {
-	var t time.Time
-	if t, err = cardDate.ToTime(); err != nil {
-		return 0, 0, err
+	if len(cardDate) != 5 {
+		return 0, 0, fmt.Errorf("invalid CardDate format. Format: MM/YY")
+	}
+	separated := strings.Split(cardDate.String(), dateSeparator)
+	if len(separated) != 2 {
+		return 0, 0, fmt.Errorf("invalid CardDate format. Format: MM/YY")
+	}
+	parsedMonth := separated[0]
+	parsedYear := separated[1]
+
+	intMonth, err := strconv.Atoi(parsedMonth)
+	if err != nil {
+		return 0, 0, fmt.Errorf("invalid CardDate format: month is not valid")
+	}
+	if intMonth > 12 || intMonth < 1 {
+		return 0, 0, fmt.Errorf("invalid CardDate format: month is not valid")
 	}
 
-	year, month, _ = t.Date()
-	return year, month, nil
-}
+	intYear, err := strconv.Atoi(fmt.Sprintf("%d%s", gatewayCentury-1, parsedYear))
+	if err != nil {
+		return 0, 0, fmt.Errorf("invalid CardDate format: year is not valid")
+	}
 
-func (cardDate CardDate) ToTime() (time.Time, error) {
-	return time.Parse(layout, cardDate.String())
+	return intYear, time.Month(intMonth), nil
 }
