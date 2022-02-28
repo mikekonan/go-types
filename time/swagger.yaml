@@ -1,0 +1,7 @@
+openapi: 3.0.0
+components:
+  schemas:
+    Date:
+      example: 2006-01-02
+      type: string
+      x-go-type: github.com/mikekonan/go-types/time.Date
