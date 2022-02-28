@@ -35,6 +35,11 @@ var unmarshalTestCases = []unmarshalType{
 		expectingValidateError: false,
 	},
 	{
+		testJSON:               []byte(`"d": "@"`),
+		testXML:                []byte(`test><d>@</d>`),
+		expectingValidateError: true,
+	},
+	{
 		testJSON:               []byte(`{"d": "@"}`),
 		testXML:                []byte(`<?xml version="1.0"?><test><d>@</d></test>`),
 		expectingValidateError: true,
@@ -225,6 +230,16 @@ func TestString(t *testing.T) {
 		var str = testCase.date.String()
 		if str != testCase.expectedString {
 			t.Errorf("Invalid String(). Actual: %s, expected: %s", str, testCase.expectedString)
+		}
+	}
+}
+
+func TestValuer(t *testing.T) {
+	for _, testCase := range testCaseString {
+		// empty var d = Date{}
+		var _, err = testCase.date.Value()
+		if err != nil {
+			t.Errorf("Invalid String(). Err: %v", err)
 		}
 	}
 }
