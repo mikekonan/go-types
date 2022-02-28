@@ -137,3 +137,94 @@ func testMarshal(t *testing.T, tp string, marshalFunc func(dt) ([]byte, error), 
 		}
 	}
 }
+
+func TestFormatValid(t *testing.T) {
+	var (
+		d        = DateFromTime(time.Now())
+		expected = d.Time.Format("2006-01-02")
+		str      = d.format()
+	)
+	if *str != expected {
+		t.Errorf("Invalid format(). Actual: %s, expected: %s", *str, expected)
+
+	}
+}
+
+func TestFormatInvalid(t *testing.T) {
+	var (
+		d   = Date{}
+		str = d.format()
+	)
+	if str != nil {
+		t.Errorf("Invalid format(). Actual: %s, expected: nil", *str)
+
+	}
+}
+
+var testCaseParseString = []struct {
+	value         string
+	expectedError bool
+}{
+	// not time
+	{
+		value:         "invalid-format",
+		expectedError: true,
+	},
+	// invalid format not rfc3339 w/a time
+	{
+		value:         "10-01-1996",
+		expectedError: true,
+	},
+	// full time instead of date
+	{
+		value:         "1996-09-29T00:00:00",
+		expectedError: true,
+	},
+	// only time instead of date
+	{
+		value:         "00:00:00",
+		expectedError: true,
+	},
+	{
+		value:         "",
+		expectedError: false,
+	},
+
+	{
+		value:         "1998-02-20",
+		expectedError: false,
+	},
+}
+
+func TestParseDateFromString(t *testing.T) {
+	for _, testCase := range testCaseParseString {
+		_, actualErr := parseDateFromString(testCase.value)
+		if (actualErr == nil) == testCase.expectedError {
+			t.Errorf(`Expecting error - '%v' but was opposite`, testCase.expectedError)
+		}
+	}
+}
+
+var testCaseString = []struct {
+	date           Date
+	expectedString string
+}{
+	{
+		date:           Date{},
+		expectedString: "",
+	},
+	{
+		date:           DateFromTime(time.Date(1996, 8, 30, 10, 11, 40, 0, time.UTC)),
+		expectedString: "1996-08-30",
+	},
+}
+
+func TestString(t *testing.T) {
+	for _, testCase := range testCaseString {
+		// empty var d = Date{}
+		var str = testCase.date.String()
+		if str != testCase.expectedString {
+			t.Errorf("Invalid String(). Actual: %s, expected: %s", str, testCase.expectedString)
+		}
+	}
+}
