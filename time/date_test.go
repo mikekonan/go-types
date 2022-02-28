@@ -35,7 +35,7 @@ var unmarshalTestCases = []unmarshalType{
 		expectingValidateError: false,
 	},
 	{
-		testJSON:               []byte(`"d": "@"`),
+		testJSON:               []byte(`{"d": 1234}`),
 		testXML:                []byte(`test><d>@</d>`),
 		expectingValidateError: true,
 	},
