@@ -12,8 +12,8 @@ const format = "2006-01-02"
 
 type Date null.Time
 
-func DateFromTime(time2 time.Time) Date {
-	return Date(null.TimeFrom(time2))
+func DateFromTime(t time.Time) Date {
+	return Date(null.TimeFrom(t))
 }
 
 func (d *Date) UnmarshalJSON(data []byte) error {
