@@ -1562,6 +1562,10 @@ components:
       type: string
       format: email
       x-go-type: github.com/mikekonan/go-types/email.Email
+    Date:
+      example: 2006-01-02
+      type: string
+      x-go-type: github.com/mikekonan/go-types/time.Date
     Timezone:
       example: Europe/Minsk
       type: string
