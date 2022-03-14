@@ -58,7 +58,7 @@ func (cardDate CardDate) Validate() error {
 
 	var realYear, realMonth, err = cardDate.parseDate()
 	if err != nil {
-		return err
+		return fmt.Errorf("ivalid CardDate: %w", err)
 	}
 
 	var leftYear, leftMonth, _ = time.Now().Date()
