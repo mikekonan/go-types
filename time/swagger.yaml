@@ -5,3 +5,8 @@ components:
       example: 2006-01-02
       type: string
       x-go-type: github.com/mikekonan/go-types/time.Date
+    NullTime:
+      example: "2020-12-08T16:38:09.70516+03:00"
+      type: string
+      nullable: true
+      x-go-type: github.com/mikekonan/go-types/time.Time
