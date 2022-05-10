@@ -1,7 +1,6 @@
 package time
 
 import (
-	"database/sql/driver"
 	"encoding/json"
 	"encoding/xml"
 	"gopkg.in/guregu/null.v4"
@@ -46,10 +45,6 @@ func (d *Date) UnmarshalXML(decoder *xml.Decoder, element xml.StartElement) erro
 
 func (d Date) MarshalXML(decoder *xml.Encoder, element xml.StartElement) error {
 	return decoder.EncodeElement(d.format(), element)
-}
-
-func (d Date) Value() (value driver.Value, err error) {
-	return null.Time(d).Value()
 }
 
 func (d Date) String() string {
