@@ -24,8 +24,8 @@ var unmarshalTimeTestCases = []unmarshalType{
 		expectingValidateError: false,
 	},
 	{
-		testJSON:               []byte(`{"t": "2022-05-10T12:35:10+03:00"}`),
-		testXML:                []byte(`<?xml version="1.0"?><test><t>2022-05-10T12:35:10+03:00</t></test>`),
+		testJSON:               []byte(`{"t": "2022-05-10T12:35:10.132123Z"}`),
+		testXML:                []byte(`<?xml version="1.0"?><test><t>2022-05-10T12:35:10.1341231Z</t></test>`),
 		expectingValidateError: false,
 	},
 	{
@@ -90,9 +90,9 @@ var marshalTimeTestCases = []marshalTimeType{
 		expectedXML:  []byte(`<test></test>`),
 	},
 	{
-		testData:     tm{T: NullTime(time.Date(2006, 1, 2, 0, 0, 0, 0, time.UTC))},
-		expectedJSON: []byte(`{"t":"2006-01-02T00:00:00Z"}`),
-		expectedXML:  []byte(`<test><t>2006-01-02T00:00:00Z</t></test>`),
+		testData:     tm{T: NullTime(time.Date(2006, 1, 2, 0, 0, 0, 123456789, time.UTC))},
+		expectedJSON: []byte(`{"t":"2006-01-02T00:00:00.123456789Z"}`),
+		expectedXML:  []byte(`<test><t>2006-01-02T00:00:00.123456789Z</t></test>`),
 	},
 	{
 		testData:     tm{T: NullTime(time.Date(1996, 8, 30, 10, 11, 40, 0, time.UTC))},
@@ -128,7 +128,7 @@ func testTimeMarshal(t *testing.T, tp string, marshalFunc func(any) ([]byte, err
 func TestTimeFormatValid(t *testing.T) {
 	var (
 		d        = NullTime(time.Now())
-		expected = d.Time.Format(time.RFC3339)
+		expected = d.Time.Format(time.RFC3339Nano)
 		str      = d.format()
 	)
 	if *str != expected {
@@ -180,6 +180,10 @@ var testCaseTimeParseString = []struct {
 		value:         "1998-02-20T12:21:40Z",
 		expectedError: false,
 	},
+	{
+		value:         "1998-02-20T12:21:40.4235324Z",
+		expectedError: false,
+	},
 }
 
 func TestParseTimeFromString(t *testing.T) {
@@ -201,8 +205,8 @@ var testCaseTimeString = []struct {
 		expectedString: "",
 	},
 	{
-		t:              NullTime(time.Date(1996, 8, 30, 10, 11, 40, 0, time.UTC)),
-		expectedString: "1996-08-30T10:11:40Z",
+		t:              NullTime(time.Date(1996, 8, 30, 10, 11, 40, 123456789, time.UTC)),
+		expectedString: "1996-08-30T10:11:40.123456789Z",
 	},
 }
 
