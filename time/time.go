@@ -52,7 +52,7 @@ func (t Time) String() string {
 
 func (t Time) format() *string {
 	if t.Valid {
-		var str = t.Time.Format(time.RFC3339)
+		var str = t.Time.Format(time.RFC3339Nano)
 		return &str
 	}
 
@@ -65,7 +65,7 @@ func (t *Time) parseTimeFromString(value string) (err error) {
 	}
 
 	var newTime time.Time
-	if newTime, err = time.Parse(time.RFC3339, value); err != nil {
+	if newTime, err = time.Parse(time.RFC3339Nano, value); err != nil {
 		if errTime, ok := err.(*time.ParseError); ok {
 			return fmt.Errorf("cannot parse time '%s' invalid format '%s'", errTime.Value, errTime.Layout)
 		}

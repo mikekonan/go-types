@@ -73,7 +73,7 @@ func TestUnmarshalXML(t *testing.T) {
 	})
 }
 
-func testUnmarshal(t *testing.T, unmarshalFunc func([]byte, any) error, valueFunc func(unmarshalType) []byte) {
+func testUnmarshal(t *testing.T, unmarshalFunc func([]byte, interface{}) error, valueFunc func(unmarshalType) []byte) {
 	for _, testCase := range unmarshalTestCases {
 		var d dt
 		actualErr := unmarshalFunc(valueFunc(testCase), &d)
@@ -119,7 +119,7 @@ func TestMarshalXML(t *testing.T) {
 	})
 }
 
-func testMarshal(t *testing.T, tp string, marshalFunc func(any) ([]byte, error), valueFunc func(marshalType) []byte) {
+func testMarshal(t *testing.T, tp string, marshalFunc func(interface{}) ([]byte, error), valueFunc func(marshalType) []byte) {
 	for _, testCase := range marshalTestCases {
 		actual, actualErr := marshalFunc(testCase.testData)
 		if actualErr != nil {
