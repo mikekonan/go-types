@@ -75,3 +75,10 @@ func (t *Time) parseTimeFromString(value string) (err error) {
 	*t = NullTime(newTime)
 	return nil
 }
+
+func ParseNullTimeFromString(value string) (t Time, err error) {
+	if err = t.parseTimeFromString(value); err != nil {
+		return t, err
+	}
+	return t, nil
+}

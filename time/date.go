@@ -22,7 +22,7 @@ func (d *Date) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	*d, err = parseDateFromString(str)
+	*d, err = ParseDateFromString(str)
 
 	return err
 }
@@ -38,7 +38,7 @@ func (d *Date) UnmarshalXML(decoder *xml.Decoder, element xml.StartElement) erro
 		return err
 	}
 
-	*d, err = parseDateFromString(str)
+	*d, err = ParseDateFromString(str)
 
 	return err
 }
@@ -64,7 +64,7 @@ func (d Date) format() *string {
 	return nil
 }
 
-func parseDateFromString(value string) (Date, error) {
+func ParseDateFromString(value string) (Date, error) {
 	if value == "" {
 		return Date{}, nil
 	}

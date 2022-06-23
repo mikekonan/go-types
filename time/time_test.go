@@ -229,3 +229,39 @@ func TestTimeValuer(t *testing.T) {
 		}
 	}
 }
+
+func TestParseNullTime_EmptyStr(t *testing.T) {
+	var v, err = ParseNullTimeFromString("")
+	if err != nil {
+		t.Errorf("No error expected. Err: %v", err)
+	}
+	var nullValue Time
+	if v != nullValue {
+		t.Errorf("null value expected. Time: %v", err)
+	}
+}
+
+func TestParseNullTime_ValidStr(t *testing.T) {
+	var v, err = ParseNullTimeFromString("1996-08-30T10:11:40.123456789Z")
+	if err != nil {
+		t.Errorf("No error expected. Err: %v", err)
+	}
+	var validValue = NullTime(time.Date(1996, 8, 30, 10, 11, 40, 123456789, time.UTC))
+	if v != validValue {
+		t.Errorf("null value expected. Time: %v", err)
+	}
+}
+
+func TestParseNullTime_NotValidStr(t *testing.T) {
+	var v, err = ParseNullTimeFromString("00:00:00")
+	if err == nil {
+		t.Error("Error expected")
+	}
+	if err.Error() != "cannot parse time '00:00:00' invalid format '2006-01-02T15:04:05.999999999Z07:00'" {
+		t.Errorf("%v expected: Got: %v", "cannot parse time '00:00:00' invalid format '2006-01-02T15:04:05.999999999Z07:00'", err)
+	}
+	var nullValue Time
+	if v != nullValue {
+		t.Errorf("null value expected. Time: %v", err)
+	}
+}
