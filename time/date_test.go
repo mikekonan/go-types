@@ -191,7 +191,7 @@ var testCaseParseString = []struct {
 
 func TestParseDateFromString(t *testing.T) {
 	for _, testCase := range testCaseParseString {
-		_, actualErr := parseDateFromString(testCase.value)
+		_, actualErr := ParseDateFromString(testCase.value)
 		if (actualErr == nil) == testCase.expectedError {
 			t.Errorf(`Expecting error - '%v' but was opposite`, testCase.expectedError)
 		}
