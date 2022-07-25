@@ -5,4 +5,4 @@ components:
       example: user@example.com
       type: string
       format: email
-      x-go-type: github.com/mikekonan/go-types/email.Email
+      x-go-type: github.com/mikekonan/go-types/v2/email.Email

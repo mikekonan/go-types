@@ -4,4 +4,4 @@ components:
     CardDate:
       example: 01/06
       type: string
-      x-go-type: github.com/mikekonan/go-types/card.CardDate
+      x-go-type: github.com/mikekonan/go-types/v2/card.CardDate

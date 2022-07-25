@@ -939,6 +939,13 @@ var currenciesByCode = map[string]currency{
 		number:        `694`,
 		decimalPlaces: 2,
 	},
+	`SLE`: {
+		countries:     Countries{`SIERRA LEONE`},
+		currency:      `Leone`,
+		code:          `SLE`,
+		number:        `925`,
+		decimalPlaces: 2,
+	},
 	`SGD`: {
 		countries:     Countries{`SINGAPORE`},
 		currency:      `Singapore Dollar`,
@@ -1154,6 +1161,13 @@ var currenciesByCode = map[string]currency{
 		currency:      `Bolívar Soberano`,
 		code:          `VES`,
 		number:        `928`,
+		decimalPlaces: 2,
+	},
+	`VED`: {
+		countries:     Countries{`VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA`},
+		currency:      `Bolívar Soberano`,
+		code:          `VED`,
+		number:        `926`,
 		decimalPlaces: 2,
 	},
 	`VND`: {
@@ -1948,6 +1962,20 @@ var currenciesByNumber = map[string]currency{
 		currency:      `New Taiwan Dollar`,
 		code:          `TWD`,
 		number:        `901`,
+		decimalPlaces: 2,
+	},
+	`925`: {
+		countries:     Countries{`SIERRA LEONE`},
+		currency:      `Leone`,
+		code:          `SLE`,
+		number:        `925`,
+		decimalPlaces: 2,
+	},
+	`926`: {
+		countries:     Countries{`VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA`},
+		currency:      `Bolívar Soberano`,
+		code:          `VED`,
+		number:        `926`,
 		decimalPlaces: 2,
 	},
 	`927`: {
@@ -4046,6 +4074,12 @@ var currenciesByCountry = map[string]currencies{
 			code:          `SLL`,
 			number:        `694`,
 			decimalPlaces: 2,
+		}, {
+			countries:     Countries{`SIERRA LEONE`},
+			currency:      `Leone`,
+			code:          `SLE`,
+			number:        `925`,
+			decimalPlaces: 2,
 		},
 	}, `SINGAPORE`: {
 		{
@@ -4403,6 +4437,12 @@ var currenciesByCountry = map[string]currencies{
 			currency:      `Bolívar Soberano`,
 			code:          `VES`,
 			number:        `928`,
+			decimalPlaces: 2,
+		}, {
+			countries:     Countries{`VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA`},
+			currency:      `Bolívar Soberano`,
+			code:          `VED`,
+			number:        `926`,
 			decimalPlaces: 2,
 		},
 	}, `VIET NAM`: {
@@ -4787,6 +4827,12 @@ var currenciesByCountry = map[string]currencies{
 			currency:      `Bolívar Soberano`,
 			code:          `VES`,
 			number:        `928`,
+			decimalPlaces: 2,
+		}, {
+			countries:     Countries{`VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA`},
+			currency:      `Bolívar Soberano`,
+			code:          `VED`,
+			number:        `926`,
 			decimalPlaces: 2,
 		},
 	}, `VIRGIN ISLANDS`: {
@@ -5739,7 +5785,7 @@ var currenciesByCurrency = map[string]currency{
 		decimalPlaces: 2,
 	},
 	`Leone`: {
-		countries:     Countries{`SIERRA LEONE`},
+		countries:     Countries{`SIERRA LEONE`, `SIERRA LEONE`},
 		currency:      `Leone`,
 		code:          `SLL`,
 		number:        `694`,
@@ -5956,7 +6002,7 @@ var currenciesByCurrency = map[string]currency{
 		decimalPlaces: 0,
 	},
 	`Bolívar Soberano`: {
-		countries:     Countries{`VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA`},
+		countries:     Countries{`VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA (BOLIVARIAN REPUBLIC OF)`, `VENEZUELA`, `VENEZUELA`},
 		currency:      `Bolívar Soberano`,
 		code:          `VES`,
 		number:        `928`,

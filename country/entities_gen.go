@@ -1,1498 +1,1498 @@
 package country
 
 var (
-	//Afghanistan represents 'Afghanistan' country
+	// Afghanistan represents 'Afghanistan' country
 	Afghanistan = Country{
-		name:   NameAfghanistan,
-		alpha2: Alpha2AF,
-		alpha3: Alpha3AFG,
+		name:   "Afghanistan",
+		alpha2: "AF",
+		alpha3: "AFG",
 	}
-	//Albania represents 'Albania' country
+	// Albania represents 'Albania' country
 	Albania = Country{
-		name:   NameAlbania,
-		alpha2: Alpha2AL,
-		alpha3: Alpha3ALB,
+		name:   "Albania",
+		alpha2: "AL",
+		alpha3: "ALB",
 	}
-	//Algeria represents 'Algeria' country
+	// Algeria represents 'Algeria' country
 	Algeria = Country{
-		name:   NameAlgeria,
-		alpha2: Alpha2DZ,
-		alpha3: Alpha3DZA,
+		name:   "Algeria",
+		alpha2: "DZ",
+		alpha3: "DZA",
 	}
-	//AmericanSamoa represents 'American Samoa' country
+	// AmericanSamoa represents 'American Samoa' country
 	AmericanSamoa = Country{
-		name:   NameAmericanSamoa,
-		alpha2: Alpha2AS,
-		alpha3: Alpha3ASM,
+		name:   "American Samoa",
+		alpha2: "AS",
+		alpha3: "ASM",
 	}
-	//Andorra represents 'Andorra' country
+	// Andorra represents 'Andorra' country
 	Andorra = Country{
-		name:   NameAndorra,
-		alpha2: Alpha2AD,
-		alpha3: Alpha3AND,
+		name:   "Andorra",
+		alpha2: "AD",
+		alpha3: "AND",
 	}
-	//Angola represents 'Angola' country
+	// Angola represents 'Angola' country
 	Angola = Country{
-		name:   NameAngola,
-		alpha2: Alpha2AO,
-		alpha3: Alpha3AGO,
+		name:   "Angola",
+		alpha2: "AO",
+		alpha3: "AGO",
 	}
-	//Anguilla represents 'Anguilla' country
+	// Anguilla represents 'Anguilla' country
 	Anguilla = Country{
-		name:   NameAnguilla,
-		alpha2: Alpha2AI,
-		alpha3: Alpha3AIA,
+		name:   "Anguilla",
+		alpha2: "AI",
+		alpha3: "AIA",
 	}
-	//Antarctica represents 'Antarctica' country
+	// Antarctica represents 'Antarctica' country
 	Antarctica = Country{
-		name:   NameAntarctica,
-		alpha2: Alpha2AQ,
-		alpha3: Alpha3ATA,
+		name:   "Antarctica",
+		alpha2: "AQ",
+		alpha3: "ATA",
 	}
-	//AntiguaAndBarbuda represents 'Antigua and Barbuda' country
+	// AntiguaAndBarbuda represents 'Antigua and Barbuda' country
 	AntiguaAndBarbuda = Country{
-		name:   NameAntiguaAndBarbuda,
-		alpha2: Alpha2AG,
-		alpha3: Alpha3ATG,
+		name:   "Antigua and Barbuda",
+		alpha2: "AG",
+		alpha3: "ATG",
 	}
-	//Argentina represents 'Argentina' country
+	// Argentina represents 'Argentina' country
 	Argentina = Country{
-		name:   NameArgentina,
-		alpha2: Alpha2AR,
-		alpha3: Alpha3ARG,
+		name:   "Argentina",
+		alpha2: "AR",
+		alpha3: "ARG",
 	}
-	//Armenia represents 'Armenia' country
+	// Armenia represents 'Armenia' country
 	Armenia = Country{
-		name:   NameArmenia,
-		alpha2: Alpha2AM,
-		alpha3: Alpha3ARM,
+		name:   "Armenia",
+		alpha2: "AM",
+		alpha3: "ARM",
 	}
-	//Aruba represents 'Aruba' country
+	// Aruba represents 'Aruba' country
 	Aruba = Country{
-		name:   NameAruba,
-		alpha2: Alpha2AW,
-		alpha3: Alpha3ABW,
+		name:   "Aruba",
+		alpha2: "AW",
+		alpha3: "ABW",
 	}
-	//Australia represents 'Australia' country
+	// Australia represents 'Australia' country
 	Australia = Country{
-		name:   NameAustralia,
-		alpha2: Alpha2AU,
-		alpha3: Alpha3AUS,
+		name:   "Australia",
+		alpha2: "AU",
+		alpha3: "AUS",
 	}
-	//Austria represents 'Austria' country
+	// Austria represents 'Austria' country
 	Austria = Country{
-		name:   NameAustria,
-		alpha2: Alpha2AT,
-		alpha3: Alpha3AUT,
+		name:   "Austria",
+		alpha2: "AT",
+		alpha3: "AUT",
 	}
-	//Azerbaijan represents 'Azerbaijan' country
+	// Azerbaijan represents 'Azerbaijan' country
 	Azerbaijan = Country{
-		name:   NameAzerbaijan,
-		alpha2: Alpha2AZ,
-		alpha3: Alpha3AZE,
+		name:   "Azerbaijan",
+		alpha2: "AZ",
+		alpha3: "AZE",
 	}
-	//Bahamas represents 'Bahamas (the)' country
+	// Bahamas represents 'Bahamas (the)' country
 	Bahamas = Country{
-		name:   NameBahamas,
-		alpha2: Alpha2BS,
-		alpha3: Alpha3BHS,
+		name:   "Bahamas (the)",
+		alpha2: "BS",
+		alpha3: "BHS",
 	}
-	//Bahrain represents 'Bahrain' country
+	// Bahrain represents 'Bahrain' country
 	Bahrain = Country{
-		name:   NameBahrain,
-		alpha2: Alpha2BH,
-		alpha3: Alpha3BHR,
+		name:   "Bahrain",
+		alpha2: "BH",
+		alpha3: "BHR",
 	}
-	//Bangladesh represents 'Bangladesh' country
+	// Bangladesh represents 'Bangladesh' country
 	Bangladesh = Country{
-		name:   NameBangladesh,
-		alpha2: Alpha2BD,
-		alpha3: Alpha3BGD,
+		name:   "Bangladesh",
+		alpha2: "BD",
+		alpha3: "BGD",
 	}
-	//Barbados represents 'Barbados' country
+	// Barbados represents 'Barbados' country
 	Barbados = Country{
-		name:   NameBarbados,
-		alpha2: Alpha2BB,
-		alpha3: Alpha3BRB,
+		name:   "Barbados",
+		alpha2: "BB",
+		alpha3: "BRB",
 	}
-	//Belarus represents 'Belarus' country
+	// Belarus represents 'Belarus' country
 	Belarus = Country{
-		name:   NameBelarus,
-		alpha2: Alpha2BY,
-		alpha3: Alpha3BLR,
+		name:   "Belarus",
+		alpha2: "BY",
+		alpha3: "BLR",
 	}
-	//Belgium represents 'Belgium' country
+	// Belgium represents 'Belgium' country
 	Belgium = Country{
-		name:   NameBelgium,
-		alpha2: Alpha2BE,
-		alpha3: Alpha3BEL,
+		name:   "Belgium",
+		alpha2: "BE",
+		alpha3: "BEL",
 	}
-	//Belize represents 'Belize' country
+	// Belize represents 'Belize' country
 	Belize = Country{
-		name:   NameBelize,
-		alpha2: Alpha2BZ,
-		alpha3: Alpha3BLZ,
+		name:   "Belize",
+		alpha2: "BZ",
+		alpha3: "BLZ",
 	}
-	//Benin represents 'Benin' country
+	// Benin represents 'Benin' country
 	Benin = Country{
-		name:   NameBenin,
-		alpha2: Alpha2BJ,
-		alpha3: Alpha3BEN,
+		name:   "Benin",
+		alpha2: "BJ",
+		alpha3: "BEN",
 	}
-	//Bermuda represents 'Bermuda' country
+	// Bermuda represents 'Bermuda' country
 	Bermuda = Country{
-		name:   NameBermuda,
-		alpha2: Alpha2BM,
-		alpha3: Alpha3BMU,
+		name:   "Bermuda",
+		alpha2: "BM",
+		alpha3: "BMU",
 	}
-	//Bhutan represents 'Bhutan' country
+	// Bhutan represents 'Bhutan' country
 	Bhutan = Country{
-		name:   NameBhutan,
-		alpha2: Alpha2BT,
-		alpha3: Alpha3BTN,
+		name:   "Bhutan",
+		alpha2: "BT",
+		alpha3: "BTN",
 	}
-	//Bolivia represents 'Bolivia (Plurinational State of)' country
+	// Bolivia represents 'Bolivia (Plurinational State of)' country
 	Bolivia = Country{
-		name:   NameBolivia,
-		alpha2: Alpha2BO,
-		alpha3: Alpha3BOL,
+		name:   "Bolivia (Plurinational State of)",
+		alpha2: "BO",
+		alpha3: "BOL",
 	}
-	//BonaireSintEustatiusAndSaba represents 'Bonaire, Sint Eustatius and Saba' country
+	// BonaireSintEustatiusAndSaba represents 'Bonaire, Sint Eustatius and Saba' country
 	BonaireSintEustatiusAndSaba = Country{
-		name:   NameBonaireSintEustatiusAndSaba,
-		alpha2: Alpha2BQ,
-		alpha3: Alpha3BES,
+		name:   "Bonaire, Sint Eustatius and Saba",
+		alpha2: "BQ",
+		alpha3: "BES",
 	}
-	//BosniaAndHerzegovina represents 'Bosnia and Herzegovina' country
+	// BosniaAndHerzegovina represents 'Bosnia and Herzegovina' country
 	BosniaAndHerzegovina = Country{
-		name:   NameBosniaAndHerzegovina,
-		alpha2: Alpha2BA,
-		alpha3: Alpha3BIH,
+		name:   "Bosnia and Herzegovina",
+		alpha2: "BA",
+		alpha3: "BIH",
 	}
-	//Botswana represents 'Botswana' country
+	// Botswana represents 'Botswana' country
 	Botswana = Country{
-		name:   NameBotswana,
-		alpha2: Alpha2BW,
-		alpha3: Alpha3BWA,
+		name:   "Botswana",
+		alpha2: "BW",
+		alpha3: "BWA",
 	}
-	//BouvetIsland represents 'Bouvet Island' country
+	// BouvetIsland represents 'Bouvet Island' country
 	BouvetIsland = Country{
-		name:   NameBouvetIsland,
-		alpha2: Alpha2BV,
-		alpha3: Alpha3BVT,
+		name:   "Bouvet Island",
+		alpha2: "BV",
+		alpha3: "BVT",
 	}
-	//Brazil represents 'Brazil' country
+	// Brazil represents 'Brazil' country
 	Brazil = Country{
-		name:   NameBrazil,
-		alpha2: Alpha2BR,
-		alpha3: Alpha3BRA,
+		name:   "Brazil",
+		alpha2: "BR",
+		alpha3: "BRA",
 	}
-	//BritishIndianOceanTerritory represents 'British Indian Ocean Territory (the)' country
+	// BritishIndianOceanTerritory represents 'British Indian Ocean Territory (the)' country
 	BritishIndianOceanTerritory = Country{
-		name:   NameBritishIndianOceanTerritory,
-		alpha2: Alpha2IO,
-		alpha3: Alpha3IOT,
+		name:   "British Indian Ocean Territory (the)",
+		alpha2: "IO",
+		alpha3: "IOT",
 	}
-	//BruneiDarussalam represents 'Brunei Darussalam' country
+	// BruneiDarussalam represents 'Brunei Darussalam' country
 	BruneiDarussalam = Country{
-		name:   NameBruneiDarussalam,
-		alpha2: Alpha2BN,
-		alpha3: Alpha3BRN,
+		name:   "Brunei Darussalam",
+		alpha2: "BN",
+		alpha3: "BRN",
 	}
-	//Bulgaria represents 'Bulgaria' country
+	// Bulgaria represents 'Bulgaria' country
 	Bulgaria = Country{
-		name:   NameBulgaria,
-		alpha2: Alpha2BG,
-		alpha3: Alpha3BGR,
+		name:   "Bulgaria",
+		alpha2: "BG",
+		alpha3: "BGR",
 	}
-	//BurkinaFaso represents 'Burkina Faso' country
+	// BurkinaFaso represents 'Burkina Faso' country
 	BurkinaFaso = Country{
-		name:   NameBurkinaFaso,
-		alpha2: Alpha2BF,
-		alpha3: Alpha3BFA,
+		name:   "Burkina Faso",
+		alpha2: "BF",
+		alpha3: "BFA",
 	}
-	//Burundi represents 'Burundi' country
+	// Burundi represents 'Burundi' country
 	Burundi = Country{
-		name:   NameBurundi,
-		alpha2: Alpha2BI,
-		alpha3: Alpha3BDI,
+		name:   "Burundi",
+		alpha2: "BI",
+		alpha3: "BDI",
 	}
-	//CaboVerde represents 'Cabo Verde' country
+	// CaboVerde represents 'Cabo Verde' country
 	CaboVerde = Country{
-		name:   NameCaboVerde,
-		alpha2: Alpha2CV,
-		alpha3: Alpha3CPV,
+		name:   "Cabo Verde",
+		alpha2: "CV",
+		alpha3: "CPV",
 	}
-	//Cambodia represents 'Cambodia' country
+	// Cambodia represents 'Cambodia' country
 	Cambodia = Country{
-		name:   NameCambodia,
-		alpha2: Alpha2KH,
-		alpha3: Alpha3KHM,
+		name:   "Cambodia",
+		alpha2: "KH",
+		alpha3: "KHM",
 	}
-	//Cameroon represents 'Cameroon' country
+	// Cameroon represents 'Cameroon' country
 	Cameroon = Country{
-		name:   NameCameroon,
-		alpha2: Alpha2CM,
-		alpha3: Alpha3CMR,
+		name:   "Cameroon",
+		alpha2: "CM",
+		alpha3: "CMR",
 	}
-	//Canada represents 'Canada' country
+	// Canada represents 'Canada' country
 	Canada = Country{
-		name:   NameCanada,
-		alpha2: Alpha2CA,
-		alpha3: Alpha3CAN,
+		name:   "Canada",
+		alpha2: "CA",
+		alpha3: "CAN",
 	}
-	//CaymanIslands represents 'Cayman Islands (the)' country
+	// CaymanIslands represents 'Cayman Islands (the)' country
 	CaymanIslands = Country{
-		name:   NameCaymanIslands,
-		alpha2: Alpha2KY,
-		alpha3: Alpha3CYM,
+		name:   "Cayman Islands (the)",
+		alpha2: "KY",
+		alpha3: "CYM",
 	}
-	//CentralAfricanRepublic represents 'Central African Republic (the)' country
+	// CentralAfricanRepublic represents 'Central African Republic (the)' country
 	CentralAfricanRepublic = Country{
-		name:   NameCentralAfricanRepublic,
-		alpha2: Alpha2CF,
-		alpha3: Alpha3CAF,
+		name:   "Central African Republic (the)",
+		alpha2: "CF",
+		alpha3: "CAF",
 	}
-	//Chad represents 'Chad' country
+	// Chad represents 'Chad' country
 	Chad = Country{
-		name:   NameChad,
-		alpha2: Alpha2TD,
-		alpha3: Alpha3TCD,
+		name:   "Chad",
+		alpha2: "TD",
+		alpha3: "TCD",
 	}
-	//Chile represents 'Chile' country
+	// Chile represents 'Chile' country
 	Chile = Country{
-		name:   NameChile,
-		alpha2: Alpha2CL,
-		alpha3: Alpha3CHL,
+		name:   "Chile",
+		alpha2: "CL",
+		alpha3: "CHL",
 	}
-	//China represents 'China' country
+	// China represents 'China' country
 	China = Country{
-		name:   NameChina,
-		alpha2: Alpha2CN,
-		alpha3: Alpha3CHN,
+		name:   "China",
+		alpha2: "CN",
+		alpha3: "CHN",
 	}
-	//ChristmasIsland represents 'Christmas Island' country
+	// ChristmasIsland represents 'Christmas Island' country
 	ChristmasIsland = Country{
-		name:   NameChristmasIsland,
-		alpha2: Alpha2CX,
-		alpha3: Alpha3CXR,
+		name:   "Christmas Island",
+		alpha2: "CX",
+		alpha3: "CXR",
 	}
-	//Cocos represents 'Cocos (Keeling) Islands (the)' country
+	// Cocos represents 'Cocos (Keeling) Islands (the)' country
 	Cocos = Country{
-		name:   NameCocos,
-		alpha2: Alpha2CC,
-		alpha3: Alpha3CCK,
+		name:   "Cocos (Keeling) Islands (the)",
+		alpha2: "CC",
+		alpha3: "CCK",
 	}
-	//Colombia represents 'Colombia' country
+	// Colombia represents 'Colombia' country
 	Colombia = Country{
-		name:   NameColombia,
-		alpha2: Alpha2CO,
-		alpha3: Alpha3COL,
+		name:   "Colombia",
+		alpha2: "CO",
+		alpha3: "COL",
 	}
-	//Comoros represents 'Comoros (the)' country
+	// Comoros represents 'Comoros (the)' country
 	Comoros = Country{
-		name:   NameComoros,
-		alpha2: Alpha2KM,
-		alpha3: Alpha3COM,
+		name:   "Comoros (the)",
+		alpha2: "KM",
+		alpha3: "COM",
 	}
-	//DemocraticRepublicOfTheCongo represents 'Congo (the Democratic Republic of the)' country
+	// DemocraticRepublicOfTheCongo represents 'Congo (the Democratic Republic of the)' country
 	DemocraticRepublicOfTheCongo = Country{
-		name:   NameDemocraticRepublicOfTheCongo,
-		alpha2: Alpha2CD,
-		alpha3: Alpha3COD,
+		name:   "Congo (the Democratic Republic of the)",
+		alpha2: "CD",
+		alpha3: "COD",
 	}
-	//Congo represents 'Congo (the)' country
+	// Congo represents 'Congo (the)' country
 	Congo = Country{
-		name:   NameCongo,
-		alpha2: Alpha2CG,
-		alpha3: Alpha3COG,
+		name:   "Congo (the)",
+		alpha2: "CG",
+		alpha3: "COG",
 	}
-	//CookIslands represents 'Cook Islands (the)' country
+	// CookIslands represents 'Cook Islands (the)' country
 	CookIslands = Country{
-		name:   NameCookIslands,
-		alpha2: Alpha2CK,
-		alpha3: Alpha3COK,
+		name:   "Cook Islands (the)",
+		alpha2: "CK",
+		alpha3: "COK",
 	}
-	//CostaRica represents 'Costa Rica' country
+	// CostaRica represents 'Costa Rica' country
 	CostaRica = Country{
-		name:   NameCostaRica,
-		alpha2: Alpha2CR,
-		alpha3: Alpha3CRI,
+		name:   "Costa Rica",
+		alpha2: "CR",
+		alpha3: "CRI",
 	}
-	//Croatia represents 'Croatia' country
+	// Croatia represents 'Croatia' country
 	Croatia = Country{
-		name:   NameCroatia,
-		alpha2: Alpha2HR,
-		alpha3: Alpha3HRV,
+		name:   "Croatia",
+		alpha2: "HR",
+		alpha3: "HRV",
 	}
-	//Cuba represents 'Cuba' country
+	// Cuba represents 'Cuba' country
 	Cuba = Country{
-		name:   NameCuba,
-		alpha2: Alpha2CU,
-		alpha3: Alpha3CUB,
+		name:   "Cuba",
+		alpha2: "CU",
+		alpha3: "CUB",
 	}
-	//Curacao represents 'Curaçao' country
+	// Curacao represents 'Curaçao' country
 	Curacao = Country{
-		name:   NameCuracao,
-		alpha2: Alpha2CW,
-		alpha3: Alpha3CUW,
+		name:   "Curaçao",
+		alpha2: "CW",
+		alpha3: "CUW",
 	}
-	//Cyprus represents 'Cyprus' country
+	// Cyprus represents 'Cyprus' country
 	Cyprus = Country{
-		name:   NameCyprus,
-		alpha2: Alpha2CY,
-		alpha3: Alpha3CYP,
+		name:   "Cyprus",
+		alpha2: "CY",
+		alpha3: "CYP",
 	}
-	//Czechia represents 'Czechia' country
+	// Czechia represents 'Czechia' country
 	Czechia = Country{
-		name:   NameCzechia,
-		alpha2: Alpha2CZ,
-		alpha3: Alpha3CZE,
+		name:   "Czechia",
+		alpha2: "CZ",
+		alpha3: "CZE",
 	}
-	//CoteDIvoire represents 'Côte d'Ivoire' country
+	// CoteDIvoire represents 'Côte d'Ivoire' country
 	CoteDIvoire = Country{
-		name:   NameCoteDIvoire,
-		alpha2: Alpha2CI,
-		alpha3: Alpha3CIV,
+		name:   "Côte d'Ivoire",
+		alpha2: "CI",
+		alpha3: "CIV",
 	}
-	//Denmark represents 'Denmark' country
+	// Denmark represents 'Denmark' country
 	Denmark = Country{
-		name:   NameDenmark,
-		alpha2: Alpha2DK,
-		alpha3: Alpha3DNK,
+		name:   "Denmark",
+		alpha2: "DK",
+		alpha3: "DNK",
 	}
-	//Djibouti represents 'Djibouti' country
+	// Djibouti represents 'Djibouti' country
 	Djibouti = Country{
-		name:   NameDjibouti,
-		alpha2: Alpha2DJ,
-		alpha3: Alpha3DJI,
+		name:   "Djibouti",
+		alpha2: "DJ",
+		alpha3: "DJI",
 	}
-	//Dominica represents 'Dominica' country
+	// Dominica represents 'Dominica' country
 	Dominica = Country{
-		name:   NameDominica,
-		alpha2: Alpha2DM,
-		alpha3: Alpha3DMA,
+		name:   "Dominica",
+		alpha2: "DM",
+		alpha3: "DMA",
 	}
-	//DominicanRepublic represents 'Dominican Republic (the)' country
+	// DominicanRepublic represents 'Dominican Republic (the)' country
 	DominicanRepublic = Country{
-		name:   NameDominicanRepublic,
-		alpha2: Alpha2DO,
-		alpha3: Alpha3DOM,
+		name:   "Dominican Republic (the)",
+		alpha2: "DO",
+		alpha3: "DOM",
 	}
-	//Ecuador represents 'Ecuador' country
+	// Ecuador represents 'Ecuador' country
 	Ecuador = Country{
-		name:   NameEcuador,
-		alpha2: Alpha2EC,
-		alpha3: Alpha3ECU,
+		name:   "Ecuador",
+		alpha2: "EC",
+		alpha3: "ECU",
 	}
-	//Egypt represents 'Egypt' country
+	// Egypt represents 'Egypt' country
 	Egypt = Country{
-		name:   NameEgypt,
-		alpha2: Alpha2EG,
-		alpha3: Alpha3EGY,
+		name:   "Egypt",
+		alpha2: "EG",
+		alpha3: "EGY",
 	}
-	//ElSalvador represents 'El Salvador' country
+	// ElSalvador represents 'El Salvador' country
 	ElSalvador = Country{
-		name:   NameElSalvador,
-		alpha2: Alpha2SV,
-		alpha3: Alpha3SLV,
+		name:   "El Salvador",
+		alpha2: "SV",
+		alpha3: "SLV",
 	}
-	//EquatorialGuinea represents 'Equatorial Guinea' country
+	// EquatorialGuinea represents 'Equatorial Guinea' country
 	EquatorialGuinea = Country{
-		name:   NameEquatorialGuinea,
-		alpha2: Alpha2GQ,
-		alpha3: Alpha3GNQ,
+		name:   "Equatorial Guinea",
+		alpha2: "GQ",
+		alpha3: "GNQ",
 	}
-	//Eritrea represents 'Eritrea' country
+	// Eritrea represents 'Eritrea' country
 	Eritrea = Country{
-		name:   NameEritrea,
-		alpha2: Alpha2ER,
-		alpha3: Alpha3ERI,
+		name:   "Eritrea",
+		alpha2: "ER",
+		alpha3: "ERI",
 	}
-	//Estonia represents 'Estonia' country
+	// Estonia represents 'Estonia' country
 	Estonia = Country{
-		name:   NameEstonia,
-		alpha2: Alpha2EE,
-		alpha3: Alpha3EST,
+		name:   "Estonia",
+		alpha2: "EE",
+		alpha3: "EST",
 	}
-	//Eswatini represents 'Eswatini' country
+	// Eswatini represents 'Eswatini' country
 	Eswatini = Country{
-		name:   NameEswatini,
-		alpha2: Alpha2SZ,
-		alpha3: Alpha3SWZ,
+		name:   "Eswatini",
+		alpha2: "SZ",
+		alpha3: "SWZ",
 	}
-	//Ethiopia represents 'Ethiopia' country
+	// Ethiopia represents 'Ethiopia' country
 	Ethiopia = Country{
-		name:   NameEthiopia,
-		alpha2: Alpha2ET,
-		alpha3: Alpha3ETH,
+		name:   "Ethiopia",
+		alpha2: "ET",
+		alpha3: "ETH",
 	}
-	//FalklandIslands represents 'Falkland Islands (the) [Malvinas]' country
+	// FalklandIslands represents 'Falkland Islands (the) [Malvinas]' country
 	FalklandIslands = Country{
-		name:   NameFalklandIslands,
-		alpha2: Alpha2FK,
-		alpha3: Alpha3FLK,
+		name:   "Falkland Islands (the) [Malvinas]",
+		alpha2: "FK",
+		alpha3: "FLK",
 	}
-	//FaroeIslands represents 'Faroe Islands (the)' country
+	// FaroeIslands represents 'Faroe Islands (the)' country
 	FaroeIslands = Country{
-		name:   NameFaroeIslands,
-		alpha2: Alpha2FO,
-		alpha3: Alpha3FRO,
+		name:   "Faroe Islands (the)",
+		alpha2: "FO",
+		alpha3: "FRO",
 	}
-	//Fiji represents 'Fiji' country
+	// Fiji represents 'Fiji' country
 	Fiji = Country{
-		name:   NameFiji,
-		alpha2: Alpha2FJ,
-		alpha3: Alpha3FJI,
+		name:   "Fiji",
+		alpha2: "FJ",
+		alpha3: "FJI",
 	}
-	//Finland represents 'Finland' country
+	// Finland represents 'Finland' country
 	Finland = Country{
-		name:   NameFinland,
-		alpha2: Alpha2FI,
-		alpha3: Alpha3FIN,
+		name:   "Finland",
+		alpha2: "FI",
+		alpha3: "FIN",
 	}
-	//France represents 'France' country
+	// France represents 'France' country
 	France = Country{
-		name:   NameFrance,
-		alpha2: Alpha2FR,
-		alpha3: Alpha3FRA,
+		name:   "France",
+		alpha2: "FR",
+		alpha3: "FRA",
 	}
-	//FrenchGuiana represents 'French Guiana' country
+	// FrenchGuiana represents 'French Guiana' country
 	FrenchGuiana = Country{
-		name:   NameFrenchGuiana,
-		alpha2: Alpha2GF,
-		alpha3: Alpha3GUF,
+		name:   "French Guiana",
+		alpha2: "GF",
+		alpha3: "GUF",
 	}
-	//FrenchPolynesia represents 'French Polynesia' country
+	// FrenchPolynesia represents 'French Polynesia' country
 	FrenchPolynesia = Country{
-		name:   NameFrenchPolynesia,
-		alpha2: Alpha2PF,
-		alpha3: Alpha3PYF,
+		name:   "French Polynesia",
+		alpha2: "PF",
+		alpha3: "PYF",
 	}
-	//FrenchSouthernTerritories represents 'French Southern Territories (the)' country
+	// FrenchSouthernTerritories represents 'French Southern Territories (the)' country
 	FrenchSouthernTerritories = Country{
-		name:   NameFrenchSouthernTerritories,
-		alpha2: Alpha2TF,
-		alpha3: Alpha3ATF,
+		name:   "French Southern Territories (the)",
+		alpha2: "TF",
+		alpha3: "ATF",
 	}
-	//Gabon represents 'Gabon' country
+	// Gabon represents 'Gabon' country
 	Gabon = Country{
-		name:   NameGabon,
-		alpha2: Alpha2GA,
-		alpha3: Alpha3GAB,
+		name:   "Gabon",
+		alpha2: "GA",
+		alpha3: "GAB",
 	}
-	//Gambia represents 'Gambia (the)' country
+	// Gambia represents 'Gambia (the)' country
 	Gambia = Country{
-		name:   NameGambia,
-		alpha2: Alpha2GM,
-		alpha3: Alpha3GMB,
+		name:   "Gambia (the)",
+		alpha2: "GM",
+		alpha3: "GMB",
 	}
-	//Georgia represents 'Georgia' country
+	// Georgia represents 'Georgia' country
 	Georgia = Country{
-		name:   NameGeorgia,
-		alpha2: Alpha2GE,
-		alpha3: Alpha3GEO,
+		name:   "Georgia",
+		alpha2: "GE",
+		alpha3: "GEO",
 	}
-	//Germany represents 'Germany' country
+	// Germany represents 'Germany' country
 	Germany = Country{
-		name:   NameGermany,
-		alpha2: Alpha2DE,
-		alpha3: Alpha3DEU,
+		name:   "Germany",
+		alpha2: "DE",
+		alpha3: "DEU",
 	}
-	//Ghana represents 'Ghana' country
+	// Ghana represents 'Ghana' country
 	Ghana = Country{
-		name:   NameGhana,
-		alpha2: Alpha2GH,
-		alpha3: Alpha3GHA,
+		name:   "Ghana",
+		alpha2: "GH",
+		alpha3: "GHA",
 	}
-	//Gibraltar represents 'Gibraltar' country
+	// Gibraltar represents 'Gibraltar' country
 	Gibraltar = Country{
-		name:   NameGibraltar,
-		alpha2: Alpha2GI,
-		alpha3: Alpha3GIB,
+		name:   "Gibraltar",
+		alpha2: "GI",
+		alpha3: "GIB",
 	}
-	//Greece represents 'Greece' country
+	// Greece represents 'Greece' country
 	Greece = Country{
-		name:   NameGreece,
-		alpha2: Alpha2GR,
-		alpha3: Alpha3GRC,
+		name:   "Greece",
+		alpha2: "GR",
+		alpha3: "GRC",
 	}
-	//Greenland represents 'Greenland' country
+	// Greenland represents 'Greenland' country
 	Greenland = Country{
-		name:   NameGreenland,
-		alpha2: Alpha2GL,
-		alpha3: Alpha3GRL,
+		name:   "Greenland",
+		alpha2: "GL",
+		alpha3: "GRL",
 	}
-	//Grenada represents 'Grenada' country
+	// Grenada represents 'Grenada' country
 	Grenada = Country{
-		name:   NameGrenada,
-		alpha2: Alpha2GD,
-		alpha3: Alpha3GRD,
+		name:   "Grenada",
+		alpha2: "GD",
+		alpha3: "GRD",
 	}
-	//Guadeloupe represents 'Guadeloupe' country
+	// Guadeloupe represents 'Guadeloupe' country
 	Guadeloupe = Country{
-		name:   NameGuadeloupe,
-		alpha2: Alpha2GP,
-		alpha3: Alpha3GLP,
+		name:   "Guadeloupe",
+		alpha2: "GP",
+		alpha3: "GLP",
 	}
-	//Guam represents 'Guam' country
+	// Guam represents 'Guam' country
 	Guam = Country{
-		name:   NameGuam,
-		alpha2: Alpha2GU,
-		alpha3: Alpha3GUM,
+		name:   "Guam",
+		alpha2: "GU",
+		alpha3: "GUM",
 	}
-	//Guatemala represents 'Guatemala' country
+	// Guatemala represents 'Guatemala' country
 	Guatemala = Country{
-		name:   NameGuatemala,
-		alpha2: Alpha2GT,
-		alpha3: Alpha3GTM,
+		name:   "Guatemala",
+		alpha2: "GT",
+		alpha3: "GTM",
 	}
-	//Guernsey represents 'Guernsey' country
+	// Guernsey represents 'Guernsey' country
 	Guernsey = Country{
-		name:   NameGuernsey,
-		alpha2: Alpha2GG,
-		alpha3: Alpha3GGY,
+		name:   "Guernsey",
+		alpha2: "GG",
+		alpha3: "GGY",
 	}
-	//Guinea represents 'Guinea' country
+	// Guinea represents 'Guinea' country
 	Guinea = Country{
-		name:   NameGuinea,
-		alpha2: Alpha2GN,
-		alpha3: Alpha3GIN,
+		name:   "Guinea",
+		alpha2: "GN",
+		alpha3: "GIN",
 	}
-	//GuineaBissau represents 'Guinea-Bissau' country
+	// GuineaBissau represents 'Guinea-Bissau' country
 	GuineaBissau = Country{
-		name:   NameGuineaBissau,
-		alpha2: Alpha2GW,
-		alpha3: Alpha3GNB,
+		name:   "Guinea-Bissau",
+		alpha2: "GW",
+		alpha3: "GNB",
 	}
-	//Guyana represents 'Guyana' country
+	// Guyana represents 'Guyana' country
 	Guyana = Country{
-		name:   NameGuyana,
-		alpha2: Alpha2GY,
-		alpha3: Alpha3GUY,
+		name:   "Guyana",
+		alpha2: "GY",
+		alpha3: "GUY",
 	}
-	//Haiti represents 'Haiti' country
+	// Haiti represents 'Haiti' country
 	Haiti = Country{
-		name:   NameHaiti,
-		alpha2: Alpha2HT,
-		alpha3: Alpha3HTI,
+		name:   "Haiti",
+		alpha2: "HT",
+		alpha3: "HTI",
 	}
-	//HeardIslandAndMcDonaldIslands represents 'Heard Island and McDonald Islands' country
+	// HeardIslandAndMcDonaldIslands represents 'Heard Island and McDonald Islands' country
 	HeardIslandAndMcDonaldIslands = Country{
-		name:   NameHeardIslandAndMcDonaldIslands,
-		alpha2: Alpha2HM,
-		alpha3: Alpha3HMD,
+		name:   "Heard Island and McDonald Islands",
+		alpha2: "HM",
+		alpha3: "HMD",
 	}
-	//HolySee represents 'Holy See (the)' country
+	// HolySee represents 'Holy See (the)' country
 	HolySee = Country{
-		name:   NameHolySee,
-		alpha2: Alpha2VA,
-		alpha3: Alpha3VAT,
+		name:   "Holy See (the)",
+		alpha2: "VA",
+		alpha3: "VAT",
 	}
-	//Honduras represents 'Honduras' country
+	// Honduras represents 'Honduras' country
 	Honduras = Country{
-		name:   NameHonduras,
-		alpha2: Alpha2HN,
-		alpha3: Alpha3HND,
+		name:   "Honduras",
+		alpha2: "HN",
+		alpha3: "HND",
 	}
-	//HongKong represents 'Hong Kong' country
+	// HongKong represents 'Hong Kong' country
 	HongKong = Country{
-		name:   NameHongKong,
-		alpha2: Alpha2HK,
-		alpha3: Alpha3HKG,
+		name:   "Hong Kong",
+		alpha2: "HK",
+		alpha3: "HKG",
 	}
-	//Hungary represents 'Hungary' country
+	// Hungary represents 'Hungary' country
 	Hungary = Country{
-		name:   NameHungary,
-		alpha2: Alpha2HU,
-		alpha3: Alpha3HUN,
+		name:   "Hungary",
+		alpha2: "HU",
+		alpha3: "HUN",
 	}
-	//Iceland represents 'Iceland' country
+	// Iceland represents 'Iceland' country
 	Iceland = Country{
-		name:   NameIceland,
-		alpha2: Alpha2IS,
-		alpha3: Alpha3ISL,
+		name:   "Iceland",
+		alpha2: "IS",
+		alpha3: "ISL",
 	}
-	//India represents 'India' country
+	// India represents 'India' country
 	India = Country{
-		name:   NameIndia,
-		alpha2: Alpha2IN,
-		alpha3: Alpha3IND,
+		name:   "India",
+		alpha2: "IN",
+		alpha3: "IND",
 	}
-	//Indonesia represents 'Indonesia' country
+	// Indonesia represents 'Indonesia' country
 	Indonesia = Country{
-		name:   NameIndonesia,
-		alpha2: Alpha2ID,
-		alpha3: Alpha3IDN,
+		name:   "Indonesia",
+		alpha2: "ID",
+		alpha3: "IDN",
 	}
-	//Iran represents 'Iran (Islamic Republic of)' country
+	// Iran represents 'Iran (Islamic Republic of)' country
 	Iran = Country{
-		name:   NameIran,
-		alpha2: Alpha2IR,
-		alpha3: Alpha3IRN,
+		name:   "Iran (Islamic Republic of)",
+		alpha2: "IR",
+		alpha3: "IRN",
 	}
-	//Iraq represents 'Iraq' country
+	// Iraq represents 'Iraq' country
 	Iraq = Country{
-		name:   NameIraq,
-		alpha2: Alpha2IQ,
-		alpha3: Alpha3IRQ,
+		name:   "Iraq",
+		alpha2: "IQ",
+		alpha3: "IRQ",
 	}
-	//Ireland represents 'Ireland' country
+	// Ireland represents 'Ireland' country
 	Ireland = Country{
-		name:   NameIreland,
-		alpha2: Alpha2IE,
-		alpha3: Alpha3IRL,
+		name:   "Ireland",
+		alpha2: "IE",
+		alpha3: "IRL",
 	}
-	//IsleOfMan represents 'Isle of Man' country
+	// IsleOfMan represents 'Isle of Man' country
 	IsleOfMan = Country{
-		name:   NameIsleOfMan,
-		alpha2: Alpha2IM,
-		alpha3: Alpha3IMN,
+		name:   "Isle of Man",
+		alpha2: "IM",
+		alpha3: "IMN",
 	}
-	//Israel represents 'Israel' country
+	// Israel represents 'Israel' country
 	Israel = Country{
-		name:   NameIsrael,
-		alpha2: Alpha2IL,
-		alpha3: Alpha3ISR,
+		name:   "Israel",
+		alpha2: "IL",
+		alpha3: "ISR",
 	}
-	//Italy represents 'Italy' country
+	// Italy represents 'Italy' country
 	Italy = Country{
-		name:   NameItaly,
-		alpha2: Alpha2IT,
-		alpha3: Alpha3ITA,
+		name:   "Italy",
+		alpha2: "IT",
+		alpha3: "ITA",
 	}
-	//Jamaica represents 'Jamaica' country
+	// Jamaica represents 'Jamaica' country
 	Jamaica = Country{
-		name:   NameJamaica,
-		alpha2: Alpha2JM,
-		alpha3: Alpha3JAM,
+		name:   "Jamaica",
+		alpha2: "JM",
+		alpha3: "JAM",
 	}
-	//Japan represents 'Japan' country
+	// Japan represents 'Japan' country
 	Japan = Country{
-		name:   NameJapan,
-		alpha2: Alpha2JP,
-		alpha3: Alpha3JPN,
+		name:   "Japan",
+		alpha2: "JP",
+		alpha3: "JPN",
 	}
-	//Jersey represents 'Jersey' country
+	// Jersey represents 'Jersey' country
 	Jersey = Country{
-		name:   NameJersey,
-		alpha2: Alpha2JE,
-		alpha3: Alpha3JEY,
+		name:   "Jersey",
+		alpha2: "JE",
+		alpha3: "JEY",
 	}
-	//Jordan represents 'Jordan' country
+	// Jordan represents 'Jordan' country
 	Jordan = Country{
-		name:   NameJordan,
-		alpha2: Alpha2JO,
-		alpha3: Alpha3JOR,
+		name:   "Jordan",
+		alpha2: "JO",
+		alpha3: "JOR",
 	}
-	//Kazakhstan represents 'Kazakhstan' country
+	// Kazakhstan represents 'Kazakhstan' country
 	Kazakhstan = Country{
-		name:   NameKazakhstan,
-		alpha2: Alpha2KZ,
-		alpha3: Alpha3KAZ,
+		name:   "Kazakhstan",
+		alpha2: "KZ",
+		alpha3: "KAZ",
 	}
-	//Kenya represents 'Kenya' country
+	// Kenya represents 'Kenya' country
 	Kenya = Country{
-		name:   NameKenya,
-		alpha2: Alpha2KE,
-		alpha3: Alpha3KEN,
+		name:   "Kenya",
+		alpha2: "KE",
+		alpha3: "KEN",
 	}
-	//Kiribati represents 'Kiribati' country
+	// Kiribati represents 'Kiribati' country
 	Kiribati = Country{
-		name:   NameKiribati,
-		alpha2: Alpha2KI,
-		alpha3: Alpha3KIR,
+		name:   "Kiribati",
+		alpha2: "KI",
+		alpha3: "KIR",
 	}
-	//NorthKorea represents 'Korea (the Democratic People's Republic of)' country
+	// NorthKorea represents 'Korea (the Democratic People's Republic of)' country
 	NorthKorea = Country{
-		name:   NameNorthKorea,
-		alpha2: Alpha2KP,
-		alpha3: Alpha3PRK,
+		name:   "Korea (the Democratic People's Republic of)",
+		alpha2: "KP",
+		alpha3: "PRK",
 	}
-	//SouthKorea represents 'Korea (the Republic of)' country
+	// SouthKorea represents 'Korea (the Republic of)' country
 	SouthKorea = Country{
-		name:   NameSouthKorea,
-		alpha2: Alpha2KR,
-		alpha3: Alpha3KOR,
+		name:   "Korea (the Republic of)",
+		alpha2: "KR",
+		alpha3: "KOR",
 	}
-	//Kuwait represents 'Kuwait' country
+	// Kuwait represents 'Kuwait' country
 	Kuwait = Country{
-		name:   NameKuwait,
-		alpha2: Alpha2KW,
-		alpha3: Alpha3KWT,
+		name:   "Kuwait",
+		alpha2: "KW",
+		alpha3: "KWT",
 	}
-	//Kyrgyzstan represents 'Kyrgyzstan' country
+	// Kyrgyzstan represents 'Kyrgyzstan' country
 	Kyrgyzstan = Country{
-		name:   NameKyrgyzstan,
-		alpha2: Alpha2KG,
-		alpha3: Alpha3KGZ,
+		name:   "Kyrgyzstan",
+		alpha2: "KG",
+		alpha3: "KGZ",
 	}
-	//LaoPeoplesDemocraticRepublic represents 'Lao People's Democratic Republic (the)' country
+	// LaoPeoplesDemocraticRepublic represents 'Lao People's Democratic Republic (the)' country
 	LaoPeoplesDemocraticRepublic = Country{
-		name:   NameLaoPeoplesDemocraticRepublic,
-		alpha2: Alpha2LA,
-		alpha3: Alpha3LAO,
+		name:   "Lao People's Democratic Republic (the)",
+		alpha2: "LA",
+		alpha3: "LAO",
 	}
-	//Latvia represents 'Latvia' country
+	// Latvia represents 'Latvia' country
 	Latvia = Country{
-		name:   NameLatvia,
-		alpha2: Alpha2LV,
-		alpha3: Alpha3LVA,
+		name:   "Latvia",
+		alpha2: "LV",
+		alpha3: "LVA",
 	}
-	//Lebanon represents 'Lebanon' country
+	// Lebanon represents 'Lebanon' country
 	Lebanon = Country{
-		name:   NameLebanon,
-		alpha2: Alpha2LB,
-		alpha3: Alpha3LBN,
+		name:   "Lebanon",
+		alpha2: "LB",
+		alpha3: "LBN",
 	}
-	//Lesotho represents 'Lesotho' country
+	// Lesotho represents 'Lesotho' country
 	Lesotho = Country{
-		name:   NameLesotho,
-		alpha2: Alpha2LS,
-		alpha3: Alpha3LSO,
+		name:   "Lesotho",
+		alpha2: "LS",
+		alpha3: "LSO",
 	}
-	//Liberia represents 'Liberia' country
+	// Liberia represents 'Liberia' country
 	Liberia = Country{
-		name:   NameLiberia,
-		alpha2: Alpha2LR,
-		alpha3: Alpha3LBR,
+		name:   "Liberia",
+		alpha2: "LR",
+		alpha3: "LBR",
 	}
-	//Libya represents 'Libya' country
+	// Libya represents 'Libya' country
 	Libya = Country{
-		name:   NameLibya,
-		alpha2: Alpha2LY,
-		alpha3: Alpha3LBY,
+		name:   "Libya",
+		alpha2: "LY",
+		alpha3: "LBY",
 	}
-	//Liechtenstein represents 'Liechtenstein' country
+	// Liechtenstein represents 'Liechtenstein' country
 	Liechtenstein = Country{
-		name:   NameLiechtenstein,
-		alpha2: Alpha2LI,
-		alpha3: Alpha3LIE,
+		name:   "Liechtenstein",
+		alpha2: "LI",
+		alpha3: "LIE",
 	}
-	//Lithuania represents 'Lithuania' country
+	// Lithuania represents 'Lithuania' country
 	Lithuania = Country{
-		name:   NameLithuania,
-		alpha2: Alpha2LT,
-		alpha3: Alpha3LTU,
+		name:   "Lithuania",
+		alpha2: "LT",
+		alpha3: "LTU",
 	}
-	//Luxembourg represents 'Luxembourg' country
+	// Luxembourg represents 'Luxembourg' country
 	Luxembourg = Country{
-		name:   NameLuxembourg,
-		alpha2: Alpha2LU,
-		alpha3: Alpha3LUX,
+		name:   "Luxembourg",
+		alpha2: "LU",
+		alpha3: "LUX",
 	}
-	//Macao represents 'Macao' country
+	// Macao represents 'Macao' country
 	Macao = Country{
-		name:   NameMacao,
-		alpha2: Alpha2MO,
-		alpha3: Alpha3MAC,
+		name:   "Macao",
+		alpha2: "MO",
+		alpha3: "MAC",
 	}
-	//Madagascar represents 'Madagascar' country
+	// Madagascar represents 'Madagascar' country
 	Madagascar = Country{
-		name:   NameMadagascar,
-		alpha2: Alpha2MG,
-		alpha3: Alpha3MDG,
+		name:   "Madagascar",
+		alpha2: "MG",
+		alpha3: "MDG",
 	}
-	//Malawi represents 'Malawi' country
+	// Malawi represents 'Malawi' country
 	Malawi = Country{
-		name:   NameMalawi,
-		alpha2: Alpha2MW,
-		alpha3: Alpha3MWI,
+		name:   "Malawi",
+		alpha2: "MW",
+		alpha3: "MWI",
 	}
-	//Malaysia represents 'Malaysia' country
+	// Malaysia represents 'Malaysia' country
 	Malaysia = Country{
-		name:   NameMalaysia,
-		alpha2: Alpha2MY,
-		alpha3: Alpha3MYS,
+		name:   "Malaysia",
+		alpha2: "MY",
+		alpha3: "MYS",
 	}
-	//Maldives represents 'Maldives' country
+	// Maldives represents 'Maldives' country
 	Maldives = Country{
-		name:   NameMaldives,
-		alpha2: Alpha2MV,
-		alpha3: Alpha3MDV,
+		name:   "Maldives",
+		alpha2: "MV",
+		alpha3: "MDV",
 	}
-	//Mali represents 'Mali' country
+	// Mali represents 'Mali' country
 	Mali = Country{
-		name:   NameMali,
-		alpha2: Alpha2ML,
-		alpha3: Alpha3MLI,
+		name:   "Mali",
+		alpha2: "ML",
+		alpha3: "MLI",
 	}
-	//Malta represents 'Malta' country
+	// Malta represents 'Malta' country
 	Malta = Country{
-		name:   NameMalta,
-		alpha2: Alpha2MT,
-		alpha3: Alpha3MLT,
+		name:   "Malta",
+		alpha2: "MT",
+		alpha3: "MLT",
 	}
-	//MarshallIslands represents 'Marshall Islands (the)' country
+	// MarshallIslands represents 'Marshall Islands (the)' country
 	MarshallIslands = Country{
-		name:   NameMarshallIslands,
-		alpha2: Alpha2MH,
-		alpha3: Alpha3MHL,
+		name:   "Marshall Islands (the)",
+		alpha2: "MH",
+		alpha3: "MHL",
 	}
-	//Martinique represents 'Martinique' country
+	// Martinique represents 'Martinique' country
 	Martinique = Country{
-		name:   NameMartinique,
-		alpha2: Alpha2MQ,
-		alpha3: Alpha3MTQ,
+		name:   "Martinique",
+		alpha2: "MQ",
+		alpha3: "MTQ",
 	}
-	//Mauritania represents 'Mauritania' country
+	// Mauritania represents 'Mauritania' country
 	Mauritania = Country{
-		name:   NameMauritania,
-		alpha2: Alpha2MR,
-		alpha3: Alpha3MRT,
+		name:   "Mauritania",
+		alpha2: "MR",
+		alpha3: "MRT",
 	}
-	//Mauritius represents 'Mauritius' country
+	// Mauritius represents 'Mauritius' country
 	Mauritius = Country{
-		name:   NameMauritius,
-		alpha2: Alpha2MU,
-		alpha3: Alpha3MUS,
+		name:   "Mauritius",
+		alpha2: "MU",
+		alpha3: "MUS",
 	}
-	//Mayotte represents 'Mayotte' country
+	// Mayotte represents 'Mayotte' country
 	Mayotte = Country{
-		name:   NameMayotte,
-		alpha2: Alpha2YT,
-		alpha3: Alpha3MYT,
+		name:   "Mayotte",
+		alpha2: "YT",
+		alpha3: "MYT",
 	}
-	//Mexico represents 'Mexico' country
+	// Mexico represents 'Mexico' country
 	Mexico = Country{
-		name:   NameMexico,
-		alpha2: Alpha2MX,
-		alpha3: Alpha3MEX,
+		name:   "Mexico",
+		alpha2: "MX",
+		alpha3: "MEX",
 	}
-	//Micronesia represents 'Micronesia (Federated States of)' country
+	// Micronesia represents 'Micronesia (Federated States of)' country
 	Micronesia = Country{
-		name:   NameMicronesia,
-		alpha2: Alpha2FM,
-		alpha3: Alpha3FSM,
+		name:   "Micronesia (Federated States of)",
+		alpha2: "FM",
+		alpha3: "FSM",
 	}
-	//Moldova represents 'Moldova (the Republic of)' country
+	// Moldova represents 'Moldova (the Republic of)' country
 	Moldova = Country{
-		name:   NameMoldova,
-		alpha2: Alpha2MD,
-		alpha3: Alpha3MDA,
+		name:   "Moldova (the Republic of)",
+		alpha2: "MD",
+		alpha3: "MDA",
 	}
-	//Monaco represents 'Monaco' country
+	// Monaco represents 'Monaco' country
 	Monaco = Country{
-		name:   NameMonaco,
-		alpha2: Alpha2MC,
-		alpha3: Alpha3MCO,
+		name:   "Monaco",
+		alpha2: "MC",
+		alpha3: "MCO",
 	}
-	//Mongolia represents 'Mongolia' country
+	// Mongolia represents 'Mongolia' country
 	Mongolia = Country{
-		name:   NameMongolia,
-		alpha2: Alpha2MN,
-		alpha3: Alpha3MNG,
+		name:   "Mongolia",
+		alpha2: "MN",
+		alpha3: "MNG",
 	}
-	//Montenegro represents 'Montenegro' country
+	// Montenegro represents 'Montenegro' country
 	Montenegro = Country{
-		name:   NameMontenegro,
-		alpha2: Alpha2ME,
-		alpha3: Alpha3MNE,
+		name:   "Montenegro",
+		alpha2: "ME",
+		alpha3: "MNE",
 	}
-	//Montserrat represents 'Montserrat' country
+	// Montserrat represents 'Montserrat' country
 	Montserrat = Country{
-		name:   NameMontserrat,
-		alpha2: Alpha2MS,
-		alpha3: Alpha3MSR,
+		name:   "Montserrat",
+		alpha2: "MS",
+		alpha3: "MSR",
 	}
-	//Morocco represents 'Morocco' country
+	// Morocco represents 'Morocco' country
 	Morocco = Country{
-		name:   NameMorocco,
-		alpha2: Alpha2MA,
-		alpha3: Alpha3MAR,
+		name:   "Morocco",
+		alpha2: "MA",
+		alpha3: "MAR",
 	}
-	//Mozambique represents 'Mozambique' country
+	// Mozambique represents 'Mozambique' country
 	Mozambique = Country{
-		name:   NameMozambique,
-		alpha2: Alpha2MZ,
-		alpha3: Alpha3MOZ,
+		name:   "Mozambique",
+		alpha2: "MZ",
+		alpha3: "MOZ",
 	}
-	//Myanmar represents 'Myanmar' country
+	// Myanmar represents 'Myanmar' country
 	Myanmar = Country{
-		name:   NameMyanmar,
-		alpha2: Alpha2MM,
-		alpha3: Alpha3MMR,
+		name:   "Myanmar",
+		alpha2: "MM",
+		alpha3: "MMR",
 	}
-	//Namibia represents 'Namibia' country
+	// Namibia represents 'Namibia' country
 	Namibia = Country{
-		name:   NameNamibia,
-		alpha2: Alpha2NA,
-		alpha3: Alpha3NAM,
+		name:   "Namibia",
+		alpha2: "NA",
+		alpha3: "NAM",
 	}
-	//Nauru represents 'Nauru' country
+	// Nauru represents 'Nauru' country
 	Nauru = Country{
-		name:   NameNauru,
-		alpha2: Alpha2NR,
-		alpha3: Alpha3NRU,
+		name:   "Nauru",
+		alpha2: "NR",
+		alpha3: "NRU",
 	}
-	//Nepal represents 'Nepal' country
+	// Nepal represents 'Nepal' country
 	Nepal = Country{
-		name:   NameNepal,
-		alpha2: Alpha2NP,
-		alpha3: Alpha3NPL,
+		name:   "Nepal",
+		alpha2: "NP",
+		alpha3: "NPL",
 	}
-	//Netherlands represents 'Netherlands (the)' country
+	// Netherlands represents 'Netherlands (the)' country
 	Netherlands = Country{
-		name:   NameNetherlands,
-		alpha2: Alpha2NL,
-		alpha3: Alpha3NLD,
+		name:   "Netherlands (the)",
+		alpha2: "NL",
+		alpha3: "NLD",
 	}
-	//NewCaledonia represents 'New Caledonia' country
+	// NewCaledonia represents 'New Caledonia' country
 	NewCaledonia = Country{
-		name:   NameNewCaledonia,
-		alpha2: Alpha2NC,
-		alpha3: Alpha3NCL,
+		name:   "New Caledonia",
+		alpha2: "NC",
+		alpha3: "NCL",
 	}
-	//NewZealand represents 'New Zealand' country
+	// NewZealand represents 'New Zealand' country
 	NewZealand = Country{
-		name:   NameNewZealand,
-		alpha2: Alpha2NZ,
-		alpha3: Alpha3NZL,
+		name:   "New Zealand",
+		alpha2: "NZ",
+		alpha3: "NZL",
 	}
-	//Nicaragua represents 'Nicaragua' country
+	// Nicaragua represents 'Nicaragua' country
 	Nicaragua = Country{
-		name:   NameNicaragua,
-		alpha2: Alpha2NI,
-		alpha3: Alpha3NIC,
+		name:   "Nicaragua",
+		alpha2: "NI",
+		alpha3: "NIC",
 	}
-	//Niger represents 'Niger (the)' country
+	// Niger represents 'Niger (the)' country
 	Niger = Country{
-		name:   NameNiger,
-		alpha2: Alpha2NE,
-		alpha3: Alpha3NER,
+		name:   "Niger (the)",
+		alpha2: "NE",
+		alpha3: "NER",
 	}
-	//Nigeria represents 'Nigeria' country
+	// Nigeria represents 'Nigeria' country
 	Nigeria = Country{
-		name:   NameNigeria,
-		alpha2: Alpha2NG,
-		alpha3: Alpha3NGA,
+		name:   "Nigeria",
+		alpha2: "NG",
+		alpha3: "NGA",
 	}
-	//Niue represents 'Niue' country
+	// Niue represents 'Niue' country
 	Niue = Country{
-		name:   NameNiue,
-		alpha2: Alpha2NU,
-		alpha3: Alpha3NIU,
+		name:   "Niue",
+		alpha2: "NU",
+		alpha3: "NIU",
 	}
-	//NorfolkIsland represents 'Norfolk Island' country
+	// NorfolkIsland represents 'Norfolk Island' country
 	NorfolkIsland = Country{
-		name:   NameNorfolkIsland,
-		alpha2: Alpha2NF,
-		alpha3: Alpha3NFK,
+		name:   "Norfolk Island",
+		alpha2: "NF",
+		alpha3: "NFK",
 	}
-	//NorthMacedonia represents 'North Macedonia' country
+	// NorthMacedonia represents 'North Macedonia' country
 	NorthMacedonia = Country{
-		name:   NameNorthMacedonia,
-		alpha2: Alpha2MK,
-		alpha3: Alpha3MKD,
+		name:   "North Macedonia",
+		alpha2: "MK",
+		alpha3: "MKD",
 	}
-	//NorthernMarianaIslands represents 'Northern Mariana Islands (the)' country
+	// NorthernMarianaIslands represents 'Northern Mariana Islands (the)' country
 	NorthernMarianaIslands = Country{
-		name:   NameNorthernMarianaIslands,
-		alpha2: Alpha2MP,
-		alpha3: Alpha3MNP,
+		name:   "Northern Mariana Islands (the)",
+		alpha2: "MP",
+		alpha3: "MNP",
 	}
-	//Norway represents 'Norway' country
+	// Norway represents 'Norway' country
 	Norway = Country{
-		name:   NameNorway,
-		alpha2: Alpha2NO,
-		alpha3: Alpha3NOR,
+		name:   "Norway",
+		alpha2: "NO",
+		alpha3: "NOR",
 	}
-	//Oman represents 'Oman' country
+	// Oman represents 'Oman' country
 	Oman = Country{
-		name:   NameOman,
-		alpha2: Alpha2OM,
-		alpha3: Alpha3OMN,
+		name:   "Oman",
+		alpha2: "OM",
+		alpha3: "OMN",
 	}
-	//Pakistan represents 'Pakistan' country
+	// Pakistan represents 'Pakistan' country
 	Pakistan = Country{
-		name:   NamePakistan,
-		alpha2: Alpha2PK,
-		alpha3: Alpha3PAK,
+		name:   "Pakistan",
+		alpha2: "PK",
+		alpha3: "PAK",
 	}
-	//Palau represents 'Palau' country
+	// Palau represents 'Palau' country
 	Palau = Country{
-		name:   NamePalau,
-		alpha2: Alpha2PW,
-		alpha3: Alpha3PLW,
+		name:   "Palau",
+		alpha2: "PW",
+		alpha3: "PLW",
 	}
-	//Palestine represents 'Palestine, State of' country
+	// Palestine represents 'Palestine, State of' country
 	Palestine = Country{
-		name:   NamePalestine,
-		alpha2: Alpha2PS,
-		alpha3: Alpha3PSE,
+		name:   "Palestine, State of",
+		alpha2: "PS",
+		alpha3: "PSE",
 	}
-	//Panama represents 'Panama' country
+	// Panama represents 'Panama' country
 	Panama = Country{
-		name:   NamePanama,
-		alpha2: Alpha2PA,
-		alpha3: Alpha3PAN,
+		name:   "Panama",
+		alpha2: "PA",
+		alpha3: "PAN",
 	}
-	//PapuaNewGuinea represents 'Papua New Guinea' country
+	// PapuaNewGuinea represents 'Papua New Guinea' country
 	PapuaNewGuinea = Country{
-		name:   NamePapuaNewGuinea,
-		alpha2: Alpha2PG,
-		alpha3: Alpha3PNG,
+		name:   "Papua New Guinea",
+		alpha2: "PG",
+		alpha3: "PNG",
 	}
-	//Paraguay represents 'Paraguay' country
+	// Paraguay represents 'Paraguay' country
 	Paraguay = Country{
-		name:   NameParaguay,
-		alpha2: Alpha2PY,
-		alpha3: Alpha3PRY,
+		name:   "Paraguay",
+		alpha2: "PY",
+		alpha3: "PRY",
 	}
-	//Peru represents 'Peru' country
+	// Peru represents 'Peru' country
 	Peru = Country{
-		name:   NamePeru,
-		alpha2: Alpha2PE,
-		alpha3: Alpha3PER,
+		name:   "Peru",
+		alpha2: "PE",
+		alpha3: "PER",
 	}
-	//Philippines represents 'Philippines (the)' country
+	// Philippines represents 'Philippines (the)' country
 	Philippines = Country{
-		name:   NamePhilippines,
-		alpha2: Alpha2PH,
-		alpha3: Alpha3PHL,
+		name:   "Philippines (the)",
+		alpha2: "PH",
+		alpha3: "PHL",
 	}
-	//Pitcairn represents 'Pitcairn' country
+	// Pitcairn represents 'Pitcairn' country
 	Pitcairn = Country{
-		name:   NamePitcairn,
-		alpha2: Alpha2PN,
-		alpha3: Alpha3PCN,
+		name:   "Pitcairn",
+		alpha2: "PN",
+		alpha3: "PCN",
 	}
-	//Poland represents 'Poland' country
+	// Poland represents 'Poland' country
 	Poland = Country{
-		name:   NamePoland,
-		alpha2: Alpha2PL,
-		alpha3: Alpha3POL,
+		name:   "Poland",
+		alpha2: "PL",
+		alpha3: "POL",
 	}
-	//Portugal represents 'Portugal' country
+	// Portugal represents 'Portugal' country
 	Portugal = Country{
-		name:   NamePortugal,
-		alpha2: Alpha2PT,
-		alpha3: Alpha3PRT,
+		name:   "Portugal",
+		alpha2: "PT",
+		alpha3: "PRT",
 	}
-	//PuertoRico represents 'Puerto Rico' country
+	// PuertoRico represents 'Puerto Rico' country
 	PuertoRico = Country{
-		name:   NamePuertoRico,
-		alpha2: Alpha2PR,
-		alpha3: Alpha3PRI,
+		name:   "Puerto Rico",
+		alpha2: "PR",
+		alpha3: "PRI",
 	}
-	//Qatar represents 'Qatar' country
+	// Qatar represents 'Qatar' country
 	Qatar = Country{
-		name:   NameQatar,
-		alpha2: Alpha2QA,
-		alpha3: Alpha3QAT,
+		name:   "Qatar",
+		alpha2: "QA",
+		alpha3: "QAT",
 	}
-	//Romania represents 'Romania' country
+	// Romania represents 'Romania' country
 	Romania = Country{
-		name:   NameRomania,
-		alpha2: Alpha2RO,
-		alpha3: Alpha3ROU,
+		name:   "Romania",
+		alpha2: "RO",
+		alpha3: "ROU",
 	}
-	//RussianFederation represents 'Russian Federation (the)' country
+	// RussianFederation represents 'Russian Federation (the)' country
 	RussianFederation = Country{
-		name:   NameRussianFederation,
-		alpha2: Alpha2RU,
-		alpha3: Alpha3RUS,
+		name:   "Russian Federation (the)",
+		alpha2: "RU",
+		alpha3: "RUS",
 	}
-	//Rwanda represents 'Rwanda' country
+	// Rwanda represents 'Rwanda' country
 	Rwanda = Country{
-		name:   NameRwanda,
-		alpha2: Alpha2RW,
-		alpha3: Alpha3RWA,
+		name:   "Rwanda",
+		alpha2: "RW",
+		alpha3: "RWA",
 	}
-	//Reunion represents 'Réunion' country
+	// Reunion represents 'Réunion' country
 	Reunion = Country{
-		name:   NameReunion,
-		alpha2: Alpha2RE,
-		alpha3: Alpha3REU,
+		name:   "Réunion",
+		alpha2: "RE",
+		alpha3: "REU",
 	}
-	//SaintBarthelemy represents 'Saint Barthélemy' country
+	// SaintBarthelemy represents 'Saint Barthélemy' country
 	SaintBarthelemy = Country{
-		name:   NameSaintBarthelemy,
-		alpha2: Alpha2BL,
-		alpha3: Alpha3BLM,
+		name:   "Saint Barthélemy",
+		alpha2: "BL",
+		alpha3: "BLM",
 	}
-	//SaintHelenaAscensionAndTristanDaCunha represents 'Saint Helena, Ascension and Tristan da Cunha' country
+	// SaintHelenaAscensionAndTristanDaCunha represents 'Saint Helena, Ascension and Tristan da Cunha' country
 	SaintHelenaAscensionAndTristanDaCunha = Country{
-		name:   NameSaintHelenaAscensionAndTristanDaCunha,
-		alpha2: Alpha2SH,
-		alpha3: Alpha3SHN,
+		name:   "Saint Helena, Ascension and Tristan da Cunha",
+		alpha2: "SH",
+		alpha3: "SHN",
 	}
-	//SaintKittsAndNevis represents 'Saint Kitts and Nevis' country
+	// SaintKittsAndNevis represents 'Saint Kitts and Nevis' country
 	SaintKittsAndNevis = Country{
-		name:   NameSaintKittsAndNevis,
-		alpha2: Alpha2KN,
-		alpha3: Alpha3KNA,
+		name:   "Saint Kitts and Nevis",
+		alpha2: "KN",
+		alpha3: "KNA",
 	}
-	//SaintLucia represents 'Saint Lucia' country
+	// SaintLucia represents 'Saint Lucia' country
 	SaintLucia = Country{
-		name:   NameSaintLucia,
-		alpha2: Alpha2LC,
-		alpha3: Alpha3LCA,
+		name:   "Saint Lucia",
+		alpha2: "LC",
+		alpha3: "LCA",
 	}
-	//SaintMartin represents 'Saint Martin (French part)' country
+	// SaintMartin represents 'Saint Martin (French part)' country
 	SaintMartin = Country{
-		name:   NameSaintMartin,
-		alpha2: Alpha2MF,
-		alpha3: Alpha3MAF,
+		name:   "Saint Martin (French part)",
+		alpha2: "MF",
+		alpha3: "MAF",
 	}
-	//SaintPierreAndMiquelon represents 'Saint Pierre and Miquelon' country
+	// SaintPierreAndMiquelon represents 'Saint Pierre and Miquelon' country
 	SaintPierreAndMiquelon = Country{
-		name:   NameSaintPierreAndMiquelon,
-		alpha2: Alpha2PM,
-		alpha3: Alpha3SPM,
+		name:   "Saint Pierre and Miquelon",
+		alpha2: "PM",
+		alpha3: "SPM",
 	}
-	//SaintVincentAndTheGrenadines represents 'Saint Vincent and the Grenadines' country
+	// SaintVincentAndTheGrenadines represents 'Saint Vincent and the Grenadines' country
 	SaintVincentAndTheGrenadines = Country{
-		name:   NameSaintVincentAndTheGrenadines,
-		alpha2: Alpha2VC,
-		alpha3: Alpha3VCT,
+		name:   "Saint Vincent and the Grenadines",
+		alpha2: "VC",
+		alpha3: "VCT",
 	}
-	//Samoa represents 'Samoa' country
+	// Samoa represents 'Samoa' country
 	Samoa = Country{
-		name:   NameSamoa,
-		alpha2: Alpha2WS,
-		alpha3: Alpha3WSM,
+		name:   "Samoa",
+		alpha2: "WS",
+		alpha3: "WSM",
 	}
-	//SanMarino represents 'San Marino' country
+	// SanMarino represents 'San Marino' country
 	SanMarino = Country{
-		name:   NameSanMarino,
-		alpha2: Alpha2SM,
-		alpha3: Alpha3SMR,
+		name:   "San Marino",
+		alpha2: "SM",
+		alpha3: "SMR",
 	}
-	//SaoTomeAndPrincipe represents 'Sao Tome and Principe' country
+	// SaoTomeAndPrincipe represents 'Sao Tome and Principe' country
 	SaoTomeAndPrincipe = Country{
-		name:   NameSaoTomeAndPrincipe,
-		alpha2: Alpha2ST,
-		alpha3: Alpha3STP,
+		name:   "Sao Tome and Principe",
+		alpha2: "ST",
+		alpha3: "STP",
 	}
-	//SaudiArabia represents 'Saudi Arabia' country
+	// SaudiArabia represents 'Saudi Arabia' country
 	SaudiArabia = Country{
-		name:   NameSaudiArabia,
-		alpha2: Alpha2SA,
-		alpha3: Alpha3SAU,
+		name:   "Saudi Arabia",
+		alpha2: "SA",
+		alpha3: "SAU",
 	}
-	//Senegal represents 'Senegal' country
+	// Senegal represents 'Senegal' country
 	Senegal = Country{
-		name:   NameSenegal,
-		alpha2: Alpha2SN,
-		alpha3: Alpha3SEN,
+		name:   "Senegal",
+		alpha2: "SN",
+		alpha3: "SEN",
 	}
-	//Serbia represents 'Serbia' country
+	// Serbia represents 'Serbia' country
 	Serbia = Country{
-		name:   NameSerbia,
-		alpha2: Alpha2RS,
-		alpha3: Alpha3SRB,
+		name:   "Serbia",
+		alpha2: "RS",
+		alpha3: "SRB",
 	}
-	//Seychelles represents 'Seychelles' country
+	// Seychelles represents 'Seychelles' country
 	Seychelles = Country{
-		name:   NameSeychelles,
-		alpha2: Alpha2SC,
-		alpha3: Alpha3SYC,
+		name:   "Seychelles",
+		alpha2: "SC",
+		alpha3: "SYC",
 	}
-	//SierraLeone represents 'Sierra Leone' country
+	// SierraLeone represents 'Sierra Leone' country
 	SierraLeone = Country{
-		name:   NameSierraLeone,
-		alpha2: Alpha2SL,
-		alpha3: Alpha3SLE,
+		name:   "Sierra Leone",
+		alpha2: "SL",
+		alpha3: "SLE",
 	}
-	//Singapore represents 'Singapore' country
+	// Singapore represents 'Singapore' country
 	Singapore = Country{
-		name:   NameSingapore,
-		alpha2: Alpha2SG,
-		alpha3: Alpha3SGP,
+		name:   "Singapore",
+		alpha2: "SG",
+		alpha3: "SGP",
 	}
-	//SintMaarten represents 'Sint Maarten (Dutch part)' country
+	// SintMaarten represents 'Sint Maarten (Dutch part)' country
 	SintMaarten = Country{
-		name:   NameSintMaarten,
-		alpha2: Alpha2SX,
-		alpha3: Alpha3SXM,
+		name:   "Sint Maarten (Dutch part)",
+		alpha2: "SX",
+		alpha3: "SXM",
 	}
-	//Slovakia represents 'Slovakia' country
+	// Slovakia represents 'Slovakia' country
 	Slovakia = Country{
-		name:   NameSlovakia,
-		alpha2: Alpha2SK,
-		alpha3: Alpha3SVK,
+		name:   "Slovakia",
+		alpha2: "SK",
+		alpha3: "SVK",
 	}
-	//Slovenia represents 'Slovenia' country
+	// Slovenia represents 'Slovenia' country
 	Slovenia = Country{
-		name:   NameSlovenia,
-		alpha2: Alpha2SI,
-		alpha3: Alpha3SVN,
+		name:   "Slovenia",
+		alpha2: "SI",
+		alpha3: "SVN",
 	}
-	//SolomonIslands represents 'Solomon Islands' country
+	// SolomonIslands represents 'Solomon Islands' country
 	SolomonIslands = Country{
-		name:   NameSolomonIslands,
-		alpha2: Alpha2SB,
-		alpha3: Alpha3SLB,
+		name:   "Solomon Islands",
+		alpha2: "SB",
+		alpha3: "SLB",
 	}
-	//Somalia represents 'Somalia' country
+	// Somalia represents 'Somalia' country
 	Somalia = Country{
-		name:   NameSomalia,
-		alpha2: Alpha2SO,
-		alpha3: Alpha3SOM,
+		name:   "Somalia",
+		alpha2: "SO",
+		alpha3: "SOM",
 	}
-	//SouthAfrica represents 'South Africa' country
+	// SouthAfrica represents 'South Africa' country
 	SouthAfrica = Country{
-		name:   NameSouthAfrica,
-		alpha2: Alpha2ZA,
-		alpha3: Alpha3ZAF,
+		name:   "South Africa",
+		alpha2: "ZA",
+		alpha3: "ZAF",
 	}
-	//SouthGeorgiaAndTheSouthSandwichIslands represents 'South Georgia and the South Sandwich Islands' country
+	// SouthGeorgiaAndTheSouthSandwichIslands represents 'South Georgia and the South Sandwich Islands' country
 	SouthGeorgiaAndTheSouthSandwichIslands = Country{
-		name:   NameSouthGeorgiaAndTheSouthSandwichIslands,
-		alpha2: Alpha2GS,
-		alpha3: Alpha3SGS,
+		name:   "South Georgia and the South Sandwich Islands",
+		alpha2: "GS",
+		alpha3: "SGS",
 	}
-	//SouthSudan represents 'South Sudan' country
+	// SouthSudan represents 'South Sudan' country
 	SouthSudan = Country{
-		name:   NameSouthSudan,
-		alpha2: Alpha2SS,
-		alpha3: Alpha3SSD,
+		name:   "South Sudan",
+		alpha2: "SS",
+		alpha3: "SSD",
 	}
-	//Spain represents 'Spain' country
+	// Spain represents 'Spain' country
 	Spain = Country{
-		name:   NameSpain,
-		alpha2: Alpha2ES,
-		alpha3: Alpha3ESP,
+		name:   "Spain",
+		alpha2: "ES",
+		alpha3: "ESP",
 	}
-	//SriLanka represents 'Sri Lanka' country
+	// SriLanka represents 'Sri Lanka' country
 	SriLanka = Country{
-		name:   NameSriLanka,
-		alpha2: Alpha2LK,
-		alpha3: Alpha3LKA,
+		name:   "Sri Lanka",
+		alpha2: "LK",
+		alpha3: "LKA",
 	}
-	//Sudan represents 'Sudan (the)' country
+	// Sudan represents 'Sudan (the)' country
 	Sudan = Country{
-		name:   NameSudan,
-		alpha2: Alpha2SD,
-		alpha3: Alpha3SDN,
+		name:   "Sudan (the)",
+		alpha2: "SD",
+		alpha3: "SDN",
 	}
-	//Suriname represents 'Suriname' country
+	// Suriname represents 'Suriname' country
 	Suriname = Country{
-		name:   NameSuriname,
-		alpha2: Alpha2SR,
-		alpha3: Alpha3SUR,
+		name:   "Suriname",
+		alpha2: "SR",
+		alpha3: "SUR",
 	}
-	//SvalbardAndJanMayen represents 'Svalbard and Jan Mayen' country
+	// SvalbardAndJanMayen represents 'Svalbard and Jan Mayen' country
 	SvalbardAndJanMayen = Country{
-		name:   NameSvalbardAndJanMayen,
-		alpha2: Alpha2SJ,
-		alpha3: Alpha3SJM,
+		name:   "Svalbard and Jan Mayen",
+		alpha2: "SJ",
+		alpha3: "SJM",
 	}
-	//Sweden represents 'Sweden' country
+	// Sweden represents 'Sweden' country
 	Sweden = Country{
-		name:   NameSweden,
-		alpha2: Alpha2SE,
-		alpha3: Alpha3SWE,
+		name:   "Sweden",
+		alpha2: "SE",
+		alpha3: "SWE",
 	}
-	//Switzerland represents 'Switzerland' country
+	// Switzerland represents 'Switzerland' country
 	Switzerland = Country{
-		name:   NameSwitzerland,
-		alpha2: Alpha2CH,
-		alpha3: Alpha3CHE,
+		name:   "Switzerland",
+		alpha2: "CH",
+		alpha3: "CHE",
 	}
-	//SyrianArabRepublic represents 'Syrian Arab Republic (the)' country
+	// SyrianArabRepublic represents 'Syrian Arab Republic (the)' country
 	SyrianArabRepublic = Country{
-		name:   NameSyrianArabRepublic,
-		alpha2: Alpha2SY,
-		alpha3: Alpha3SYR,
+		name:   "Syrian Arab Republic (the)",
+		alpha2: "SY",
+		alpha3: "SYR",
 	}
-	//Taiwan represents 'Taiwan (Province of China)' country
+	// Taiwan represents 'Taiwan (Province of China)' country
 	Taiwan = Country{
-		name:   NameTaiwan,
-		alpha2: Alpha2TW,
-		alpha3: Alpha3TWN,
+		name:   "Taiwan (Province of China)",
+		alpha2: "TW",
+		alpha3: "TWN",
 	}
-	//Tajikistan represents 'Tajikistan' country
+	// Tajikistan represents 'Tajikistan' country
 	Tajikistan = Country{
-		name:   NameTajikistan,
-		alpha2: Alpha2TJ,
-		alpha3: Alpha3TJK,
+		name:   "Tajikistan",
+		alpha2: "TJ",
+		alpha3: "TJK",
 	}
-	//TanzaniaTheUnitedRepublicOf represents 'Tanzania, the United Republic of' country
+	// TanzaniaTheUnitedRepublicOf represents 'Tanzania, the United Republic of' country
 	TanzaniaTheUnitedRepublicOf = Country{
-		name:   NameTanzaniaTheUnitedRepublicOf,
-		alpha2: Alpha2TZ,
-		alpha3: Alpha3TZA,
+		name:   "Tanzania, the United Republic of",
+		alpha2: "TZ",
+		alpha3: "TZA",
 	}
-	//Thailand represents 'Thailand' country
+	// Thailand represents 'Thailand' country
 	Thailand = Country{
-		name:   NameThailand,
-		alpha2: Alpha2TH,
-		alpha3: Alpha3THA,
+		name:   "Thailand",
+		alpha2: "TH",
+		alpha3: "THA",
 	}
-	//TimorLeste represents 'Timor-Leste' country
+	// TimorLeste represents 'Timor-Leste' country
 	TimorLeste = Country{
-		name:   NameTimorLeste,
-		alpha2: Alpha2TL,
-		alpha3: Alpha3TLS,
+		name:   "Timor-Leste",
+		alpha2: "TL",
+		alpha3: "TLS",
 	}
-	//Togo represents 'Togo' country
+	// Togo represents 'Togo' country
 	Togo = Country{
-		name:   NameTogo,
-		alpha2: Alpha2TG,
-		alpha3: Alpha3TGO,
+		name:   "Togo",
+		alpha2: "TG",
+		alpha3: "TGO",
 	}
-	//Tokelau represents 'Tokelau' country
+	// Tokelau represents 'Tokelau' country
 	Tokelau = Country{
-		name:   NameTokelau,
-		alpha2: Alpha2TK,
-		alpha3: Alpha3TKL,
+		name:   "Tokelau",
+		alpha2: "TK",
+		alpha3: "TKL",
 	}
-	//Tonga represents 'Tonga' country
+	// Tonga represents 'Tonga' country
 	Tonga = Country{
-		name:   NameTonga,
-		alpha2: Alpha2TO,
-		alpha3: Alpha3TON,
+		name:   "Tonga",
+		alpha2: "TO",
+		alpha3: "TON",
 	}
-	//TrinidadAndTobago represents 'Trinidad and Tobago' country
+	// TrinidadAndTobago represents 'Trinidad and Tobago' country
 	TrinidadAndTobago = Country{
-		name:   NameTrinidadAndTobago,
-		alpha2: Alpha2TT,
-		alpha3: Alpha3TTO,
+		name:   "Trinidad and Tobago",
+		alpha2: "TT",
+		alpha3: "TTO",
 	}
-	//Tunisia represents 'Tunisia' country
+	// Tunisia represents 'Tunisia' country
 	Tunisia = Country{
-		name:   NameTunisia,
-		alpha2: Alpha2TN,
-		alpha3: Alpha3TUN,
+		name:   "Tunisia",
+		alpha2: "TN",
+		alpha3: "TUN",
 	}
-	//Turkey represents 'Turkey' country
-	Turkey = Country{
-		name:   NameTurkey,
-		alpha2: Alpha2TR,
-		alpha3: Alpha3TUR,
-	}
-	//Turkmenistan represents 'Turkmenistan' country
+	// Turkmenistan represents 'Turkmenistan' country
 	Turkmenistan = Country{
-		name:   NameTurkmenistan,
-		alpha2: Alpha2TM,
-		alpha3: Alpha3TKM,
+		name:   "Turkmenistan",
+		alpha2: "TM",
+		alpha3: "TKM",
 	}
-	//TurksAndCaicosIslands represents 'Turks and Caicos Islands (the)' country
+	// TurksAndCaicosIslands represents 'Turks and Caicos Islands (the)' country
 	TurksAndCaicosIslands = Country{
-		name:   NameTurksAndCaicosIslands,
-		alpha2: Alpha2TC,
-		alpha3: Alpha3TCA,
+		name:   "Turks and Caicos Islands (the)",
+		alpha2: "TC",
+		alpha3: "TCA",
 	}
-	//Tuvalu represents 'Tuvalu' country
+	// Tuvalu represents 'Tuvalu' country
 	Tuvalu = Country{
-		name:   NameTuvalu,
-		alpha2: Alpha2TV,
-		alpha3: Alpha3TUV,
+		name:   "Tuvalu",
+		alpha2: "TV",
+		alpha3: "TUV",
 	}
-	//Uganda represents 'Uganda' country
+	// Turkiye represents 'Türkiye' country
+	Turkiye = Country{
+		name:   "Türkiye",
+		alpha2: "TR",
+		alpha3: "TUR",
+	}
+	// Uganda represents 'Uganda' country
 	Uganda = Country{
-		name:   NameUganda,
-		alpha2: Alpha2UG,
-		alpha3: Alpha3UGA,
+		name:   "Uganda",
+		alpha2: "UG",
+		alpha3: "UGA",
 	}
-	//Ukraine represents 'Ukraine' country
+	// Ukraine represents 'Ukraine' country
 	Ukraine = Country{
-		name:   NameUkraine,
-		alpha2: Alpha2UA,
-		alpha3: Alpha3UKR,
+		name:   "Ukraine",
+		alpha2: "UA",
+		alpha3: "UKR",
 	}
-	//UnitedArabEmirates represents 'United Arab Emirates (the)' country
+	// UnitedArabEmirates represents 'United Arab Emirates (the)' country
 	UnitedArabEmirates = Country{
-		name:   NameUnitedArabEmirates,
-		alpha2: Alpha2AE,
-		alpha3: Alpha3ARE,
+		name:   "United Arab Emirates (the)",
+		alpha2: "AE",
+		alpha3: "ARE",
 	}
-	//UnitedKingdomOfGreatBritainAndNorthernIreland represents 'United Kingdom of Great Britain and Northern Ireland (the)' country
+	// UnitedKingdomOfGreatBritainAndNorthernIreland represents 'United Kingdom of Great Britain and Northern Ireland (the)' country
 	UnitedKingdomOfGreatBritainAndNorthernIreland = Country{
-		name:   NameUnitedKingdomOfGreatBritainAndNorthernIreland,
-		alpha2: Alpha2GB,
-		alpha3: Alpha3GBR,
+		name:   "United Kingdom of Great Britain and Northern Ireland (the)",
+		alpha2: "GB",
+		alpha3: "GBR",
 	}
-	//UnitedStatesMinorOutlyingIslands represents 'United States Minor Outlying Islands (the)' country
+	// UnitedStatesMinorOutlyingIslands represents 'United States Minor Outlying Islands (the)' country
 	UnitedStatesMinorOutlyingIslands = Country{
-		name:   NameUnitedStatesMinorOutlyingIslands,
-		alpha2: Alpha2UM,
-		alpha3: Alpha3UMI,
+		name:   "United States Minor Outlying Islands (the)",
+		alpha2: "UM",
+		alpha3: "UMI",
 	}
-	//UnitedStatesOfAmerica represents 'United States of America (the)' country
+	// UnitedStatesOfAmerica represents 'United States of America (the)' country
 	UnitedStatesOfAmerica = Country{
-		name:   NameUnitedStatesOfAmerica,
-		alpha2: Alpha2US,
-		alpha3: Alpha3USA,
+		name:   "United States of America (the)",
+		alpha2: "US",
+		alpha3: "USA",
 	}
-	//Uruguay represents 'Uruguay' country
+	// Uruguay represents 'Uruguay' country
 	Uruguay = Country{
-		name:   NameUruguay,
-		alpha2: Alpha2UY,
-		alpha3: Alpha3URY,
+		name:   "Uruguay",
+		alpha2: "UY",
+		alpha3: "URY",
 	}
-	//Uzbekistan represents 'Uzbekistan' country
+	// Uzbekistan represents 'Uzbekistan' country
 	Uzbekistan = Country{
-		name:   NameUzbekistan,
-		alpha2: Alpha2UZ,
-		alpha3: Alpha3UZB,
+		name:   "Uzbekistan",
+		alpha2: "UZ",
+		alpha3: "UZB",
 	}
-	//Vanuatu represents 'Vanuatu' country
+	// Vanuatu represents 'Vanuatu' country
 	Vanuatu = Country{
-		name:   NameVanuatu,
-		alpha2: Alpha2VU,
-		alpha3: Alpha3VUT,
+		name:   "Vanuatu",
+		alpha2: "VU",
+		alpha3: "VUT",
 	}
-	//Venezuela represents 'Venezuela (Bolivarian Republic of)' country
+	// Venezuela represents 'Venezuela (Bolivarian Republic of)' country
 	Venezuela = Country{
-		name:   NameVenezuela,
-		alpha2: Alpha2VE,
-		alpha3: Alpha3VEN,
+		name:   "Venezuela (Bolivarian Republic of)",
+		alpha2: "VE",
+		alpha3: "VEN",
 	}
-	//VietNam represents 'Viet Nam' country
+	// VietNam represents 'Viet Nam' country
 	VietNam = Country{
-		name:   NameVietNam,
-		alpha2: Alpha2VN,
-		alpha3: Alpha3VNM,
+		name:   "Viet Nam",
+		alpha2: "VN",
+		alpha3: "VNM",
 	}
-	//BritishVirginIslands represents 'Virgin Islands (British)' country
+	// BritishVirginIslands represents 'Virgin Islands (British)' country
 	BritishVirginIslands = Country{
-		name:   NameBritishVirginIslands,
-		alpha2: Alpha2VG,
-		alpha3: Alpha3VGB,
+		name:   "Virgin Islands (British)",
+		alpha2: "VG",
+		alpha3: "VGB",
 	}
-	//USVirginIslands represents 'Virgin Islands (U.S.)' country
+	// USVirginIslands represents 'Virgin Islands (U.S.)' country
 	USVirginIslands = Country{
-		name:   NameUSVirginIslands,
-		alpha2: Alpha2VI,
-		alpha3: Alpha3VIR,
+		name:   "Virgin Islands (U.S.)",
+		alpha2: "VI",
+		alpha3: "VIR",
 	}
-	//WallisAndFutuna represents 'Wallis and Futuna' country
+	// WallisAndFutuna represents 'Wallis and Futuna' country
 	WallisAndFutuna = Country{
-		name:   NameWallisAndFutuna,
-		alpha2: Alpha2WF,
-		alpha3: Alpha3WLF,
+		name:   "Wallis and Futuna",
+		alpha2: "WF",
+		alpha3: "WLF",
 	}
-	//WesternSahara represents 'Western Sahara*' country
+	// WesternSahara represents 'Western Sahara*' country
 	WesternSahara = Country{
-		name:   NameWesternSahara,
-		alpha2: Alpha2EH,
-		alpha3: Alpha3ESH,
+		name:   "Western Sahara*",
+		alpha2: "EH",
+		alpha3: "ESH",
 	}
-	//Yemen represents 'Yemen' country
+	// Yemen represents 'Yemen' country
 	Yemen = Country{
-		name:   NameYemen,
-		alpha2: Alpha2YE,
-		alpha3: Alpha3YEM,
+		name:   "Yemen",
+		alpha2: "YE",
+		alpha3: "YEM",
 	}
-	//Zambia represents 'Zambia' country
+	// Zambia represents 'Zambia' country
 	Zambia = Country{
-		name:   NameZambia,
-		alpha2: Alpha2ZM,
-		alpha3: Alpha3ZMB,
+		name:   "Zambia",
+		alpha2: "ZM",
+		alpha3: "ZMB",
 	}
-	//Zimbabwe represents 'Zimbabwe' country
+	// Zimbabwe represents 'Zimbabwe' country
 	Zimbabwe = Country{
-		name:   NameZimbabwe,
-		alpha2: Alpha2ZW,
-		alpha3: Alpha3ZWE,
+		name:   "Zimbabwe",
+		alpha2: "ZW",
+		alpha3: "ZWE",
 	}
-	//AlandIslands represents 'Åland Islands' country
+	// AlandIslands represents 'Åland Islands' country
 	AlandIslands = Country{
-		name:   NameAlandIslands,
-		alpha2: Alpha2AX,
-		alpha3: Alpha3ALA,
+		name:   "Åland Islands",
+		alpha2: "AX",
+		alpha3: "ALA",
 	}
 )

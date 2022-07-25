@@ -4,11 +4,11 @@ This library has been created with the purpose to facilitate the store, validati
 
 # Installation
 ```bash
-go get github.com/mikekonan/go-types
+go get github.com/mikekonan/go-types/v2
 ```
 # Usage:
 ```go
-//1. use in your structs
+// 1. use in your structs
 type User struct {
 	Name    string             `json:"name" db:"name"`
 	Country country.Alpha2Code `json:"country" db:"country"`
@@ -16,22 +16,24 @@ type User struct {
 
 func main() {
 	user := User{}
-	//2. use in your wire
+	// 2. use in your wire
 	json.Unmarshal([]byte(`{"name":"name", "country": "ca"}`), &user)
-	//3. check is set
+	// 3. check is set
 	user.Country.IsSet() //check user country is provided
-	//4. validate using ozzo-validation
+	// 4. validate using ozzo-validation
 	if err := validation.ValidateStruct(&user, validation.Field(&user.Country)); err != nil {
 		log.Fatal(err)
 	}
-	//5. lookup by alpha2, alpha3, country name
+	// 5. lookup by alpha2, alpha3, country name
 	if userCountry, ok := country.ByAlpha2Code(user.Country); ok {
-		fmt.Printf("country name - '%s', alpha-2 - '%s', alpha-3 - '%s'", serCountry.Name(), userCountry.Alpha2Code(), userCountry.lpha3Code())
+		fmt.Printf("country name - '%s', alpha-2 - '%s', alpha-3 - '%s'", userCountry.Name(), userCountry.Alpha2Code(), userCountry.lpha3Code())
 	}
-	//6. store in db
+	// 6. store in db
 	fmt.Println(user.Country.Value()) //prints 'CA'
-	//7. use specific countries
+	// 7. use specific countries
 	fmt.Println(country.Canada.Alpha2Code())
+    // 8. use country constants
+    fmt.Println(alpha2.CA)
 }
 ```
 
