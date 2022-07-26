@@ -13,15 +13,24 @@ if (resp.statusCode !== 200) {
     os.exit(1);
 }
 
-let render = (currencies) => {
-    let currenciesByCodeMap = {};
-    let currenciesByNumberMap = {};
-    let currenciesByCountryMap = {};
-    let currenciesByCurrencyMap = {};
-
+let currencyCodes = (currencies) => {
+    let temp = {}
     currencies.forEach((c) => {
-        if (!!!currenciesByCodeMap[c.code]) {
-            currenciesByCodeMap[c.code] = {
+        if (!!!temp[c.code]) {
+            temp[c.code] = {
+                code: c.code,
+            };
+        }
+    })
+
+    return temp
+}
+
+let currenciesByCodeMap = (currencies) => {
+    let temp = {}
+    currencies.forEach((c) => {
+        if (!!!temp[c.code]) {
+            temp[c.code] = {
                 countries: [c.country],
                 currency: c.currency,
                 code: c.code,
@@ -32,12 +41,17 @@ let render = (currencies) => {
             return;
         }
 
-        currenciesByCodeMap[c.code].countries.push(c.country);
+        temp[c.code].countries.push(c.country);
     });
 
+    return temp
+}
+
+let currenciesByNumberMap = (currencies) => {
+    let temp = {}
     currencies.forEach((c) => {
-        if (!!!currenciesByNumberMap[c.number]) {
-            currenciesByNumberMap[c.number] = {
+        if (!!!temp[c.number]) {
+            temp[c.number] = {
                 countries: [c.country],
                 currency: c.currency,
                 code: c.code,
@@ -48,25 +62,35 @@ let render = (currencies) => {
             return;
         }
 
-        currenciesByNumberMap[c.number].countries.push(c.country);
+        temp[c.number].countries.push(c.country);
     });
 
+    return temp
+}
+
+let currenciesByCountryMap = (currencies) => {
+    let temp = {}
     currencies.forEach((c) => {
-        if (!!currenciesByCountryMap[c.country]) {
-            currenciesByCountryMap[c.country].currencies.push(c);
+        if (!!temp[c.country]) {
+            temp[c.country].currencies.push(c);
             return;
         }
 
-        currenciesByCountryMap[c.country] = {
+        temp[c.country] = {
             currencies: [c],
         };
 
         return;
     });
 
+    return temp
+}
+
+let currenciesByCurrencyMap = (currencies) => {
+    let temp = {}
     currencies.forEach((c) => {
-        if (!!!currenciesByCurrencyMap[c.currency]) {
-            currenciesByCurrencyMap[c.currency] = {
+        if (!!!temp[c.currency]) {
+            temp[c.currency] = {
                 countries: [c.country],
                 currency: c.currency,
                 code: c.code,
@@ -77,68 +101,81 @@ let render = (currencies) => {
             return;
         }
 
-        currenciesByCurrencyMap[c.currency].countries.push(c.country);
+        temp[c.currency].countries.push(c.country);
     });
 
-    let renderByCountry = (currenciesMap) => {
-        return Object.keys(currenciesMap)
-            .map(
-                (key) => `\`${key}\`: {
-                      ${currenciesMap[key].currencies
-                    .map((c) => {
-                        return `{
-                        countries:  Countries{${currenciesByCodeMap[
-                            c.code
-                            ].countries
-                            .map((country) => `\`${country}\``)
-                            .join(", ")}},
-                        currency:   \`${c.currency}\`,
-                        code:       \`${c.code}\`,
-                        number:     \`${c.number}\`,
-                        decimalPlaces:     ${c.decimalPlaces},
-                        }`;
-                    })
-                    .join(`,`)},
-                    }`
-            )
-            .join(`,`);
-    };
+    return temp
+}
 
-    let render = (currenciesMap) => {
-        return Object.keys(currenciesMap).map(
-            (key) => `\`${key}\`: {
+let renderByCountry = (currenciesMap, currenciesByCodeMap) => {
+    return Object.keys(currenciesMap).map(
+        (key) => `\`${key}\`: {
+          ${currenciesMap[key].currencies.map((c) => {
+        return `{
+              countries:   Countries{${currenciesByCodeMap[c.code].countries
+              .map((country) => `\`${country}\``).join(", ")}},
+              currency:    \`${c.currency}\`,
+              code:        \`${c.code}\`,
+              number:      \`${c.number}\`,
+              decimalPlaces: ${c.decimalPlaces},
+          }`;
+        })
+        .join(`,`)},
+    }`
+        )
+        .join(`,`);
+};
+
+let renderCodes = (currenciesMap) => {
+    return Object.keys(currenciesMap).map(
+        (key) => `\t// ${key} represents '${key}' currency code
+    ${key} = currency.Code("${key}")`
+    ).join("\n");
+};
+
+let render = (currenciesMap) => {
+    return Object.keys(currenciesMap).map(
+        (key) => `\`${key}\`: {
       countries:  Countries{${currenciesMap[key].countries
-                .map((country) => `\`${country}\``)
-                .join(", ")}},
+            .map((country) => `\`${country}\``)
+            .join(", ")}},
       currency:     \`${currenciesMap[key].currency}\`,
       code:         \`${currenciesMap[key].code}\`,
       number:       \`${currenciesMap[key].number}\`,
       decimalPlaces: ${currenciesMap[key].decimalPlaces},
     }`
-        ).join(`,
+    ).join(`,
     `);
-    };
+};
 
-    let template = `package currency
+let renderCurrencyCodesTemplate = (currencies) => {
+    return `package code
+
+import "github.com/mikekonan/go-types/v2/currency"
+
+const (
+${renderCodes(currencyCodes(currencies))}
+)`
+};
+
+let renderCurrencyMappingTemplate = (currencies) => {
+    return `package currency
 
 var currenciesByCode = map[string]currency{
-    ${render(currenciesByCodeMap)},
+  ${render(currenciesByCodeMap(currencies))},
 }
 
 var currenciesByNumber = map[string]currency{
-  ${render(currenciesByNumberMap)},
+  ${render(currenciesByNumberMap(currencies))},
 }
 
 var currenciesByCountry = map[string]currencies{
-  ${renderByCountry(currenciesByCountryMap)},
+  ${renderByCountry(currenciesByCountryMap(currencies), currenciesByCodeMap(currencies))},
 }
 
 var currenciesByCurrency = map[string]currency{
-  ${render(currenciesByCurrencyMap)},
-}
-`;
-
-    return template;
+  ${render(currenciesByCurrencyMap(currencies))},
+}`;
 };
 
 let normalizeCurrency = (currency) => {
@@ -226,9 +263,10 @@ let goCodePromise = xml2js
 
         return result.concat(normalizedCountries);
     })
-    .then((currencies) =>
-        fs.writeFileSync("../currency_gen.go", render(currencies))
-    );
+    .then((currencies) => {
+            fs.writeFileSync("../code/code_gen.go", renderCurrencyCodesTemplate(currencies))
+            fs.writeFileSync("../currencies_mapping_gen.go", renderCurrencyMappingTemplate(currencies))
+    });
 
 let oas3Promise = xml2js
     .parseStringPromise(resp.body.toString(), {mergeAttrs: true})
@@ -270,19 +308,19 @@ let oas3Promise = xml2js
                         maxLength: 3,
                         format: "iso4217-currency-code",
                         enum: [...new Set(result.map((currency) => currency.code))],
-                        "x-go-type": "github.com/mikekonan/go-types/currency.Code",
+                        "x-go-type": "github.com/mikekonan/go-types/v2/currency.Code",
                     },
                     CurrencyName: {
                         example: "Euro",
                         type: "string",
                         enum: [...new Set(result.map((currency) => currency.currency))],
-                        "x-go-type": "github.com/mikekonan/go-types/currency.Currency",
+                        "x-go-type": "github.com/mikekonan/go-types/v2/currency.Currency",
                     },
                     CurrencyCountry: {
                         example: "PUERTO RICO",
                         type: "string",
                         enum: [...new Set(result.map((currency) => currency.country))],
-                        "x-go-type": "github.com/mikekonan/go-types/currency.Country",
+                        "x-go-type": "github.com/mikekonan/go-types/v2/currency.Country",
                     },
                     CurrencyNumber: {
                         example: "840",

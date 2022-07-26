@@ -4,34 +4,70 @@ This library has been created with the purpose to facilitate the store, validati
 
 # Installation
 ```bash
-go get github.com/mikekonan/go-types
+go get github.com/mikekonan/go-types/v2
 ```
 # Usage:
 ```go
-//1. use in your structs
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+
+	validation "github.com/go-ozzo/ozzo-validation/v4"
+	"github.com/mikekonan/go-types/v2/country"
+	"github.com/mikekonan/go-types/v2/country/alpha2"
+	"github.com/mikekonan/go-types/v2/country/alpha3"
+	"github.com/mikekonan/go-types/v2/country/name"
+	"github.com/mikekonan/go-types/v2/currency"
+	"github.com/mikekonan/go-types/v2/currency/code"
+)
+
+// 1. use in your structs
 type User struct {
-	Name    string             `json:"name" db:"name"`
-	Country country.Alpha2Code `json:"country" db:"country"`
+	Name     string             `json:"name" db:"name"`
+	Country  country.Alpha2Code `json:"country" db:"country"`
+	Currency currency.Code      `json:"currency" db:"currency"`
 }
 
 func main() {
+	// 2. use in your wire
 	user := User{}
-	//2. use in your wire
-	json.Unmarshal([]byte(`{"name":"name", "country": "ca"}`), &user)
-	//3. check is set
-	user.Country.IsSet() //check user country is provided
-	//4. validate using ozzo-validation
-	if err := validation.ValidateStruct(&user, validation.Field(&user.Country)); err != nil {
+	_ = json.Unmarshal([]byte(`{"name":"name", "country": "CA", "currency": "CAD"}`), &user)
+
+	// 3. check is set
+	user.Country.IsSet()
+	user.Currency.IsSet()
+
+	// 4. validate using ozzo-validation
+	if err := validation.ValidateStruct(&user, validation.Field(&user.Country), validation.Field(&user.Currency)); err != nil {
 		log.Fatal(err)
 	}
-	//5. lookup by alpha2, alpha3, country name
+
+	// 5. lookup by alpha2, alpha3, country name
 	if userCountry, ok := country.ByAlpha2Code(user.Country); ok {
-		fmt.Printf("country name - '%s', alpha-2 - '%s', alpha-3 - '%s'", serCountry.Name(), userCountry.Alpha2Code(), userCountry.lpha3Code())
+		fmt.Printf("country name - '%s', alpha-2 - '%s', alpha-3 - '%s'", userCountry.Name(), userCountry.Alpha2Code(), userCountry.Alpha3Code())
 	}
-	//6. store in db
-	fmt.Println(user.Country.Value()) //prints 'CA'
-	//7. use specific countries
+
+	// 5. lookup by currency code
+	if userCurrency, ok := currency.ByCode(user.Currency); ok {
+		fmt.Printf("currency name - '%s', code - '%s', number - '%s', countries - '%s', decimal places - '%d'",
+			userCurrency.Currency(), userCurrency.Code(), userCurrency.Number(), userCurrency.Countries(), userCurrency.DecimalPlaces())
+	}
+
+	// 6. store in db
+	fmt.Println(user.Country.Value())  //prints 'CA'
+	fmt.Println(user.Currency.Value()) //prints 'CAN'
+
+	// 7. use specific country constants
 	fmt.Println(country.Canada.Alpha2Code())
+	fmt.Println("name:", name.Canada)
+	fmt.Println("alpha-2:", alpha2.CA)
+	fmt.Println("alpha-3:", alpha3.CAN)
+
+	// 8. use specific currency codes
+	fmt.Println(code.CAD)
 }
 ```
 

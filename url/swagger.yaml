@@ -5,14 +5,14 @@ components:
       example: (ftp|http(s)|mail...)://google.com
       type: string
       format: uri
-      x-go-type: github.com/mikekonan/go-types/url.URL
+      x-go-type: github.com/mikekonan/go-types/v2/url.URL
     HttpURL:
       example: http(s)://google.com
       type: string
       format: uri
-      x-go-type: github.com/mikekonan/go-types/url.HttpURL
+      x-go-type: github.com/mikekonan/go-types/v2/url.HttpURL
     NullHttpURL:
       example: http(s)://google.com
       type: string
       format: uri
-      x-go-type: github.com/mikekonan/go-types/url.NullHttpURL
+      x-go-type: github.com/mikekonan/go-types/v2/url.NullHttpURL

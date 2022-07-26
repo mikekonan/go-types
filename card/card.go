@@ -16,10 +16,10 @@ const (
 	gatewayCentury        = 21
 )
 
-//CardDate represents as expired card date type with format MM/YY
+// CardDate represents as expired card date type with format MM/YY
 type CardDate string
 
-//Value implementation of driver.Valuer
+// Value implementation of driver.Valuer
 func (cardDate CardDate) Value() (value driver.Value, err error) {
 	if err = cardDate.Validate(); err != nil {
 		return nil, err
@@ -28,7 +28,7 @@ func (cardDate CardDate) Value() (value driver.Value, err error) {
 	return cardDate.String(), nil
 }
 
-//UnmarshalJSON unmarshall implementation for CardDate
+// UnmarshalJSON unmarshall implementation for CardDate
 func (cardDate *CardDate) UnmarshalJSON(data []byte) error {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {
@@ -50,7 +50,7 @@ func (cardDate *CardDate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-//Validate implementation of ozzo-validation Validate interface
+// Validate implementation of ozzo-validation Validate interface
 func (cardDate CardDate) Validate() error {
 	if cardDate == "" {
 		return fmt.Errorf("invalid CardDate: cannot be blank")
@@ -72,7 +72,7 @@ func (cardDate CardDate) Validate() error {
 	return nil
 }
 
-//String implementation of Stringer interface
+// String implementation of Stringer interface
 func (cardDate CardDate) String() string {
 	return string(cardDate)
 }
