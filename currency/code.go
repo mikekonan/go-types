@@ -62,5 +62,5 @@ func (code Code) String() string {
 func (code Code) Places() int {
 	curr, _ := ByCodeStr(string(code))
 
-	return curr.decimalPlaces
+	return curr.DecimalPlaces()
 }

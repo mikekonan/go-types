@@ -31,6 +31,9 @@ func (c currency) Number() Number { return c.number }
 // Countries returns Countries
 func (c currency) Countries() Countries { return c.countries }
 
+// DecimalPlaces returns DecimalPlaces
+func (c currency) DecimalPlaces() int { return c.decimalPlaces }
+
 type currencies []currency
 
 // CurrencyByCurrency get currency by currency
