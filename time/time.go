@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"gopkg.in/guregu/null.v4"
 	"time"
+
+	"gopkg.in/guregu/null.v4"
 )
 
 type Time null.Time
@@ -74,6 +75,15 @@ func (t *Time) parseTimeFromString(value string) (err error) {
 
 	*t = NullTime(newTime)
 	return nil
+}
+
+// Validate implementation of ozzo-validation Validate interface
+func (t Time) Validate() (err error) {
+	if !t.Valid {
+		return fmt.Errorf("'%s' is not valid time", t)
+	}
+
+	return
 }
 
 func ParseNullTimeFromString(value string) (t Time, err error) {

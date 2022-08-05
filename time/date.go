@@ -3,8 +3,10 @@ package time
 import (
 	"encoding/json"
 	"encoding/xml"
-	"gopkg.in/guregu/null.v4"
+	"fmt"
 	"time"
+
+	"gopkg.in/guregu/null.v4"
 )
 
 const format = "2006-01-02"
@@ -62,6 +64,15 @@ func (d Date) format() *string {
 	}
 
 	return nil
+}
+
+// Validate implementation of ozzo-validation Validate interface
+func (d Date) Validate() (err error) {
+	if !d.Valid {
+		return fmt.Errorf("'%s' is not valid date", d)
+	}
+
+	return
 }
 
 func ParseDateFromString(value string) (Date, error) {
