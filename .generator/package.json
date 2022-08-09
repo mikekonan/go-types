@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "generate": "node app.js"
+  },
   "dependencies": {
     "glob": "^7.1.6",
     "glob-promise": "^4.1.0",

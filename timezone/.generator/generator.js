@@ -29,7 +29,7 @@ const spec = {
                 type: "string",
                 format: "rfc6557-time-zone",
                 enum: [...new Set(names)],
-                "x-go-type": "github.com/mikekonan/go-types/timezone.Timezone",
+                "x-go-type": "github.com/mikekonan/go-types/v2/timezone.Timezone",
             },
         },
     },

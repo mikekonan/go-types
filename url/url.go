@@ -17,7 +17,7 @@ import (
 // URL represents a URL type
 type URL string
 
-//Value implementation of driver.Valuer
+// Value implementation of driver.Valuer
 func (url URL) Value() (value driver.Value, err error) {
 	if url == "" {
 		return "", nil
@@ -30,7 +30,7 @@ func (url URL) Value() (value driver.Value, err error) {
 	return url.String(), nil
 }
 
-//Validate implementation of ozzo-validation Validate interface
+// Validate implementation of ozzo-validation Validate interface
 func (url URL) Validate() error {
 	if !govalidator.IsURL(url.String()) {
 		return fmt.Errorf("'%s' is not a valid url", url)
@@ -39,7 +39,7 @@ func (url URL) Validate() error {
 	return nil
 }
 
-//UnmarshalJSON unmarshall implementation for Email
+// UnmarshalJSON unmarshall implementation for Email
 func (url *URL) UnmarshalJSON(data []byte) error {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {
@@ -56,7 +56,7 @@ func (url *URL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-//String implementation of Stringer interface
+// String implementation of Stringer interface
 func (url URL) String() string {
 	return string(url)
 }
@@ -64,7 +64,7 @@ func (url URL) String() string {
 // HttpURL represents a URL type with http/https schema
 type HttpURL string
 
-//Value implementation of driver.Valuer
+// Value implementation of driver.Valuer
 func (httpUrl HttpURL) Value() (value driver.Value, err error) {
 	if httpUrl == "" {
 		return "", nil
@@ -77,7 +77,7 @@ func (httpUrl HttpURL) Value() (value driver.Value, err error) {
 	return httpUrl.String(), nil
 }
 
-//Validate implementation of ozzo-validation Validate interface
+// Validate implementation of ozzo-validation Validate interface
 func (httpUrl HttpURL) Validate() (err error) {
 	if len(httpUrl) == 0 {
 		return fmt.Errorf("'%s' is not a valid http url", httpUrl)
@@ -90,7 +90,7 @@ func (httpUrl HttpURL) Validate() (err error) {
 	return URL(httpUrl).Validate()
 }
 
-//UnmarshalJSON unmarshall implementation for Email
+// UnmarshalJSON unmarshall implementation for Email
 func (httpUrl *HttpURL) UnmarshalJSON(data []byte) error {
 	var url string
 	if err := json.Unmarshal(data, &url); err != nil {
@@ -107,7 +107,7 @@ func (httpUrl *HttpURL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-//String implementation of Stringer interface
+// String implementation of Stringer interface
 func (httpUrl HttpURL) String() string {
 	return string(httpUrl)
 }
@@ -116,7 +116,7 @@ func (httpUrl HttpURL) String() string {
 // Can be empty
 type NullHttpURL string
 
-//Value implementation of driver.Valuer
+// Value implementation of driver.Valuer
 func (nullHttpURL NullHttpURL) Value() (value driver.Value, err error) {
 	if nullHttpURL == "" {
 		return "", nil
@@ -129,7 +129,7 @@ func (nullHttpURL NullHttpURL) Value() (value driver.Value, err error) {
 	return nullHttpURL.String(), nil
 }
 
-//Validate implementation of ozzo-validation Validate interface
+// Validate implementation of ozzo-validation Validate interface
 func (nullHttpURL NullHttpURL) Validate() (err error) {
 	if len(nullHttpURL) == 0 {
 		return nil
@@ -142,7 +142,7 @@ func (nullHttpURL NullHttpURL) Validate() (err error) {
 	return URL(nullHttpURL).Validate()
 }
 
-//UnmarshalJSON unmarshall implementation for Email
+// UnmarshalJSON unmarshall implementation for Email
 func (nullHttpURL *NullHttpURL) UnmarshalJSON(data []byte) error {
 	var url string
 	if err := json.Unmarshal(data, &url); err != nil {
@@ -159,7 +159,7 @@ func (nullHttpURL *NullHttpURL) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-//String implementation of Stringer interface
+// String implementation of Stringer interface
 func (nullHttpURL NullHttpURL) String() string {
 	return string(nullHttpURL)
 }

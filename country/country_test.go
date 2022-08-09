@@ -8,8 +8,8 @@ import (
 )
 
 func TestCountryByNameIsSet(t *testing.T) {
-	for key, country := range countryByName {
-		if !key.IsSet() {
+	for key, country := range CountryByName {
+		if !Name(key).IsSet() {
 			t.FailNow()
 		}
 
@@ -28,8 +28,8 @@ func TestCountryByNameIsSet(t *testing.T) {
 }
 
 func TestCountryByAlpha3IsSet(t *testing.T) {
-	for key, country := range countryByAlpha3 {
-		if !key.IsSet() {
+	for key, country := range CountryByAlpha3 {
+		if !Alpha3Code(key).IsSet() {
 			t.FailNow()
 		}
 
@@ -48,8 +48,8 @@ func TestCountryByAlpha3IsSet(t *testing.T) {
 }
 
 func TestCountryByAlpha2IsSet(t *testing.T) {
-	for key, country := range countryByAlpha2 {
-		if !key.IsSet() {
+	for key, country := range CountryByAlpha2 {
+		if !Alpha2Code(key).IsSet() {
 			t.FailNow()
 		}
 
@@ -82,48 +82,48 @@ func TestIsNotSet(t *testing.T) {
 }
 
 func TestMappingIsCorrect(t *testing.T) {
-	for key, country := range countryByName {
-		if key != country.name {
+	for key, country := range CountryByName {
+		if Name(key) != country.name {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range countryByAlpha3 {
-		if key != country.alpha3 {
+	for key, country := range CountryByAlpha3 {
+		if Alpha3Code(key) != country.alpha3 {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range countryByAlpha2 {
-		if key != country.alpha2 {
+	for key, country := range CountryByAlpha2 {
+		if Alpha2Code(key) != country.alpha2 {
 			t.FailNow()
 		}
 	}
 }
 
 func TestMappingStringsCorrect(t *testing.T) {
-	for key, country := range countryByName {
-		if key.String() != country.name.String() {
+	for key, country := range CountryByName {
+		if Name(key).String() != country.name.String() {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range countryByAlpha3 {
-		if key.String() != country.alpha3.String() {
+	for key, country := range CountryByAlpha3 {
+		if Alpha3Code(key).String() != country.alpha3.String() {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range countryByAlpha2 {
-		if key.String() != country.alpha2.String() {
+	for key, country := range CountryByAlpha2 {
+		if Alpha2Code(key).String() != country.alpha2.String() {
 			t.FailNow()
 		}
 	}
 }
 
 func TestMappingValueCorrect(t *testing.T) {
-	for key, country := range countryByName {
-		_, actual := key.Value()
+	for key, country := range CountryByName {
+		_, actual := Name(key).Value()
 		_, expected := country.name.Value()
 
 		if actual != expected {
@@ -131,8 +131,8 @@ func TestMappingValueCorrect(t *testing.T) {
 		}
 	}
 
-	for key, country := range countryByAlpha3 {
-		_, actual := key.Value()
+	for key, country := range CountryByAlpha3 {
+		_, actual := Alpha3Code(key).Value()
 		_, expected := country.name.Value()
 
 		if actual != expected {
@@ -140,8 +140,8 @@ func TestMappingValueCorrect(t *testing.T) {
 		}
 	}
 
-	for key, country := range countryByAlpha2 {
-		_, actual := key.Value()
+	for key, country := range CountryByAlpha2 {
+		_, actual := Alpha2Code(key).Value()
 		_, expected := country.name.Value()
 
 		if actual != expected {
@@ -176,7 +176,7 @@ func TestNameValidate(t *testing.T) {
 		t.FailNow()
 	}
 
-	if NameBrazil.Validate() != nil {
+	if Name("Brazil").Validate() != nil {
 		t.FailNow()
 	}
 }
@@ -186,7 +186,7 @@ func TestAlpha2Validate(t *testing.T) {
 		t.FailNow()
 	}
 
-	if Alpha2CM.Validate() != nil {
+	if Alpha2Code("CM").Validate() != nil {
 		t.FailNow()
 	}
 }
@@ -196,13 +196,13 @@ func TestAlpha3Validate(t *testing.T) {
 		t.FailNow()
 	}
 
-	if Alpha3ARG.Validate() != nil {
+	if Alpha3Code("ARG").Validate() != nil {
 		t.FailNow()
 	}
 }
 
 func TestCountryTypes(t *testing.T) {
-	for _, country := range countryByAlpha3 {
+	for _, country := range CountryByAlpha3 {
 		if country.name != country.Name() {
 			t.FailNow()
 		}
@@ -336,7 +336,7 @@ func TestNameLookup(t *testing.T) {
 }
 
 func TestDriverValue(t *testing.T) {
-	if value, err := Alpha2US.Value(); err != nil || value.(string) != Alpha2US.String() {
+	if value, err := Alpha2Code("US").Value(); err != nil || value.(string) != Alpha2Code("US").String() {
 		t.FailNow()
 	}
 
@@ -348,7 +348,7 @@ func TestDriverValue(t *testing.T) {
 		t.FailNow()
 	}
 
-	if value, err := Alpha3USA.Value(); err != nil || value.(string) != Alpha3USA.String() {
+	if value, err := Alpha3Code("USA").Value(); err != nil || value.(string) != Alpha3Code("USA").String() {
 		t.FailNow()
 	}
 
@@ -360,7 +360,7 @@ func TestDriverValue(t *testing.T) {
 		t.FailNow()
 	}
 
-	if value, err := NameUnitedStatesOfAmerica.Value(); err != nil || value.(string) != NameUnitedStatesOfAmerica.String() {
+	if value, err := Name("United States of America (the)").Value(); err != nil || value.(string) != Name("United States of America (the)").String() {
 		t.FailNow()
 	}
 

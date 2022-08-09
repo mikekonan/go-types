@@ -8,7 +8,7 @@ import (
 
 type Timezone string
 
-//UnmarshalJSON unmarshall implementation for timezone
+// UnmarshalJSON unmarshall implementation for timezone
 func (name *Timezone) UnmarshalJSON(data []byte) error {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {
@@ -23,7 +23,7 @@ func (name *Timezone) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-//Value implementation of driver.Valuer
+// Value implementation of driver.Valuer
 func (name Timezone) Value() (value driver.Value, err error) {
 	if name == "" {
 		return "", nil
@@ -36,25 +36,25 @@ func (name Timezone) Value() (value driver.Value, err error) {
 	return name.String(), nil
 }
 
-//Validate implementation of ozzo-validation Validate interface
+// Validate implementation of ozzo-validation Validate interface
 func (name Timezone) Validate() (err error) {
 	_, err = ByNameStrErr(string(name))
 
 	return
 }
 
-//String implementation of Stringer interface
+// String implementation of Stringer interface
 func (name Timezone) String() string {
 	return string(name)
 }
 
-//ByNameStr lookup for timezone by name string
+// ByNameStr lookup for timezone by name string
 func ByNameStr(timezoneStr string) (result Timezone, ok bool) {
 	result, ok = timezonesByName[timezoneStr]
 	return
 }
 
-//ByNameStrErr lookup for timezone by name with error return type
+// ByNameStrErr lookup for timezone by name with error return type
 func ByNameStrErr(timezoneStr string) (result Timezone, err error) {
 	var ok bool
 	result, ok = ByNameStr(timezoneStr)
