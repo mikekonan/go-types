@@ -1564,6 +1564,11 @@ components:
       type: string
       format: email
       x-go-type: github.com/mikekonan/go-types/v2/email.Email
+    IPv4:
+      example: 1.1.1.1
+      type: string
+      format: IPv4
+      x-go-type: github.com/mikekonan/go-types/v2/ip.IPv4
     Date:
       example: 2006-01-02
       type: string
