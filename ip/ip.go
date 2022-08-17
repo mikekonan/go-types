@@ -20,7 +20,7 @@ func (ip IPv4) Value() (value driver.Value, err error) {
 
 // Validate implementation of ozzo-validation Validate interface
 func (ip IPv4) Validate() error {
-	_, err := ParseIPv4FromString(ip.String())
+	_, err := FromString(ip.String())
 	if err != nil {
 		return fmt.Errorf("'%s' is not an valid IPv4 address, err: %w", ip, err)
 	}
@@ -50,7 +50,7 @@ func (ip IPv4) String() string {
 	return string(ip)
 }
 
-func ParseIPv4FromString(value string) (IPv4, error) {
+func FromString(value string) (IPv4, error) {
 	if value == "" {
 		return "", fmt.Errorf("empty value")
 	}
