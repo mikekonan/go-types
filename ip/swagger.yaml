@@ -1,0 +1,8 @@
+openapi: 3.0.0
+components:
+  schemas:
+    IPv4:
+      example: 1.1.1.1
+      type: string
+      format: IPv4
+      x-go-type: github.com/mikekonan/go-types/v2/ip.IPv4
