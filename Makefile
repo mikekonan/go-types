@@ -17,6 +17,12 @@ gen-currency: ## generate currency
 gen-timezone: ## generate timezone
 	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/timezone/.generator && npm install && node generator.js"
 
+gen-phone: ## generate currency
+	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/phone/.generator && npm install && node generator.js"
+
+gen-language: ## generate currency
+	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/language/.generator && npm install && node generator.js"
+
 concat-yaml: ## concat-yaml
 	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/.generator && npm install && node app.js"
 
@@ -32,7 +38,7 @@ test: ## run unit tests
 coverage: ## show code coverage
 	go tool cover -html=go-types.coverage
 
-all: clean gen-country gen-currency gen-timezone concat-yaml fmt lint test
+all: clean gen-country gen-currency gen-phone gen-language gen-timezone concat-yaml fmt lint test
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

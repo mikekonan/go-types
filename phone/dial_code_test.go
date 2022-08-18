@@ -3,7 +3,6 @@ package phone
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 	"testing"
 )
 
@@ -51,79 +50,5 @@ func TestDialCode_Value(t *testing.T) {
 		if ((actualErr == nil) == testCase.expectingValueError) && actualValue != string(testCase.testValue) {
 			t.Errorf(`Value: '%s'. value differs: expect: '%s', actual: '%s'"`, testCase.testValue, testCase.testValue, actualValue)
 		}
-	}
-}
-
-func TestMappingIsCorrect(t *testing.T) {
-	for key, language := range LanguageByName {
-		if Name(key) != language.name {
-			t.FailNow()
-		}
-	}
-
-	for key, language := range LanguageByAlpha3 {
-		if Alpha3Code(key) != language.alpha3 {
-			t.FailNow()
-		}
-	}
-
-	for key, language := range LanguageByAlpha2 {
-		if Alpha2Code(key) != language.alpha2 {
-			t.FailNow()
-		}
-	}
-}
-
-func TestMappingStringsCorrect(t *testing.T) {
-	for key, language := range LanguageByName {
-		if Name(key).String() != language.name.String() {
-			t.FailNow()
-		}
-	}
-
-	for key, language := range LanguageByAlpha3 {
-		if Alpha3Code(key).String() != language.alpha3.String() {
-			t.FailNow()
-		}
-	}
-
-	for key, language := range LanguageByAlpha2 {
-		if Alpha2Code(key).String() != language.alpha2.String() {
-			t.FailNow()
-		}
-	}
-}
-
-func TestAlpha2Lookup(t *testing.T) {
-	if _, ok := ByAlpha2Code("l"); ok {
-		t.FailNow()
-	}
-
-	if _, ok := ByAlpha2CodeStr("l"); ok {
-		t.FailNow()
-	}
-
-	if _, err := ByAlpha2CodeErr("l"); err == nil {
-		t.FailNow()
-	}
-
-	if _, err := ByAlpha2CodeStrErr("l"); err == nil {
-		t.FailNow()
-	}
-
-	if _, ok := ByAlpha2Code(Latvian.Alpha2Code()); !ok {
-		t.FailNow()
-	}
-
-	if _, ok := ByAlpha2CodeStr(strings.ToUpper(Latvian.Alpha2Code().String())); !ok {
-		t.FailNow()
-	}
-
-	if _, err := ByAlpha2CodeErr(Latvian.Alpha2Code()); err != nil {
-		t.FailNow()
-	}
-
-	if _, err := ByAlpha2CodeStrErr(strings.ToUpper(Latvian.Alpha2Code().String())); err != nil {
-		t.FailNow()
 	}
 }
