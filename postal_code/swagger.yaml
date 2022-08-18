@@ -1,0 +1,7 @@
+openapi: 3.0.0
+components:
+  schemas:
+    PostalCode:
+      example: CA6633
+      type: string
+      x-go-type: github.com/mikekonan/go-types/v2/postalcode.PostalCode
