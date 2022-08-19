@@ -1,0 +1,13 @@
+{
+  "name": "go-languages",
+  "version": "1.0.0",
+  "description": "codegenerator",
+  "main": "app.js",
+  "scripts": {
+    "generate": "node generator.js"
+  },
+  "dependencies": {
+    "transliteration": "^2.2.0",
+    "yaml": "^1.10.2"
+  }
+}
