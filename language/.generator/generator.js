@@ -129,7 +129,7 @@ import "github.com/mikekonan/go-types/v2/language"
 const (
 ${codes.map(
         (code) => `\t// ${code.a2.value} represents '${code.a2.value}' country alpha-2 code
-    ${code.a2.value} = language.Alpha2Code("${code.a2.value}")`
+    ${code.a2.value.toUpperCase()} = language.Alpha2Code("${code.a2.value}")`
     ).join("\n")}
 )
 `;
@@ -141,7 +141,7 @@ import "github.com/mikekonan/go-types/v2/language"
 const (
 ${codes.map(
         (code) => `\t// ${code.a3.value} represents '${code.a3.value}' country alpha-3 code
-    ${code.a3.value} = language.Alpha3Code("${code.a3.value}")`
+    ${code.a3.value.toUpperCase()} = language.Alpha3Code("${code.a3.value}")`
     ).join("\n")}
 )
 `;

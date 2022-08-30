@@ -252,7 +252,7 @@ var dialCodeByCountryAlpha2Str = map[string]DialCode{
 	"ZW": ZW,
 	"AX": AX,
 }
-    
+
 var countryCodeByDialString = map[string][]country.Alpha2Code{
 	"1": {
 		country.Alpha2Code("CA"),
