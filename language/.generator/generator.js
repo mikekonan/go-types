@@ -43,7 +43,6 @@ function getLanguages(url, maxSize, resolve, reject) {
 
         res.on("end", () => {
             try {
-                // remove JSON.parse(...) for plain data
                 resolve(JSON.parse(Buffer.concat(body).toString()));
             } catch (err) {
                 reject(err);
@@ -172,7 +171,7 @@ const spec = {
                 enum: [...new Set(codes.map((code) => code.name.value))],
                 "x-go-type": "github.com/mikekonan/go-types/v2/language.Name",
             },
-            CountryAlpha2: {
+            LanguageAlpha2: {
                 example: "no",
                 type: "string",
                 format: "iso639-1",
@@ -181,7 +180,7 @@ const spec = {
                 enum: [...new Set(codes.map((code) => code.a2.value))],
                 "x-go-type": "github.com/mikekonan/go-types/v2/language.Alpha2Code",
             },
-            CountryAlpha3: {
+            LanguageAlpha3: {
                 example: "nor",
                 type: "string",
                 format: "iso639-2",
