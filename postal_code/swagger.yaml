@@ -4,4 +4,5 @@ components:
     PostalCode:
       example: CA6633
       type: string
+      format: postal-code
       x-go-type: github.com/mikekonan/go-types/v2/postalcode.PostalCode

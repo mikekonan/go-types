@@ -6,18 +6,9 @@ const yaml = require("yaml");
 const Alpha2KeyName = "alpha2"
 const Alpha3KeyName = "alpha3-b"
 const LanguageNameKey = "English"
-const options = {
-    hostname: "datahub.io",
-    port: 443,
-    path: "/core/language-codes/r/language-codes-3b2.json",
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    },
-};
 const maxDownloadSize = 1000000 // 1Mb
 
-getLanguages(options, maxDownloadSize)
+getData("https://datahub.io/core/language-codes/r/language-codes-3b2.json", maxDownloadSize)
     .then((codes) => {
         let languages = prepareLanguageCodes(codes);
         return Promise.all(prepareFilesContent(languages))
@@ -26,45 +17,43 @@ getLanguages(options, maxDownloadSize)
     })
     .catch((err) => console.error("woooooooops, seems like an error occurred...\n", err))
 
-function getLanguages(options, maxDownloadSize) {
-    return new Promise((resolve, reject) => {
+function getLanguages(url, maxSize, resolve, reject) {
+    https.get(url, (res) => {
+        if(res.statusCode === 301 || res.statusCode === 302) {
+            return getLanguages(res.headers.location, maxSize, resolve, reject)
+        }
 
-        const req = https.request(options, res => {
-            let body = "", alreadyDownloaded = 0;
+        if (res.statusCode !== 200) {
+            reject(`got ${res.statusCode} response status code`);
+            return
+        }
 
-            res.on("data", chunk => {
-                alreadyDownloaded += chunk.length;
+        let body = [], alreadyDownloaded = 0;
 
-                if (alreadyDownloaded > maxDownloadSize) {
-                    reject(`max download size of ${maxDownloadSize} bytes reached. it's better to search for less overhead data source`);
-                    return
-                }
+        res.on("data", (chunk) => {
+            alreadyDownloaded += chunk.length;
 
-                body += chunk;
-            });
+            if (alreadyDownloaded > maxDownloadSize) {
+                reject(`max download size of ${maxDownloadSize} bytes reached. it's better to search for less overhead data source`);
+                return
+            }
 
-            res.on("end", () => {
-                if (res.statusCode !== 200) {
-                    reject(`got ${res.statusCode} response status code`);
-                    return
-                }
-
-                if (alreadyDownloaded > maxDownloadSize) {
-                    return
-                }
-
-                const languagesResponse = JSON.parse(body);
-
-                resolve(languagesResponse);
-            });
-
-            req.on("error", error => {
-                reject(error)
-            });
+            body.push(chunk);
         });
 
-        req.end();
-    })
+        res.on("end", () => {
+            try {
+                // remove JSON.parse(...) for plain data
+                resolve(JSON.parse(Buffer.concat(body).toString()));
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+async function getData(url, maxSize) {
+    return new Promise((resolve, reject) => getLanguages(url, maxSize, resolve, reject))
 }
 
 function prepareLanguageCodes(codes) {
@@ -179,14 +168,14 @@ const spec = {
             LanguageName: {
                 example: "Norwegian",
                 type: "string",
-                format: "string",
+                format: "language-name",
                 enum: [...new Set(codes.map((code) => code.name.value))],
                 "x-go-type": "github.com/mikekonan/go-types/v2/language.Name",
             },
             CountryAlpha2: {
                 example: "no",
                 type: "string",
-                format: "ISO 639-1",
+                format: "iso639-1",
                 minLength: 2,
                 maxLength: 2,
                 enum: [...new Set(codes.map((code) => code.a2.value))],
@@ -195,7 +184,7 @@ const spec = {
             CountryAlpha3: {
                 example: "nor",
                 type: "string",
-                format: "ISO 639-1",
+                format: "iso639-2",
                 minLength: 3,
                 maxLength: 3,
                 enum: [...new Set(codes.map((code) => code.a3.value))],
