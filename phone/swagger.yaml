@@ -1,0 +1,8 @@
+openapi: 3.0.0
+components:
+  schemas:
+    PhoneNumber:
+      example: 2505550199
+      type: string
+      format: E.164
+      x-go-type: github.com/mikekonan/go-types/v2/phone.Number

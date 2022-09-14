@@ -7,22 +7,11 @@ const requestCountryKey = "ISO3166-1-Alpha-2";
 
 const innerCountryDialKey = "dial";
 const innerCountryKey = "countryAlpha2";
-
-const options = {
-    hostname: "datahub.io",
-    port: 443,
-    path: "/core/country-codes/r/country-codes.json",
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    },
-};
 const maxDownloadSize = 1000000 // 1Mb
 
-getPhoneCountryCodes(options, maxDownloadSize)
+getData("https://datahub.io/core/country-codes/r/country-codes.json", maxDownloadSize)
     .then((codes) => {
         let countryCodes = preparePhoneCountryCodes(codes);
-        // console.log(concatenateCountriesByDialCode(countryCodes))
         Promise.all([
             fs.writeFile("../dial_code_gen.go", renderCountryDialCodesTemplate(countryCodes)),
             fs.writeFile("../codes_mapping_gen.go", renderDialCodesMappingTemplate(countryCodes)),
@@ -35,44 +24,43 @@ getPhoneCountryCodes(options, maxDownloadSize)
     })
     .catch((err) => console.error("woooooooops, seems like an error occurred...\n", err))
 
-function getPhoneCountryCodes(options, maxDownloadSize) {
-    return new Promise((resolve, reject) => {
-        const req = https.request(options, res => {
-            let body = "", alreadyDownloaded = 0;
+function getLanguages(url, maxSize, resolve, reject) {
+    https.get(url, (res) => {
+        if(res.statusCode === 301 || res.statusCode === 302) {
+            return getLanguages(res.headers.location, maxSize, resolve, reject)
+        }
 
-            res.on("data", chunk => {
-                alreadyDownloaded += chunk.length;
+        if (res.statusCode !== 200) {
+            reject(`got ${res.statusCode} response status code`);
+            return
+        }
 
-                if (alreadyDownloaded > maxDownloadSize) {
-                    reject(`max download size of ${maxDownloadSize} bytes reached. it's better to search for less overhead data source`);
-                    return
-                }
+        let body = [], alreadyDownloaded = 0;
 
-                body += chunk;
-            });
+        res.on("data", (chunk) => {
+            alreadyDownloaded += chunk.length;
 
-            res.on("end", () => {
-                if (res.statusCode !== 200) {
-                    reject(`got ${res.statusCode} response status code`);
-                    return
-                }
+            if (alreadyDownloaded > maxDownloadSize) {
+                reject(`max download size of ${maxDownloadSize} bytes reached. it's better to search for less overhead data source`);
+                return
+            }
 
-                if (alreadyDownloaded > maxDownloadSize) {
-                    return
-                }
-
-                const parsedBody = JSON.parse(body);
-
-                resolve(parsedBody);
-            });
-
-            req.on("error", error => {
-                reject(error);
-            });
+            body.push(chunk);
         });
 
-        req.end();
-    })
+        res.on("end", () => {
+            try {
+                // remove JSON.parse(...) for plain data
+                resolve(JSON.parse(Buffer.concat(body).toString()));
+            } catch (err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+async function getData(url, maxSize) {
+    return new Promise((resolve, reject) => getLanguages(url, maxSize, resolve, reject))
 }
 
 function preparePhoneCountryCodes(rawCodes) {

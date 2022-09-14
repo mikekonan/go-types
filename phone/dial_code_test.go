@@ -30,10 +30,12 @@ func TestDialCode_Validate(t *testing.T) {
 
 func TestDialCode_UnmarshalJSON(t *testing.T) {
 	for _, testCase := range testDialCodeCases {
-		jsonStr := fmt.Sprintf("%s", testCase.testValue)
-		var dialCode DialCode
+		jsonStr := fmt.Sprintf(`{"dialCode":"%s"}`, testCase.testValue)
+		var dialCodeStruct struct {
+			DialCode DialCode `json:"dialCode"`
+		}
 
-		actualErr := json.Unmarshal([]byte(jsonStr), &dialCode)
+		actualErr := json.Unmarshal([]byte(jsonStr), &dialCodeStruct)
 		if (actualErr == nil) == testCase.expectingValidateError {
 			t.Errorf(`JsonUnmarshal: '%s'. expecting error - '%v' but was opposite`, testCase.testValue, testCase.expectingValidateError)
 		}

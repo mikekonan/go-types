@@ -5,6 +5,1560 @@ components:
       example: 01/06
       type: string
       x-go-type: github.com/mikekonan/go-types/v2/card.CardDate
+    CountryName:
+      example: Austria
+      type: string
+      format: iso3166-country
+      enum:
+        - Afghanistan
+        - Albania
+        - Algeria
+        - American Samoa
+        - Andorra
+        - Angola
+        - Anguilla
+        - Antarctica
+        - Antigua and Barbuda
+        - Argentina
+        - Armenia
+        - Aruba
+        - Australia
+        - Austria
+        - Azerbaijan
+        - Bahamas (the)
+        - Bahrain
+        - Bangladesh
+        - Barbados
+        - Belarus
+        - Belgium
+        - Belize
+        - Benin
+        - Bermuda
+        - Bhutan
+        - Bolivia (Plurinational State of)
+        - Bonaire, Sint Eustatius and Saba
+        - Bosnia and Herzegovina
+        - Botswana
+        - Bouvet Island
+        - Brazil
+        - British Indian Ocean Territory (the)
+        - Brunei Darussalam
+        - Bulgaria
+        - Burkina Faso
+        - Burundi
+        - Cabo Verde
+        - Cambodia
+        - Cameroon
+        - Canada
+        - Cayman Islands (the)
+        - Central African Republic (the)
+        - Chad
+        - Chile
+        - China
+        - Christmas Island
+        - Cocos (Keeling) Islands (the)
+        - Colombia
+        - Comoros (the)
+        - Congo (the Democratic Republic of the)
+        - Congo (the)
+        - Cook Islands (the)
+        - Costa Rica
+        - Croatia
+        - Cuba
+        - Curaçao
+        - Cyprus
+        - Czechia
+        - Côte d'Ivoire
+        - Denmark
+        - Djibouti
+        - Dominica
+        - Dominican Republic (the)
+        - Ecuador
+        - Egypt
+        - El Salvador
+        - Equatorial Guinea
+        - Eritrea
+        - Estonia
+        - Eswatini
+        - Ethiopia
+        - Falkland Islands (the) [Malvinas]
+        - Faroe Islands (the)
+        - Fiji
+        - Finland
+        - France
+        - French Guiana
+        - French Polynesia
+        - French Southern Territories (the)
+        - Gabon
+        - Gambia (the)
+        - Georgia
+        - Germany
+        - Ghana
+        - Gibraltar
+        - Greece
+        - Greenland
+        - Grenada
+        - Guadeloupe
+        - Guam
+        - Guatemala
+        - Guernsey
+        - Guinea
+        - Guinea-Bissau
+        - Guyana
+        - Haiti
+        - Heard Island and McDonald Islands
+        - Holy See (the)
+        - Honduras
+        - Hong Kong
+        - Hungary
+        - Iceland
+        - India
+        - Indonesia
+        - Iran (Islamic Republic of)
+        - Iraq
+        - Ireland
+        - Isle of Man
+        - Israel
+        - Italy
+        - Jamaica
+        - Japan
+        - Jersey
+        - Jordan
+        - Kazakhstan
+        - Kenya
+        - Kiribati
+        - Korea (the Democratic People's Republic of)
+        - Korea (the Republic of)
+        - Kuwait
+        - Kyrgyzstan
+        - Lao People's Democratic Republic (the)
+        - Latvia
+        - Lebanon
+        - Lesotho
+        - Liberia
+        - Libya
+        - Liechtenstein
+        - Lithuania
+        - Luxembourg
+        - Macao
+        - Madagascar
+        - Malawi
+        - Malaysia
+        - Maldives
+        - Mali
+        - Malta
+        - Marshall Islands (the)
+        - Martinique
+        - Mauritania
+        - Mauritius
+        - Mayotte
+        - Mexico
+        - Micronesia (Federated States of)
+        - Moldova (the Republic of)
+        - Monaco
+        - Mongolia
+        - Montenegro
+        - Montserrat
+        - Morocco
+        - Mozambique
+        - Myanmar
+        - Namibia
+        - Nauru
+        - Nepal
+        - Netherlands (the)
+        - New Caledonia
+        - New Zealand
+        - Nicaragua
+        - Niger (the)
+        - Nigeria
+        - Niue
+        - Norfolk Island
+        - North Macedonia
+        - Northern Mariana Islands (the)
+        - Norway
+        - Oman
+        - Pakistan
+        - Palau
+        - Palestine, State of
+        - Panama
+        - Papua New Guinea
+        - Paraguay
+        - Peru
+        - Philippines (the)
+        - Pitcairn
+        - Poland
+        - Portugal
+        - Puerto Rico
+        - Qatar
+        - Romania
+        - Russian Federation (the)
+        - Rwanda
+        - Réunion
+        - Saint Barthélemy
+        - Saint Helena, Ascension and Tristan da Cunha
+        - Saint Kitts and Nevis
+        - Saint Lucia
+        - Saint Martin (French part)
+        - Saint Pierre and Miquelon
+        - Saint Vincent and the Grenadines
+        - Samoa
+        - San Marino
+        - Sao Tome and Principe
+        - Saudi Arabia
+        - Senegal
+        - Serbia
+        - Seychelles
+        - Sierra Leone
+        - Singapore
+        - Sint Maarten (Dutch part)
+        - Slovakia
+        - Slovenia
+        - Solomon Islands
+        - Somalia
+        - South Africa
+        - South Georgia and the South Sandwich Islands
+        - South Sudan
+        - Spain
+        - Sri Lanka
+        - Sudan (the)
+        - Suriname
+        - Svalbard and Jan Mayen
+        - Sweden
+        - Switzerland
+        - Syrian Arab Republic (the)
+        - Taiwan (Province of China)
+        - Tajikistan
+        - Tanzania, the United Republic of
+        - Thailand
+        - Timor-Leste
+        - Togo
+        - Tokelau
+        - Tonga
+        - Trinidad and Tobago
+        - Tunisia
+        - Turkmenistan
+        - Turks and Caicos Islands (the)
+        - Tuvalu
+        - Türkiye
+        - Uganda
+        - Ukraine
+        - United Arab Emirates (the)
+        - United Kingdom of Great Britain and Northern Ireland (the)
+        - United States Minor Outlying Islands (the)
+        - United States of America (the)
+        - Uruguay
+        - Uzbekistan
+        - Vanuatu
+        - Venezuela (Bolivarian Republic of)
+        - Viet Nam
+        - Virgin Islands (British)
+        - Virgin Islands (U.S.)
+        - Wallis and Futuna
+        - Western Sahara*
+        - Yemen
+        - Zambia
+        - Zimbabwe
+        - Åland Islands
+      x-go-type: github.com/mikekonan/go-types/v2/country.Name
+    CountryAlpha2:
+      example: AS
+      type: string
+      format: iso3166-alpha-2
+      minLength: 2
+      maxLength: 2
+      enum:
+        - AF
+        - AL
+        - DZ
+        - AS
+        - AD
+        - AO
+        - AI
+        - AQ
+        - AG
+        - AR
+        - AM
+        - AW
+        - AU
+        - AT
+        - AZ
+        - BS
+        - BH
+        - BD
+        - BB
+        - BY
+        - BE
+        - BZ
+        - BJ
+        - BM
+        - BT
+        - BO
+        - BQ
+        - BA
+        - BW
+        - BV
+        - BR
+        - IO
+        - BN
+        - BG
+        - BF
+        - BI
+        - CV
+        - KH
+        - CM
+        - CA
+        - KY
+        - CF
+        - TD
+        - CL
+        - CN
+        - CX
+        - CC
+        - CO
+        - KM
+        - CD
+        - CG
+        - CK
+        - CR
+        - HR
+        - CU
+        - CW
+        - CY
+        - CZ
+        - CI
+        - DK
+        - DJ
+        - DM
+        - DO
+        - EC
+        - EG
+        - SV
+        - GQ
+        - ER
+        - EE
+        - SZ
+        - ET
+        - FK
+        - FO
+        - FJ
+        - FI
+        - FR
+        - GF
+        - PF
+        - TF
+        - GA
+        - GM
+        - GE
+        - DE
+        - GH
+        - GI
+        - GR
+        - GL
+        - GD
+        - GP
+        - GU
+        - GT
+        - GG
+        - GN
+        - GW
+        - GY
+        - HT
+        - HM
+        - VA
+        - HN
+        - HK
+        - HU
+        - IS
+        - IN
+        - ID
+        - IR
+        - IQ
+        - IE
+        - IM
+        - IL
+        - IT
+        - JM
+        - JP
+        - JE
+        - JO
+        - KZ
+        - KE
+        - KI
+        - KP
+        - KR
+        - KW
+        - KG
+        - LA
+        - LV
+        - LB
+        - LS
+        - LR
+        - LY
+        - LI
+        - LT
+        - LU
+        - MO
+        - MG
+        - MW
+        - MY
+        - MV
+        - ML
+        - MT
+        - MH
+        - MQ
+        - MR
+        - MU
+        - YT
+        - MX
+        - FM
+        - MD
+        - MC
+        - MN
+        - ME
+        - MS
+        - MA
+        - MZ
+        - MM
+        - NA
+        - NR
+        - NP
+        - NL
+        - NC
+        - NZ
+        - NI
+        - NE
+        - NG
+        - NU
+        - NF
+        - MK
+        - MP
+        - NO
+        - OM
+        - PK
+        - PW
+        - PS
+        - PA
+        - PG
+        - PY
+        - PE
+        - PH
+        - PN
+        - PL
+        - PT
+        - PR
+        - QA
+        - RO
+        - RU
+        - RW
+        - RE
+        - BL
+        - SH
+        - KN
+        - LC
+        - MF
+        - PM
+        - VC
+        - WS
+        - SM
+        - ST
+        - SA
+        - SN
+        - RS
+        - SC
+        - SL
+        - SG
+        - SX
+        - SK
+        - SI
+        - SB
+        - SO
+        - ZA
+        - GS
+        - SS
+        - ES
+        - LK
+        - SD
+        - SR
+        - SJ
+        - SE
+        - CH
+        - SY
+        - TW
+        - TJ
+        - TZ
+        - TH
+        - TL
+        - TG
+        - TK
+        - TO
+        - TT
+        - TN
+        - TM
+        - TC
+        - TV
+        - TR
+        - UG
+        - UA
+        - AE
+        - GB
+        - UM
+        - US
+        - UY
+        - UZ
+        - VU
+        - VE
+        - VN
+        - VG
+        - VI
+        - WF
+        - EH
+        - YE
+        - ZM
+        - ZW
+        - AX
+      x-go-type: github.com/mikekonan/go-types/v2/country.Alpha2Code
+    CountryAlpha3:
+      example: USA
+      type: string
+      format: iso3166-alpha-3
+      minLength: 3
+      maxLength: 3
+      enum:
+        - AFG
+        - ALB
+        - DZA
+        - ASM
+        - AND
+        - AGO
+        - AIA
+        - ATA
+        - ATG
+        - ARG
+        - ARM
+        - ABW
+        - AUS
+        - AUT
+        - AZE
+        - BHS
+        - BHR
+        - BGD
+        - BRB
+        - BLR
+        - BEL
+        - BLZ
+        - BEN
+        - BMU
+        - BTN
+        - BOL
+        - BES
+        - BIH
+        - BWA
+        - BVT
+        - BRA
+        - IOT
+        - BRN
+        - BGR
+        - BFA
+        - BDI
+        - CPV
+        - KHM
+        - CMR
+        - CAN
+        - CYM
+        - CAF
+        - TCD
+        - CHL
+        - CHN
+        - CXR
+        - CCK
+        - COL
+        - COM
+        - COD
+        - COG
+        - COK
+        - CRI
+        - HRV
+        - CUB
+        - CUW
+        - CYP
+        - CZE
+        - CIV
+        - DNK
+        - DJI
+        - DMA
+        - DOM
+        - ECU
+        - EGY
+        - SLV
+        - GNQ
+        - ERI
+        - EST
+        - SWZ
+        - ETH
+        - FLK
+        - FRO
+        - FJI
+        - FIN
+        - FRA
+        - GUF
+        - PYF
+        - ATF
+        - GAB
+        - GMB
+        - GEO
+        - DEU
+        - GHA
+        - GIB
+        - GRC
+        - GRL
+        - GRD
+        - GLP
+        - GUM
+        - GTM
+        - GGY
+        - GIN
+        - GNB
+        - GUY
+        - HTI
+        - HMD
+        - VAT
+        - HND
+        - HKG
+        - HUN
+        - ISL
+        - IND
+        - IDN
+        - IRN
+        - IRQ
+        - IRL
+        - IMN
+        - ISR
+        - ITA
+        - JAM
+        - JPN
+        - JEY
+        - JOR
+        - KAZ
+        - KEN
+        - KIR
+        - PRK
+        - KOR
+        - KWT
+        - KGZ
+        - LAO
+        - LVA
+        - LBN
+        - LSO
+        - LBR
+        - LBY
+        - LIE
+        - LTU
+        - LUX
+        - MAC
+        - MDG
+        - MWI
+        - MYS
+        - MDV
+        - MLI
+        - MLT
+        - MHL
+        - MTQ
+        - MRT
+        - MUS
+        - MYT
+        - MEX
+        - FSM
+        - MDA
+        - MCO
+        - MNG
+        - MNE
+        - MSR
+        - MAR
+        - MOZ
+        - MMR
+        - NAM
+        - NRU
+        - NPL
+        - NLD
+        - NCL
+        - NZL
+        - NIC
+        - NER
+        - NGA
+        - NIU
+        - NFK
+        - MKD
+        - MNP
+        - NOR
+        - OMN
+        - PAK
+        - PLW
+        - PSE
+        - PAN
+        - PNG
+        - PRY
+        - PER
+        - PHL
+        - PCN
+        - POL
+        - PRT
+        - PRI
+        - QAT
+        - ROU
+        - RUS
+        - RWA
+        - REU
+        - BLM
+        - SHN
+        - KNA
+        - LCA
+        - MAF
+        - SPM
+        - VCT
+        - WSM
+        - SMR
+        - STP
+        - SAU
+        - SEN
+        - SRB
+        - SYC
+        - SLE
+        - SGP
+        - SXM
+        - SVK
+        - SVN
+        - SLB
+        - SOM
+        - ZAF
+        - SGS
+        - SSD
+        - ESP
+        - LKA
+        - SDN
+        - SUR
+        - SJM
+        - SWE
+        - CHE
+        - SYR
+        - TWN
+        - TJK
+        - TZA
+        - THA
+        - TLS
+        - TGO
+        - TKL
+        - TON
+        - TTO
+        - TUN
+        - TKM
+        - TCA
+        - TUV
+        - TUR
+        - UGA
+        - UKR
+        - ARE
+        - GBR
+        - UMI
+        - USA
+        - URY
+        - UZB
+        - VUT
+        - VEN
+        - VNM
+        - VGB
+        - VIR
+        - WLF
+        - ESH
+        - YEM
+        - ZMB
+        - ZWE
+        - ALA
+      x-go-type: github.com/mikekonan/go-types/v2/country.Alpha3Code
+    CurrencyCode:
+      example: EUR
+      type: string
+      minLength: 3
+      maxLength: 3
+      format: iso4217-currency-code
+      enum:
+        - AFN
+        - EUR
+        - ALL
+        - DZD
+        - USD
+        - AOA
+        - XCD
+        - ARS
+        - AMD
+        - AWG
+        - AUD
+        - AZN
+        - BSD
+        - BHD
+        - BDT
+        - BBD
+        - BYN
+        - BZD
+        - XOF
+        - BMD
+        - INR
+        - BTN
+        - BOB
+        - BOV
+        - BAM
+        - BWP
+        - NOK
+        - BRL
+        - BND
+        - BGN
+        - BIF
+        - CVE
+        - KHR
+        - XAF
+        - CAD
+        - KYD
+        - CLP
+        - CLF
+        - CNY
+        - COP
+        - COU
+        - KMF
+        - CDF
+        - NZD
+        - CRC
+        - HRK
+        - CUP
+        - CUC
+        - ANG
+        - CZK
+        - DKK
+        - DJF
+        - DOP
+        - EGP
+        - SVC
+        - ERN
+        - SZL
+        - ETB
+        - FKP
+        - FJD
+        - XPF
+        - GMD
+        - GEL
+        - GHS
+        - GIP
+        - GTQ
+        - GBP
+        - GNF
+        - GYD
+        - HTG
+        - HNL
+        - HKD
+        - HUF
+        - ISK
+        - IDR
+        - XDR
+        - IRR
+        - IQD
+        - ILS
+        - JMD
+        - JPY
+        - JOD
+        - KZT
+        - KES
+        - KPW
+        - KRW
+        - KWD
+        - KGS
+        - LAK
+        - LBP
+        - LSL
+        - ZAR
+        - LRD
+        - LYD
+        - CHF
+        - MOP
+        - MKD
+        - MGA
+        - MWK
+        - MYR
+        - MVR
+        - MRU
+        - MUR
+        - XUA
+        - MXN
+        - MXV
+        - MDL
+        - MNT
+        - MAD
+        - MZN
+        - MMK
+        - NAD
+        - NPR
+        - NIO
+        - NGN
+        - OMR
+        - PKR
+        - PAB
+        - PGK
+        - PYG
+        - PEN
+        - PHP
+        - PLN
+        - QAR
+        - RON
+        - RUB
+        - RWF
+        - SHP
+        - WST
+        - STN
+        - SAR
+        - RSD
+        - SCR
+        - SLL
+        - SLE
+        - SGD
+        - XSU
+        - SBD
+        - SOS
+        - SSP
+        - LKR
+        - SDG
+        - SRD
+        - SEK
+        - CHE
+        - CHW
+        - SYP
+        - TWD
+        - TJS
+        - TZS
+        - THB
+        - TOP
+        - TTD
+        - TND
+        - TRY
+        - TMT
+        - UGX
+        - UAH
+        - AED
+        - USN
+        - UYU
+        - UYI
+        - UYW
+        - UZS
+        - VUV
+        - VES
+        - VED
+        - VND
+        - YER
+        - ZMW
+        - ZWL
+      x-go-type: github.com/mikekonan/go-types/v2/currency.Code
+    CurrencyName:
+      example: Euro
+      type: string
+      enum:
+        - Afghani
+        - Euro
+        - Lek
+        - Algerian Dinar
+        - US Dollar
+        - Kwanza
+        - East Caribbean Dollar
+        - Argentine Peso
+        - Armenian Dram
+        - Aruban Florin
+        - Australian Dollar
+        - Azerbaijan Manat
+        - Bahamian Dollar
+        - Bahraini Dinar
+        - Taka
+        - Barbados Dollar
+        - Belarusian Ruble
+        - Belize Dollar
+        - CFA Franc BCEAO
+        - Bermudian Dollar
+        - Indian Rupee
+        - Ngultrum
+        - Boliviano
+        - Mvdol
+        - Convertible Mark
+        - Pula
+        - Norwegian Krone
+        - Brazilian Real
+        - Brunei Dollar
+        - Bulgarian Lev
+        - Burundi Franc
+        - Cabo Verde Escudo
+        - Riel
+        - CFA Franc BEAC
+        - Canadian Dollar
+        - Cayman Islands Dollar
+        - Chilean Peso
+        - Unidad de Fomento
+        - Yuan Renminbi
+        - Colombian Peso
+        - Unidad de Valor Real
+        - "Comorian Franc "
+        - Congolese Franc
+        - New Zealand Dollar
+        - Costa Rican Colon
+        - Kuna
+        - Cuban Peso
+        - Peso Convertible
+        - Netherlands Antillean Guilder
+        - Czech Koruna
+        - Danish Krone
+        - Djibouti Franc
+        - Dominican Peso
+        - Egyptian Pound
+        - El Salvador Colon
+        - Nakfa
+        - Lilangeni
+        - Ethiopian Birr
+        - Falkland Islands Pound
+        - Fiji Dollar
+        - CFP Franc
+        - Dalasi
+        - Lari
+        - Ghana Cedi
+        - Gibraltar Pound
+        - Quetzal
+        - Pound Sterling
+        - Guinean Franc
+        - Guyana Dollar
+        - Gourde
+        - Lempira
+        - Hong Kong Dollar
+        - Forint
+        - Iceland Krona
+        - Rupiah
+        - SDR (Special Drawing Right)
+        - Iranian Rial
+        - Iraqi Dinar
+        - New Israeli Sheqel
+        - Jamaican Dollar
+        - Yen
+        - Jordanian Dinar
+        - Tenge
+        - Kenyan Shilling
+        - North Korean Won
+        - Won
+        - Kuwaiti Dinar
+        - Som
+        - Lao Kip
+        - Lebanese Pound
+        - Loti
+        - Rand
+        - Liberian Dollar
+        - Libyan Dinar
+        - Swiss Franc
+        - Pataca
+        - Denar
+        - Malagasy Ariary
+        - Malawi Kwacha
+        - Malaysian Ringgit
+        - Rufiyaa
+        - Ouguiya
+        - Mauritius Rupee
+        - ADB Unit of Account
+        - Mexican Peso
+        - Mexican Unidad de Inversion (UDI)
+        - Moldovan Leu
+        - Tugrik
+        - Moroccan Dirham
+        - Mozambique Metical
+        - Kyat
+        - Namibia Dollar
+        - Nepalese Rupee
+        - Cordoba Oro
+        - Naira
+        - Rial Omani
+        - Pakistan Rupee
+        - Balboa
+        - Kina
+        - Guarani
+        - Sol
+        - Philippine Peso
+        - Zloty
+        - Qatari Rial
+        - Romanian Leu
+        - Russian Ruble
+        - Rwanda Franc
+        - Saint Helena Pound
+        - Tala
+        - Dobra
+        - Saudi Riyal
+        - Serbian Dinar
+        - Seychelles Rupee
+        - Leone
+        - Singapore Dollar
+        - Sucre
+        - Solomon Islands Dollar
+        - Somali Shilling
+        - South Sudanese Pound
+        - Sri Lanka Rupee
+        - Sudanese Pound
+        - Surinam Dollar
+        - Swedish Krona
+        - WIR Euro
+        - WIR Franc
+        - Syrian Pound
+        - New Taiwan Dollar
+        - Somoni
+        - Tanzanian Shilling
+        - Baht
+        - Pa’anga
+        - Trinidad and Tobago Dollar
+        - Tunisian Dinar
+        - Turkish Lira
+        - Turkmenistan New Manat
+        - Uganda Shilling
+        - Hryvnia
+        - UAE Dirham
+        - US Dollar (Next day)
+        - Peso Uruguayo
+        - Uruguay Peso en Unidades Indexadas (UI)
+        - Unidad Previsional
+        - Uzbekistan Sum
+        - Vatu
+        - Bolívar Soberano
+        - Dong
+        - Yemeni Rial
+        - Zambian Kwacha
+        - Zimbabwe Dollar
+      x-go-type: github.com/mikekonan/go-types/v2/currency.Currency
+    CurrencyCountry:
+      example: PUERTO RICO
+      type: string
+      enum:
+        - AFGHANISTAN
+        - ÅLAND ISLANDS
+        - ALBANIA
+        - ALGERIA
+        - AMERICAN SAMOA
+        - ANDORRA
+        - ANGOLA
+        - ANGUILLA
+        - ANTIGUA AND BARBUDA
+        - ARGENTINA
+        - ARMENIA
+        - ARUBA
+        - AUSTRALIA
+        - AUSTRIA
+        - AZERBAIJAN
+        - BAHAMAS (THE)
+        - BAHRAIN
+        - BANGLADESH
+        - BARBADOS
+        - BELARUS
+        - BELGIUM
+        - BELIZE
+        - BENIN
+        - BERMUDA
+        - BHUTAN
+        - BOLIVIA (PLURINATIONAL STATE OF)
+        - BONAIRE, SINT EUSTATIUS AND SABA
+        - BOSNIA AND HERZEGOVINA
+        - BOTSWANA
+        - BOUVET ISLAND
+        - BRAZIL
+        - BRITISH INDIAN OCEAN TERRITORY (THE)
+        - BRUNEI DARUSSALAM
+        - BULGARIA
+        - BURKINA FASO
+        - BURUNDI
+        - CABO VERDE
+        - CAMBODIA
+        - CAMEROON
+        - CANADA
+        - CAYMAN ISLANDS (THE)
+        - CENTRAL AFRICAN REPUBLIC (THE)
+        - CHAD
+        - CHILE
+        - CHINA
+        - CHRISTMAS ISLAND
+        - COCOS (KEELING) ISLANDS (THE)
+        - COLOMBIA
+        - COMOROS (THE)
+        - CONGO (THE DEMOCRATIC REPUBLIC OF THE)
+        - CONGO (THE)
+        - COOK ISLANDS (THE)
+        - COSTA RICA
+        - CÔTE D'IVOIRE
+        - CROATIA
+        - CUBA
+        - CURAÇAO
+        - CYPRUS
+        - CZECHIA
+        - DENMARK
+        - DJIBOUTI
+        - DOMINICA
+        - DOMINICAN REPUBLIC (THE)
+        - ECUADOR
+        - EGYPT
+        - EL SALVADOR
+        - EQUATORIAL GUINEA
+        - ERITREA
+        - ESTONIA
+        - ESWATINI
+        - ETHIOPIA
+        - EUROPEAN UNION
+        - FALKLAND ISLANDS (THE) [MALVINAS]
+        - FAROE ISLANDS (THE)
+        - FIJI
+        - FINLAND
+        - FRANCE
+        - FRENCH GUIANA
+        - FRENCH POLYNESIA
+        - FRENCH SOUTHERN TERRITORIES (THE)
+        - GABON
+        - GAMBIA (THE)
+        - GEORGIA
+        - GERMANY
+        - GHANA
+        - GIBRALTAR
+        - GREECE
+        - GREENLAND
+        - GRENADA
+        - GUADELOUPE
+        - GUAM
+        - GUATEMALA
+        - GUERNSEY
+        - GUINEA
+        - GUINEA-BISSAU
+        - GUYANA
+        - HAITI
+        - HEARD ISLAND AND McDONALD ISLANDS
+        - HOLY SEE (THE)
+        - HONDURAS
+        - HONG KONG
+        - HUNGARY
+        - ICELAND
+        - INDIA
+        - INDONESIA
+        - INTERNATIONAL MONETARY FUND (IMF) 
+        - IRAN (ISLAMIC REPUBLIC OF)
+        - IRAQ
+        - IRELAND
+        - ISLE OF MAN
+        - ISRAEL
+        - ITALY
+        - JAMAICA
+        - JAPAN
+        - JERSEY
+        - JORDAN
+        - KAZAKHSTAN
+        - KENYA
+        - KIRIBATI
+        - KOREA (THE DEMOCRATIC PEOPLE’S REPUBLIC OF)
+        - KOREA (THE REPUBLIC OF)
+        - KUWAIT
+        - KYRGYZSTAN
+        - LAO PEOPLE’S DEMOCRATIC REPUBLIC (THE)
+        - LATVIA
+        - LEBANON
+        - LESOTHO
+        - LIBERIA
+        - LIBYA
+        - LIECHTENSTEIN
+        - LITHUANIA
+        - LUXEMBOURG
+        - MACAO
+        - NORTH MACEDONIA
+        - MADAGASCAR
+        - MALAWI
+        - MALAYSIA
+        - MALDIVES
+        - MALI
+        - MALTA
+        - MARSHALL ISLANDS (THE)
+        - MARTINIQUE
+        - MAURITANIA
+        - MAURITIUS
+        - MAYOTTE
+        - MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP
+        - MEXICO
+        - MICRONESIA (FEDERATED STATES OF)
+        - MOLDOVA (THE REPUBLIC OF)
+        - MONACO
+        - MONGOLIA
+        - MONTENEGRO
+        - MONTSERRAT
+        - MOROCCO
+        - MOZAMBIQUE
+        - MYANMAR
+        - NAMIBIA
+        - NAURU
+        - NEPAL
+        - NETHERLANDS (THE)
+        - NEW CALEDONIA
+        - NEW ZEALAND
+        - NICARAGUA
+        - NIGER (THE)
+        - NIGERIA
+        - NIUE
+        - NORFOLK ISLAND
+        - NORTHERN MARIANA ISLANDS (THE)
+        - NORWAY
+        - OMAN
+        - PAKISTAN
+        - PALAU
+        - PANAMA
+        - PAPUA NEW GUINEA
+        - PARAGUAY
+        - PERU
+        - PHILIPPINES (THE)
+        - PITCAIRN
+        - POLAND
+        - PORTUGAL
+        - PUERTO RICO
+        - QATAR
+        - RÉUNION
+        - ROMANIA
+        - RUSSIAN FEDERATION (THE)
+        - RWANDA
+        - SAINT BARTHÉLEMY
+        - SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA
+        - SAINT KITTS AND NEVIS
+        - SAINT LUCIA
+        - SAINT MARTIN (FRENCH PART)
+        - SAINT PIERRE AND MIQUELON
+        - SAINT VINCENT AND THE GRENADINES
+        - SAMOA
+        - SAN MARINO
+        - SAO TOME AND PRINCIPE
+        - SAUDI ARABIA
+        - SENEGAL
+        - SERBIA
+        - SEYCHELLES
+        - SIERRA LEONE
+        - SINGAPORE
+        - SINT MAARTEN (DUTCH PART)
+        - SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"
+        - SLOVAKIA
+        - SLOVENIA
+        - SOLOMON ISLANDS
+        - SOMALIA
+        - SOUTH AFRICA
+        - SOUTH SUDAN
+        - SPAIN
+        - SRI LANKA
+        - SUDAN (THE)
+        - SURINAME
+        - SVALBARD AND JAN MAYEN
+        - SWEDEN
+        - SWITZERLAND
+        - SYRIAN ARAB REPUBLIC
+        - TAIWAN (PROVINCE OF CHINA)
+        - TAJIKISTAN
+        - TANZANIA, UNITED REPUBLIC OF
+        - THAILAND
+        - TIMOR-LESTE
+        - TOGO
+        - TOKELAU
+        - TONGA
+        - TRINIDAD AND TOBAGO
+        - TUNISIA
+        - TURKEY
+        - TURKMENISTAN
+        - TURKS AND CAICOS ISLANDS (THE)
+        - TUVALU
+        - UGANDA
+        - UKRAINE
+        - UNITED ARAB EMIRATES (THE)
+        - UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND (THE)
+        - UNITED STATES MINOR OUTLYING ISLANDS (THE)
+        - UNITED STATES OF AMERICA (THE)
+        - URUGUAY
+        - UZBEKISTAN
+        - VANUATU
+        - VENEZUELA (BOLIVARIAN REPUBLIC OF)
+        - VIET NAM
+        - VIRGIN ISLANDS (BRITISH)
+        - VIRGIN ISLANDS (U.S.)
+        - WALLIS AND FUTUNA
+        - WESTERN SAHARA
+        - YEMEN
+        - ZAMBIA
+        - ZIMBABWE
+      x-go-type: github.com/mikekonan/go-types/v2/currency.Country
+    CurrencyNumber:
+      example: "840"
+      type: string
+      minLength: 3
+      maxLength: 3
+      enum:
+        - "971"
+        - "978"
+        - "008"
+        - "012"
+        - "840"
+        - "973"
+        - "951"
+        - "032"
+        - "051"
+        - "533"
+        - "036"
+        - "944"
+        - "044"
+        - "048"
+        - "050"
+        - "052"
+        - "933"
+        - "084"
+        - "952"
+        - "060"
+        - "356"
+        - "064"
+        - "068"
+        - "984"
+        - "977"
+        - "072"
+        - "578"
+        - "986"
+        - "096"
+        - "975"
+        - "108"
+        - "132"
+        - "116"
+        - "950"
+        - "124"
+        - "136"
+        - "152"
+        - "990"
+        - "156"
+        - "170"
+        - "970"
+        - "174"
+        - "976"
+        - "554"
+        - "188"
+        - "191"
+        - "192"
+        - "931"
+        - "532"
+        - "203"
+        - "208"
+        - "262"
+        - "214"
+        - "818"
+        - "222"
+        - "232"
+        - "748"
+        - "230"
+        - "238"
+        - "242"
+        - "953"
+        - "270"
+        - "981"
+        - "936"
+        - "292"
+        - "320"
+        - "826"
+        - "324"
+        - "328"
+        - "332"
+        - "340"
+        - "344"
+        - "348"
+        - "352"
+        - "360"
+        - "960"
+        - "364"
+        - "368"
+        - "376"
+        - "388"
+        - "392"
+        - "400"
+        - "398"
+        - "404"
+        - "408"
+        - "410"
+        - "414"
+        - "417"
+        - "418"
+        - "422"
+        - "426"
+        - "710"
+        - "430"
+        - "434"
+        - "756"
+        - "446"
+        - "807"
+        - "969"
+        - "454"
+        - "458"
+        - "462"
+        - "929"
+        - "480"
+        - "965"
+        - "484"
+        - "979"
+        - "498"
+        - "496"
+        - "504"
+        - "943"
+        - "104"
+        - "516"
+        - "524"
+        - "558"
+        - "566"
+        - "512"
+        - "586"
+        - "590"
+        - "598"
+        - "600"
+        - "604"
+        - "608"
+        - "985"
+        - "634"
+        - "946"
+        - "643"
+        - "646"
+        - "654"
+        - "882"
+        - "930"
+        - "682"
+        - "941"
+        - "690"
+        - "694"
+        - "925"
+        - "702"
+        - "994"
+        - "090"
+        - "706"
+        - "728"
+        - "144"
+        - "938"
+        - "968"
+        - "752"
+        - "947"
+        - "948"
+        - "760"
+        - "901"
+        - "972"
+        - "834"
+        - "764"
+        - "776"
+        - "780"
+        - "788"
+        - "949"
+        - "934"
+        - "800"
+        - "980"
+        - "784"
+        - "997"
+        - "858"
+        - "940"
+        - "927"
+        - "860"
+        - "548"
+        - "928"
+        - "926"
+        - "704"
+        - "886"
+        - "967"
+        - "932"
     Email:
       example: user@example.com
       type: string
@@ -18,7 +1572,7 @@ components:
     LanguageName:
       example: Norwegian
       type: string
-      format: string
+      format: language-name
       enum:
         - Afar
         - Abkhazian
@@ -205,10 +1759,10 @@ components:
         - Zhuang
         - Zulu
       x-go-type: github.com/mikekonan/go-types/v2/language.Name
-    CountryAlpha2:
+    LanguageAlpha2:
       example: no
       type: string
-      format: ISO 639-1
+      format: iso639-1
       minLength: 2
       maxLength: 2
       enum:
@@ -397,10 +1951,10 @@ components:
         - za
         - zu
       x-go-type: github.com/mikekonan/go-types/v2/language.Alpha2Code
-    CountryAlpha3:
+    LanguageAlpha3:
       example: nor
       type: string
-      format: ISO 639-1
+      format: iso639-2
       minLength: 3
       maxLength: 3
       enum:
@@ -825,9 +2379,15 @@ components:
         - 1-649
         - 1-340
       x-go-type: github.com/mikekonan/go-types/v2/phone.DialCode
+    PhoneNumber:
+      example: 2505550199
+      type: string
+      format: E.164
+      x-go-type: github.com/mikekonan/go-types/v2/phone.Number
     PostalCode:
       example: CA6633
       type: string
+      format: postal-code
       x-go-type: github.com/mikekonan/go-types/v2/postalcode.PostalCode
     Date:
       example: 2006-01-02
@@ -840,6 +2400,605 @@ components:
       nullable: true
       x-go-type: github.com/mikekonan/go-types/v2/time.Time
       x-go-type-string-parse: github.com/mikekonan/go-types/v2/time.ParseNullTimeFromString
+    Timezone:
+      example: Europe/Minsk
+      type: string
+      format: rfc6557-time-zone
+      enum:
+        - Africa/Abidjan
+        - Africa/Accra
+        - Africa/Addis_Ababa
+        - Africa/Algiers
+        - Africa/Asmara
+        - Africa/Asmera
+        - Africa/Bamako
+        - Africa/Bangui
+        - Africa/Banjul
+        - Africa/Bissau
+        - Africa/Blantyre
+        - Africa/Brazzaville
+        - Africa/Bujumbura
+        - Africa/Cairo
+        - Africa/Casablanca
+        - Africa/Ceuta
+        - Africa/Conakry
+        - Africa/Dakar
+        - Africa/Dar_es_Salaam
+        - Africa/Djibouti
+        - Africa/Douala
+        - Africa/El_Aaiun
+        - Africa/Freetown
+        - Africa/Gaborone
+        - Africa/Harare
+        - Africa/Johannesburg
+        - Africa/Juba
+        - Africa/Kampala
+        - Africa/Khartoum
+        - Africa/Kigali
+        - Africa/Kinshasa
+        - Africa/Lagos
+        - Africa/Libreville
+        - Africa/Lome
+        - Africa/Luanda
+        - Africa/Lubumbashi
+        - Africa/Lusaka
+        - Africa/Malabo
+        - Africa/Maputo
+        - Africa/Maseru
+        - Africa/Mbabane
+        - Africa/Mogadishu
+        - Africa/Monrovia
+        - Africa/Nairobi
+        - Africa/Ndjamena
+        - Africa/Niamey
+        - Africa/Nouakchott
+        - Africa/Ouagadougou
+        - Africa/Porto-Novo
+        - Africa/Sao_Tome
+        - Africa/Timbuktu
+        - Africa/Tripoli
+        - Africa/Tunis
+        - Africa/Windhoek
+        - America/Adak
+        - America/Anchorage
+        - America/Anguilla
+        - America/Antigua
+        - America/Araguaina
+        - America/Argentina/Buenos_Aires
+        - America/Argentina/Catamarca
+        - America/Argentina/ComodRivadavia
+        - America/Argentina/Cordoba
+        - America/Argentina/Jujuy
+        - America/Argentina/La_Rioja
+        - America/Argentina/Mendoza
+        - America/Argentina/Rio_Gallegos
+        - America/Argentina/Salta
+        - America/Argentina/San_Juan
+        - America/Argentina/San_Luis
+        - America/Argentina/Tucuman
+        - America/Argentina/Ushuaia
+        - America/Aruba
+        - America/Asuncion
+        - America/Atikokan
+        - America/Atka
+        - America/Bahia
+        - America/Bahia_Banderas
+        - America/Barbados
+        - America/Belem
+        - America/Belize
+        - America/Blanc-Sablon
+        - America/Boa_Vista
+        - America/Bogota
+        - America/Boise
+        - America/Buenos_Aires
+        - America/Cambridge_Bay
+        - America/Campo_Grande
+        - America/Cancun
+        - America/Caracas
+        - America/Catamarca
+        - America/Cayenne
+        - America/Cayman
+        - America/Chicago
+        - America/Chihuahua
+        - America/Coral_Harbour
+        - America/Cordoba
+        - America/Costa_Rica
+        - America/Creston
+        - America/Cuiaba
+        - America/Curacao
+        - America/Danmarkshavn
+        - America/Dawson
+        - America/Dawson_Creek
+        - America/Denver
+        - America/Detroit
+        - America/Dominica
+        - America/Edmonton
+        - America/Eirunepe
+        - America/El_Salvador
+        - America/Ensenada
+        - America/Fort_Nelson
+        - America/Fort_Wayne
+        - America/Fortaleza
+        - America/Glace_Bay
+        - America/Godthab
+        - America/Goose_Bay
+        - America/Grand_Turk
+        - America/Grenada
+        - America/Guadeloupe
+        - America/Guatemala
+        - America/Guayaquil
+        - America/Guyana
+        - America/Halifax
+        - America/Havana
+        - America/Hermosillo
+        - America/Indiana/Indianapolis
+        - America/Indiana/Knox
+        - America/Indiana/Marengo
+        - America/Indiana/Petersburg
+        - America/Indiana/Tell_City
+        - America/Indiana/Vevay
+        - America/Indiana/Vincennes
+        - America/Indiana/Winamac
+        - America/Indianapolis
+        - America/Inuvik
+        - America/Iqaluit
+        - America/Jamaica
+        - America/Jujuy
+        - America/Juneau
+        - America/Kentucky/Louisville
+        - America/Kentucky/Monticello
+        - America/Knox_IN
+        - America/Kralendijk
+        - America/La_Paz
+        - America/Lima
+        - America/Los_Angeles
+        - America/Louisville
+        - America/Lower_Princes
+        - America/Maceio
+        - America/Managua
+        - America/Manaus
+        - America/Marigot
+        - America/Martinique
+        - America/Matamoros
+        - America/Mazatlan
+        - America/Mendoza
+        - America/Menominee
+        - America/Merida
+        - America/Metlakatla
+        - America/Mexico_City
+        - America/Miquelon
+        - America/Moncton
+        - America/Monterrey
+        - America/Montevideo
+        - America/Montreal
+        - America/Montserrat
+        - America/Nassau
+        - America/New_York
+        - America/Nipigon
+        - America/Nome
+        - America/Noronha
+        - America/North_Dakota/Beulah
+        - America/North_Dakota/Center
+        - America/North_Dakota/New_Salem
+        - America/Nuuk
+        - America/Ojinaga
+        - America/Panama
+        - America/Pangnirtung
+        - America/Paramaribo
+        - America/Phoenix
+        - America/Port-au-Prince
+        - America/Port_of_Spain
+        - America/Porto_Acre
+        - America/Porto_Velho
+        - America/Puerto_Rico
+        - America/Punta_Arenas
+        - America/Rainy_River
+        - America/Rankin_Inlet
+        - America/Recife
+        - America/Regina
+        - America/Resolute
+        - America/Rio_Branco
+        - America/Rosario
+        - America/Santa_Isabel
+        - America/Santarem
+        - America/Santiago
+        - America/Santo_Domingo
+        - America/Sao_Paulo
+        - America/Scoresbysund
+        - America/Shiprock
+        - America/Sitka
+        - America/St_Barthelemy
+        - America/St_Johns
+        - America/St_Kitts
+        - America/St_Lucia
+        - America/St_Thomas
+        - America/St_Vincent
+        - America/Swift_Current
+        - America/Tegucigalpa
+        - America/Thule
+        - America/Thunder_Bay
+        - America/Tijuana
+        - America/Toronto
+        - America/Tortola
+        - America/Vancouver
+        - America/Virgin
+        - America/Whitehorse
+        - America/Winnipeg
+        - America/Yakutat
+        - America/Yellowknife
+        - Antarctica/Casey
+        - Antarctica/Davis
+        - Antarctica/DumontDUrville
+        - Antarctica/Macquarie
+        - Antarctica/Mawson
+        - Antarctica/McMurdo
+        - Antarctica/Palmer
+        - Antarctica/Rothera
+        - Antarctica/South_Pole
+        - Antarctica/Syowa
+        - Antarctica/Troll
+        - Antarctica/Vostok
+        - Arctic/Longyearbyen
+        - Asia/Aden
+        - Asia/Almaty
+        - Asia/Amman
+        - Asia/Anadyr
+        - Asia/Aqtau
+        - Asia/Aqtobe
+        - Asia/Ashgabat
+        - Asia/Ashkhabad
+        - Asia/Atyrau
+        - Asia/Baghdad
+        - Asia/Bahrain
+        - Asia/Baku
+        - Asia/Bangkok
+        - Asia/Barnaul
+        - Asia/Beirut
+        - Asia/Bishkek
+        - Asia/Brunei
+        - Asia/Calcutta
+        - Asia/Chita
+        - Asia/Choibalsan
+        - Asia/Chongqing
+        - Asia/Chungking
+        - Asia/Colombo
+        - Asia/Dacca
+        - Asia/Damascus
+        - Asia/Dhaka
+        - Asia/Dili
+        - Asia/Dubai
+        - Asia/Dushanbe
+        - Asia/Famagusta
+        - Asia/Gaza
+        - Asia/Harbin
+        - Asia/Hebron
+        - Asia/Ho_Chi_Minh
+        - Asia/Hong_Kong
+        - Asia/Hovd
+        - Asia/Irkutsk
+        - Asia/Istanbul
+        - Asia/Jakarta
+        - Asia/Jayapura
+        - Asia/Jerusalem
+        - Asia/Kabul
+        - Asia/Kamchatka
+        - Asia/Karachi
+        - Asia/Kashgar
+        - Asia/Kathmandu
+        - Asia/Katmandu
+        - Asia/Khandyga
+        - Asia/Kolkata
+        - Asia/Krasnoyarsk
+        - Asia/Kuala_Lumpur
+        - Asia/Kuching
+        - Asia/Kuwait
+        - Asia/Macao
+        - Asia/Macau
+        - Asia/Magadan
+        - Asia/Makassar
+        - Asia/Manila
+        - Asia/Muscat
+        - Asia/Nicosia
+        - Asia/Novokuznetsk
+        - Asia/Novosibirsk
+        - Asia/Omsk
+        - Asia/Oral
+        - Asia/Phnom_Penh
+        - Asia/Pontianak
+        - Asia/Pyongyang
+        - Asia/Qatar
+        - Asia/Qostanay
+        - Asia/Qyzylorda
+        - Asia/Rangoon
+        - Asia/Riyadh
+        - Asia/Saigon
+        - Asia/Sakhalin
+        - Asia/Samarkand
+        - Asia/Seoul
+        - Asia/Shanghai
+        - Asia/Singapore
+        - Asia/Srednekolymsk
+        - Asia/Taipei
+        - Asia/Tashkent
+        - Asia/Tbilisi
+        - Asia/Tehran
+        - Asia/Tel_Aviv
+        - Asia/Thimbu
+        - Asia/Thimphu
+        - Asia/Tokyo
+        - Asia/Tomsk
+        - Asia/Ujung_Pandang
+        - Asia/Ulaanbaatar
+        - Asia/Ulan_Bator
+        - Asia/Urumqi
+        - Asia/Ust-Nera
+        - Asia/Vientiane
+        - Asia/Vladivostok
+        - Asia/Yakutsk
+        - Asia/Yangon
+        - Asia/Yekaterinburg
+        - Asia/Yerevan
+        - Atlantic/Azores
+        - Atlantic/Bermuda
+        - Atlantic/Canary
+        - Atlantic/Cape_Verde
+        - Atlantic/Faeroe
+        - Atlantic/Faroe
+        - Atlantic/Jan_Mayen
+        - Atlantic/Madeira
+        - Atlantic/Reykjavik
+        - Atlantic/South_Georgia
+        - Atlantic/St_Helena
+        - Atlantic/Stanley
+        - Australia/ACT
+        - Australia/Adelaide
+        - Australia/Brisbane
+        - Australia/Broken_Hill
+        - Australia/Canberra
+        - Australia/Currie
+        - Australia/Darwin
+        - Australia/Eucla
+        - Australia/Hobart
+        - Australia/LHI
+        - Australia/Lindeman
+        - Australia/Lord_Howe
+        - Australia/Melbourne
+        - Australia/NSW
+        - Australia/North
+        - Australia/Perth
+        - Australia/Queensland
+        - Australia/South
+        - Australia/Sydney
+        - Australia/Tasmania
+        - Australia/Victoria
+        - Australia/West
+        - Australia/Yancowinna
+        - Brazil/Acre
+        - Brazil/DeNoronha
+        - Brazil/East
+        - Brazil/West
+        - CET
+        - CST6CDT
+        - Canada/Atlantic
+        - Canada/Central
+        - Canada/Eastern
+        - Canada/Mountain
+        - Canada/Newfoundland
+        - Canada/Pacific
+        - Canada/Saskatchewan
+        - Canada/Yukon
+        - Chile/Continental
+        - Chile/EasterIsland
+        - Cuba
+        - EET
+        - EST
+        - EST5EDT
+        - Egypt
+        - Eire
+        - Etc/GMT
+        - Etc/GMT+0
+        - Etc/GMT+1
+        - Etc/GMT+10
+        - Etc/GMT+11
+        - Etc/GMT+12
+        - Etc/GMT+2
+        - Etc/GMT+3
+        - Etc/GMT+4
+        - Etc/GMT+5
+        - Etc/GMT+6
+        - Etc/GMT+7
+        - Etc/GMT+8
+        - Etc/GMT+9
+        - Etc/GMT-0
+        - Etc/GMT-1
+        - Etc/GMT-10
+        - Etc/GMT-11
+        - Etc/GMT-12
+        - Etc/GMT-13
+        - Etc/GMT-14
+        - Etc/GMT-2
+        - Etc/GMT-3
+        - Etc/GMT-4
+        - Etc/GMT-5
+        - Etc/GMT-6
+        - Etc/GMT-7
+        - Etc/GMT-8
+        - Etc/GMT-9
+        - Etc/GMT0
+        - Etc/Greenwich
+        - Etc/UCT
+        - Etc/UTC
+        - Etc/Universal
+        - Etc/Zulu
+        - Europe/Amsterdam
+        - Europe/Andorra
+        - Europe/Astrakhan
+        - Europe/Athens
+        - Europe/Belfast
+        - Europe/Belgrade
+        - Europe/Berlin
+        - Europe/Bratislava
+        - Europe/Brussels
+        - Europe/Bucharest
+        - Europe/Budapest
+        - Europe/Busingen
+        - Europe/Chisinau
+        - Europe/Copenhagen
+        - Europe/Dublin
+        - Europe/Gibraltar
+        - Europe/Guernsey
+        - Europe/Helsinki
+        - Europe/Isle_of_Man
+        - Europe/Istanbul
+        - Europe/Jersey
+        - Europe/Kaliningrad
+        - Europe/Kiev
+        - Europe/Kirov
+        - Europe/Lisbon
+        - Europe/Ljubljana
+        - Europe/London
+        - Europe/Luxembourg
+        - Europe/Madrid
+        - Europe/Malta
+        - Europe/Mariehamn
+        - Europe/Minsk
+        - Europe/Monaco
+        - Europe/Moscow
+        - Europe/Nicosia
+        - Europe/Oslo
+        - Europe/Paris
+        - Europe/Podgorica
+        - Europe/Prague
+        - Europe/Riga
+        - Europe/Rome
+        - Europe/Samara
+        - Europe/San_Marino
+        - Europe/Sarajevo
+        - Europe/Saratov
+        - Europe/Simferopol
+        - Europe/Skopje
+        - Europe/Sofia
+        - Europe/Stockholm
+        - Europe/Tallinn
+        - Europe/Tirane
+        - Europe/Tiraspol
+        - Europe/Ulyanovsk
+        - Europe/Uzhgorod
+        - Europe/Vaduz
+        - Europe/Vatican
+        - Europe/Vienna
+        - Europe/Vilnius
+        - Europe/Volgograd
+        - Europe/Warsaw
+        - Europe/Zagreb
+        - Europe/Zaporozhye
+        - Europe/Zurich
+        - GB
+        - GB-Eire
+        - GMT
+        - GMT+0
+        - GMT-0
+        - GMT0
+        - Greenwich
+        - HST
+        - Hongkong
+        - Iceland
+        - Indian/Antananarivo
+        - Indian/Chagos
+        - Indian/Christmas
+        - Indian/Cocos
+        - Indian/Comoro
+        - Indian/Kerguelen
+        - Indian/Mahe
+        - Indian/Maldives
+        - Indian/Mauritius
+        - Indian/Mayotte
+        - Indian/Reunion
+        - Iran
+        - Israel
+        - Jamaica
+        - Japan
+        - Kwajalein
+        - Libya
+        - MET
+        - MST
+        - MST7MDT
+        - Mexico/BajaNorte
+        - Mexico/BajaSur
+        - Mexico/General
+        - NZ
+        - NZ-CHAT
+        - Navajo
+        - PRC
+        - PST8PDT
+        - Pacific/Apia
+        - Pacific/Auckland
+        - Pacific/Bougainville
+        - Pacific/Chatham
+        - Pacific/Chuuk
+        - Pacific/Easter
+        - Pacific/Efate
+        - Pacific/Enderbury
+        - Pacific/Fakaofo
+        - Pacific/Fiji
+        - Pacific/Funafuti
+        - Pacific/Galapagos
+        - Pacific/Gambier
+        - Pacific/Guadalcanal
+        - Pacific/Guam
+        - Pacific/Honolulu
+        - Pacific/Johnston
+        - Pacific/Kiritimati
+        - Pacific/Kosrae
+        - Pacific/Kwajalein
+        - Pacific/Majuro
+        - Pacific/Marquesas
+        - Pacific/Midway
+        - Pacific/Nauru
+        - Pacific/Niue
+        - Pacific/Norfolk
+        - Pacific/Noumea
+        - Pacific/Pago_Pago
+        - Pacific/Palau
+        - Pacific/Pitcairn
+        - Pacific/Pohnpei
+        - Pacific/Ponape
+        - Pacific/Port_Moresby
+        - Pacific/Rarotonga
+        - Pacific/Saipan
+        - Pacific/Samoa
+        - Pacific/Tahiti
+        - Pacific/Tarawa
+        - Pacific/Tongatapu
+        - Pacific/Truk
+        - Pacific/Wake
+        - Pacific/Wallis
+        - Pacific/Yap
+        - Poland
+        - Portugal
+        - ROC
+        - ROK
+        - Singapore
+        - Turkey
+        - UCT
+        - US/Alaska
+        - US/Aleutian
+        - US/Arizona
+        - US/Central
+        - US/East-Indiana
+        - US/Eastern
+        - US/Hawaii
+        - US/Indiana-Starke
+        - US/Michigan
+        - US/Mountain
+        - US/Pacific
+        - US/Samoa
+        - UTC
+        - Universal
+        - W-SU
+        - WET
+        - Zulu
+      x-go-type: github.com/mikekonan/go-types/v2/timezone.Timezone
     URL:
       example: (ftp|http(s)|mail...)://google.com
       type: string
