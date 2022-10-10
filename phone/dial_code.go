@@ -33,8 +33,7 @@ func (code DialCode) Value() (value driver.Value, err error) {
 		return "", nil
 	}
 
-	var dialCode DialCode
-	if _, err = CountriesByAlpha2CodeErr(dialCode); err != nil {
+	if _, err = CountriesByAlpha2CodeErr(code); err != nil {
 		return nil, err
 	}
 
