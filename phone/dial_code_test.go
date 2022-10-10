@@ -17,6 +17,7 @@ var testDialCodeCases = []struct {
 	{testValue: "rqweq", expectingValidateError: true, expectingValueError: true},
 	{testValue: "r12", expectingValidateError: true, expectingValueError: true},
 	{testValue: "999", expectingValidateError: true, expectingValueError: true},
+	{testValue: "1", expectingValidateError: false, expectingValueError: false},
 }
 
 func TestDialCode_Validate(t *testing.T) {
