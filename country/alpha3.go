@@ -16,8 +16,10 @@ func (code *Alpha3Code) UnmarshalJSON(data []byte) error {
 	}
 
 	enumValue := Alpha3Code(str)
-	if _, err := ByAlpha3CodeErr(enumValue); err != nil {
-		return err
+	if len(enumValue) != 0 {
+		if _, err := ByAlpha3CodeErr(enumValue); err != nil {
+			return err
+		}
 	}
 
 	*code = enumValue
