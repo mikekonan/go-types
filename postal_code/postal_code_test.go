@@ -12,6 +12,9 @@ var testCases = []struct {
 	expectingValueError    bool
 }{
 	{testValue: "", expectingValidateError: false, expectingValueError: false},
+	{testValue: "CA1-4124", expectingValidateError: false, expectingValueError: false},
+	{testValue: "CA12 4124", expectingValidateError: false, expectingValueError: false},
+	{testValue: " CA12 4122344", expectingValidateError: true, expectingValueError: true},
 	{testValue: "{}", expectingValidateError: true, expectingValueError: true},
 	{testValue: "112#124", expectingValidateError: true, expectingValueError: true},
 	{testValue: "sdfsdf#asd", expectingValidateError: true, expectingValueError: true},

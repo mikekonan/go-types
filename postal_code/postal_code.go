@@ -37,7 +37,7 @@ func (code PostalCode) Validate() error {
 	}
 
 	if !stringValid(code.String()) {
-		return errors.New("postal code should contain numbers, letters and hyphen only")
+		return errors.New("postal code should contain numbers, letters, spaces and hyphen only")
 	}
 
 	return nil
