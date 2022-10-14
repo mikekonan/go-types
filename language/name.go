@@ -16,8 +16,10 @@ func (name *Name) UnmarshalJSON(data []byte) error {
 	}
 
 	enumValue := Name(str)
-	if _, err := ByNameErr(enumValue); err != nil {
-		return err
+	if len(enumValue) != 0 {
+		if _, err := ByNameErr(enumValue); err != nil {
+			return err
+		}
 	}
 
 	*name = enumValue

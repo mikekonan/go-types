@@ -28,10 +28,6 @@ func (code PostalCode) Value() (value driver.Value, err error) {
 
 // Validate implementation of ozzo-validation Validate interface
 func (code PostalCode) Validate() error {
-	if len(code) == 0 {
-		return nil
-	}
-
 	if len(code) < 4 || len(code) > 10 {
 		return fmt.Errorf("'%s' is not valid postal code", code)
 	}
@@ -51,8 +47,10 @@ func (code *PostalCode) UnmarshalJSON(data []byte) error {
 	}
 
 	codeValue := PostalCode(str)
-	if err := codeValue.Validate(); err != nil {
-		return err
+	if len(codeValue) != 0 {
+		if err := codeValue.Validate(); err != nil {
+			return err
+		}
 	}
 
 	*code = codeValue

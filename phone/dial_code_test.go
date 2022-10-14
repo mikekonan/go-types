@@ -7,17 +7,19 @@ import (
 )
 
 var testDialCodeCases = []struct {
-	testValue              DialCode
-	expectingValidateError bool
-	expectingValueError    bool
+	testValue               DialCode
+	expectingValidateError  bool
+	expectingValueError     bool
+	expectingUnmarshalError bool
 }{
-	{testValue: "", expectingValidateError: true, expectingValueError: false},
-	{testValue: "12", expectingValidateError: true, expectingValueError: true},
-	{testValue: "1252365", expectingValidateError: true, expectingValueError: true},
-	{testValue: "rqweq", expectingValidateError: true, expectingValueError: true},
-	{testValue: "r12", expectingValidateError: true, expectingValueError: true},
-	{testValue: "999", expectingValidateError: true, expectingValueError: true},
-	{testValue: "1", expectingValidateError: false, expectingValueError: false},
+	{testValue: "", expectingValidateError: true, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: "12", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "1252365", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: " 1252365", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "rqweq", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "r12", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "999", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "1", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
 }
 
 func TestDialCode_Validate(t *testing.T) {
@@ -37,7 +39,7 @@ func TestDialCode_UnmarshalJSON(t *testing.T) {
 		}
 
 		actualErr := json.Unmarshal([]byte(jsonStr), &dialCodeStruct)
-		if (actualErr == nil) == testCase.expectingValidateError {
+		if (actualErr == nil) == testCase.expectingUnmarshalError {
 			t.Errorf(`JsonUnmarshal: '%s'. expecting error - '%v' but was opposite`, testCase.testValue, testCase.expectingValidateError)
 		}
 	}

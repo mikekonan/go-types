@@ -46,8 +46,10 @@ func (number *Number) UnmarshalJSON(data []byte) error {
 	}
 
 	phoneValue := Number(str)
-	if err := phoneValue.Validate(); err != nil {
-		return err
+	if len(phoneValue) != 0 {
+		if err := phoneValue.Validate(); err != nil {
+			return err
+		}
 	}
 
 	*number = phoneValue

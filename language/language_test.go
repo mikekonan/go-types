@@ -384,13 +384,18 @@ func TestNameUnmarshalJson(t *testing.T) {
 		t.FailNow()
 	}
 
+	var negative NameStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"name":"%s"}`, "RUsski")), &negative); err == nil {
+		t.FailNow()
+	}
+
 	var wrongName NameStruct
 	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"name":"%s"}`, "wrong name")), &wrongName); err == nil {
 		t.FailNow()
 	}
 
 	var emptyName NameStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"name":"%s"}`, "")), &emptyName); err == nil {
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"name":"%s"}`, "")), &emptyName); err != nil {
 		t.FailNow()
 	}
 }
@@ -405,13 +410,18 @@ func TestAlpha2CodeUnmarshalJson(t *testing.T) {
 		t.FailNow()
 	}
 
-	var wrongCode Alpha2Code
+	var negative Alpha2CodeStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "RY")), &negative); err == nil {
+		t.FailNow()
+	}
+
+	var wrongCode Alpha2CodeStruct
 	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "wrong code")), &wrongCode); err == nil {
 		t.FailNow()
 	}
 
-	var emptyCode Alpha2Code
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "")), &emptyCode); err == nil {
+	var emptyCode Alpha2CodeStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "")), &emptyCode); err != nil {
 		t.FailNow()
 	}
 }
@@ -426,13 +436,18 @@ func TestAlpha3CodeUnmarshalJson(t *testing.T) {
 		t.FailNow()
 	}
 
-	var wrongCode Alpha3Code
+	var negative Alpha3CodeStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "RUZ")), &negative); err == nil {
+		t.FailNow()
+	}
+
+	var wrongCode Alpha3CodeStruct
 	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "wrong code")), &wrongCode); err == nil {
 		t.FailNow()
 	}
 
-	var emptyCode Alpha3Code
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "")), &emptyCode); err == nil {
+	var emptyCode Alpha3CodeStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "")), &emptyCode); err != nil {
 		t.FailNow()
 	}
 }

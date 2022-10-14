@@ -19,8 +19,10 @@ func (code *DialCode) UnmarshalJSON(data []byte) error {
 	}
 
 	dialCode := DialCode(str)
-	if _, err := CountriesByAlpha2CodeErr(dialCode); err != nil {
-		return err
+	if len(dialCode) != 0 {
+		if _, err := CountriesByAlpha2CodeErr(dialCode); err != nil {
+			return err
+		}
 	}
 
 	*code = dialCode
