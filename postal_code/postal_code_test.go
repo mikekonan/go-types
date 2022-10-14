@@ -7,25 +7,26 @@ import (
 )
 
 var testCases = []struct {
-	testValue              PostalCode
-	expectingValidateError bool
-	expectingValueError    bool
+	testValue               PostalCode
+	expectingValidateError  bool
+	expectingValueError     bool
+	expectingUnmarshalError bool
 }{
-	{testValue: "", expectingValidateError: false, expectingValueError: false},
-	{testValue: "CA1-4124", expectingValidateError: false, expectingValueError: false},
-	{testValue: "CA12 4124", expectingValidateError: false, expectingValueError: false},
-	{testValue: " CA12 4122344", expectingValidateError: true, expectingValueError: true},
-	{testValue: "{}", expectingValidateError: true, expectingValueError: true},
-	{testValue: "112#124", expectingValidateError: true, expectingValueError: true},
-	{testValue: "sdfsdf#asd", expectingValidateError: true, expectingValueError: true},
-	{testValue: "a2g0)d23", expectingValidateError: true, expectingValueError: true},
-	{testValue: "12312312313221", expectingValidateError: true, expectingValueError: true},
-	{testValue: "CA124124", expectingValidateError: false, expectingValueError: false},
-	{testValue: "YYAAAAAA", expectingValidateError: false, expectingValueError: false},
-	{testValue: "1234567", expectingValidateError: false, expectingValueError: false},
-	{testValue: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", expectingValidateError: true, expectingValueError: true},
+	{testValue: "", expectingValidateError: true, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: "CA1-4124", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: "CA12 4124", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: " CA12 4122344", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "{}", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "112#124", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "sdfsdf#asd", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "a2g0)d23", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "12312312313221", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "CA124124", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: "YYAAAAAA", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: "1234567", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{testValue: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{testValue: "\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
-		expectingValidateError: true, expectingValueError: true},
+		expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 }
 
 func TestPostalCode_Validate(t *testing.T) {
@@ -45,7 +46,7 @@ func TestPostalCode_UnmarshalJSON(t *testing.T) {
 		}
 
 		actualErr := json.Unmarshal([]byte(jsonStr), &PostalCodeStruct)
-		if (actualErr == nil) == testCase.expectingValidateError {
+		if (actualErr == nil) == testCase.expectingUnmarshalError {
 			t.Errorf(`JsonUnmarshal: '%s'. expecting error - '%v' but was opposite`, testCase.testValue, testCase.expectingValidateError)
 		}
 	}
