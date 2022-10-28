@@ -2144,7 +2144,7 @@ components:
         - zul
       x-go-type: github.com/mikekonan/go-types/v2/language.Alpha3Code
     DialCountryCode:
-      example: 1-829
+      example: "1829"
       type: string
       format: E.164
       enum:
@@ -2353,31 +2353,31 @@ components:
         - "995"
         - "996"
         - "998"
-        - 1-684
-        - 1-264
-        - 1-268
-        - 1-242
-        - 1-246
-        - 1-441
-        - 1-284
-        - 1-345
-        - 1-767
-        - 1-809
-        - 1-829
-        - 1-849
-        - 1-473
-        - 1-671
-        - 39-06
-        - 1-876
-        - 1-664
-        - 1-670
-        - 1-869
-        - 1-758
-        - 1-784
-        - 1-721
-        - 1-868
-        - 1-649
-        - 1-340
+        - "1242"
+        - "1246"
+        - "1264"
+        - "1268"
+        - "1284"
+        - "1340"
+        - "1345"
+        - "1441"
+        - "1473"
+        - "1649"
+        - "1664"
+        - "1670"
+        - "1671"
+        - "1684"
+        - "1721"
+        - "1758"
+        - "1767"
+        - "1784"
+        - "1809"
+        - "1829"
+        - "1849"
+        - "1868"
+        - "1869"
+        - "1876"
+        - "3906"
       x-go-type: github.com/mikekonan/go-types/v2/phone.DialCode
     PhoneNumber:
       example: 2505550199
@@ -2388,7 +2388,7 @@ components:
       example: CA6633
       type: string
       format: postal-code
-      x-go-type: github.com/mikekonan/go-types/v2/postalcode.PostalCode
+      x-go-type: github.com/mikekonan/go-types/v2/postal_code.PostalCode
     Date:
       example: 2006-01-02
       type: string
