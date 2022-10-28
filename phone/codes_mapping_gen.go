@@ -889,79 +889,79 @@ var countryCodeByDialString = map[string][]country.Alpha2Code{
 	"998": {
 		country.Alpha2Code("UZ"),
 	},
-	"1-684": {
-		country.Alpha2Code("AS"),
-	},
-	"1-264": {
-		country.Alpha2Code("AI"),
-	},
-	"1-268": {
-		country.Alpha2Code("AG"),
-	},
-	"1-242": {
+	"1242": {
 		country.Alpha2Code("BS"),
 	},
-	"1-246": {
+	"1246": {
 		country.Alpha2Code("BB"),
 	},
-	"1-441": {
-		country.Alpha2Code("BM"),
+	"1264": {
+		country.Alpha2Code("AI"),
 	},
-	"1-284": {
+	"1268": {
+		country.Alpha2Code("AG"),
+	},
+	"1284": {
 		country.Alpha2Code("VG"),
 	},
-	"1-345": {
+	"1340": {
+		country.Alpha2Code("VI"),
+	},
+	"1345": {
 		country.Alpha2Code("KY"),
 	},
-	"1-767": {
-		country.Alpha2Code("DM"),
+	"1441": {
+		country.Alpha2Code("BM"),
 	},
-	"1-809": {
-		country.Alpha2Code("DO"),
-	},
-	"1-829": {
-		country.Alpha2Code("DO"),
-	},
-	"1-849": {
-		country.Alpha2Code("DO"),
-	},
-	"1-473": {
+	"1473": {
 		country.Alpha2Code("GD"),
 	},
-	"1-671": {
-		country.Alpha2Code("GU"),
-	},
-	"39-06": {
-		country.Alpha2Code("VA"),
-	},
-	"1-876": {
-		country.Alpha2Code("JM"),
-	},
-	"1-664": {
-		country.Alpha2Code("MS"),
-	},
-	"1-670": {
-		country.Alpha2Code("MP"),
-	},
-	"1-869": {
-		country.Alpha2Code("KN"),
-	},
-	"1-758": {
-		country.Alpha2Code("LC"),
-	},
-	"1-784": {
-		country.Alpha2Code("VC"),
-	},
-	"1-721": {
-		country.Alpha2Code("SX"),
-	},
-	"1-868": {
-		country.Alpha2Code("TT"),
-	},
-	"1-649": {
+	"1649": {
 		country.Alpha2Code("TC"),
 	},
-	"1-340": {
-		country.Alpha2Code("VI"),
+	"1664": {
+		country.Alpha2Code("MS"),
+	},
+	"1670": {
+		country.Alpha2Code("MP"),
+	},
+	"1671": {
+		country.Alpha2Code("GU"),
+	},
+	"1684": {
+		country.Alpha2Code("AS"),
+	},
+	"1721": {
+		country.Alpha2Code("SX"),
+	},
+	"1758": {
+		country.Alpha2Code("LC"),
+	},
+	"1767": {
+		country.Alpha2Code("DM"),
+	},
+	"1784": {
+		country.Alpha2Code("VC"),
+	},
+	"1809": {
+		country.Alpha2Code("DO"),
+	},
+	"1829": {
+		country.Alpha2Code("DO"),
+	},
+	"1849": {
+		country.Alpha2Code("DO"),
+	},
+	"1868": {
+		country.Alpha2Code("TT"),
+	},
+	"1869": {
+		country.Alpha2Code("KN"),
+	},
+	"1876": {
+		country.Alpha2Code("JM"),
+	},
+	"3906": {
+		country.Alpha2Code("VA"),
 	},
 }

@@ -73,10 +73,10 @@ function preparePhoneCountryCodes(rawCodes) {
             let codesByCountry = codes[requestCountryDialKey].split(",")
             if (codesByCountry.length > 1) {
                 codesByCountry.forEach(code => {
-                    result.push({ [innerCountryDialKey]: code, [innerCountryKey]: codes[requestCountryKey] })
+                    result.push({ [innerCountryDialKey]: code.replace("-", ""), [innerCountryKey]: codes[requestCountryKey] })
                 })
             } else {
-                result[result.length] = { [innerCountryDialKey]: codes[requestCountryDialKey], [innerCountryKey]: codes[requestCountryKey] }
+                result[result.length] = { [innerCountryDialKey]: codes[requestCountryDialKey].replace("-", ""), [innerCountryKey]: codes[requestCountryKey] }
             }
         }
 
@@ -93,7 +93,7 @@ ${renderByAlpha2Codes(trimRedundantDominicana(codes))}
 }
 
 function trimRedundantDominicana(codes) {
-    let redundant = ["1-809", "1-849"]
+    let redundant = ["1809", "1849"]
     return codes.filter(({ [innerCountryDialKey]: dialCode }) => !redundant.some(el => dialCode === el))
 }
 
@@ -143,7 +143,7 @@ function renderSpecification(codes) {
         components: {
             schemas: {
                 DialCountryCode: {
-                    example: "1-829",
+                    example: "1829",
                     type: "string",
                     format: "E.164",
                     enum: [...Object.keys(concatenateCountriesByDialCode(codes))],

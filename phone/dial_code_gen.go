@@ -9,18 +9,18 @@ const (
     AL = DialCode("355")
 	// 213 is 'DZ' country dial code
     DZ = DialCode("213")
-	// 1-684 is 'AS' country dial code
-    AS = DialCode("1-684")
+	// 1684 is 'AS' country dial code
+    AS = DialCode("1684")
 	// 376 is 'AD' country dial code
     AD = DialCode("376")
 	// 244 is 'AO' country dial code
     AO = DialCode("244")
-	// 1-264 is 'AI' country dial code
-    AI = DialCode("1-264")
+	// 1264 is 'AI' country dial code
+    AI = DialCode("1264")
 	// 672 is 'AQ' country dial code
     AQ = DialCode("672")
-	// 1-268 is 'AG' country dial code
-    AG = DialCode("1-268")
+	// 1268 is 'AG' country dial code
+    AG = DialCode("1268")
 	// 54 is 'AR' country dial code
     AR = DialCode("54")
 	// 374 is 'AM' country dial code
@@ -33,14 +33,14 @@ const (
     AT = DialCode("43")
 	// 994 is 'AZ' country dial code
     AZ = DialCode("994")
-	// 1-242 is 'BS' country dial code
-    BS = DialCode("1-242")
+	// 1242 is 'BS' country dial code
+    BS = DialCode("1242")
 	// 973 is 'BH' country dial code
     BH = DialCode("973")
 	// 880 is 'BD' country dial code
     BD = DialCode("880")
-	// 1-246 is 'BB' country dial code
-    BB = DialCode("1-246")
+	// 1246 is 'BB' country dial code
+    BB = DialCode("1246")
 	// 375 is 'BY' country dial code
     BY = DialCode("375")
 	// 32 is 'BE' country dial code
@@ -49,8 +49,8 @@ const (
     BZ = DialCode("501")
 	// 229 is 'BJ' country dial code
     BJ = DialCode("229")
-	// 1-441 is 'BM' country dial code
-    BM = DialCode("1-441")
+	// 1441 is 'BM' country dial code
+    BM = DialCode("1441")
 	// 975 is 'BT' country dial code
     BT = DialCode("975")
 	// 591 is 'BO' country dial code
@@ -67,8 +67,8 @@ const (
     BR = DialCode("55")
 	// 246 is 'IO' country dial code
     IO = DialCode("246")
-	// 1-284 is 'VG' country dial code
-    VG = DialCode("1-284")
+	// 1284 is 'VG' country dial code
+    VG = DialCode("1284")
 	// 673 is 'BN' country dial code
     BN = DialCode("673")
 	// 359 is 'BG' country dial code
@@ -85,8 +85,8 @@ const (
     CM = DialCode("237")
 	// 1 is 'CA' country dial code
     CA = DialCode("1")
-	// 1-345 is 'KY' country dial code
-    KY = DialCode("1-345")
+	// 1345 is 'KY' country dial code
+    KY = DialCode("1345")
 	// 236 is 'CF' country dial code
     CF = DialCode("236")
 	// 235 is 'TD' country dial code
@@ -133,10 +133,10 @@ const (
     DK = DialCode("45")
 	// 253 is 'DJ' country dial code
     DJ = DialCode("253")
-	// 1-767 is 'DM' country dial code
-    DM = DialCode("1-767")
-	// 1-829 is 'DO' country dial code
-    DO = DialCode("1-829")
+	// 1767 is 'DM' country dial code
+    DM = DialCode("1767")
+	// 1829 is 'DO' country dial code
+    DO = DialCode("1829")
 	// 593 is 'EC' country dial code
     EC = DialCode("593")
 	// 20 is 'EG' country dial code
@@ -185,12 +185,12 @@ const (
     GR = DialCode("30")
 	// 299 is 'GL' country dial code
     GL = DialCode("299")
-	// 1-473 is 'GD' country dial code
-    GD = DialCode("1-473")
+	// 1473 is 'GD' country dial code
+    GD = DialCode("1473")
 	// 590 is 'GP' country dial code
     GP = DialCode("590")
-	// 1-671 is 'GU' country dial code
-    GU = DialCode("1-671")
+	// 1671 is 'GU' country dial code
+    GU = DialCode("1671")
 	// 502 is 'GT' country dial code
     GT = DialCode("502")
 	// 44 is 'GG' country dial code
@@ -205,8 +205,8 @@ const (
     HT = DialCode("509")
 	// 672 is 'HM' country dial code
     HM = DialCode("672")
-	// 39-06 is 'VA' country dial code
-    VA = DialCode("39-06")
+	// 3906 is 'VA' country dial code
+    VA = DialCode("3906")
 	// 504 is 'HN' country dial code
     HN = DialCode("504")
 	// 36 is 'HU' country dial code
@@ -229,8 +229,8 @@ const (
     IL = DialCode("972")
 	// 39 is 'IT' country dial code
     IT = DialCode("39")
-	// 1-876 is 'JM' country dial code
-    JM = DialCode("1-876")
+	// 1876 is 'JM' country dial code
+    JM = DialCode("1876")
 	// 81 is 'JP' country dial code
     JP = DialCode("81")
 	// 44 is 'JE' country dial code
@@ -297,8 +297,8 @@ const (
     MN = DialCode("976")
 	// 382 is 'ME' country dial code
     ME = DialCode("382")
-	// 1-664 is 'MS' country dial code
-    MS = DialCode("1-664")
+	// 1664 is 'MS' country dial code
+    MS = DialCode("1664")
 	// 212 is 'MA' country dial code
     MA = DialCode("212")
 	// 258 is 'MZ' country dial code
@@ -327,8 +327,8 @@ const (
     NU = DialCode("683")
 	// 672 is 'NF' country dial code
     NF = DialCode("672")
-	// 1-670 is 'MP' country dial code
-    MP = DialCode("1-670")
+	// 1670 is 'MP' country dial code
+    MP = DialCode("1670")
 	// 47 is 'NO' country dial code
     NO = DialCode("47")
 	// 968 is 'OM' country dial code
@@ -373,16 +373,16 @@ const (
     BL = DialCode("590")
 	// 290 is 'SH' country dial code
     SH = DialCode("290")
-	// 1-869 is 'KN' country dial code
-    KN = DialCode("1-869")
-	// 1-758 is 'LC' country dial code
-    LC = DialCode("1-758")
+	// 1869 is 'KN' country dial code
+    KN = DialCode("1869")
+	// 1758 is 'LC' country dial code
+    LC = DialCode("1758")
 	// 590 is 'MF' country dial code
     MF = DialCode("590")
 	// 508 is 'PM' country dial code
     PM = DialCode("508")
-	// 1-784 is 'VC' country dial code
-    VC = DialCode("1-784")
+	// 1784 is 'VC' country dial code
+    VC = DialCode("1784")
 	// 685 is 'WS' country dial code
     WS = DialCode("685")
 	// 378 is 'SM' country dial code
@@ -401,8 +401,8 @@ const (
     SL = DialCode("232")
 	// 65 is 'SG' country dial code
     SG = DialCode("65")
-	// 1-721 is 'SX' country dial code
-    SX = DialCode("1-721")
+	// 1721 is 'SX' country dial code
+    SX = DialCode("1721")
 	// 421 is 'SK' country dial code
     SK = DialCode("421")
 	// 386 is 'SI' country dial code
@@ -449,16 +449,16 @@ const (
     TK = DialCode("690")
 	// 676 is 'TO' country dial code
     TO = DialCode("676")
-	// 1-868 is 'TT' country dial code
-    TT = DialCode("1-868")
+	// 1868 is 'TT' country dial code
+    TT = DialCode("1868")
 	// 216 is 'TN' country dial code
     TN = DialCode("216")
 	// 90 is 'TR' country dial code
     TR = DialCode("90")
 	// 993 is 'TM' country dial code
     TM = DialCode("993")
-	// 1-649 is 'TC' country dial code
-    TC = DialCode("1-649")
+	// 1649 is 'TC' country dial code
+    TC = DialCode("1649")
 	// 688 is 'TV' country dial code
     TV = DialCode("688")
 	// 256 is 'UG' country dial code
@@ -471,8 +471,8 @@ const (
     GB = DialCode("44")
 	// 255 is 'TZ' country dial code
     TZ = DialCode("255")
-	// 1-340 is 'VI' country dial code
-    VI = DialCode("1-340")
+	// 1340 is 'VI' country dial code
+    VI = DialCode("1340")
 	// 1 is 'US' country dial code
     US = DialCode("1")
 	// 598 is 'UY' country dial code
