@@ -5,7 +5,7 @@ const fs = require("fs");
 
 let resp = request(
     "GET",
-    "https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
+    "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml"
 );
 
 if (resp.statusCode !== 200) {
