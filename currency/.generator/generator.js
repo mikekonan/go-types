@@ -236,6 +236,14 @@ let goCodePromise = xml2js
                 return;
             }
 
+            if (row["CcyMnrUnts"][0] === "N.A.") {
+                return;
+            }
+
+            if (row["CcyNm"][0] === "No universal currency") {
+                return;
+            }
+
             return {
                 country: row["CtryNm"][0],
                 currency:

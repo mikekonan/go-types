@@ -526,13 +526,6 @@ var currenciesByCode = map[string]currency{
 		number:        `360`,
 		decimalPlaces: 2,
 	},
-	`XDR`: {
-		countries:     Countries{`INTERNATIONAL MONETARY FUND (IMF) `, `INTERNATIONAL MONETARY FUND `},
-		currency:      `SDR (Special Drawing Right)`,
-		code:          `XDR`,
-		number:        `960`,
-		decimalPlaces: 0,
-	},
 	`IRR`: {
 		countries:     Countries{`IRAN (ISLAMIC REPUBLIC OF)`, `IRAN`},
 		currency:      `Iranian Rial`,
@@ -721,13 +714,6 @@ var currenciesByCode = map[string]currency{
 		code:          `MUR`,
 		number:        `480`,
 		decimalPlaces: 2,
-	},
-	`XUA`: {
-		countries:     Countries{`MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP`},
-		currency:      `ADB Unit of Account`,
-		code:          `XUA`,
-		number:        `965`,
-		decimalPlaces: 0,
 	},
 	`MXN`: {
 		countries:     Countries{`MEXICO`},
@@ -953,13 +939,6 @@ var currenciesByCode = map[string]currency{
 		number:        `702`,
 		decimalPlaces: 2,
 	},
-	`XSU`: {
-		countries:     Countries{`SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"`},
-		currency:      `Sucre`,
-		code:          `XSU`,
-		number:        `994`,
-		decimalPlaces: 0,
-	},
 	`SBD`: {
 		countries:     Countries{`SOLOMON ISLANDS`},
 		currency:      `Solomon Islands Dollar`,
@@ -1080,7 +1059,7 @@ var currenciesByCode = map[string]currency{
 		decimalPlaces: 3,
 	},
 	`TRY`: {
-		countries:     Countries{`TURKEY`},
+		countries:     Countries{`TÜRKİYE`},
 		currency:      `Turkish Lira`,
 		code:          `TRY`,
 		number:        `949`,
@@ -2098,7 +2077,7 @@ var currenciesByNumber = map[string]currency{
 		decimalPlaces: 2,
 	},
 	`949`: {
-		countries:     Countries{`TURKEY`},
+		countries:     Countries{`TÜRKİYE`},
 		currency:      `Turkish Lira`,
 		code:          `TRY`,
 		number:        `949`,
@@ -2130,20 +2109,6 @@ var currenciesByNumber = map[string]currency{
 		currency:      `CFP Franc`,
 		code:          `XPF`,
 		number:        `953`,
-		decimalPlaces: 0,
-	},
-	`960`: {
-		countries:     Countries{`INTERNATIONAL MONETARY FUND (IMF) `, `INTERNATIONAL MONETARY FUND `},
-		currency:      `SDR (Special Drawing Right)`,
-		code:          `XDR`,
-		number:        `960`,
-		decimalPlaces: 0,
-	},
-	`965`: {
-		countries:     Countries{`MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP`},
-		currency:      `ADB Unit of Account`,
-		code:          `XUA`,
-		number:        `965`,
 		decimalPlaces: 0,
 	},
 	`967`: {
@@ -2271,13 +2236,6 @@ var currenciesByNumber = map[string]currency{
 		code:          `CLF`,
 		number:        `990`,
 		decimalPlaces: 4,
-	},
-	`994`: {
-		countries:     Countries{`SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"`},
-		currency:      `Sucre`,
-		code:          `XSU`,
-		number:        `994`,
-		decimalPlaces: 0,
 	},
 	`997`: {
 		countries:     Countries{`UNITED STATES OF AMERICA (THE)`, `UNITED STATES OF AMERICA`},
@@ -3283,14 +3241,6 @@ var currenciesByCountry = map[string]currencies{
 			number:        `360`,
 			decimalPlaces: 2,
 		},
-	}, `INTERNATIONAL MONETARY FUND (IMF) `: {
-		{
-			countries:     Countries{`INTERNATIONAL MONETARY FUND (IMF) `, `INTERNATIONAL MONETARY FUND `},
-			currency:      `SDR (Special Drawing Right)`,
-			code:          `XDR`,
-			number:        `960`,
-			decimalPlaces: 0,
-		},
 	}, `IRAN (ISLAMIC REPUBLIC OF)`: {
 		{
 			countries:     Countries{`IRAN (ISLAMIC REPUBLIC OF)`, `IRAN`},
@@ -3608,14 +3558,6 @@ var currenciesByCountry = map[string]currencies{
 			code:          `EUR`,
 			number:        `978`,
 			decimalPlaces: 2,
-		},
-	}, `MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP`: {
-		{
-			countries:     Countries{`MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP`},
-			currency:      `ADB Unit of Account`,
-			code:          `XUA`,
-			number:        `965`,
-			decimalPlaces: 0,
 		},
 	}, `MEXICO`: {
 		{
@@ -4097,14 +4039,6 @@ var currenciesByCountry = map[string]currencies{
 			number:        `532`,
 			decimalPlaces: 2,
 		},
-	}, `SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"`: {
-		{
-			countries:     Countries{`SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"`},
-			currency:      `Sucre`,
-			code:          `XSU`,
-			number:        `994`,
-			decimalPlaces: 0,
-		},
 	}, `SLOVAKIA`: {
 		{
 			countries:     Countries{`ÅLAND ISLANDS`, `ANDORRA`, `AUSTRIA`, `BELGIUM`, `CYPRUS`, `ESTONIA`, `EUROPEAN UNION`, `FINLAND`, `FRANCE`, `FRENCH GUIANA`, `FRENCH SOUTHERN TERRITORIES (THE)`, `GERMANY`, `GREECE`, `GUADELOUPE`, `HOLY SEE (THE)`, `IRELAND`, `ITALY`, `LATVIA`, `LITHUANIA`, `LUXEMBOURG`, `MALTA`, `MARTINIQUE`, `MAYOTTE`, `MONACO`, `MONTENEGRO`, `NETHERLANDS (THE)`, `PORTUGAL`, `RÉUNION`, `SAINT BARTHÉLEMY`, `SAINT MARTIN (FRENCH PART)`, `SAINT PIERRE AND MIQUELON`, `SAN MARINO`, `SLOVAKIA`, `SLOVENIA`, `SPAIN`, `FRENCH SOUTHERN TERRITORIES`, `HOLY SEE`, `NETHERLANDS`, `SAINT MARTIN`},
@@ -4309,9 +4243,9 @@ var currenciesByCountry = map[string]currencies{
 			number:        `788`,
 			decimalPlaces: 3,
 		},
-	}, `TURKEY`: {
+	}, `TÜRKİYE`: {
 		{
-			countries:     Countries{`TURKEY`},
+			countries:     Countries{`TÜRKİYE`},
 			currency:      `Turkish Lira`,
 			code:          `TRY`,
 			number:        `949`,
@@ -4640,14 +4574,6 @@ var currenciesByCountry = map[string]currencies{
 			code:          `EUR`,
 			number:        `978`,
 			decimalPlaces: 2,
-		},
-	}, `INTERNATIONAL MONETARY FUND `: {
-		{
-			countries:     Countries{`INTERNATIONAL MONETARY FUND (IMF) `, `INTERNATIONAL MONETARY FUND `},
-			currency:      `SDR (Special Drawing Right)`,
-			code:          `XDR`,
-			number:        `960`,
-			decimalPlaces: 0,
 		},
 	}, `IRAN`: {
 		{
@@ -5378,13 +5304,6 @@ var currenciesByCurrency = map[string]currency{
 		number:        `360`,
 		decimalPlaces: 2,
 	},
-	`SDR (Special Drawing Right)`: {
-		countries:     Countries{`INTERNATIONAL MONETARY FUND (IMF) `, `INTERNATIONAL MONETARY FUND `},
-		currency:      `SDR (Special Drawing Right)`,
-		code:          `XDR`,
-		number:        `960`,
-		decimalPlaces: 0,
-	},
 	`Iranian Rial`: {
 		countries:     Countries{`IRAN (ISLAMIC REPUBLIC OF)`, `IRAN`},
 		currency:      `Iranian Rial`,
@@ -5573,13 +5492,6 @@ var currenciesByCurrency = map[string]currency{
 		code:          `MUR`,
 		number:        `480`,
 		decimalPlaces: 2,
-	},
-	`ADB Unit of Account`: {
-		countries:     Countries{`MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP`},
-		currency:      `ADB Unit of Account`,
-		code:          `XUA`,
-		number:        `965`,
-		decimalPlaces: 0,
 	},
 	`Mexican Peso`: {
 		countries:     Countries{`MEXICO`},
@@ -5798,13 +5710,6 @@ var currenciesByCurrency = map[string]currency{
 		number:        `702`,
 		decimalPlaces: 2,
 	},
-	`Sucre`: {
-		countries:     Countries{`SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"`},
-		currency:      `Sucre`,
-		code:          `XSU`,
-		number:        `994`,
-		decimalPlaces: 0,
-	},
 	`Solomon Islands Dollar`: {
 		countries:     Countries{`SOLOMON ISLANDS`},
 		currency:      `Solomon Islands Dollar`,
@@ -5925,7 +5830,7 @@ var currenciesByCurrency = map[string]currency{
 		decimalPlaces: 3,
 	},
 	`Turkish Lira`: {
-		countries:     Countries{`TURKEY`},
+		countries:     Countries{`TÜRKİYE`},
 		currency:      `Turkish Lira`,
 		code:          `TRY`,
 		number:        `949`,

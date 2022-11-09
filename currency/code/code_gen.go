@@ -153,8 +153,6 @@ const (
 	ISK = currency.Code("ISK")
 	// IDR represents 'IDR' currency code
 	IDR = currency.Code("IDR")
-	// XDR represents 'XDR' currency code
-	XDR = currency.Code("XDR")
 	// IRR represents 'IRR' currency code
 	IRR = currency.Code("IRR")
 	// IQD represents 'IQD' currency code
@@ -209,8 +207,6 @@ const (
 	MRU = currency.Code("MRU")
 	// MUR represents 'MUR' currency code
 	MUR = currency.Code("MUR")
-	// XUA represents 'XUA' currency code
-	XUA = currency.Code("XUA")
 	// MXN represents 'MXN' currency code
 	MXN = currency.Code("MXN")
 	// MXV represents 'MXV' currency code
@@ -275,8 +271,6 @@ const (
 	SLE = currency.Code("SLE")
 	// SGD represents 'SGD' currency code
 	SGD = currency.Code("SGD")
-	// XSU represents 'XSU' currency code
-	XSU = currency.Code("XSU")
 	// SBD represents 'SBD' currency code
 	SBD = currency.Code("SBD")
 	// SOS represents 'SOS' currency code
