@@ -856,7 +856,6 @@ components:
         - HUF
         - ISK
         - IDR
-        - XDR
         - IRR
         - IQD
         - ILS
@@ -884,7 +883,6 @@ components:
         - MVR
         - MRU
         - MUR
-        - XUA
         - MXN
         - MXV
         - MDL
@@ -917,7 +915,6 @@ components:
         - SLL
         - SLE
         - SGD
-        - XSU
         - SBD
         - SOS
         - SSP
@@ -1032,7 +1029,6 @@ components:
         - Forint
         - Iceland Krona
         - Rupiah
-        - SDR (Special Drawing Right)
         - Iranian Rial
         - Iraqi Dinar
         - New Israeli Sheqel
@@ -1060,7 +1056,6 @@ components:
         - Rufiyaa
         - Ouguiya
         - Mauritius Rupee
-        - ADB Unit of Account
         - Mexican Peso
         - Mexican Unidad de Inversion (UDI)
         - Moldovan Leu
@@ -1092,7 +1087,6 @@ components:
         - Seychelles Rupee
         - Leone
         - Singapore Dollar
-        - Sucre
         - Solomon Islands Dollar
         - Somali Shilling
         - South Sudanese Pound
@@ -1236,7 +1230,6 @@ components:
         - ICELAND
         - INDIA
         - INDONESIA
-        - INTERNATIONAL MONETARY FUND (IMF) 
         - IRAN (ISLAMIC REPUBLIC OF)
         - IRAQ
         - IRELAND
@@ -1276,7 +1269,6 @@ components:
         - MAURITANIA
         - MAURITIUS
         - MAYOTTE
-        - MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP
         - MEXICO
         - MICRONESIA (FEDERATED STATES OF)
         - MOLDOVA (THE REPUBLIC OF)
@@ -1334,7 +1326,6 @@ components:
         - SIERRA LEONE
         - SINGAPORE
         - SINT MAARTEN (DUTCH PART)
-        - SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"
         - SLOVAKIA
         - SLOVENIA
         - SOLOMON ISLANDS
@@ -1359,7 +1350,7 @@ components:
         - TONGA
         - TRINIDAD AND TOBAGO
         - TUNISIA
-        - TURKEY
+        - TÜRKİYE
         - TURKMENISTAN
         - TURKS AND CAICOS ISLANDS (THE)
         - TUVALU
@@ -1463,7 +1454,6 @@ components:
         - "348"
         - "352"
         - "360"
-        - "960"
         - "364"
         - "368"
         - "376"
@@ -1491,7 +1481,6 @@ components:
         - "462"
         - "929"
         - "480"
-        - "965"
         - "484"
         - "979"
         - "498"
@@ -1524,7 +1513,6 @@ components:
         - "694"
         - "925"
         - "702"
-        - "994"
         - "090"
         - "706"
         - "728"

@@ -236,6 +236,14 @@ let goCodePromise = xml2js
                 return;
             }
 
+            if (row["CcyMnrUnts"][0] === "N.A.") {
+                return;
+            }
+
+            if (row["CcyNm"][0] === "No universal currency") {
+                return;
+            }
+
             return {
                 country: row["CtryNm"][0],
                 currency:
@@ -280,6 +288,14 @@ let oas3Promise = xml2js
     .then((currencies) => {
         let result = currencies.map((row) => {
             if (!!!row["Ccy"]) {
+                return;
+            }
+
+            if (row["CcyMnrUnts"][0] === "N.A.") {
+                return;
+            }
+
+            if (row["CcyNm"][0] === "No universal currency") {
                 return;
             }
 
