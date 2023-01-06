@@ -2131,7 +2131,7 @@ components:
         - zha
         - zul
       x-go-type: github.com/mikekonan/go-types/v2/language.Alpha3Code
-    DialCountryCode:
+    DialCode:
       example: "1829"
       type: string
       format: E.164
