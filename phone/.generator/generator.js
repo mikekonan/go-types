@@ -142,7 +142,7 @@ function renderSpecification(codes) {
         openapi: "3.0.0",
         components: {
             schemas: {
-                DialCountryCode: {
+                DialCode: {
                     example: "1829",
                     type: "string",
                     format: "E.164",

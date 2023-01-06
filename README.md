@@ -99,10 +99,10 @@ func main() {
 ```
 
 ## Links:
-- Currency Codes [(ISO 4217)](https://www.currency-iso.org/en/home/tables/table-a1.html) - [wiki](https://en.wikipedia.org/wiki/ISO_4217)
+- Currency Codes [(ISO 4217)](https://www.currency-iso.org/en/home/tables/table-a1.html) - [wiki](https://en.wikipedia.org/wiki/ISO_4217), [data source](https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml)
 - Country Codes [(ISO 3166)](https://www.iso.org/iso-3166-country-codes.html) - [wiki](https://en.wikipedia.org/wiki/ISO_3166-2)
 - URL(including HttpURL) [(standard)](https://url.spec.whatwg.org/) - [wiki](https://en.wikipedia.org/wiki/URL)
 - Email [(part of RFC5322)](https://tools.ietf.org/html/rfc5322) - [wiki](https://en.wikipedia.org/wiki/Email_address)
 - Timezone [(RFC6557 IANA timezones)](https://www.iana.org/time-zones) - [wiki](https://en.wikipedia.org/wiki/Time_zone)
-- Languages [(ISO 639-1)](https://www.iso.org/standard/22109.html) - [wiki](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes); [(ISO 639-2)](https://www.iso.org/standard/4767.html) - [wiki](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes)
-- Country Dial Codes [(E.164)](https://www.itu.int/rec/T-REC-E.164-201203-I!Sup6/en) - [wiki](https://en.wikipedia.org/wiki/E.164)
+- Languages [(ISO 639-1)](https://www.iso.org/standard/22109.html) - [wiki](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes); [(ISO 639-2)](https://www.iso.org/standard/4767.html) - [wiki](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes), [data source](https://datahub.io/core/language-codes/r/language-codes-3b2.json)
+- Dial Codes [(E.164)](https://www.itu.int/rec/T-REC-E.164-201203-I!Sup6/en) - [wiki](https://en.wikipedia.org/wiki/E.164), [data source](https://datahub.io/core/country-codes/r/country-codes.json)
