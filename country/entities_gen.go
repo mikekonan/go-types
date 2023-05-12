@@ -931,9 +931,9 @@ var (
 		alpha2: "NP",
 		alpha3: "NPL",
 	}
-	// Netherlands represents 'Netherlands (the)' country
+	// Netherlands represents 'Netherlands (Kingdom of the)' country
 	Netherlands = Country{
-		name:   "Netherlands (the)",
+		name:   "Netherlands (Kingdom of the)",
 		alpha2: "NL",
 		alpha3: "NLD",
 	}

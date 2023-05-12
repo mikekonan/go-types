@@ -1,0 +1,8 @@
+openapi: 3.0.0
+components:
+  schemas:
+    CurrencyCode:
+      example: en-US
+      type: string
+      format: bcp47-language
+      x-go-type: github.com/mikekonan/go-types/bcp47_language.Language

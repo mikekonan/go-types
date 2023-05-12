@@ -313,8 +313,8 @@ const (
 	Nauru = country.Name("Nauru")
 	// Nepal represents 'Nepal' country name
 	Nepal = country.Name("Nepal")
-	// Netherlands represents 'Netherlands (the)' country name
-	Netherlands = country.Name("Netherlands (the)")
+	// Netherlands represents 'Netherlands (Kingdom of the)' country name
+	Netherlands = country.Name("Netherlands (Kingdom of the)")
 	// NewCaledonia represents 'New Caledonia' country name
 	NewCaledonia = country.Name("New Caledonia")
 	// NewZealand represents 'New Zealand' country name

@@ -156,7 +156,7 @@ var CountryByName = map[string]Country{
 	"Namibia":                                     Namibia,
 	"Nauru":                                       Nauru,
 	"Nepal":                                       Nepal,
-	"Netherlands (the)":                           Netherlands,
+	"Netherlands (Kingdom of the)":                Netherlands,
 	"New Caledonia":                               NewCaledonia,
 	"New Zealand":                                 NewZealand,
 	"Nicaragua":                                   Nicaragua,
