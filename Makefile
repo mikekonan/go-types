@@ -36,7 +36,7 @@ test: ## run unit tests
 	go test -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
 
 coverage: ## show code coverage
-	go tool cover -html=go-types.coverage
+	go tool cover -html=coverage.txt
 
 all: clean gen-country gen-currency gen-phone gen-language gen-timezone concat-yaml fmt lint test
 
