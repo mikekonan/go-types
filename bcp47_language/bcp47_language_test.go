@@ -2,6 +2,7 @@ package bcp47_language
 
 import (
 	"encoding/json"
+	"reflect"
 	"testing"
 
 	"github.com/mikekonan/go-types/v2/language"
@@ -77,6 +78,17 @@ func TestLanguage(t *testing.T) {
 					return
 				}
 
+				return
+			}
+
+			data, err := json.Marshal(lStruct)
+			if err != nil {
+				t.Errorf("MarshalJSON() with input %s: expecting no error, but got %s", tc.input, err)
+				return
+			}
+
+			if !reflect.DeepEqual(data, tc.input) {
+				t.Errorf("MarshalJSON() with input %s not equals to %s", tc.input, data)
 				return
 			}
 
