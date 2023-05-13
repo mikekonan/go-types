@@ -3,10 +3,7 @@ const glob = require('glob-promise');
 const fs = require('fs');
 
 glob.promise(__dirname + '/../*/*.yaml')
-    .then(files => {
-        console.log(files);
-        return files.map(f => fs.readFileSync(f, "utf8"))
-    })
+    .then(files => files.map(f => fs.readFileSync(f, "utf8")))
     .then(files => files.map(f => yaml.parse(f)))
     .then(files => {
         let schemasArr = files.map(f => Object.keys(f.components.schemas)
