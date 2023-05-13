@@ -76,6 +76,12 @@ func (l *Language) UnmarshalJSON(data []byte) (err error) {
 	return nil
 }
 
+// MarshalJSON implements the json.Marshaler interface.
+// It marshals the Language into its BCP47 string representation.
+func (l Language) MarshalJSON() ([]byte, error) {
+	return json.Marshal(l.String())
+}
+
 // Value returns the BCP47 code as a driver.Value for use with SQL databases.
 func (l *Language) Value() (value driver.Value, err error) {
 	return l.raw, nil
