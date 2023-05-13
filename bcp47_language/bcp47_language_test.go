@@ -2,8 +2,11 @@ package bcp47_language
 
 import (
 	"encoding/json"
+<<<<<<< HEAD
 	"fmt"
 	"reflect"
+=======
+>>>>>>> main
 	"testing"
 
 	"github.com/mikekonan/go-types/v2/language"
@@ -82,6 +85,7 @@ func TestLanguage(t *testing.T) {
 				return
 			}
 
+<<<<<<< HEAD
 			data, err := json.Marshal(lStruct)
 			if err != nil {
 				t.Errorf("MarshalJSON() with input %s: expecting no error, but got %s", tc.input, err)
@@ -93,6 +97,8 @@ func TestLanguage(t *testing.T) {
 				return
 			}
 
+=======
+>>>>>>> main
 			if tc.isBCA49Valid && lStruct.Language.Validate() != nil {
 				t.Errorf("Validate() with input %s: expected to be valid %v", tc.input, tc.isBCA49Valid)
 				return
@@ -123,6 +129,7 @@ func TestLanguage(t *testing.T) {
 		})
 	}
 }
+<<<<<<< HEAD
 
 func TestLanguage2(t *testing.T) {
 	lang, _ := ByStrErr("en-US")
@@ -130,3 +137,5 @@ func TestLanguage2(t *testing.T) {
 	data, _ := json.Marshal(l)
 	fmt.Println(data)
 }
+=======
+>>>>>>> main
