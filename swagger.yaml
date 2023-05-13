@@ -1,6 +1,11 @@
 openapi: 3.0.0
 components:
   schemas:
+    BCP47-language:
+      example: en-US
+      type: string
+      format: bcp47-language
+      x-go-type: github.com/mikekonan/go-types/bcp47_language.Language
     CardDate:
       example: 01/06
       type: string
@@ -165,7 +170,7 @@ components:
         - Namibia
         - Nauru
         - Nepal
-        - Netherlands (the)
+        - Netherlands (Kingdom of the)
         - New Caledonia
         - New Zealand
         - Nicaragua
@@ -826,7 +831,6 @@ components:
         - CDF
         - NZD
         - CRC
-        - HRK
         - CUP
         - CUC
         - ANG
@@ -999,7 +1003,6 @@ components:
         - Congolese Franc
         - New Zealand Dollar
         - Costa Rican Colon
-        - Kuna
         - Cuban Peso
         - Peso Convertible
         - Netherlands Antillean Guilder
@@ -1424,7 +1427,6 @@ components:
         - "976"
         - "554"
         - "188"
-        - "191"
         - "192"
         - "931"
         - "532"

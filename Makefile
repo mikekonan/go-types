@@ -33,7 +33,7 @@ lint: ## lint
 	golangci-lint run --path-prefix $(PWD)
 
 test: ## run unit tests
-	go test -race -cover -coverprofile=coverage.txt -covermode=atomic ./...
+	go test -race -cover -coverprofile=go-types.coverage -covermode=atomic ./...
 
 coverage: ## show code coverage
 	go tool cover -html=go-types.coverage
