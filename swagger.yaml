@@ -5,7 +5,7 @@ components:
       example: en-US
       type: string
       format: bcp47-language
-      x-go-type: github.com/mikekonan/go-types/bcp47_language.Language
+      x-go-type: github.com/mikekonan/go-types/v2/bcp47_language.Language
     CardDate:
       example: 01/06
       type: string
