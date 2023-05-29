@@ -4,7 +4,10 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 	"fmt"
+	"github.com/mikekonan/go-types/v2/country"
 	"strconv"
+
+	"github.com/nyaruka/phonenumbers"
 )
 
 // Number represents a phone number type
@@ -60,4 +63,40 @@ func (number *Number) UnmarshalJSON(data []byte) error {
 // String implementation of Stringer interface
 func (number Number) String() string {
 	return string(number)
+}
+
+// StrictParse is Parse analogue with phone number region consistency check: fails if passed country is not matches parsed one
+func StrictParse(rawPhone string, country country.Alpha2Code) (DialCode, Number, error) {
+	var parsed, err = phonenumbers.Parse(rawPhone, country.String())
+	if err != nil {
+		return "", "", err
+	}
+
+	var valid = phonenumbers.IsValidNumber(parsed)
+	if !valid {
+		return "", "", fmt.Errorf(`%s phone number is not valid for %s region`, rawPhone, country.String())
+	}
+
+	var dialCode = DialCode(strconv.Itoa(int(parsed.GetCountryCode())))
+	if err = dialCode.Validate(); err != nil {
+		return "", "", err
+	}
+
+	return dialCode, Number(strconv.FormatUint(parsed.GetNationalNumber(), 10)), nil
+}
+
+// Parse matches passed 'country' string representation to digits and searches for it at the beginning of 'rawPhone'.
+// If not found - consider whole passes 'rawPhone' as Number and use matched one 'country' as DialCode
+func Parse(rawPhone string, country country.Alpha2Code) (DialCode, Number, error) {
+	var parsed, err = phonenumbers.Parse(rawPhone, country.String())
+	if err != nil {
+		return "", "", err
+	}
+
+	var dialCode = DialCode(strconv.Itoa(int(parsed.GetCountryCode())))
+	if err = dialCode.Validate(); err != nil {
+		return "", "", err
+	}
+
+	return dialCode, Number(strconv.FormatUint(parsed.GetNationalNumber(), 10)), nil
 }

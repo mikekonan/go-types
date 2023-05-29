@@ -3,6 +3,7 @@ package phone
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/mikekonan/go-types/v2/country"
 	"testing"
 )
 
@@ -64,6 +65,48 @@ func TestNumber_Value(t *testing.T) {
 
 		if ((actualErr == nil) == testCase.expectingValueError) && actualValue != string(testCase.testValue) {
 			t.Errorf(`Value: '%s'. value differs: expect: '%s', actual: '%s'"`, testCase.testValue, testCase.testValue, actualValue)
+		}
+	}
+}
+
+var parseTestCases = []struct {
+	testPhoneNumber string
+	testCountryCode country.Alpha2Code
+	expectingError  bool
+}{
+	{testPhoneNumber: "", testCountryCode: country.Australia.Alpha2Code(), expectingError: true},
+	{testPhoneNumber: "sdfge5uy2fwdf", testCountryCode: country.Australia.Alpha2Code(), expectingError: true},
+	{testPhoneNumber: "123", testCountryCode: country.Australia.Alpha2Code(), expectingError: false},
+	{testPhoneNumber: "375295555555", testCountryCode: country.Belgium.Alpha2Code(), expectingError: false},
+	{testPhoneNumber: "375295555555", testCountryCode: country.Belarus.Alpha2Code(), expectingError: false},
+}
+
+func TestParse(t *testing.T) {
+	for _, testCase := range parseTestCases {
+		_, _, actualErr := Parse(testCase.testPhoneNumber, testCase.testCountryCode)
+		if (actualErr == nil) && testCase.expectingError {
+			t.Errorf(`PhoneNumber: '%s', CountryCode: '%s'. Error is expected but the result was opposite`, testCase.testPhoneNumber, testCase.testCountryCode)
+		}
+	}
+}
+
+var strictParseTestCases = []struct {
+	testPhoneNumber string
+	testCountryCode country.Alpha2Code
+	expectingError  bool
+}{
+	{testPhoneNumber: "", testCountryCode: country.Australia.Alpha2Code(), expectingError: true},
+	{testPhoneNumber: "asdgdhf", testCountryCode: country.Australia.Alpha2Code(), expectingError: true},
+	{testPhoneNumber: "123", testCountryCode: country.Australia.Alpha2Code(), expectingError: true},
+	{testPhoneNumber: "375295555555", testCountryCode: country.Belgium.Alpha2Code(), expectingError: true},
+	{testPhoneNumber: "375295555555", testCountryCode: country.Belarus.Alpha2Code(), expectingError: false},
+}
+
+func TestParseWithRegionCheck(t *testing.T) {
+	for _, testCase := range strictParseTestCases {
+		_, _, actualErr := StrictParse(testCase.testPhoneNumber, testCase.testCountryCode)
+		if (actualErr == nil) && testCase.expectingError {
+			t.Errorf(`PhoneNumber: '%s', CountryCode: '%s'. Error is expected but the result was opposite`, testCase.testPhoneNumber, testCase.testCountryCode)
 		}
 	}
 }
