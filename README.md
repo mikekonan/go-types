@@ -106,3 +106,4 @@ func main() {
 - Timezone [(RFC6557 IANA timezones)](https://www.iana.org/time-zones) - [wiki](https://en.wikipedia.org/wiki/Time_zone)
 - Languages [(ISO 639-1)](https://www.iso.org/standard/22109.html) - [wiki](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes); [(ISO 639-2)](https://www.iso.org/standard/4767.html) - [wiki](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes), [data source](https://datahub.io/core/language-codes/r/language-codes-3b2.json)
 - Dial Codes [(E.164)](https://www.itu.int/rec/T-REC-E.164-201203-I!Sup6/en) - [wiki](https://en.wikipedia.org/wiki/E.164), [data source](https://datahub.io/core/country-codes/r/country-codes.json)
+- BCP47 language tags [(wiki)](https://en.wikipedia.org/wiki/IETF_language_tag), [rfc](https://www.rfc-editor.org/info/bcp47)

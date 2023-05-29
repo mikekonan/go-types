@@ -93,8 +93,6 @@ const (
 	NZD = currency.Code("NZD")
 	// CRC represents 'CRC' currency code
 	CRC = currency.Code("CRC")
-	// HRK represents 'HRK' currency code
-	HRK = currency.Code("HRK")
 	// CUP represents 'CUP' currency code
 	CUP = currency.Code("CUP")
 	// CUC represents 'CUC' currency code
