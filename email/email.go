@@ -60,8 +60,10 @@ func (email *Email) UnmarshalJSON(data []byte) error {
 	}
 
 	emailValue := Email(str)
-	if err := emailValue.Validate(); err != nil {
-		return err
+	if len(emailValue) != 0 {
+		if err := emailValue.Validate(); err != nil {
+			return err
+		}
 	}
 
 	*email = emailValue

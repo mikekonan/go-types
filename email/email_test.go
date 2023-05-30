@@ -7,45 +7,46 @@ import (
 )
 
 var testCases = []struct {
-	emailUnderTest         Email
-	expectingValidateError bool
-	expectingValueError    bool
+	emailUnderTest          Email
+	expectingValidateError  bool
+	expectingValueError     bool
+	expectingUnmarshalError bool
 }{
-	{emailUnderTest: "", expectingValidateError: true, expectingValueError: false},
-	{emailUnderTest: "@", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: " @", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: " @ ", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "@ ", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "@.", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "..@.", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: ".@..", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "@@..", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: ".@.", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: ".@", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email@", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email@x", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email@@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: ".email@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email.", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: ".com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email.@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email..test@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: ".email..test.@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email@at@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "some whitespace@example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "email@whitespace example.com", expectingValidateError: true, expectingValueError: true},
-	{emailUnderTest: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com", expectingValidateError: true, expectingValueError: true},
+	{emailUnderTest: "", expectingValidateError: true, expectingValueError: false, expectingUnmarshalError: false},
+	{emailUnderTest: "@", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: " @", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: " @ ", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "@ ", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "@.", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "..@.", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: ".@..", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "@@..", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: ".@.", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: ".@", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email@", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email@x", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email@@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: ".email@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email.", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: ".com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email.@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email..test@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: ".email..test.@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email@at@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "some whitespace@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "email@whitespace example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{emailUnderTest: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{emailUnderTest: "email@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com",
-		expectingValidateError: true, expectingValueError: true},
+		expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 
-	{emailUnderTest: "email@gmail.com", expectingValidateError: false, expectingValueError: false},
-	{emailUnderTest: "email.email@gmail.com", expectingValidateError: false, expectingValueError: false},
-	{emailUnderTest: "email_email@gmail.com", expectingValidateError: false, expectingValueError: false},
-	{emailUnderTest: "email+extra@example.com", expectingValidateError: false, expectingValueError: false},
-	{emailUnderTest: "EMAIL@aol.co.uk", expectingValidateError: false, expectingValueError: false},
-	{emailUnderTest: "EMAIL+EXTRA@aol.co.uk", expectingValidateError: false, expectingValueError: false},
+	{emailUnderTest: "email@gmail.com", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{emailUnderTest: "email.email@gmail.com", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{emailUnderTest: "email_email@gmail.com", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{emailUnderTest: "email+extra@example.com", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{emailUnderTest: "EMAIL@aol.co.uk", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
+	{emailUnderTest: "EMAIL+EXTRA@aol.co.uk", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
 }
 
 func TestEmailValidate(t *testing.T) {
@@ -65,7 +66,7 @@ func TestEmailJsonUnmarshal(t *testing.T) {
 		}
 
 		actualErr := json.Unmarshal([]byte(jsonStr), &emailStruct)
-		if (actualErr == nil) == testCase.expectingValidateError {
+		if (actualErr == nil) == testCase.expectingUnmarshalError {
 			t.Errorf(`JsonUnmarshal: '%s'. expecting error - '%v' but was opposite`, testCase.emailUnderTest, testCase.expectingValidateError)
 		}
 	}
