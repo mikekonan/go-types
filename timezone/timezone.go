@@ -15,8 +15,10 @@ func (name *Timezone) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	if _, err := ByNameStrErr(str); err != nil {
-		return err
+	if len(str) != 0 {
+		if _, err := ByNameStrErr(str); err != nil {
+			return err
+		}
 	}
 
 	*name = Timezone(str)
