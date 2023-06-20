@@ -1,6 +1,10 @@
 package timezone
 
-import "testing"
+import (
+	"encoding/json"
+	"fmt"
+	"testing"
+)
 
 func TestTimezone_MappingIsCorrect(t *testing.T) {
 	for key, timezone := range timezonesByName {
@@ -33,7 +37,6 @@ func TestTimezone_Validate(t *testing.T) {
 }
 
 func TestTimezone_Lookup(t *testing.T) {
-
 	if _, ok := ByNameStr("a"); ok {
 		t.FailNow()
 	}
@@ -48,5 +51,28 @@ func TestTimezone_Lookup(t *testing.T) {
 
 	if _, err := ByNameStrErr("Europe/Minsk"); err != nil {
 		t.FailNow()
+	}
+}
+
+var testCases = []struct {
+	value                   Timezone
+	expectingUnmarshalError bool
+}{
+	{value: "", expectingUnmarshalError: false},
+	{value: "Europe/Minsk", expectingUnmarshalError: false},
+	{value: "a", expectingUnmarshalError: true},
+}
+
+func Test_UnmarshalJSON(t *testing.T) {
+	for _, testCase := range testCases {
+		jsonStr := fmt.Sprintf(`{"timezone":"%s"}`, testCase.value)
+		var timezoneStruct struct {
+			Timezone Timezone `json:"timezone"`
+		}
+
+		actualErr := json.Unmarshal([]byte(jsonStr), &timezoneStruct)
+		if (actualErr == nil) == testCase.expectingUnmarshalError {
+			t.Errorf(`JsonUnmarshal: '%s'. expecting error - '%v' but was opposite`, testCase.value, testCase.expectingUnmarshalError)
+		}
 	}
 }
