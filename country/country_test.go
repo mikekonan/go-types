@@ -415,6 +415,11 @@ func TestAlpha2CodeUnmarshalJson(t *testing.T) {
 		t.FailNow()
 	}
 
+	var lowercase Alpha2CodeStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "ca")), &lowercase); err != nil || lowercase.Alpha2Code != Canada.Alpha2Code() {
+		t.FailNow()
+	}
+
 	var wrongCode Alpha2CodeStruct
 	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "wrong code")), &wrongCode); err == nil {
 		t.FailNow()
@@ -438,6 +443,11 @@ func TestAlpha3CodeUnmarshalJson(t *testing.T) {
 
 	var negative Alpha3CodeStruct
 	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "RUZ")), &negative); err == nil {
+		t.FailNow()
+	}
+
+	var lowercase Alpha3CodeStruct
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "can")), &lowercase); err != nil || lowercase.Alpha3Code != Canada.Alpha3Code() {
 		t.FailNow()
 	}
 

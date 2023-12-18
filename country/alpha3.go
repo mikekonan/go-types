@@ -17,12 +17,14 @@ func (code *Alpha3Code) UnmarshalJSON(data []byte) error {
 
 	enumValue := Alpha3Code(str)
 	if len(enumValue) != 0 {
-		if _, err := ByAlpha3CodeErr(enumValue); err != nil {
+		country, err := ByAlpha3CodeErr(enumValue)
+		if err != nil {
 			return err
 		}
+
+		*code = country.Alpha3Code()
 	}
 
-	*code = enumValue
 	return nil
 }
 

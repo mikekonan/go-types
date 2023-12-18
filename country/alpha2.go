@@ -17,12 +17,14 @@ func (code *Alpha2Code) UnmarshalJSON(data []byte) error {
 
 	enumValue := Alpha2Code(str)
 	if len(enumValue) != 0 {
-		if _, err := ByAlpha2CodeErr(enumValue); err != nil {
+		country, err := ByAlpha2CodeErr(enumValue)
+		if err != nil {
 			return err
 		}
+
+		*code = country.Alpha2Code()
 	}
 
-	*code = enumValue
 	return nil
 }
 
