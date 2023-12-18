@@ -3,7 +3,6 @@ package ip
 import (
 	"database/sql/driver"
 	"encoding/json"
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -57,7 +56,7 @@ func TestIPv6_Value(t *testing.T) {
 func TestIPv6_UnmarshalJSON(t *testing.T) {
 	tests := []struct {
 		name    string
-		ip      IPv6
+		ip      string
 		wantErr bool
 	}{
 		{
@@ -83,12 +82,8 @@ func TestIPv6_UnmarshalJSON(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			jsonIPv4 := []byte(fmt.Sprintf(`{"IPv6": "%s"}`, tt.ip))
-			var ipv4 struct {
-				IPv4 IPv6 `json:"IPv6"`
-			}
-
-			err := json.Unmarshal(jsonIPv4, &ipv4)
+			var ipv6 IPv6
+			err := json.Unmarshal([]byte(tt.ip), &ipv6)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("UnmarshalJSON() error = %v, wantErr %v", err, tt.wantErr)
 			}
