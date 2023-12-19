@@ -6,3 +6,13 @@ components:
       type: string
       format: IPv4
       x-go-type: github.com/mikekonan/go-types/v2/ip.IPv4
+    IPv6:
+      example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+      type: string
+      format: IPv6
+      x-go-type: github.com/mikekonan/go-types/v2/ip.IPv6
+    IP:
+      example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+      type: string
+      format: IP-dual-stack
+      x-go-type: github.com/mikekonan/go-types/v2/ip.IP

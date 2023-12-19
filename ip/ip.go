@@ -3,14 +3,19 @@ package ip
 import (
 	"database/sql/driver"
 	"encoding/json"
+	"errors"
 	"fmt"
-	"net/netip"
 )
 
-type IPv4 string
+type IP struct {
+	v4   IPv4
+	v6   IPv6
+	raw  string
+	isV6 bool
+}
 
 // Value implementation of driver.Valuer
-func (ip IPv4) Value() (value driver.Value, err error) {
+func (ip IP) Value() (value driver.Value, err error) {
 	if err = ip.Validate(); err != nil {
 		return nil, err
 	}
@@ -19,24 +24,34 @@ func (ip IPv4) Value() (value driver.Value, err error) {
 }
 
 // Validate implementation of ozzo-validation Validate interface
-func (ip IPv4) Validate() error {
-	_, err := FromString(ip.String())
+func (ip IP) Validate() error {
+	var fromStringIP, err = FromString(ip.String())
 	if err != nil {
-		return fmt.Errorf("'%s' is not an valid IPv4 address, err: %w", ip, err)
+		return fmt.Errorf("'%s' is not an valid IP address, err: %w", ip, err)
 	}
 
-	return nil
+	if fromStringIP.raw == ip.raw &&
+		fromStringIP.isV6 == ip.isV6 &&
+		fromStringIP.v4 == ip.v4 &&
+		fromStringIP.v6 == ip.v6 {
+		return nil
+	}
+
+	return errors.New(`IP inconsistency error`)
 }
 
 // UnmarshalJSON unmarshall implementation for IP
-func (ip *IPv4) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
+func (ip *IP) UnmarshalJSON(data []byte) error {
+	var (
+		str string
+		err error
+	)
+	if err = json.Unmarshal(data, &str); err != nil {
 		return err
 	}
 
-	value := IPv4(str)
-	if err := value.Validate(); err != nil {
+	var value IP
+	if value, err = FromString(str); err != nil && value.Validate() != nil {
 		return err
 	}
 
@@ -45,24 +60,50 @@ func (ip *IPv4) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// String implementation of Stringer interface
-func (ip IPv4) String() string {
-	return string(ip)
+// MarshalJSON marshall implementation for IP
+func (ip IP) MarshalJSON() ([]byte, error) {
+	return json.Marshal(ip.raw)
 }
 
-func FromString(value string) (IPv4, error) {
+// String implementation of Stringer interface
+func (ip IP) String() string {
+	return ip.raw
+}
+
+func (ip IP) IPv4() IPv4 {
+	return ip.v4
+}
+
+func (ip IP) IPv6() IPv6 {
+	return ip.v6
+}
+
+func (ip IP) IsIPv6() bool {
+	return ip.isV6
+}
+
+func FromString(value string) (IP, error) {
 	if value == "" {
-		return "", fmt.Errorf("empty value")
+		return IP{}, fmt.Errorf("empty value")
 	}
 
-	var addr, err = netip.ParseAddr(value)
-	if err != nil {
-		return "", err
+	var v4Addr, err = V4FromString(value)
+	if err == nil {
+		return IP{
+			v4:   v4Addr,
+			isV6: false,
+			raw:  value,
+		}, nil
 	}
 
-	if !addr.Is4() {
-		return "", fmt.Errorf("not an IPv4 address")
+	var v6Addr IPv6
+	if v6Addr, err = V6FromString(value); err == nil {
+		return IP{
+			v6:   v6Addr,
+			isV6: true,
+			raw:  value,
+		}, nil
 	}
 
-	return IPv4(addr.String()), nil
+	return IP{}, errors.New("value isn't fit neither v4 nor v6 IP")
 }

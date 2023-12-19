@@ -8,34 +8,98 @@ import (
 	"testing"
 )
 
-func TestIPv4_Value(t *testing.T) {
+func TestIP_Value(t *testing.T) {
 	tests := []struct {
 		name      string
-		ip        IPv4
+		ip        IP
 		wantValue driver.Value
 		wantErr   bool
 	}{
 		{
-			name:      "success",
-			ip:        "1.1.1.1",
+			name: "IPv4",
+			ip: IP{
+				isV6: false,
+				v4:   IPv4("1.1.1.1"),
+				raw:  "1.1.1.1",
+			},
 			wantValue: "1.1.1.1",
 			wantErr:   false,
 		},
 		{
-			name:      "invalid",
-			ip:        "1111",
+			name: "invalid-IPv4",
+			ip: IP{
+				isV6: false,
+				v4:   IPv4("2001:0db8:85a3:0000:0000:8a2e:0370:73341"),
+				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			},
 			wantValue: nil,
 			wantErr:   true,
 		},
 		{
-			name:      "IPv6",
-			ip:        "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			name: "invalid-both-v6false",
+			ip: IP{
+				v4:  IPv4("1111"),
+				v6:  IPv6("1111"),
+				raw: "1111",
+			},
 			wantValue: nil,
 			wantErr:   true,
 		},
 		{
-			name:      "empty",
-			ip:        "",
+			name: "invalid-both-v6true",
+			ip: IP{
+				isV6: true,
+				v4:   IPv4("1111"),
+				v6:   IPv6("1111"),
+				raw:  "1111",
+			},
+			wantValue: nil,
+			wantErr:   true,
+		},
+		{
+			name: "invalid-v4",
+			ip: IP{
+				v4:  IPv4("1111"),
+				raw: "1111",
+			},
+			wantValue: nil,
+			wantErr:   true,
+		},
+		{
+			name: "invalid-v6",
+			ip: IP{
+				isV6: true,
+				v6:   IPv6("1111"),
+				raw:  "1111",
+			},
+			wantValue: nil,
+			wantErr:   true,
+		},
+		{
+			name: "IPv6",
+			ip: IP{
+				isV6: true,
+				v6:   IPv6("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			},
+			wantValue: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			wantErr:   false,
+		},
+		{
+			name: "invalid-IPv6",
+			ip: IP{
+				isV6: true,
+				v6:   IPv6("1.1.1.1"),
+				raw:  "1.1.1.1",
+			},
+			wantValue: nil,
+			wantErr:   true,
+		},
+		{
+			name: "empty",
+			ip: IP{
+				raw: "",
+			},
 			wantValue: nil,
 			wantErr:   true,
 		},
@@ -54,14 +118,14 @@ func TestIPv4_Value(t *testing.T) {
 	}
 }
 
-func TestIPv4_UnmarshalJSON(t *testing.T) {
+func TestIP_UnmarshalJSON(t *testing.T) {
 	tests := []struct {
 		name    string
-		ip      IPv4
+		ip      string
 		wantErr bool
 	}{
 		{
-			name:    "success",
+			name:    "IPv4",
 			ip:      "1.1.1.1",
 			wantErr: false,
 		},
@@ -73,7 +137,7 @@ func TestIPv4_UnmarshalJSON(t *testing.T) {
 		{
 			name:    "IPv6",
 			ip:      "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
-			wantErr: true,
+			wantErr: false,
 		},
 		{
 			name:    "empty",
@@ -83,12 +147,12 @@ func TestIPv4_UnmarshalJSON(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			jsonIPv4 := []byte(fmt.Sprintf(`{"IPv4": "%s"}`, tt.ip))
-			var ipv4 struct {
-				IPv4 IPv4 `json:"IPv4"`
+			jsonIP := []byte(fmt.Sprintf(`{"ip": "%s"}`, tt.ip))
+			var ip struct {
+				IP IP `json:"ip"`
 			}
 
-			err := json.Unmarshal(jsonIPv4, &ipv4)
+			err := json.Unmarshal(jsonIP, &ip)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("UnmarshalJSON() error = %v, wantErr %v", err, tt.wantErr)
 			}
@@ -96,30 +160,89 @@ func TestIPv4_UnmarshalJSON(t *testing.T) {
 	}
 }
 
-func TestIPv4_Validate(t *testing.T) {
+func TestIP_Validate(t *testing.T) {
 	tests := []struct {
 		name    string
-		ip      IPv4
+		ip      IP
 		wantErr bool
 	}{
 		{
-			name:    "success",
-			ip:      "1.1.1.1",
+			name: "IPv4",
+			ip: IP{
+				isV6: false,
+				v4:   IPv4("1.1.1.1"),
+				raw:  "1.1.1.1",
+			},
 			wantErr: false,
 		},
 		{
-			name:    "invalid",
-			ip:      "1111",
+			name: "invalid-IPv4",
+			ip: IP{
+				isV6: false,
+				v4:   IPv4("2001:0db8:85a3:0000:0000:8a2e:0370:73341"),
+				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			},
 			wantErr: true,
 		},
 		{
-			name:    "IPv6",
-			ip:      "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			name: "invalid-both-v6false",
+			ip: IP{
+				v4:  IPv4("1111"),
+				v6:  IPv6("1111"),
+				raw: "1111",
+			},
 			wantErr: true,
 		},
 		{
-			name:    "empty",
-			ip:      "",
+			name: "invalid-both-v6true",
+			ip: IP{
+				isV6: true,
+				v4:   IPv4("1111"),
+				v6:   IPv6("1111"),
+				raw:  "1111",
+			},
+			wantErr: true,
+		},
+		{
+			name: "invalid-v4",
+			ip: IP{
+				v4:  IPv4("1111"),
+				raw: "1111",
+			},
+			wantErr: true,
+		},
+		{
+			name: "invalid-v6",
+			ip: IP{
+				isV6: true,
+				v6:   IPv6("1111"),
+				raw:  "1111",
+			},
+			wantErr: true,
+		},
+		{
+			name: "IPv6",
+			ip: IP{
+				isV6: true,
+				v6:   IPv6("2001:db8:85a3::8a2e:370:7334"),
+				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			},
+			wantErr: false,
+		},
+		{
+			name: "invalid-IPv6",
+			ip: IP{
+				isV6: true,
+				v6:   IPv6("1.1.1.1"),
+				raw:  "1.1.1.1",
+			},
+			wantErr: true,
+		},
+		{
+			name: "empty",
+			ip: IP{
+				raw: "",
+			},
 			wantErr: true,
 		},
 	}
@@ -132,35 +255,43 @@ func TestIPv4_Validate(t *testing.T) {
 	}
 }
 
-func TestParseIPv4FromString(t *testing.T) {
+func TestParseIPFromString(t *testing.T) {
 	tests := []struct {
 		name      string
 		value     string
-		wantValue IPv4
+		wantValue IP
 		wantErr   bool
 	}{
 		{
-			name:      "success",
-			value:     "1.1.1.1",
-			wantValue: "1.1.1.1",
-			wantErr:   false,
+			name:  "IPv4",
+			value: "1.1.1.1",
+			wantValue: IP{
+				isV6: false,
+				v4:   IPv4("1.1.1.1"),
+				raw:  "1.1.1.1",
+			},
+			wantErr: false,
 		},
 		{
 			name:      "invalid",
 			value:     "1111",
-			wantValue: "",
+			wantValue: IP{},
 			wantErr:   true,
 		},
 		{
-			name:      "IPv6",
-			value:     "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
-			wantValue: "",
-			wantErr:   true,
+			name:  "IPv6",
+			value: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			wantValue: IP{
+				isV6: true,
+				v6:   IPv6("2001:db8:85a3::8a2e:370:7334"),
+				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			},
+			wantErr: false,
 		},
 		{
 			name:      "empty",
 			value:     "",
-			wantValue: "",
+			wantValue: IP{},
 			wantErr:   true,
 		},
 	}
@@ -168,11 +299,11 @@ func TestParseIPv4FromString(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := FromString(tt.value)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("ParseIPv4FromString() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("ParseIPFromString() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.wantValue {
-				t.Errorf("ParseIPv4FromString() got = %v, want %v", got, tt.wantValue)
+				t.Errorf("ParseIPFromString() got = %v, want %v", got, tt.wantValue)
 			}
 		})
 	}
