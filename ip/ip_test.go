@@ -79,7 +79,7 @@ func TestIP_Value(t *testing.T) {
 			name: "IPv6",
 			ip: IP{
 				isV6: true,
-				v6:   IPv6("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+				v6:   IPv6("2001:db8:85a3::8a2e:370:7334"),
 				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 			},
 			wantValue: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
@@ -302,6 +302,7 @@ func TestParseIPFromString(t *testing.T) {
 				t.Errorf("ParseIPFromString() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
+
 			if got != tt.wantValue {
 				t.Errorf("ParseIPFromString() got = %v, want %v", got, tt.wantValue)
 			}
