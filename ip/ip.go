@@ -7,6 +7,8 @@ import (
 	"fmt"
 )
 
+var ErrInvalidIPFormat = errors.New("ip address does not match either v4 or v6 IP format")
+
 type IP struct {
 	v4   IPv4
 	v6   IPv6
@@ -27,7 +29,7 @@ func (ip IP) Value() (value driver.Value, err error) {
 func (ip IP) Validate() error {
 	var fromStringIP, err = FromString(ip.String())
 	if err != nil {
-		return fmt.Errorf("'%s' is not an valid IP address, err: %w", ip, err)
+		return validationError(ip, "IP", err)
 	}
 
 	if fromStringIP.raw == ip.raw &&
@@ -42,22 +44,20 @@ func (ip IP) Validate() error {
 
 // UnmarshalJSON unmarshall implementation for IP
 func (ip *IP) UnmarshalJSON(data []byte) error {
-	var (
-		str string
-		err error
-	)
-	if err = json.Unmarshal(data, &str); err != nil {
+	if err := json.Unmarshal(data, &ip.raw); err != nil {
 		return err
 	}
 
-	var value IP
-	if value, err = FromString(str); err != nil && value.Validate() != nil {
-		return err
+	if err := json.Unmarshal(data, &ip.v4); err == nil {
+		return nil
 	}
 
-	*ip = value
+	if err := json.Unmarshal(data, &ip.v6); err == nil {
+		ip.isV6 = true
+		return nil
+	}
 
-	return nil
+	return ErrInvalidIPFormat
 }
 
 // MarshalJSON marshall implementation for IP
@@ -105,5 +105,9 @@ func FromString(value string) (IP, error) {
 		}, nil
 	}
 
-	return IP{}, errors.New("value isn't fit neither v4 nor v6 IP")
+	return IP{}, ErrInvalidIPFormat
+}
+
+func validationError(ip fmt.Stringer, ipType string, err error) error {
+	return fmt.Errorf("'%s' is not a valid %s address: %w", ip, ipType, err)
 }

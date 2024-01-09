@@ -79,7 +79,7 @@ func TestIP_Value(t *testing.T) {
 			name: "IPv6",
 			ip: IP{
 				isV6: true,
-				v6:   IPv6("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+				v6:   IPv6("2001:db8:85a3::8a2e:370:7334"),
 				raw:  "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 			},
 			wantValue: "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
@@ -120,41 +120,57 @@ func TestIP_Value(t *testing.T) {
 
 func TestIP_UnmarshalJSON(t *testing.T) {
 	tests := []struct {
-		name    string
-		ip      string
-		wantErr bool
+		name              string
+		ip                string
+		wantIP            IP
+		wantErr           error
+		wantValidationErr error
 	}{
 		{
-			name:    "IPv4",
-			ip:      "1.1.1.1",
-			wantErr: false,
+			name:   "IPv4",
+			ip:     "1.1.1.1",
+			wantIP: IP{v4: "1.1.1.1", raw: "1.1.1.1"},
 		},
 		{
 			name:    "invalid",
 			ip:      "1111",
-			wantErr: true,
+			wantErr: ErrInvalidIPFormat,
 		},
 		{
-			name:    "IPv6",
-			ip:      "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
-			wantErr: false,
+			name:   "IPv6",
+			ip:     "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+			wantIP: IP{v6: "2001:db8:85a3::8a2e:370:7334", raw: "2001:0db8:85a3:0000:0000:8a2e:0370:7334", isV6: true},
 		},
 		{
-			name:    "empty",
-			ip:      "",
-			wantErr: true,
+			name:              "empty",
+			ip:                "",
+			wantValidationErr: fmt.Errorf("'' is not a valid IP address: empty value"),
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			jsonIP := []byte(fmt.Sprintf(`{"ip": "%s"}`, tt.ip))
-			var ip struct {
-				IP IP `json:"ip"`
+			var ip IP
+			err := json.Unmarshal([]byte(fmt.Sprintf(`"%s"`, tt.ip)), &ip)
+
+			if (err == nil) != (tt.wantErr == nil) || (err != nil && tt.wantErr != nil && err.Error() != tt.wantErr.Error()) {
+				t.Errorf("%s: got error = %v, wantErr %v", tt.name, err, tt.wantErr)
+				return
 			}
 
-			err := json.Unmarshal(jsonIP, &ip)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("UnmarshalJSON() error = %v, wantErr %v", err, tt.wantErr)
+			if tt.wantErr != nil {
+				return
+			}
+
+			if !reflect.DeepEqual(ip, tt.wantIP) {
+				t.Errorf("%s: got IP = %#v, want %#v", tt.name, ip, tt.wantIP)
+				return
+			}
+
+			err = ip.Validate()
+			if (err == nil) != (tt.wantValidationErr == nil) || (err != nil && tt.wantValidationErr != nil && err.Error() != tt.wantValidationErr.Error()) {
+				t.Errorf("%s: unexpected validation error = %v, want %v", tt.name, err, tt.wantValidationErr)
+				return
 			}
 		})
 	}
