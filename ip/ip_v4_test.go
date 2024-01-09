@@ -78,7 +78,7 @@ func TestIPv4_UnmarshalJSON(t *testing.T) {
 		{
 			name:    "empty",
 			ip:      "",
-			wantErr: false,
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
