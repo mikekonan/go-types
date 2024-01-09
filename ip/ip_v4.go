@@ -22,7 +22,7 @@ func (ip IPv4) Value() (value driver.Value, err error) {
 func (ip IPv4) Validate() error {
 	_, err := V4FromString(ip.String())
 	if err != nil {
-		return validationError(ip, "IPv4", err)
+		return fmt.Errorf("'%s' is not an valid IPv4 address, err: %w", ip, err)
 	}
 
 	return nil
@@ -35,14 +35,12 @@ func (ip *IPv4) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	if str != "" {
-		value, err := V4FromString(str)
-		if err != nil {
-			return err
-		}
-
-		*ip = value
+	value := IPv4(str)
+	if err := value.Validate(); err != nil {
+		return err
 	}
+
+	*ip = value
 
 	return nil
 }

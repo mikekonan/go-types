@@ -22,7 +22,7 @@ func (ip IPv6) Value() (value driver.Value, err error) {
 func (ip IPv6) Validate() error {
 	_, err := V6FromString(ip.String())
 	if err != nil {
-		return validationError(ip, "IPv6", err)
+		return fmt.Errorf("'%s' is not an valid IPv6 address, err: %w", ip, err)
 	}
 
 	return nil
@@ -35,14 +35,12 @@ func (ip *IPv6) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	if str != "" {
-		value, err := V6FromString(str)
-		if err != nil {
-			return err
-		}
-
-		*ip = value
+	value := IPv6(str)
+	if err := value.Validate(); err != nil {
+		return err
 	}
+
+	*ip = value
 
 	return nil
 }
