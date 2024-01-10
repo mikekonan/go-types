@@ -7,6 +7,8 @@ import (
 	"fmt"
 )
 
+var ErrEmptyValue = errors.New("ip address cannot be empty")
+
 type IP struct {
 	v4   IPv4
 	v6   IPv6
@@ -84,7 +86,7 @@ func (ip IP) IsIPv6() bool {
 
 func FromString(value string) (IP, error) {
 	if value == "" {
-		return IP{}, fmt.Errorf("empty value")
+		return IP{}, ErrEmptyValue
 	}
 
 	var v4Addr, err = V4FromString(value)
