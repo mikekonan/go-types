@@ -52,7 +52,7 @@ func (ip IPv6) String() string {
 
 func V6FromString(value string) (IPv6, error) {
 	if value == "" {
-		return "", fmt.Errorf("empty value")
+		return "", ErrEmptyValue
 	}
 
 	var addr, err = netip.ParseAddr(value)

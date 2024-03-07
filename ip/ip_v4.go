@@ -52,7 +52,7 @@ func (ip IPv4) String() string {
 
 func V4FromString(value string) (IPv4, error) {
 	if value == "" {
-		return "", fmt.Errorf("empty value")
+		return "", ErrEmptyValue
 	}
 
 	var addr, err = netip.ParseAddr(value)
