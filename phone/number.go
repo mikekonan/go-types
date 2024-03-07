@@ -33,8 +33,8 @@ func (number Number) Validate() error {
 		return fmt.Errorf("'%s' is not valid phone number", number)
 	}
 
-	// minimum length is 7 for Saint Helena (Format: +290 XXXX) and Niue (Format: +683 XXXX)
-	if len(number) < 7 || len(number) > 15 {
+	// minimum length is 5 for Saint Helena (Format: +290 XXXXX)
+	if len(number) < 5 || len(number) > 15 {
 		return fmt.Errorf("'%s' is not valid phone number", number)
 	}
 
