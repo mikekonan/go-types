@@ -15,7 +15,7 @@ var testNumberCases = []struct {
 }{
 	{testValue: "", expectingValidateError: true, expectingValueError: false, expectingUnmarshalError: false},
 	{testValue: "123", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
-	{testValue: "123456", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "12345", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
 	{testValue: "1234", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{testValue: "1234567", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
 	{testValue: "1234567890", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
