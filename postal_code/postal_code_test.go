@@ -17,6 +17,7 @@ var testCases = []struct {
 	{testValue: "CA12 4124", expectingValidateError: false, expectingValueError: false, expectingUnmarshalError: false},
 	{testValue: " CA12 4122344", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{testValue: "{}", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
+	{testValue: "1", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{testValue: "112#124", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{testValue: "sdfsdf#asd", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
 	{testValue: "a2g0)d23", expectingValidateError: true, expectingValueError: true, expectingUnmarshalError: true},
