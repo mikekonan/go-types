@@ -9,6 +9,7 @@ package currency
 
 import (
 	"fmt"
+	"strings"
 )
 
 type currency struct {
@@ -50,7 +51,7 @@ func (currencies currencies) CurrencyByCurrency(curr string) (currency, bool) {
 // CurrencyByCode gets currency by code
 func (currencies currencies) CurrencyByCode(code string) (currency, bool) {
 	for _, c := range currencies {
-		if string(c.code) == code {
+		if string(c.code) == strings.ToUpper(code) {
 			return c, true
 		}
 	}
@@ -71,7 +72,7 @@ func (currencies currencies) CurrencyByNumber(number string) (currency, bool) {
 
 // ByCodeStr lookup for currency type by code
 func ByCodeStr(code string) (c currency, ok bool) {
-	c, ok = currenciesByCode[code]
+	c, ok = currenciesByCode[strings.ToUpper(code)]
 	return
 }
 
@@ -96,7 +97,7 @@ func ByCountryStr(country string) (c currencies, ok bool) {
 // ByCodeStrErr lookup for currency type by code
 func ByCodeStrErr(code string) (c currency, err error) {
 	var ok bool
-	c, ok = currenciesByCode[code]
+	c, ok = currenciesByCode[strings.ToUpper(code)]
 
 	if !ok {
 		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 code", code)
