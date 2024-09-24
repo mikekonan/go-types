@@ -250,7 +250,7 @@ let goCodePromise = xml2js
                 return;
             }
 
-            if (row["CcyNm"][0] === "No universal currency" && (!override || !override.decimalPlaces)) {
+            if (row["CcyNm"][0] === "No universal currency" && (!override || !override.country)) {
                 return;
             }
 
