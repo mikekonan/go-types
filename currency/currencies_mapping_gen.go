@@ -1163,6 +1163,13 @@ var currenciesByCode = map[string]currency{
       number:       `924`,
       decimalPlaces: 2,
     },
+    `XTS`: {
+      countries:  Countries{`[TEST] XTS`},
+      currency:     `Codes specifically reserved for testing purposes`,
+      code:         `XTS`,
+      number:       `963`,
+      decimalPlaces: 1,
+    },
 }
 
 var currenciesByNumber = map[string]currency{
@@ -2082,6 +2089,13 @@ var currenciesByNumber = map[string]currency{
       code:         `XPF`,
       number:       `953`,
       decimalPlaces: 0,
+    },
+    `963`: {
+      countries:  Countries{`[TEST] XTS`},
+      currency:     `Codes specifically reserved for testing purposes`,
+      code:         `XTS`,
+      number:       `963`,
+      decimalPlaces: 1,
     },
     `967`: {
       countries:  Countries{`ZAMBIA`},
@@ -4409,6 +4423,14 @@ var currenciesByCountry = map[string]currencies{
               number:      `924`,
               decimalPlaces: 2,
           },
+    },`[TEST] XTS`: {
+          {
+              countries:   Countries{`[TEST] XTS`},
+              currency:    `Codes specifically reserved for testing purposes`,
+              code:        `XTS`,
+              number:      `963`,
+              decimalPlaces: 1,
+          },
     },`BAHAMAS`: {
           {
               countries:   Countries{`BAHAMAS (THE)`, `BAHAMAS`},
@@ -5899,5 +5921,12 @@ var currenciesByCurrency = map[string]currency{
       code:         `ZWG`,
       number:       `924`,
       decimalPlaces: 2,
+    },
+    `Codes specifically reserved for testing purposes`: {
+      countries:  Countries{`[TEST] XTS`},
+      currency:     `Codes specifically reserved for testing purposes`,
+      code:         `XTS`,
+      number:       `963`,
+      decimalPlaces: 1,
     },
 }

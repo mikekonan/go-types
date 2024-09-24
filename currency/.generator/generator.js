@@ -3,6 +3,13 @@ const xml2js = require("xml2js");
 const yaml = require("yaml");
 const fs = require("fs");
 
+const currencyOverrides = {
+    XTS: {
+      country: '[TEST] XTS',
+      decimalPlaces: 1,
+    }
+}
+
 let resp = request(
     "GET",
     "https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml"
@@ -22,8 +29,6 @@ let currencyCodes = (currencies) => {
             };
         }
     })
-
-    temp["XTS"] = {code: "XTS"}
 
     return temp
 }
@@ -238,15 +243,18 @@ let goCodePromise = xml2js
                 return;
             }
 
-            if (row["CcyMnrUnts"][0] === "N.A.") {
+            const currencyCode = row["Ccy"][0]
+            const override = currencyOverrides[currencyCode]
+
+            if (row["CcyMnrUnts"][0] === "N.A." && (!override || !override.decimalPlaces)) {
                 return;
             }
 
-            if (row["CcyNm"][0] === "No universal currency") {
+            if (row["CcyNm"][0] === "No universal currency" && (!override || !override.decimalPlaces)) {
                 return;
             }
 
-            return {
+            let parsedCurrency = {
                 country: row["CtryNm"][0],
                 currency:
                     typeof row["CcyNm"][0] !== "object"
@@ -256,6 +264,14 @@ let goCodePromise = xml2js
                 number: row["CcyNbr"][0],
                 decimalPlaces: isNaN(row["CcyMnrUnts"]) ? 0 : parseInt(row["CcyMnrUnts"]),
             };
+
+            if (override && typeof override === "object") {
+                Object.entries(override).forEach(([key, value]) => {
+                  parsedCurrency[key] = value;
+                })
+            }
+
+            return parsedCurrency
         });
 
         result = result
