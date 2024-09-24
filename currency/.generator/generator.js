@@ -23,6 +23,8 @@ let currencyCodes = (currencies) => {
         }
     })
 
+    temp["XTS"] = {code: "XTS"}
+
     return temp
 }
 
