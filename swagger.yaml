@@ -916,7 +916,6 @@ components:
         - SAR
         - RSD
         - SCR
-        - SLL
         - SLE
         - SGD
         - SBD
@@ -952,7 +951,7 @@ components:
         - VND
         - YER
         - ZMW
-        - ZWL
+        - ZWG
       x-go-type: github.com/mikekonan/go-types/v2/currency.Code
     CurrencyName:
       example: Euro
@@ -1122,7 +1121,7 @@ components:
         - Dong
         - Yemeni Rial
         - Zambian Kwacha
-        - Zimbabwe Dollar
+        - Zimbabwe Gold
       x-go-type: github.com/mikekonan/go-types/v2/currency.Currency
     CurrencyCountry:
       example: PUERTO RICO
@@ -1512,7 +1511,6 @@ components:
         - "682"
         - "941"
         - "690"
-        - "694"
         - "925"
         - "702"
         - "090"
@@ -1548,7 +1546,7 @@ components:
         - "704"
         - "886"
         - "967"
-        - "932"
+        - "924"
     Email:
       example: user@example.com
       type: string
@@ -1593,7 +1591,6 @@ components:
         - Basque
         - Belarusian
         - Bengali
-        - Bihari languages
         - Bislama
         - Bosnian
         - Breton
@@ -1785,7 +1782,6 @@ components:
         - eu
         - be
         - bn
-        - bh
         - bi
         - bs
         - br
@@ -1977,7 +1973,6 @@ components:
         - baq
         - bel
         - ben
-        - bih
         - bis
         - bos
         - bre
