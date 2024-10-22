@@ -145,7 +145,7 @@ const normalizeCurrency = (currency) => {
     }
 }
 
-const parseCurrenciesFromXML = (rows, isHistorical = false) => {
+const parseCurrenciesFromXML = (rows, useOverride = true, isHistorical = false) => {
     return rows
         .map((row) => {
             if (!row["Ccy"]) {
@@ -153,7 +153,7 @@ const parseCurrenciesFromXML = (rows, isHistorical = false) => {
             }
 
             const currencyCode = row["Ccy"][0]
-            const override = !isHistorical && currencyOverrides[currencyCode]
+            const override = useOverride && !isHistorical && currencyOverrides[currencyCode]
 
             if (row["CcyMnrUnts"] && row["CcyMnrUnts"][0] === "N.A." && (!override || !override.decimalPlaces)) {
                 return
@@ -204,7 +204,7 @@ let goCodePromise =
     parseXMLResponse(actualCurrencies.body.toString())
     .then(actual => {
         return parseXMLResponse(historicalCurrencies.body.toString(), true)
-            .then(historical => parseCurrenciesFromXML(historical, true))
+            .then(historical => parseCurrenciesFromXML(historical, false, true))
             .then(historical => parseCurrenciesFromXML(actual).concat(historical))
     })
     .then((parsedCurrencies) => {
