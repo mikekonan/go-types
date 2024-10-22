@@ -18,6 +18,7 @@ type currency struct {
 	code          Code
 	number        Number
 	decimalPlaces int
+	isHistorical  bool
 }
 
 // Currency returns Currency
@@ -35,9 +36,12 @@ func (c currency) Countries() Countries { return c.countries }
 // DecimalPlaces returns DecimalPlaces
 func (c currency) DecimalPlaces() int { return c.decimalPlaces }
 
+// isHistorical returns isHistorical
+func (c currency) IsHistorical() bool { return c.isHistorical }
+
 type currencies []currency
 
-// CurrencyByCurrency get currency by currency
+// CurrencyByCurrency gets currency by currency
 func (currencies currencies) CurrencyByCurrency(curr string) (currency, bool) {
 	for _, c := range currencies {
 		if string(c.currency) == curr {
