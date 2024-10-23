@@ -82,7 +82,8 @@ import "github.com/mikekonan/go-types/v2/currency"
 
 const (
 ${renderCodes(currencyCodes(currencies))}
-)`
+)
+`
 };
 
 const renderCurrencyMappingTemplate = (currencies) => {
@@ -102,7 +103,8 @@ var currenciesByCountry = map[string]currencies{
 
 var currenciesByCurrency = map[string]currency{
   ${renderCurrenciesByKey(currenciesByCurrencyMap(currencies))},
-}`;
+}
+`;
 };
 
 const normalizeCurrency = (currency) => {
