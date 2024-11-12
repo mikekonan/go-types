@@ -9,7 +9,7 @@
   "author": "valichek",
   "license": "MIT",
   "dependencies": {
-    "moment-timezone": "^0.5.33",
-    "yaml": "^1.10.2"
+    "moment-timezone": "0.5.46",
+    "yaml": "1.10.2"
   }
 }
