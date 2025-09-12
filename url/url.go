@@ -9,10 +9,27 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 	"fmt"
+	"net/url"
+	"regexp"
 	"strings"
-
-	"github.com/asaskevich/govalidator"
+	"unicode/utf8"
 )
+
+const (
+	maxURLRuneCount = 2700
+	minURLRuneCount = 3
+
+	PatternIP           string = `(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))`
+	PatternURLSchema    string = `((ftp|tcp|udp|wss?|https?):\/\/)`
+	PatternURLUsername  string = `(\S+(:\S*)?@)`
+	PatternURLPort      string = `(:(\d{1,5}))`
+	PatternURLPath      string = `((\/|\?|#)[^\s]*)`
+	PatternURLIP        string = `([1-9]\d?|1\d\d|2[01]\d|22[0-3]|24\d|25[0-5])(\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){2}(?:\.([0-9]\d?|1\d\d|2[0-4]\d|25[0-5]))`
+	PatternURLSubdomain string = `((www\.)|([a-zA-Z0-9]+([-_\.]?[a-zA-Z0-9])*[a-zA-Z0-9]\.[a-zA-Z0-9]+))`
+	PatternURL                 = `^` + PatternURLSchema + `?` + PatternURLUsername + `?` + `((` + PatternURLIP + `|(\[` + PatternIP + `\])|(([a-zA-Z0-9]([a-zA-Z0-9-_]+)?[a-zA-Z0-9]([-\.][a-zA-Z0-9]+)*)|(` + PatternURLSubdomain + `?))?(([a-zA-Z\x{00a1}-\x{ffff}0-9]+-?-?)*[a-zA-Z\x{00a1}-\x{ffff}0-9]+)(?:\.([a-zA-Z\x{00a1}-\x{ffff}]{1,}))?))\.?` + PatternURLPort + `?` + PatternURLPath + `?$`
+)
+
+var rxURL = regexp.MustCompile(PatternURL)
 
 // URL represents a URL type
 type URL string
@@ -32,11 +49,37 @@ func (url URL) Value() (value driver.Value, err error) {
 
 // Validate implementation of ozzo-validation Validate interface
 func (url URL) Validate() error {
-	if !govalidator.IsURL(url.String()) {
+	if !isURL(url.String()) {
 		return fmt.Errorf("'%s' is not a valid url", url)
 	}
 
 	return nil
+}
+
+// IsURL checks if the string is an URL.
+// Copy function https://github.com/asaskevich/govalidator/blob/e11347878e2323a0777b40d33eeffd37a185e31b/validator.go#L104
+// As we have cases when maxURLRuneCount is exceeded
+func isURL(str string) bool {
+	if str == "" || utf8.RuneCountInString(str) >= maxURLRuneCount || len(str) <= minURLRuneCount || strings.HasPrefix(str, ".") {
+		return false
+	}
+	strTemp := str
+	if strings.Contains(str, ":") && !strings.Contains(str, "://") {
+		// support no indicated urlscheme but with colon for port number
+		// http:// is appended so url.Parse will succeed, strTemp used so it does not impact rxURL.MatchString
+		strTemp = "http://" + str
+	}
+	u, err := url.Parse(strTemp)
+	if err != nil {
+		return false
+	}
+	if strings.HasPrefix(u.Host, ".") {
+		return false
+	}
+	if u.Host == "" && (u.Path != "" && !strings.Contains(u.Path, ".")) {
+		return false
+	}
+	return rxURL.MatchString(str)
 }
 
 // UnmarshalJSON unmarshall implementation for Email
