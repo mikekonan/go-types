@@ -747,6 +747,6 @@ func TestCurrencyPlaces(t *testing.T) {
 	c := Code("USD")
 
 	if c.Places() != 2 {
-		t.Fatalf("expected palces to be %d, got %d", 2, c.Places())
+		t.Fatalf("expected places to be %d, got %d", 2, c.Places())
 	}
 }

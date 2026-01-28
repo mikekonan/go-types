@@ -1,9 +1,9 @@
 package currency
 
 import (
-	"bytes"
 	"database/sql/driver"
-	"unsafe"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Country represents a country type from ISO-4217
@@ -24,10 +24,16 @@ func (country Country) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Country
 func (country *Country) UnmarshalJSON(data []byte) error {
-	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
-	var str = unsafe.String(unsafe.SliceData(data), len(data))
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
+	if err != nil {
+		return err
+	}
 
-	_, err := ByCountryStrErr(str)
+	if isEmptyValue {
+		return newInvalidDataError(str, standardISO4217Country)
+	}
+
+	_, err = ByCountryStrErr(str)
 	if err != nil {
 		return err
 	}

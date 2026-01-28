@@ -1,9 +1,9 @@
 package country
 
 import (
-	"bytes"
 	"database/sql/driver"
-	"unsafe"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Alpha2Code represents alpha-2 code
@@ -11,18 +11,21 @@ type Alpha2Code string
 
 // UnmarshalJSON unmarshall implementation for alpha2code
 func (code *Alpha2Code) UnmarshalJSON(data []byte) error {
-	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
-	var str = unsafe.String(unsafe.SliceData(data), len(data))
-
-	enumValue := Alpha2Code(str)
-	if len(enumValue) != 0 {
-		country, err := ByAlpha2CodeErr(enumValue)
-		if err != nil {
-			return err
-		}
-
-		*code = country.Alpha2Code()
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
+	if err != nil {
+		return err
 	}
+
+	if isEmptyValue {
+		return nil
+	}
+	
+	country, err := ByAlpha2CodeErr(Alpha2Code(str))
+	if err != nil {
+		return err
+	}
+
+	*code = country.Alpha2Code()
 
 	return nil
 }

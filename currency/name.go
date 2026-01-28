@@ -1,9 +1,9 @@
 package currency
 
 import (
-	"bytes"
 	"database/sql/driver"
-	"unsafe"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Currency represents a currency type from ISO-4217
@@ -24,8 +24,14 @@ func (currency Currency) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Currency
 func (currency *Currency) UnmarshalJSON(data []byte) error {
-	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
-	var str = unsafe.String(unsafe.SliceData(data), len(data))
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
+	if err != nil {
+		return err
+	}
+
+	if isEmptyValue {
+		return newInvalidDataError(str, standardISO4217Currency)
+	}
 
 	currencyValue, err := ByCurrencyStrErr(str)
 	if err != nil {
