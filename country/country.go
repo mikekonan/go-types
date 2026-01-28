@@ -12,7 +12,6 @@ Author Mikalai Konan(mikalai.konan@icloud.com).
 package country
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -53,12 +52,13 @@ func ByAlpha3CodeStr(code string) (result Country, ok bool) {
 	return ByAlpha3Code(Alpha3Code(code))
 }
 
-// ByAlpha3CodeErr lookup for country by alpha-3 code with error return type
+// ByAlpha3CodeErr looks up a Country by its ISO 3166-1 alpha-3 code and returns an error if no match is found.
+// Lookup is case-insensitive; when not found this returns a descriptive invalid-data error for the provided alpha-3 code.
 func ByAlpha3CodeErr(code Alpha3Code) (result Country, err error) {
 	var ok bool
 	result, ok = ByAlpha3Code(code)
 	if !ok {
-		err = fmt.Errorf("'%s' is not valid ISO-3166-alpha3 code", code)
+		err = newInvalidDataError(string(code), standardISO3166alpha3)
 	}
 
 	return
@@ -80,12 +80,13 @@ func ByAlpha2CodeStr(code string) (result Country, ok bool) {
 	return ByAlpha2Code(Alpha2Code(code))
 }
 
-// ByAlpha2CodeErr lookup for country by alpha-2 code with error return type
+// ByAlpha2CodeErr looks up a Country by its ISO 3166-1 alpha-2 code and returns an error when no match is found.
+// If the lookup fails, the returned error identifies the invalid alpha-2 code.
 func ByAlpha2CodeErr(code Alpha2Code) (result Country, err error) {
 	var ok bool
 	result, ok = ByAlpha2Code(code)
 	if !ok {
-		err = fmt.Errorf("'%s' is not valid ISO-3166-alpha2 code", code)
+		err = newInvalidDataError(string(code), standardISO3166alpha2)
 	}
 
 	return
@@ -107,12 +108,13 @@ func ByNameStr(country string) (result Country, ok bool) {
 	return ByName(Name(country))
 }
 
-// ByNameErr lookup for country by name with error return type
+// ByNameErr looks up a country by its Name and returns the matching Country or an error if no match is found.
+// If lookup fails, the returned error identifies the invalid country name according to the ISO-3166 country standard.
 func ByNameErr(country Name) (result Country, err error) {
 	var ok bool
 	result, ok = ByName(country)
 	if !ok {
-		err = fmt.Errorf("'%s' is not valid ISO-3166 Country name", country)
+		err = newInvalidDataError(string(country), standardISO3166Country)
 	}
 
 	return
