@@ -1,0 +1,25 @@
+package country
+
+import "strings"
+
+const (
+	standardISO3166alpha2  = "ISO-3166-alpha2 code"
+	standardISO3166alpha3  = "ISO-3166-alpha3 code"
+	standardISO3166Country = "ISO-3166 Country name"
+)
+
+type InvalidDataError struct {
+	data     string
+	standard string
+}
+
+func (e InvalidDataError) Error() string {
+	return "'" + string(e.data) + "' is not valid " + e.standard
+}
+
+// newInvalidDataError creates an InvalidDataError for the given data and standard.
+// The provided data string is cloned to avoid retaining references to the original value.
+func newInvalidDataError(data string, standard string) InvalidDataError {
+	// data copy to avoid retaining references to potentially unsafe strings
+	return InvalidDataError{data: strings.Clone(data), standard: standard}
+}
