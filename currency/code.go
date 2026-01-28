@@ -3,7 +3,6 @@ package currency
 import (
 	"bytes"
 	"database/sql/driver"
-	"fmt"
 	"unsafe"
 )
 
@@ -41,7 +40,7 @@ func (code *Code) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (code Code) Validate() error {
 	if _, ok := ByCodeStr(string(code)); !ok {
-		return InvalidDataError{data: code, standard: standardISO4217Code}
+		return newInvalidDataError(string(code), standardISO4217Code)
 	}
 
 	return nil

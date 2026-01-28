@@ -1,9 +1,9 @@
 package currency
 
 import (
+	"bytes"
 	"database/sql/driver"
-	"encoding/json"
-	"fmt"
+	"unsafe"
 )
 
 // Number represents a number type from ISO-4217
@@ -40,9 +40,9 @@ func (number *Number) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (number Number) Validate() error {
 	if _, ok := ByNumberStr(string(number)); !ok {
-		return InvalidDataError{data: number, standard: standardISO4217Number}
+		return newInvalidDataError(string(number), standardISO4217Number)
 	}
-
+	
 	return nil
 }
 

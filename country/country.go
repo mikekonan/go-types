@@ -57,7 +57,7 @@ func ByAlpha3CodeErr(code Alpha3Code) (result Country, err error) {
 	var ok bool
 	result, ok = ByAlpha3Code(code)
 	if !ok {
-		err = InvalidDataError{data: string(code), standard: standardISO3166alpha3}
+		err = newInvalidDataError(string(code), standardISO3166alpha3)
 	}
 
 	return
@@ -84,7 +84,7 @@ func ByAlpha2CodeErr(code Alpha2Code) (result Country, err error) {
 	var ok bool
 	result, ok = ByAlpha2Code(code)
 	if !ok {
-		err = InvalidDataError{data: string(code), standard: standardISO3166alpha2}
+		err = newInvalidDataError(string(code), standardISO3166alpha2)
 	}
 
 	return
@@ -111,7 +111,7 @@ func ByNameErr(country Name) (result Country, err error) {
 	var ok bool
 	result, ok = ByName(country)
 	if !ok {
-		err = InvalidDataError{data: string(country), standard: standardISO3166Country}
+		err = newInvalidDataError(string(country), standardISO3166Country)
 	}
 
 	return

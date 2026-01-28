@@ -1,4 +1,6 @@
-package country
+package currency
+
+import "strings"
 
 const (
 	standardISO4217Code     = "ISO-4217 code"
@@ -14,4 +16,9 @@ type InvalidDataError struct {
 
 func (e InvalidDataError) Error() string {
 	return "'" + string(e.data) + "' is not valid " + e.standard
+}
+
+func newInvalidDataError(data string, standard string) InvalidDataError {
+	// data copy to avoid retaining references to potentially unsafe strings
+	return InvalidDataError{data: strings.Clone(data), standard: standard}
 }

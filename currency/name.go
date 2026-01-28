@@ -1,9 +1,9 @@
 package currency
 
 import (
+	"bytes"
 	"database/sql/driver"
-	"encoding/json"
-	"fmt"
+	"unsafe"
 )
 
 // Currency represents a currency type from ISO-4217
@@ -40,7 +40,7 @@ func (currency *Currency) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (currency Currency) Validate() error {
 	if _, ok := ByCurrencyStr(string(currency)); !ok {
-		return InvalidDataError{data: currency, standard: standardISO4217Currency}
+		return newInvalidDataError(string(currency), standardISO4217Currency)
 	}
 
 	return nil

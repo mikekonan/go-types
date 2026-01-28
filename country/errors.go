@@ -1,5 +1,7 @@
 package country
 
+import "strings"
+
 const (
 	standardISO3166alpha2  = "ISO-3166-alpha2 code"
 	standardISO3166alpha3  = "ISO-3166-alpha3 code"
@@ -13,4 +15,9 @@ type InvalidDataError struct {
 
 func (e InvalidDataError) Error() string {
 	return "'" + string(e.data) + "' is not valid " + e.standard
+}
+
+func newInvalidDataError(data string, standard string) InvalidDataError {
+	// data copy to avoid retaining references to potentially unsafe strings
+	return InvalidDataError{data: strings.Clone(data), standard: standard}
 }

@@ -1,9 +1,9 @@
 package currency
 
 import (
+	"bytes"
 	"database/sql/driver"
-	"encoding/json"
-	"fmt"
+	"unsafe"
 )
 
 // Country represents a country type from ISO-4217
@@ -40,7 +40,7 @@ func (country *Country) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (country Country) Validate() error {
 	if _, ok := ByCountryStr(string(country)); !ok {
-		return InvalidDataError{data: country, standard: standardISO4217Country}
+		return newInvalidDataError(string(country), standardISO4217Country)
 	}
 
 	return nil
