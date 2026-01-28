@@ -13,7 +13,7 @@ func BenchmarkAlpha3Code_UnmarshalJSON(b *testing.B) {
 		_, _ = rand.Read(corpus[i])
 	}
 
-	b.SetBytes(2)
+	b.SetBytes(3)
 	b.ReportAllocs()
 	b.ResetTimer()
 
