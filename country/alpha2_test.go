@@ -9,8 +9,10 @@ func BenchmarkAlpha2Code_UnmarshalJSON(b *testing.B) {
 	var corpus = make([][]byte, 100)
 
 	for i := 0; i < len(corpus); i++ {
-		corpus[i] = make([]byte, 2)
-		_, _ = rand.Read(corpus[i])
+		corpus[i] = make([]byte, 4)
+		corpus[i][0] = '"'
+		corpus[i][3] = '"'
+		_, _ = rand.Read(corpus[i][1:3])
 	}
 
 	b.SetBytes(2)
