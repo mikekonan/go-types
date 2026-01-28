@@ -17,6 +17,7 @@ func (code *Alpha3Code) UnmarshalJSON(data []byte) error {
 	}
 
 	if isEmptyValue {
+		// empty value is allowed for Alpha3Code
 		return nil
 	}
 

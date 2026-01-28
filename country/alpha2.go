@@ -17,9 +17,10 @@ func (code *Alpha2Code) UnmarshalJSON(data []byte) error {
 	}
 
 	if isEmptyValue {
+		// empty value is allowed for Alpha2Code
 		return nil
 	}
-	
+
 	country, err := ByAlpha2CodeErr(Alpha2Code(str))
 	if err != nil {
 		return err
