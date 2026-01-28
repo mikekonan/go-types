@@ -16,6 +16,10 @@ var (
 	reflectTypeOfString = reflect.TypeOf("")
 )
 
+// UnsafeStringFromJson converts a JSON string literal in data to a Go string.
+// It treats the JSON values `null` and `""` as empty values and returns isEmptyValue = true.
+// If data is not a JSON string literal (not enclosed in double quotes), it returns a *json.UnmarshalTypeError.
+// On success it returns the unquoted string
 func UnsafeStringFromJson(data []byte) (v string, isEmptyValue bool, err error) {
 	// check for null or empty string
 	if bytes.Equal(data, []byte(nullBytes)) || bytes.Equal(data, []byte(emptyStringBytes)) {
