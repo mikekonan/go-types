@@ -1,8 +1,9 @@
 package country
 
 import (
+	"bytes"
 	"database/sql/driver"
-	"encoding/json"
+	"unsafe"
 )
 
 // Alpha3Code represents alpha-3 code
@@ -10,10 +11,8 @@ type Alpha3Code string
 
 // UnmarshalJSON unmarshall implementation for alpha3code
 func (code *Alpha3Code) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
+	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
+	var str = unsafe.String(unsafe.SliceData(data), len(data))
 
 	enumValue := Alpha3Code(str)
 	if len(enumValue) != 0 {

@@ -1,8 +1,9 @@
 package country
 
 import (
+	"bytes"
 	"database/sql/driver"
-	"encoding/json"
+	"unsafe"
 )
 
 // Alpha2Code represents alpha-2 code
@@ -10,10 +11,8 @@ type Alpha2Code string
 
 // UnmarshalJSON unmarshall implementation for alpha2code
 func (code *Alpha2Code) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
+	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
+	var str = unsafe.String(unsafe.SliceData(data), len(data))
 
 	enumValue := Alpha2Code(str)
 	if len(enumValue) != 0 {

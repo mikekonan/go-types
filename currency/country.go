@@ -24,10 +24,8 @@ func (country Country) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Country
 func (country *Country) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
+	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
+	var str = unsafe.String(unsafe.SliceData(data), len(data))
 
 	_, err := ByCountryStrErr(str)
 	if err != nil {
@@ -42,7 +40,7 @@ func (country *Country) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (country Country) Validate() error {
 	if _, ok := ByCountryStr(string(country)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 country", country)
+		return InvalidDataError{data: country, standard: standardISO4217Country}
 	}
 
 	return nil

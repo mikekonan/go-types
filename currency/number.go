@@ -24,10 +24,8 @@ func (number Number) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Number
 func (number *Number) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
+	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
+	var str = unsafe.String(unsafe.SliceData(data), len(data))
 
 	currency, err := ByNumberStrErr(str)
 	if err != nil {
@@ -42,7 +40,7 @@ func (number *Number) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (number Number) Validate() error {
 	if _, ok := ByNumberStr(string(number)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 number", number)
+		return InvalidDataError{data: number, standard: standardISO4217Number}
 	}
 
 	return nil

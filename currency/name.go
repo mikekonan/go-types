@@ -24,10 +24,8 @@ func (currency Currency) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Currency
 func (currency *Currency) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
+	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
+	var str = unsafe.String(unsafe.SliceData(data), len(data))
 
 	currencyValue, err := ByCurrencyStrErr(str)
 	if err != nil {
@@ -42,7 +40,7 @@ func (currency *Currency) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (currency Currency) Validate() error {
 	if _, ok := ByCurrencyStr(string(currency)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 currency", currency)
+		return InvalidDataError{data: currency, standard: standardISO4217Currency}
 	}
 
 	return nil

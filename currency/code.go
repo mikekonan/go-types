@@ -1,9 +1,10 @@
 package currency
 
 import (
+	"bytes"
 	"database/sql/driver"
-	"encoding/json"
 	"fmt"
+	"unsafe"
 )
 
 // Code represents a code type from ISO-4217
@@ -24,10 +25,8 @@ func (code Code) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Code
 func (code *Code) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
+	data = bytes.TrimPrefix(bytes.TrimSuffix(data, []byte("\"")), []byte("\""))
+	var str = unsafe.String(unsafe.SliceData(data), len(data))
 
 	currency, err := ByCodeStrErr(str)
 	if err != nil {
@@ -42,7 +41,7 @@ func (code *Code) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (code Code) Validate() error {
 	if _, ok := ByCodeStr(string(code)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 code", code)
+		return InvalidDataError{data: code, standard: standardISO4217Code}
 	}
 
 	return nil
