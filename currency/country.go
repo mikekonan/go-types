@@ -2,6 +2,7 @@ package currency
 
 import (
 	"database/sql/driver"
+	"strings"
 
 	"github.com/mikekonan/go-types/v2/internal/utils"
 )
@@ -38,7 +39,7 @@ func (country *Country) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	*country = Country(str)
+	*country = Country(strings.Clone(str))
 
 	return nil
 }
