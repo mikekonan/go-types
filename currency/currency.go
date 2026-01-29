@@ -8,7 +8,6 @@ Author Mikalai Konan(mikalai.konan@icloud.com).
 package currency
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -104,7 +103,7 @@ func ByCodeStrErr(code string) (c currency, err error) {
 	c, ok = currenciesByCode[strings.ToUpper(code)]
 
 	if !ok {
-		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 code", code)
+		return currency{}, newInvalidDataError(code, standardISO4217Code)
 	}
 
 	return
@@ -116,7 +115,7 @@ func ByCurrencyStrErr(currencyStr string) (c currency, err error) {
 	c, ok = currenciesByCurrency[currencyStr]
 
 	if !ok {
-		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 currency", currencyStr)
+		return currency{}, newInvalidDataError(currencyStr, standardISO4217Currency)
 	}
 
 	return
@@ -128,7 +127,7 @@ func ByNumberStrErr(number string) (c currency, err error) {
 	c, ok = currenciesByNumber[number]
 
 	if !ok {
-		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 number", number)
+		return currency{}, newInvalidDataError(number, standardISO4217Number)
 	}
 
 	return
@@ -140,7 +139,7 @@ func ByCountryStrErr(country string) (c currencies, err error) {
 	c, ok = currenciesByCountry[country]
 
 	if !ok {
-		return nil, fmt.Errorf("'%s' is not valid ISO-4217 country", country)
+		return nil, newInvalidDataError(country, standardISO4217Country)
 	}
 
 	return
@@ -176,7 +175,7 @@ func ByCodeErr(code Code) (c currency, err error) {
 	c, ok = currenciesByCode[code.String()]
 
 	if !ok {
-		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 code", code)
+		return currency{}, newInvalidDataError(string(code), standardISO4217Code)
 	}
 
 	return
@@ -188,7 +187,7 @@ func ByCurrencyErr(currencyStr Currency) (c currency, err error) {
 	c, ok = currenciesByCurrency[currencyStr.String()]
 
 	if !ok {
-		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 currency", currencyStr)
+		return currency{}, newInvalidDataError(string(currencyStr), standardISO4217Currency)
 	}
 
 	return
@@ -200,7 +199,7 @@ func ByNumberErr(number Number) (c currency, err error) {
 	c, ok = currenciesByNumber[number.String()]
 
 	if !ok {
-		return currency{}, fmt.Errorf("'%s' is not valid ISO-4217 number", number)
+		return currency{}, newInvalidDataError(string(number), standardISO4217Number)
 	}
 
 	return
@@ -212,7 +211,7 @@ func ByCountryErr(country Country) (c currencies, err error) {
 	c, ok = currenciesByCountry[country.String()]
 
 	if !ok {
-		return nil, fmt.Errorf("'%s' is not valid ISO-4217 country", country)
+		return nil, newInvalidDataError(string(country), standardISO4217Country)
 	}
 
 	return

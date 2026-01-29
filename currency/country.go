@@ -2,8 +2,9 @@ package currency
 
 import (
 	"database/sql/driver"
-	"encoding/json"
-	"fmt"
+	"strings"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Country represents a country type from ISO-4217
@@ -24,17 +25,21 @@ func (country Country) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Country
 func (country *Country) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
-		return err
-	}
-
-	_, err := ByCountryStrErr(str)
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
 	if err != nil {
 		return err
 	}
 
-	*country = Country(str)
+	if isEmptyValue {
+		return newInvalidDataError(str, standardISO4217Country)
+	}
+
+	_, err = ByCountryStrErr(str)
+	if err != nil {
+		return err
+	}
+
+	*country = Country(strings.Clone(str))
 
 	return nil
 }
@@ -42,7 +47,7 @@ func (country *Country) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (country Country) Validate() error {
 	if _, ok := ByCountryStr(string(country)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 country", country)
+		return newInvalidDataError(string(country), standardISO4217Country)
 	}
 
 	return nil

@@ -2,8 +2,8 @@ package currency
 
 import (
 	"database/sql/driver"
-	"encoding/json"
-	"fmt"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Currency represents a currency type from ISO-4217
@@ -24,9 +24,13 @@ func (currency Currency) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Currency
 func (currency *Currency) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
+	if err != nil {
 		return err
+	}
+
+	if isEmptyValue {
+		return newInvalidDataError(str, standardISO4217Currency)
 	}
 
 	currencyValue, err := ByCurrencyStrErr(str)
@@ -42,7 +46,7 @@ func (currency *Currency) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (currency Currency) Validate() error {
 	if _, ok := ByCurrencyStr(string(currency)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 currency", currency)
+		return newInvalidDataError(string(currency), standardISO4217Currency)
 	}
 
 	return nil

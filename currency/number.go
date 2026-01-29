@@ -2,8 +2,8 @@ package currency
 
 import (
 	"database/sql/driver"
-	"encoding/json"
-	"fmt"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Number represents a number type from ISO-4217
@@ -24,9 +24,13 @@ func (number Number) Value() (value driver.Value, err error) {
 
 // UnmarshalJSON unmarshall implementation for Number
 func (number *Number) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
+	if err != nil {
 		return err
+	}
+
+	if isEmptyValue {
+		return newInvalidDataError(str, standardISO4217Number)
 	}
 
 	currency, err := ByNumberStrErr(str)
@@ -42,7 +46,7 @@ func (number *Number) UnmarshalJSON(data []byte) error {
 // Validate implementation of ozzo-validation Validate interface
 func (number Number) Validate() error {
 	if _, ok := ByNumberStr(string(number)); !ok {
-		return fmt.Errorf("'%s' is not valid ISO-4217 number", number)
+		return newInvalidDataError(string(number), standardISO4217Number)
 	}
 
 	return nil

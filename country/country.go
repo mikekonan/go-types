@@ -12,7 +12,6 @@ Author Mikalai Konan(mikalai.konan@icloud.com).
 package country
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -58,7 +57,7 @@ func ByAlpha3CodeErr(code Alpha3Code) (result Country, err error) {
 	var ok bool
 	result, ok = ByAlpha3Code(code)
 	if !ok {
-		err = fmt.Errorf("'%s' is not valid ISO-3166-alpha3 code", code)
+		err = newInvalidDataError(string(code), standardISO3166alpha3)
 	}
 
 	return
@@ -85,7 +84,7 @@ func ByAlpha2CodeErr(code Alpha2Code) (result Country, err error) {
 	var ok bool
 	result, ok = ByAlpha2Code(code)
 	if !ok {
-		err = fmt.Errorf("'%s' is not valid ISO-3166-alpha2 code", code)
+		err = newInvalidDataError(string(code), standardISO3166alpha2)
 	}
 
 	return
@@ -112,7 +111,7 @@ func ByNameErr(country Name) (result Country, err error) {
 	var ok bool
 	result, ok = ByName(country)
 	if !ok {
-		err = fmt.Errorf("'%s' is not valid ISO-3166 Country name", country)
+		err = newInvalidDataError(string(country), standardISO3166Country)
 	}
 
 	return
