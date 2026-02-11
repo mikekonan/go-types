@@ -94,7 +94,7 @@ func ByCountryCodeErr(code country.Alpha2Code) (result []Subdivision, err error)
 	var ok bool
 	result, ok = ByCountryCode(code)
 	if !ok {
-		err = newInvalidDataError(string(code), standardISO31662Code)
+		err = newInvalidDataError(string(code), standardISO31661Alpha2)
 	}
 
 	return

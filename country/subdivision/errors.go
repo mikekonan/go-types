@@ -2,7 +2,10 @@ package subdivision
 
 import "strings"
 
-const standardISO31662Code = "ISO-3166-2 subdivision code"
+const (
+	standardISO31661Alpha2 = "ISO-3166-1 alpha-2 country code"
+	standardISO31662Code   = "ISO-3166-2 subdivision code"
+)
 
 type InvalidDataError struct {
 	data     string
