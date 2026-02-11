@@ -66,7 +66,7 @@ func ByCodeErr(code Code) (result Subdivision, err error) {
 	var ok bool
 	result, ok = ByCode(code)
 	if !ok {
-		err = newInvalidDataError(string(code), standardISO31662Code)
+		err = InvalidDataError{data: strings.Clone(string(code)), standard: "ISO-3166-2 subdivision code"}
 	}
 
 	return
@@ -94,7 +94,7 @@ func ByCountryCodeErr(code country.Alpha2Code) (result []Subdivision, err error)
 	var ok bool
 	result, ok = ByCountryCode(code)
 	if !ok {
-		err = newInvalidDataError(string(code), standardISO31661Alpha2)
+		err = InvalidDataError{data: strings.Clone(string(code)), standard: "ISO-3166-1 alpha-2 country code"}
 	}
 
 	return

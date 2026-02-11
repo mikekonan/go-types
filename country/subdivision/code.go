@@ -62,7 +62,7 @@ func (code Code) ValidateForCountry(countryCode country.Alpha2Code) error {
 	}
 
 	if !strings.EqualFold(sub.CountryCode().String(), countryCode.String()) {
-		return newInvalidDataError(string(code), standardISO31662Code+" for country "+countryCode.String())
+		return InvalidDataError{data: strings.Clone(string(code)), standard: "ISO-3166-2 subdivision code for country " + countryCode.String()}
 	}
 
 	return nil
