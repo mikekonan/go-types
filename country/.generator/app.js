@@ -243,6 +243,21 @@ function generateSubdivision(entries) {
     subdivisions.sort((a, b) => a.code.localeCompare(b.code));
     log("Sorted " + subdivisions.length + " subdivisions by code");
 
+    // Collision detection for generated identifiers
+    const varNames = new Map();
+    const constNames = new Map();
+    for (const sub of subdivisions) {
+        if (varNames.has(sub.varName)) {
+            throw new Error(`varName collision: '${sub.varName}' from '${sub.code}' and '${varNames.get(sub.varName)}'`);
+        }
+        if (constNames.has(sub.constName)) {
+            throw new Error(`constName collision: '${sub.constName}' from '${sub.code}' and '${constNames.get(sub.constName)}'`);
+        }
+        varNames.set(sub.varName, sub.code);
+        constNames.set(sub.constName, sub.code);
+    }
+    log("No identifier collisions detected");
+
     // Group by country
     const byCountry = {};
     for (const sub of subdivisions) {
@@ -273,6 +288,9 @@ ${subdivisions.map(
 )
 `;
 
+    const uniqueNames = [...new Set(subdivisions.map((s) => s.name))].sort();
+    const uniqueCategories = [...new Set(subdivisions.map((s) => s.type).filter((t) => t.length > 0))].sort();
+
     const subMappingTemplate = subGenHeader + `package subdivision
 
 var SubdivisionByCode = map[string]Subdivision{
@@ -283,6 +301,14 @@ var SubdivisionsByCountry = map[string][]Subdivision{
 ${countryCodes.map((cc) =>
     `\t"${cc}": {\n${byCountry[cc].map((sub) => `\t\t${sub.varName}`).join(",\n")},\n\t}`
 ).join(",\n")},
+}
+
+var subdivisionNames = map[string]struct{}{
+${uniqueNames.map((n) => `\t"${n.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}": {}`).join(",\n")},
+}
+
+var subdivisionCategories = map[string]struct{}{
+${uniqueCategories.map((c) => `\t"${c}": {}`).join(",\n")},
 }
 `;
 

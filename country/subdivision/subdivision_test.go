@@ -248,8 +248,23 @@ func TestNameUnmarshalJson(t *testing.T) {
 		t.FailNow()
 	}
 
+	var negative NameStruct
+	if err := json.Unmarshal([]byte(`{"name":"Not A Real Subdivision Name"}`), &negative); err == nil {
+		t.FailNow()
+	}
+
 	var emptyName NameStruct
 	if err := json.Unmarshal([]byte(`{"name":""}`), &emptyName); err != nil {
+		t.FailNow()
+	}
+}
+
+func TestNameValidate(t *testing.T) {
+	if Name("California").Validate() != nil {
+		t.FailNow()
+	}
+
+	if Name("Not A Real Name").Validate() == nil {
 		t.FailNow()
 	}
 }
@@ -260,12 +275,27 @@ func TestCategoryUnmarshalJson(t *testing.T) {
 	}
 
 	var positive CategoryStruct
-	if err := json.Unmarshal([]byte(`{"category":"state"}`), &positive); err != nil || positive.Category != "state" {
+	if err := json.Unmarshal([]byte(`{"category":"State"}`), &positive); err != nil || positive.Category != "State" {
+		t.FailNow()
+	}
+
+	var negative CategoryStruct
+	if err := json.Unmarshal([]byte(`{"category":"Not A Real Category"}`), &negative); err == nil {
 		t.FailNow()
 	}
 
 	var empty CategoryStruct
 	if err := json.Unmarshal([]byte(`{"category":""}`), &empty); err != nil {
+		t.FailNow()
+	}
+}
+
+func TestCategoryValidate(t *testing.T) {
+	if Category("State").Validate() != nil {
+		t.FailNow()
+	}
+
+	if Category("Not A Real Category").Validate() == nil {
 		t.FailNow()
 	}
 }

@@ -3,6 +3,7 @@ package subdivision
 import (
 	"database/sql/driver"
 	"encoding/json"
+	"fmt"
 )
 
 // Category represents subdivision category (e.g. "state", "province", "territory")
@@ -15,12 +16,37 @@ func (category *Category) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
+	if str == "" {
+		return nil
+	}
+
+	if _, ok := subdivisionCategories[str]; !ok {
+		return fmt.Errorf("'%s' is not valid ISO-3166-2 subdivision category", str)
+	}
+
 	*category = Category(str)
+	return nil
+}
+
+// Validate implementation of ozzo-validation Validate interface
+func (category Category) Validate() error {
+	if _, ok := subdivisionCategories[string(category)]; !ok {
+		return fmt.Errorf("'%s' is not valid ISO-3166-2 subdivision category", category)
+	}
+
 	return nil
 }
 
 // Value implementation of driver.Valuer
 func (category Category) Value() (value driver.Value, err error) {
+	if category == "" {
+		return "", nil
+	}
+
+	if err = category.Validate(); err != nil {
+		return nil, err
+	}
+
 	return category.String(), nil
 }
 
