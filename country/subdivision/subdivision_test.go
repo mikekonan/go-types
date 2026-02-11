@@ -24,6 +24,10 @@ func TestSubdivisionByCodeIsSet(t *testing.T) {
 		if !sub.countryCode.IsSet() {
 			t.FailNow()
 		}
+
+		if !sub.category.IsSet() {
+			t.FailNow()
+		}
 	}
 }
 
@@ -59,11 +63,17 @@ func TestMappingStringsCorrect(t *testing.T) {
 
 func TestMappingValueCorrect(t *testing.T) {
 	for key, sub := range SubdivisionByCode {
-		_, actual := Code(key).Value()
-		_, expected := sub.code.Value()
+		actualValue, actualErr := Code(key).Value()
+		expectedValue, expectedErr := sub.code.Value()
 
-		if actual != expected {
-			t.FailNow()
+		if actualErr != nil {
+			t.Fatalf("unexpected error for Code(%q).Value(): %v", key, actualErr)
+		}
+		if expectedErr != nil {
+			t.Fatalf("unexpected error for sub.code.Value() (%q): %v", sub.code, expectedErr)
+		}
+		if actualValue != expectedValue {
+			t.Fatalf("value mismatch for %q: got %v, want %v", key, actualValue, expectedValue)
 		}
 	}
 }
