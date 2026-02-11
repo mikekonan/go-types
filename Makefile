@@ -8,8 +8,8 @@ clean: ## clean
 	find . -name '*.coverage' -delete
 	find . -type d -name 'node_modules' | xargs rm -rf
 
-gen-country: ## generate country
-	docker run --rm mikekonan/iso-3166-country-codes-scrapper:latest | docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/country/.generator && npm install && node app.js"
+gen-country: ## generate country + subdivision (ISO 3166)
+	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/country/.generator && npm install && node app.js"
 
 gen-currency: ## generate currency
 	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/currency/.generator && npm install && node generator.js"
@@ -17,10 +17,10 @@ gen-currency: ## generate currency
 gen-timezone: ## generate timezone
 	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/timezone/.generator && npm install && node generator.js"
 
-gen-phone: ## generate currency
+gen-phone: ## generate phone
 	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/phone/.generator && npm install && node generator.js"
 
-gen-language: ## generate currency
+gen-language: ## generate language
 	docker run --rm -i -v $(PWD):/app node:12.19.0-alpine3.10 sh -c "cd /app/language/.generator && npm install && node generator.js"
 
 concat-yaml: ## concat-yaml
