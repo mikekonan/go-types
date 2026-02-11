@@ -104,16 +104,23 @@ function generateCountry(rawCodes) {
         return result;
     });
 
+    // Sort by alpha-2 code for stable, predictable output order
+    codes.sort((a, b) => a.a2.value.localeCompare(b.a2.value));
+
     // --- Country templates ---
+
+    // Pre-sort variants for each output file
+    const byName = [...codes].sort((a, b) => a.name.value.localeCompare(b.name.value));
+    const byA2 = codes; // already sorted by alpha-2
+    const byA3 = [...codes].sort((a, b) => a.a3.value.localeCompare(b.a3.value));
 
     const countriesTemplate = `package name
 
 import "github.com/mikekonan/go-types/v2/country"
 
 const (
-${codes.map(
-        (code) => `\t// ${code.key} represents '${code.name.value}' country name
-    ${code.key} = country.Name("${code.name.value}")`
+${byName.map(
+        (code) => `\t// ${code.key} represents '${code.name.value}' country name\n\t${code.key} = country.Name("${code.name.value}")`
     ).join("\n")}
 )
 `;
@@ -123,9 +130,8 @@ ${codes.map(
 import "github.com/mikekonan/go-types/v2/country"
 
 const (
-${codes.map(
-        (code) => `\t// ${code.a2.value} represents '${code.a2.value}' country alpha-2 code
-    ${code.a2.value} = country.Alpha2Code("${code.a2.value}")`
+${byA2.map(
+        (code) => `\t// ${code.a2.value} represents '${code.a2.value}' country alpha-2 code\n\t${code.a2.value} = country.Alpha2Code("${code.a2.value}")`
     ).join("\n")}
 )
 `;
@@ -135,9 +141,8 @@ ${codes.map(
 import "github.com/mikekonan/go-types/v2/country"
 
 const (
-${codes.map(
-        (code) => `\t// ${code.a3.value} represents '${code.a3.value}' country alpha-3 code
-    ${code.a3.value} = country.Alpha3Code("${code.a3.value}")`
+${byA3.map(
+        (code) => `\t// ${code.a3.value} represents '${code.a3.value}' country alpha-3 code\n\t${code.a3.value} = country.Alpha3Code("${code.a3.value}")`
     ).join("\n")}
 )
 `;
@@ -146,12 +151,7 @@ ${codes.map(
 
 var (
 ${codes.map(
-    (code) => `\t// ${code.key} represents '${code.name.value}' country
-    ${code.key} = Country{
-		name:    \"${code.name.value}\",
-		alpha2:  \"${code.a2.value}\",
-		alpha3:  \"${code.a3.value}\",
-	}`
+    (code) => `\t// ${code.key} represents '${code.name.value}' country\n\t${code.key} = Country{\n\t\tname:   \"${code.name.value}\",\n\t\talpha2: \"${code.a2.value}\",\n\t\talpha3: \"${code.a3.value}\",\n\t}`
 )
     .join("\n")}
 )
@@ -160,15 +160,15 @@ ${codes.map(
     const countryByCountryTemplate = `package country
 
 var CountryByName = map[string]Country{
-${codes.map((code) => `\t\"${code.name.value}\" : ${code.key}`).join(",\n")},
+${byName.map((code) => `\t\"${code.name.value}\" : ${code.key}`).join(",\n")},
 }
 
 var CountryByAlpha2 = map[string]Country{
-${codes.map((code) => `\t\"${code.a2.value}\" : ${code.key}`).join(",\n")},
+${byA2.map((code) => `\t\"${code.a2.value}\" : ${code.key}`).join(",\n")},
 }
 
 var CountryByAlpha3 = map[string]Country{
-${codes.map((code) => `\t\"${code.a3.value}\" : ${code.key}`).join(",\n")},
+${byA3.map((code) => `\t\"${code.a3.value}\" : ${code.key}`).join(",\n")},
 }
 `;
 
@@ -180,7 +180,7 @@ ${codes.map((code) => `\t\"${code.a3.value}\" : ${code.key}`).join(",\n")},
                     example: "Austria",
                     type: "string",
                     format: "iso3166-country",
-                    enum: [...new Set(codes.map((code) => code.name.value))],
+                    enum: byName.map((code) => code.name.value),
                     "x-go-type": "github.com/mikekonan/go-types/v2/country.Name",
                 },
                 CountryAlpha2: {
@@ -189,7 +189,7 @@ ${codes.map((code) => `\t\"${code.a3.value}\" : ${code.key}`).join(",\n")},
                     format: "iso3166-alpha-2",
                     minLength: 2,
                     maxLength: 2,
-                    enum: [...new Set(codes.map((code) => code.a2.value))],
+                    enum: byA2.map((code) => code.a2.value),
                     "x-go-type": "github.com/mikekonan/go-types/v2/country.Alpha2Code",
                 },
                 CountryAlpha3: {
@@ -198,7 +198,7 @@ ${codes.map((code) => `\t\"${code.a3.value}\" : ${code.key}`).join(",\n")},
                     format: "iso3166-alpha-3",
                     minLength: 3,
                     maxLength: 3,
-                    enum: [...new Set(codes.map((code) => code.a3.value))],
+                    enum: byA3.map((code) => code.a3.value),
                     "x-go-type": "github.com/mikekonan/go-types/v2/country.Alpha3Code",
                 }
             },
