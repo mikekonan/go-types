@@ -2,8 +2,9 @@ package subdivision
 
 import (
 	"database/sql/driver"
-	"encoding/json"
 	"fmt"
+
+	"github.com/mikekonan/go-types/v2/internal/utils"
 )
 
 // Name represents subdivision name
@@ -11,12 +12,12 @@ type Name string
 
 // UnmarshalJSON unmarshall implementation for name
 func (name *Name) UnmarshalJSON(data []byte) error {
-	var str string
-	if err := json.Unmarshal(data, &str); err != nil {
+	str, isEmptyValue, err := utils.UnsafeStringFromJson(data)
+	if err != nil {
 		return err
 	}
 
-	if str == "" {
+	if isEmptyValue {
 		return nil
 	}
 
