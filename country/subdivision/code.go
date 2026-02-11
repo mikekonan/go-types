@@ -2,6 +2,7 @@ package subdivision
 
 import (
 	"database/sql/driver"
+	"fmt"
 	"strings"
 
 	"github.com/mikekonan/go-types/v2/country"
@@ -62,7 +63,7 @@ func (code Code) ValidateForCountry(countryCode country.Alpha2Code) error {
 	}
 
 	if !strings.EqualFold(sub.CountryCode().String(), countryCode.String()) {
-		return InvalidDataError{data: strings.Clone(string(code)), standard: "ISO-3166-2 subdivision code for country " + countryCode.String()}
+		return fmt.Errorf("'%s' is not valid ISO-3166-2 subdivision code for country %s", code, countryCode)
 	}
 
 	return nil

@@ -12,6 +12,7 @@ Author Mikalai Konan(mikalai.konan@icloud.com).
 package subdivision
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/mikekonan/go-types/v2/country"
@@ -66,7 +67,7 @@ func ByCodeErr(code Code) (result Subdivision, err error) {
 	var ok bool
 	result, ok = ByCode(code)
 	if !ok {
-		err = InvalidDataError{data: strings.Clone(string(code)), standard: "ISO-3166-2 subdivision code"}
+		err = fmt.Errorf("'%s' is not valid ISO-3166-2 subdivision code", code)
 	}
 
 	return
@@ -94,7 +95,7 @@ func ByCountryCodeErr(code country.Alpha2Code) (result []Subdivision, err error)
 	var ok bool
 	result, ok = ByCountryCode(code)
 	if !ok {
-		err = InvalidDataError{data: strings.Clone(string(code)), standard: "ISO-3166-1 alpha-2 country code"}
+		err = fmt.Errorf("'%s' is not valid ISO-3166-1 alpha-2 country code", code)
 	}
 
 	return
