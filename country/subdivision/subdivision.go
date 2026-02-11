@@ -52,7 +52,7 @@ func (s Subdivision) CategoryStr() string { return s.category.String() }
 
 // ByCode lookup for subdivision by code
 func ByCode(code Code) (result Subdivision, ok bool) {
-	result, ok = SubdivisionByCode[strings.ToUpper(code.String())]
+	result, ok = subdivisionByCode[strings.ToUpper(code.String())]
 
 	return
 }
@@ -80,7 +80,7 @@ func ByCodeStrErr(code string) (result Subdivision, err error) {
 
 // ByCountryCode lookup for subdivisions by country alpha-2 code
 func ByCountryCode(code country.Alpha2Code) (result []Subdivision, ok bool) {
-	src, ok := SubdivisionsByCountry[strings.ToUpper(code.String())]
+	src, ok := subdivisionsByCountry[strings.ToUpper(code.String())]
 	if ok {
 		result = make([]Subdivision, len(src))
 		copy(result, src)

@@ -154,15 +154,15 @@ ${codes.map(
 
     const countryByCountryTemplate = genHeader + `package country
 
-var CountryByName = map[string]Country{
+var countryByName = map[string]Country{
 ${byName.map((code) => `\t\"${code.name.value}\": ${code.key}`).join(",\n")},
 }
 
-var CountryByAlpha2 = map[string]Country{
+var countryByAlpha2 = map[string]Country{
 ${byA2.map((code) => `\t\"${code.a2.value}\": ${code.key}`).join(",\n")},
 }
 
-var CountryByAlpha3 = map[string]Country{
+var countryByAlpha3 = map[string]Country{
 ${byA3.map((code) => `\t\"${code.a3.value}\": ${code.key}`).join(",\n")},
 }
 `;
@@ -293,11 +293,11 @@ ${subdivisions.map(
 
     const subMappingTemplate = subGenHeader + `package subdivision
 
-var SubdivisionByCode = map[string]Subdivision{
+var subdivisionByCode = map[string]Subdivision{
 ${subdivisions.map((sub) => `\t"${sub.code}": ${sub.varName}`).join(",\n")},
 }
 
-var SubdivisionsByCountry = map[string][]Subdivision{
+var subdivisionsByCountry = map[string][]Subdivision{
 ${countryCodes.map((cc) =>
     `\t"${cc}": {\n${byCountry[cc].map((sub) => `\t\t${sub.varName}`).join(",\n")},\n\t}`
 ).join(",\n")},

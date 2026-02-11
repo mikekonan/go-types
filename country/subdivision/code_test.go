@@ -30,8 +30,8 @@ func BenchmarkCode_UnmarshalJSON(b *testing.B) {
 
 func BenchmarkCode_ValidateForCountry(b *testing.B) {
 	// collect all valid codes
-	codes := make([]Code, 0, len(SubdivisionByCode))
-	for _, sub := range SubdivisionByCode {
+	codes := make([]Code, 0, len(subdivisionByCode))
+	for _, sub := range subdivisionByCode {
 		codes = append(codes, sub.code)
 	}
 
@@ -39,14 +39,14 @@ func BenchmarkCode_ValidateForCountry(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		sub := SubdivisionByCode[string(codes[i%len(codes)])]
+		sub := subdivisionByCode[string(codes[i%len(codes)])]
 		_ = codes[i%len(codes)].ValidateForCountry(sub.countryCode)
 	}
 }
 
 func BenchmarkByCode(b *testing.B) {
-	codes := make([]Code, 0, len(SubdivisionByCode))
-	for _, sub := range SubdivisionByCode {
+	codes := make([]Code, 0, len(subdivisionByCode))
+	for _, sub := range subdivisionByCode {
 		codes = append(codes, sub.code)
 	}
 
@@ -59,8 +59,8 @@ func BenchmarkByCode(b *testing.B) {
 }
 
 func BenchmarkByCountryCode(b *testing.B) {
-	countries := make([]string, 0, len(SubdivisionsByCountry))
-	for cc := range SubdivisionsByCountry {
+	countries := make([]string, 0, len(subdivisionsByCountry))
+	for cc := range subdivisionsByCountry {
 		countries = append(countries, cc)
 	}
 

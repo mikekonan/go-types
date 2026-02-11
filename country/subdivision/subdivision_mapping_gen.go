@@ -2,7 +2,7 @@
 
 package subdivision
 
-var SubdivisionByCode = map[string]Subdivision{
+var subdivisionByCode = map[string]Subdivision{
 	"AD-02": AD02,
 	"AD-03": AD03,
 	"AD-04": AD04,
@@ -5051,7 +5051,7 @@ var SubdivisionByCode = map[string]Subdivision{
 	"ZW-MW": ZWMW,
 }
 
-var SubdivisionsByCountry = map[string][]Subdivision{
+var subdivisionsByCountry = map[string][]Subdivision{
 	"AD": {
 		AD02,
 		AD03,

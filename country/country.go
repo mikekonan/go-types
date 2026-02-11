@@ -42,7 +42,7 @@ func (country Country) Alpha3CodeStr() string { return country.alpha3.String() }
 
 // ByAlpha3Code lookup for country by alpha-3 code
 func ByAlpha3Code(code Alpha3Code) (result Country, ok bool) {
-	result, ok = CountryByAlpha3[strings.ToUpper(code.String())]
+	result, ok = countryByAlpha3[strings.ToUpper(code.String())]
 
 	return
 }
@@ -70,7 +70,7 @@ func ByAlpha3CodeStrErr(code string) (result Country, err error) {
 
 // ByAlpha2Code lookup for country by alpha-2 code
 func ByAlpha2Code(code Alpha2Code) (result Country, ok bool) {
-	result, ok = CountryByAlpha2[strings.ToUpper(code.String())]
+	result, ok = countryByAlpha2[strings.ToUpper(code.String())]
 	return
 }
 
@@ -97,7 +97,7 @@ func ByAlpha2CodeStrErr(code string) (result Country, err error) {
 
 // ByName lookup for country by name
 func ByName(country Name) (result Country, ok bool) {
-	result, ok = CountryByName[country.String()]
+	result, ok = countryByName[country.String()]
 	return
 }
 

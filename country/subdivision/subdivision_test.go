@@ -8,7 +8,7 @@ import (
 )
 
 func TestSubdivisionByCodeIsSet(t *testing.T) {
-	for key, sub := range SubdivisionByCode {
+	for key, sub := range subdivisionByCode {
 		if !Code(key).IsSet() {
 			t.FailNow()
 		}
@@ -46,7 +46,7 @@ func TestIsNotSet(t *testing.T) {
 }
 
 func TestMappingIsCorrect(t *testing.T) {
-	for key, sub := range SubdivisionByCode {
+	for key, sub := range subdivisionByCode {
 		if Code(key) != sub.code {
 			t.FailNow()
 		}
@@ -54,7 +54,7 @@ func TestMappingIsCorrect(t *testing.T) {
 }
 
 func TestMappingStringsCorrect(t *testing.T) {
-	for key, sub := range SubdivisionByCode {
+	for key, sub := range subdivisionByCode {
 		if Code(key).String() != sub.code.String() {
 			t.FailNow()
 		}
@@ -62,7 +62,7 @@ func TestMappingStringsCorrect(t *testing.T) {
 }
 
 func TestMappingValueCorrect(t *testing.T) {
-	for key, sub := range SubdivisionByCode {
+	for key, sub := range subdivisionByCode {
 		actualValue, actualErr := Code(key).Value()
 		expectedValue, expectedErr := sub.code.Value()
 
@@ -96,7 +96,7 @@ func TestCodeValidate(t *testing.T) {
 }
 
 func TestSubdivisionTypes(t *testing.T) {
-	for _, sub := range SubdivisionByCode {
+	for _, sub := range subdivisionByCode {
 		if sub.name != sub.Name() {
 			t.FailNow()
 		}
@@ -349,7 +349,7 @@ func TestValidateForCountry(t *testing.T) {
 	}
 
 	// all subdivisions match their own country
-	for _, sub := range SubdivisionByCode {
+	for _, sub := range subdivisionByCode {
 		if err := sub.code.ValidateForCountry(sub.countryCode); err != nil {
 			t.Fatalf("subdivision %s should be valid for country %s: %v", sub.code, sub.countryCode, err)
 		}
@@ -357,7 +357,7 @@ func TestValidateForCountry(t *testing.T) {
 }
 
 func TestTotalSubdivisionCount(t *testing.T) {
-	if len(SubdivisionByCode) < 4000 {
-		t.Errorf("expected at least 4000 subdivisions, got %d", len(SubdivisionByCode))
+	if len(subdivisionByCode) < 4000 {
+		t.Errorf("expected at least 4000 subdivisions, got %d", len(subdivisionByCode))
 	}
 }

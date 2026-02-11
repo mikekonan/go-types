@@ -8,7 +8,7 @@ import (
 )
 
 func TestCountryByNameIsSet(t *testing.T) {
-	for key, country := range CountryByName {
+	for key, country := range countryByName {
 		if !Name(key).IsSet() {
 			t.FailNow()
 		}
@@ -28,7 +28,7 @@ func TestCountryByNameIsSet(t *testing.T) {
 }
 
 func TestCountryByAlpha3IsSet(t *testing.T) {
-	for key, country := range CountryByAlpha3 {
+	for key, country := range countryByAlpha3 {
 		if !Alpha3Code(key).IsSet() {
 			t.FailNow()
 		}
@@ -48,7 +48,7 @@ func TestCountryByAlpha3IsSet(t *testing.T) {
 }
 
 func TestCountryByAlpha2IsSet(t *testing.T) {
-	for key, country := range CountryByAlpha2 {
+	for key, country := range countryByAlpha2 {
 		if !Alpha2Code(key).IsSet() {
 			t.FailNow()
 		}
@@ -82,19 +82,19 @@ func TestIsNotSet(t *testing.T) {
 }
 
 func TestMappingIsCorrect(t *testing.T) {
-	for key, country := range CountryByName {
+	for key, country := range countryByName {
 		if Name(key) != country.name {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range CountryByAlpha3 {
+	for key, country := range countryByAlpha3 {
 		if Alpha3Code(key) != country.alpha3 {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range CountryByAlpha2 {
+	for key, country := range countryByAlpha2 {
 		if Alpha2Code(key) != country.alpha2 {
 			t.FailNow()
 		}
@@ -102,19 +102,19 @@ func TestMappingIsCorrect(t *testing.T) {
 }
 
 func TestMappingStringsCorrect(t *testing.T) {
-	for key, country := range CountryByName {
+	for key, country := range countryByName {
 		if Name(key).String() != country.name.String() {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range CountryByAlpha3 {
+	for key, country := range countryByAlpha3 {
 		if Alpha3Code(key).String() != country.alpha3.String() {
 			t.FailNow()
 		}
 	}
 
-	for key, country := range CountryByAlpha2 {
+	for key, country := range countryByAlpha2 {
 		if Alpha2Code(key).String() != country.alpha2.String() {
 			t.FailNow()
 		}
@@ -122,7 +122,7 @@ func TestMappingStringsCorrect(t *testing.T) {
 }
 
 func TestMappingValueCorrect(t *testing.T) {
-	for key, country := range CountryByName {
+	for key, country := range countryByName {
 		_, actual := Name(key).Value()
 		_, expected := country.name.Value()
 
@@ -131,7 +131,7 @@ func TestMappingValueCorrect(t *testing.T) {
 		}
 	}
 
-	for key, country := range CountryByAlpha3 {
+	for key, country := range countryByAlpha3 {
 		_, actual := Alpha3Code(key).Value()
 		_, expected := country.name.Value()
 
@@ -140,7 +140,7 @@ func TestMappingValueCorrect(t *testing.T) {
 		}
 	}
 
-	for key, country := range CountryByAlpha2 {
+	for key, country := range countryByAlpha2 {
 		_, actual := Alpha2Code(key).Value()
 		_, expected := country.name.Value()
 
@@ -202,7 +202,7 @@ func TestAlpha3Validate(t *testing.T) {
 }
 
 func TestCountryTypes(t *testing.T) {
-	for _, country := range CountryByAlpha3 {
+	for _, country := range countryByAlpha3 {
 		if country.name != country.Name() {
 			t.FailNow()
 		}

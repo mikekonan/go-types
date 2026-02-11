@@ -2,7 +2,7 @@
 
 package country
 
-var CountryByName = map[string]Country{
+var countryByName = map[string]Country{
 	"Afghanistan": Afghanistan,
 	"Åland Islands": AlandIslands,
 	"Albania": Albania,
@@ -254,7 +254,7 @@ var CountryByName = map[string]Country{
 	"Zimbabwe": Zimbabwe,
 }
 
-var CountryByAlpha2 = map[string]Country{
+var countryByAlpha2 = map[string]Country{
 	"AD": Andorra,
 	"AE": UnitedArabEmirates,
 	"AF": Afghanistan,
@@ -506,7 +506,7 @@ var CountryByAlpha2 = map[string]Country{
 	"ZW": Zimbabwe,
 }
 
-var CountryByAlpha3 = map[string]Country{
+var countryByAlpha3 = map[string]Country{
 	"ABW": Aruba,
 	"AFG": Afghanistan,
 	"AGO": Angola,
