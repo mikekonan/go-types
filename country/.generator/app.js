@@ -1,77 +1,112 @@
 const fs = require("fs");
+const path = require("path");
+const https = require("https");
 const transliterate = require("transliteration");
 const yaml = require("yaml");
 
-//For testing purpose we can use raw/countries
-let codes = JSON.parse(fs.readFileSync(0, "utf8"));
+const COUNTRY_SOURCE_URL =
+    "https://salsa.debian.org/iso-codes-team/iso-codes/-/raw/main/data/iso_3166-1.json";
+const SUBDIVISION_SOURCE_URL =
+    "https://salsa.debian.org/iso-codes-team/iso-codes/-/raw/main/data/iso_3166-2.json";
 
-codes = codes.map((code) => {
-    let result = {};
-    result.a2 = {
-        key: `Alpha2${code["Alpha-2 code"]}`,
-        value: code["Alpha-2 code"],
-    };
+function log(msg) {
+    process.stderr.write("[gen] " + msg + "\n");
+}
 
-    result.a3 = {
-        key: `Alpha3${code["Alpha-3 code"]}`,
-        value: code["Alpha-3 code"],
-    };
+function fetchJSON(url) {
+    return new Promise((resolve, reject) => {
+        https.get(url, { headers: { "User-Agent": "iso-3166-scrapper" } }, (res) => {
+            if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                return fetchJSON(res.headers.location).then(resolve, reject);
+            }
+            if (res.statusCode !== 200) {
+                return reject(new Error("HTTP " + res.statusCode + " from " + url));
+            }
+            let data = "";
+            res.on("data", (chunk) => (data += chunk));
+            res.on("end", () => resolve(JSON.parse(data)));
+            res.on("error", reject);
+        }).on("error", reject);
+    });
+}
 
-    result.name = {value: code["English short name"]};
+function generateCountry(rawCodes) {
+    log("Processing " + rawCodes.length + " countries...");
 
-    let enumCountryKey = code["English short name"];
+    let codes = rawCodes.map((code) => {
+        let result = {};
+        result.a2 = {
+            key: `Alpha2${code.alpha_2}`,
+            value: code.alpha_2,
+        };
 
-    if (enumCountryKey === "Korea (the Republic of)") {
-        enumCountryKey = "South Korea";
-    }
+        result.a3 = {
+            key: `Alpha3${code.alpha_3}`,
+            value: code.alpha_3,
+        };
 
-    switch (enumCountryKey) {
-        case "Korea (the Democratic People's Republic of)": {
-            enumCountryKey = "North Korea";
-            break;
+        result.name = { value: code.name };
+
+        let enumCountryKey = code.name;
+
+        // Custom short names for Debian iso-codes long/inverted names
+        const shortNames = {
+            "Bolivia, Plurinational State of": "Bolivia",
+            "Bonaire, Sint Eustatius and Saba": "Bonaire",
+            "British Indian Ocean Territory": "BritishIndianOcean",
+            "Cocos (Keeling) Islands": "Cocos Islands",
+            "Congo, The Democratic Republic of the": "DR Congo",
+            "Falkland Islands (Malvinas)": "Falkland Islands",
+            "French Southern Territories": "FrenchSouthern",
+            "Heard Island and McDonald Islands": "HeardIsland",
+            "Holy See (Vatican City State)": "Vatican",
+            "Iran, Islamic Republic of": "Iran",
+            "Korea, Democratic People's Republic of": "North Korea",
+            "Korea, Republic of": "South Korea",
+            "Lao People's Democratic Republic": "Laos",
+            "Micronesia, Federated States of": "Micronesia",
+            "Moldova, Republic of": "Moldova",
+            "Palestine, State of": "Palestine",
+            "Saint Helena, Ascension and Tristan da Cunha": "SaintHelena",
+            "Saint Martin (French part)": "SaintMartin",
+            "Sint Maarten (Dutch part)": "SintMaarten",
+            "South Georgia and the South Sandwich Islands": "SouthGeorgia",
+            "Syrian Arab Republic": "Syria",
+            "Taiwan, Province of China": "Taiwan",
+            "Tanzania, United Republic of": "Tanzania",
+            "United States Minor Outlying Islands": "USMinorOutlyingIslands",
+            "Venezuela, Bolivarian Republic of": "Venezuela",
+            "Virgin Islands, British": "British Virgin Islands",
+            "Virgin Islands, U.S.": "US Virgin Islands",
+        };
+
+        if (shortNames[enumCountryKey]) {
+            enumCountryKey = shortNames[enumCountryKey];
         }
-        case "Korea (the Republic of)": {
-            enumCountryKey = "South Korea";
-            break;
-        }
-        case "Virgin Islands (British)": {
-            enumCountryKey = "British Virgin Islands";
-            break;
-        }
-        case "Virgin Islands (U.S.)": {
-            enumCountryKey = "US Virgin Islands";
-            break;
-        }
-        case "Palestine, State of": {
-            enumCountryKey = "Palestine";
-            break;
-        }
-        case "Congo (the Democratic Republic of the)": {
-            enumCountryKey = "Democratic Republic of the Congo";
-            break;
-        }
-    }
 
-    enumCountryKey = transliterate.transliterate(enumCountryKey);
-    enumCountryKey = enumCountryKey.replace(",", "");
-    enumCountryKey = enumCountryKey.replace(".", "");
-    enumCountryKey = enumCountryKey.replace("'", "");
-    enumCountryKey = enumCountryKey.replace("-", "");
-    enumCountryKey = enumCountryKey.replace("*", "");
-    enumCountryKey = enumCountryKey.replace(/( ?)\(.*\)( ?)/, "");
-    enumCountryKey = enumCountryKey.replace(/( ?)\[.*\]( ?)/, "");
-    enumCountryKey = enumCountryKey
-        .split(" ")
-        .map((str) => `${str[0].toUpperCase()}${str.slice(1)}`)
-        .join("");
+        enumCountryKey = transliterate.transliterate(enumCountryKey);
+        enumCountryKey = enumCountryKey.replace(",", "");
+        enumCountryKey = enumCountryKey.replace(".", "");
+        enumCountryKey = enumCountryKey.replace("'", "");
+        enumCountryKey = enumCountryKey.replace("-", "");
+        enumCountryKey = enumCountryKey.replace("*", "");
+        enumCountryKey = enumCountryKey.replace(/( ?)\(.*\)( ?)/, "");
+        enumCountryKey = enumCountryKey.replace(/( ?)\[.*\]( ?)/, "");
+        enumCountryKey = enumCountryKey
+            .split(" ")
+            .filter((s) => s.length > 0)
+            .map((str) => `${str[0].toUpperCase()}${str.slice(1)}`)
+            .join("");
 
-    result.name.key = `Name${enumCountryKey}`;
-    result.key = enumCountryKey;
+        result.name.key = `Name${enumCountryKey}`;
+        result.key = enumCountryKey;
 
-    return result;
-});
+        return result;
+    });
 
-const countriesTemplate = `package name
+    // --- Country templates ---
+
+    const countriesTemplate = `package name
 
 import "github.com/mikekonan/go-types/v2/country"
 
@@ -80,10 +115,10 @@ ${codes.map(
         (code) => `\t// ${code.key} represents '${code.name.value}' country name
     ${code.key} = country.Name("${code.name.value}")`
     ).join("\n")}
-) 
+)
 `;
 
-const alpha2Template = `package alpha2
+    const alpha2Template = `package alpha2
 
 import "github.com/mikekonan/go-types/v2/country"
 
@@ -92,10 +127,10 @@ ${codes.map(
         (code) => `\t// ${code.a2.value} represents '${code.a2.value}' country alpha-2 code
     ${code.a2.value} = country.Alpha2Code("${code.a2.value}")`
     ).join("\n")}
-) 
+)
 `;
 
-const alpha3Template = `package alpha3
+    const alpha3Template = `package alpha3
 
 import "github.com/mikekonan/go-types/v2/country"
 
@@ -104,10 +139,10 @@ ${codes.map(
         (code) => `\t// ${code.a3.value} represents '${code.a3.value}' country alpha-3 code
     ${code.a3.value} = country.Alpha3Code("${code.a3.value}")`
     ).join("\n")}
-) 
+)
 `;
 
-const entitiesTemplate = `package country
+    const entitiesTemplate = `package country
 
 var (
 ${codes.map(
@@ -122,7 +157,7 @@ ${codes.map(
 )
 `;
 
-const countryByCountryTemplate = `package country
+    const countryByCountryTemplate = `package country
 
 var CountryByName = map[string]Country{
 ${codes.map((code) => `\t\"${code.name.value}\" : ${code.key}`).join(",\n")},
@@ -137,64 +172,198 @@ ${codes.map((code) => `\t\"${code.a3.value}\" : ${code.key}`).join(",\n")},
 }
 `;
 
-const spec = {
-    openapi: "3.0.0",
-    components: {
-        schemas: {
-            CountryName: {
-                example: "Austria",
-                type: "string",
-                format: "iso3166-country",
-                enum: [...new Set(codes.map((code) => code.name.value))],
-                "x-go-type": "github.com/mikekonan/go-types/v2/country.Name",
+    const countrySpec = {
+        openapi: "3.0.0",
+        components: {
+            schemas: {
+                CountryName: {
+                    example: "Austria",
+                    type: "string",
+                    format: "iso3166-country",
+                    enum: [...new Set(codes.map((code) => code.name.value))],
+                    "x-go-type": "github.com/mikekonan/go-types/v2/country.Name",
+                },
+                CountryAlpha2: {
+                    example: "AS",
+                    type: "string",
+                    format: "iso3166-alpha-2",
+                    minLength: 2,
+                    maxLength: 2,
+                    enum: [...new Set(codes.map((code) => code.a2.value))],
+                    "x-go-type": "github.com/mikekonan/go-types/v2/country.Alpha2Code",
+                },
+                CountryAlpha3: {
+                    example: "USA",
+                    type: "string",
+                    format: "iso3166-alpha-3",
+                    minLength: 3,
+                    maxLength: 3,
+                    enum: [...new Set(codes.map((code) => code.a3.value))],
+                    "x-go-type": "github.com/mikekonan/go-types/v2/country.Alpha3Code",
+                }
             },
-            CountryAlpha2: {
-                example: "AS",
-                type: "string",
-                format: "iso3166-alpha-2",
-                minLength: 2,
-                maxLength: 2,
-                enum: [...new Set(codes.map((code) => code.a2.value))],
-                "x-go-type": "github.com/mikekonan/go-types/v2/country.Alpha2Code",
-            },
-            CountryAlpha3: {
-                example: "USA",
-                type: "string",
-                format: "iso3166-alpha-3",
-                minLength: 3,
-                maxLength: 3,
-                enum: [...new Set(codes.map((code) => code.a3.value))],
-                "x-go-type": "github.com/mikekonan/go-types/v2/country.Alpha3Code",
-            }
         },
-    },
-};
+    };
 
-let writeFiles = [
-    fs.writeFileSync("../name/name_gen.go", countriesTemplate, {
-        encoding: "utf8",
-        flag: "w",
-    }),
-    fs.writeFileSync("../alpha2/alpha_2_gen.go", alpha2Template, {
-        encoding: "utf8",
-        flag: "w",
-    }),
-    fs.writeFileSync("../alpha3/alpha_3_gen.go", alpha3Template, {
-        encoding: "utf8",
-        flag: "w",
-    }),
-    fs.writeFileSync("../entities_gen.go", entitiesTemplate, {
-        encoding: "utf8",
-        flag: "w",
-    }),
-    fs.writeFileSync("../country_mapping_gen.go", countryByCountryTemplate, {
-        encoding: "utf8",
-        flag: "w",
-    }),
-    fs.writeFileSync("../swagger_gen.yaml", yaml.stringify(spec), {
-        encoding: "utf8",
-        flag: "w",
+    // --- Write country files ---
+    log("Writing country files...");
+
+    const countryFiles = [
+        { path: "../name/name_gen.go", content: countriesTemplate },
+        { path: "../alpha2/alpha_2_gen.go", content: alpha2Template },
+        { path: "../alpha3/alpha_3_gen.go", content: alpha3Template },
+        { path: "../entities_gen.go", content: entitiesTemplate },
+        { path: "../country_mapping_gen.go", content: countryByCountryTemplate },
+        { path: "../swagger_gen.yaml", content: yaml.stringify(countrySpec) },
+    ];
+
+    for (const file of countryFiles) {
+        const fullPath = path.resolve(__dirname, file.path);
+        fs.writeFileSync(fullPath, file.content, { encoding: "utf8", flag: "w" });
+        log("  Wrote " + file.path + " (" + fs.statSync(fullPath).size + " bytes)");
+    }
+
+    log("Country generation complete: " + codes.length + " countries, " + countryFiles.length + " files");
+}
+
+function generateSubdivision(entries) {
+    log("Processing " + entries.length + " subdivisions...");
+
+    let subdivisions = entries.map((entry) => {
+        const code = entry.code;
+        const countryCode = code.split("-")[0];
+        const varName = code.replace("-", "");
+        const constName = code.replace("-", "_");
+
+        return {
+            code: code,
+            name: entry.name,
+            type: entry.type || "",
+            countryCode: countryCode,
+            varName: varName,
+            constName: constName,
+        };
+    });
+
+    subdivisions.sort((a, b) => a.code.localeCompare(b.code));
+    log("Sorted " + subdivisions.length + " subdivisions by code");
+
+    // Group by country
+    const byCountry = {};
+    for (const sub of subdivisions) {
+        if (!byCountry[sub.countryCode]) {
+            byCountry[sub.countryCode] = [];
+        }
+        byCountry[sub.countryCode].push(sub);
+    }
+    const countryCodes = Object.keys(byCountry).sort();
+    log("Countries with subdivisions: " + countryCodes.length);
+    log("Top countries: " +
+        countryCodes
+            .map((cc) => cc + "=" + byCountry[cc].length)
+            .sort((a, b) => parseInt(b.split("=")[1]) - parseInt(a.split("=")[1]))
+            .slice(0, 10)
+            .join(", "));
+
+    // --- Subdivision templates ---
+
+    const subEntitiesTemplate = `package subdivision
+
+var (
+${subdivisions.map(
+    (sub) => `\t// ${sub.varName} represents '${sub.name}' subdivision (${sub.code})
+\t${sub.varName} = Subdivision{
+\t\tname:        "${sub.name.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}",
+\t\tcode:        "${sub.code}",
+\t\tcountryCode: "${sub.countryCode}",
+\t\tcategory:    "${sub.type}",
+\t}`
+).join("\n")}
+)
+`;
+
+    const subMappingTemplate = `package subdivision
+
+var SubdivisionByCode = map[string]Subdivision{
+${subdivisions.map((sub) => `\t"${sub.code}": ${sub.varName}`).join(",\n")},
+}
+
+var SubdivisionsByCountry = map[string][]Subdivision{
+${countryCodes.map((cc) =>
+    `\t"${cc}": {\n${byCountry[cc].map((sub) => `\t\t${sub.varName}`).join(",\n")},\n\t}`
+).join(",\n")},
+}
+`;
+
+    const subCodeTemplate = `package code
+
+import "github.com/mikekonan/go-types/v2/country/subdivision"
+
+const (
+${subdivisions.map(
+    (sub) => `\t// ${sub.constName} represents '${sub.code}' subdivision code
+\t${sub.constName} = subdivision.Code("${sub.code}")`
+).join("\n")}
+)
+`;
+
+    const subSpec = {
+        openapi: "3.0.0",
+        components: {
+            schemas: {
+                SubdivisionCode: {
+                    example: "US-CA",
+                    type: "string",
+                    format: "iso3166-2",
+                    enum: [...new Set(subdivisions.map((sub) => sub.code))],
+                    "x-go-type": "github.com/mikekonan/go-types/v2/country/subdivision.Code",
+                },
+            },
+        },
+    };
+
+    // --- Write subdivision files ---
+    const subDir = path.resolve(__dirname, "../subdivision");
+    const subCodeDir = path.join(subDir, "code");
+
+    if (!fs.existsSync(subCodeDir)) {
+        fs.mkdirSync(subCodeDir, { recursive: true });
+    }
+
+    log("Writing subdivision files...");
+
+    const subFiles = [
+        { path: "subdivision/entities_gen.go", content: subEntitiesTemplate },
+        { path: "subdivision/subdivision_mapping_gen.go", content: subMappingTemplate },
+        { path: "subdivision/code/code_gen.go", content: subCodeTemplate },
+        { path: "subdivision/swagger_gen.yaml", content: yaml.stringify(subSpec) },
+    ];
+
+    for (const file of subFiles) {
+        const fullPath = path.resolve(__dirname, "..", file.path);
+        fs.writeFileSync(fullPath, file.content, { encoding: "utf8", flag: "w" });
+        log("  Wrote " + file.path + " (" + fs.statSync(fullPath).size + " bytes)");
+    }
+
+    log("Subdivision generation complete: " + subdivisions.length + " subdivisions across " + countryCodes.length + " countries, " + subFiles.length + " files");
+}
+
+// ============================================================
+// Main: fetch both sources from Debian iso-codes, generate all
+// ============================================================
+log("Fetching ISO 3166-1 from " + COUNTRY_SOURCE_URL);
+log("Fetching ISO 3166-2 from " + SUBDIVISION_SOURCE_URL);
+
+Promise.all([
+    fetchJSON(COUNTRY_SOURCE_URL),
+    fetchJSON(SUBDIVISION_SOURCE_URL),
+])
+    .then(([countryData, subdivisionData]) => {
+        generateCountry(countryData["3166-1"]);
+        generateSubdivision(subdivisionData["3166-2"]);
+        log("Done!");
     })
-];
-
-Promise.all(writeFiles).then(() => console.log("Done"));
+    .catch((err) => {
+        process.stderr.write("[gen] ERROR: " + err.message + "\n");
+        process.exit(1);
+    });

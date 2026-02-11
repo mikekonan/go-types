@@ -360,7 +360,7 @@ func TestDriverValue(t *testing.T) {
 		t.FailNow()
 	}
 
-	if value, err := Name("United States of America (the)").Value(); err != nil || value.(string) != Name("United States of America (the)").String() {
+	if value, err := Name("United States").Value(); err != nil || value.(string) != Name("United States").String() {
 		t.FailNow()
 	}
 
@@ -380,7 +380,7 @@ func TestNameUnmarshalJson(t *testing.T) {
 	}
 
 	var positive NameStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"name":"%s"}`, UnitedStatesOfAmerica.Name())), &positive); err != nil && positive.Name != UnitedStatesOfAmerica.Name() {
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"name":"%s"}`, UnitedStates.Name())), &positive); err != nil && positive.Name != UnitedStates.Name() {
 		t.FailNow()
 	}
 
@@ -406,7 +406,7 @@ func TestAlpha2CodeUnmarshalJson(t *testing.T) {
 	}
 
 	var positive Alpha2CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, UnitedStatesOfAmerica.Alpha2Code())), &positive); err != nil && positive.Alpha2Code != UnitedStatesOfAmerica.Alpha2Code() {
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, UnitedStates.Alpha2Code())), &positive); err != nil && positive.Alpha2Code != UnitedStates.Alpha2Code() {
 		t.FailNow()
 	}
 
@@ -437,7 +437,7 @@ func TestAlpha3CodeUnmarshalJson(t *testing.T) {
 	}
 
 	var positive Alpha3CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, UnitedStatesOfAmerica.Alpha3Code())), &positive); err != nil && positive.Alpha3Code != UnitedStatesOfAmerica.Alpha3Code() {
+	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, UnitedStates.Alpha3Code())), &positive); err != nil && positive.Alpha3Code != UnitedStates.Alpha3Code() {
 		t.FailNow()
 	}
 
