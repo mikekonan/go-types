@@ -55,18 +55,41 @@ func (code Code) Validate() (err error) {
 	return
 }
 
-// ValidateForCountry validates that subdivision code is valid and belongs to the given country
+// ValidateForCountry validates that subdivision code is valid and belongs to the given country.
+// It extracts the country prefix from the code, verifies it is a known country,
+// compares it with the expected country, and checks that the subdivision exists.
 func (code Code) ValidateForCountry(countryCode country.Alpha2Code) error {
-	sub, err := ByCodeErr(code)
-	if err != nil {
+	str := strings.ToUpper(code.String())
+
+	// extract country prefix (2 chars before "-")
+	idx := strings.IndexByte(str, '-')
+	if idx != 2 {
+		return fmt.Errorf("'%s' is not valid ISO-3166-2 subdivision code format", code)
+	}
+
+	prefix := country.Alpha2Code(str[:2])
+
+	// verify prefix is a real country
+	if _, err := country.ByAlpha2CodeErr(prefix); err != nil {
+		return fmt.Errorf("'%s' contains unknown country prefix '%s'", code, prefix)
+	}
+
+	// compare countries
+	if !strings.EqualFold(prefix.String(), countryCode.String()) {
+		return fmt.Errorf("subdivision '%s' belongs to country '%s', not '%s'", code, prefix, countryCode)
+	}
+
+	// verify subdivision exists for this country
+	if _, err := ByCodeErr(code); err != nil {
 		return err
 	}
 
-	if !strings.EqualFold(sub.CountryCode().String(), countryCode.String()) {
-		return fmt.Errorf("'%s' is not valid ISO-3166-2 subdivision code for country %s", code, countryCode)
-	}
-
 	return nil
+}
+
+// ValidateForCountryStr validates that subdivision code string is valid and belongs to the given country
+func (code Code) ValidateForCountryStr(countryCode string) error {
+	return code.ValidateForCountry(country.Alpha2Code(countryCode))
 }
 
 // IsSet indicates if Code is set
