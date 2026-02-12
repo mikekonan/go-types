@@ -109,3 +109,13 @@ func ByCountryCodeErr(code country.Alpha2Code) (result []Subdivision, err error)
 func ByCountryCodeStrErr(code string) (result []Subdivision, err error) {
 	return ByCountryCodeErr(country.Alpha2Code(code))
 }
+
+// ValidateForCountry validates that subdivision code string is valid and belongs to the given country
+func ValidateForCountry(countryCode country.Alpha2Code, code string) error {
+	return Code(code).ValidateForCountry(countryCode)
+}
+
+// ValidateForCountryStr validates that subdivision code string is valid and belongs to the given country string
+func ValidateForCountryStr(countryCode string, code string) error {
+	return Code(code).ValidateForCountry(country.Alpha2Code(countryCode))
+}

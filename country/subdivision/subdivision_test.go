@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strings"
 	"testing"
+
+	"github.com/mikekonan/go-types/v2/country"
 )
 
 func TestSubdivisionByCodeIsSet(t *testing.T) {
@@ -352,6 +354,148 @@ func TestValidateForCountry(t *testing.T) {
 	for _, sub := range subdivisionByCode {
 		if err := sub.code.ValidateForCountry(sub.countryCode); err != nil {
 			t.Fatalf("subdivision %s should be valid for country %s: %v", sub.code, sub.countryCode, err)
+		}
+	}
+}
+
+func TestValidateForCountryStr(t *testing.T) {
+	// valid code for correct country
+	if err := Code("US-CA").ValidateForCountryStr("US"); err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
+
+	// valid code for wrong country
+	if err := Code("US-CA").ValidateForCountryStr("DE"); err == nil {
+		t.Fatal("expected error for US-CA with country DE")
+	}
+
+	// invalid code
+	if err := Code("XX-YY").ValidateForCountryStr("US"); err == nil {
+		t.Fatal("expected error for invalid code XX-YY")
+	}
+}
+
+func TestValidateForCountryFormat(t *testing.T) {
+	// bad format: no dash
+	if err := Code("USCA").ValidateForCountry("US"); err == nil {
+		t.Fatal("expected error for missing dash")
+	}
+
+	// bad format: dash at wrong position
+	if err := Code("U-SCA").ValidateForCountry("US"); err == nil {
+		t.Fatal("expected error for dash at wrong position")
+	}
+
+	// unknown country prefix
+	if err := Code("ZZ-AA").ValidateForCountry("ZZ"); err == nil {
+		t.Fatal("expected error for unknown country prefix ZZ")
+	}
+
+	// country mismatch: prefix says US, caller says DE
+	err := Code("US-CA").ValidateForCountry("DE")
+	if err == nil {
+		t.Fatal("expected country mismatch error")
+	}
+	if !strings.Contains(err.Error(), "belongs to country") {
+		t.Fatalf("expected 'belongs to country' message, got: %v", err)
+	}
+
+	// valid prefix + valid country but nonexistent subdivision
+	if err := Code("US-ZZ").ValidateForCountry("US"); err == nil {
+		t.Fatal("expected error for nonexistent subdivision US-ZZ")
+	}
+}
+
+func TestValidateForCountryPackageLevel(t *testing.T) {
+	tests := []struct {
+		name        string
+		countryCode string
+		code        string
+		wantErr     bool
+		errContains string
+	}{
+		// happy path
+		{"US-CA valid", "US", "US-CA", false, ""},
+		{"DE-BY valid", "DE", "DE-BY", false, ""},
+		{"CA-ON valid", "CA", "CA-ON", false, ""},
+		{"GB-ENG valid", "GB", "GB-ENG", false, ""},
+
+		// case insensitive code
+		{"lowercase us-ca", "US", "us-ca", false, ""},
+		{"mixed Us-Ca", "US", "Us-Ca", false, ""},
+
+		// country mismatch
+		{"US-CA for DE", "DE", "US-CA", true, "belongs to country"},
+		{"DE-BY for US", "US", "DE-BY", true, "belongs to country"},
+		{"CA-ON for GB", "GB", "CA-ON", true, "belongs to country"},
+
+		// bad format
+		{"no dash", "US", "USCA", true, "format"},
+		{"dash wrong pos", "US", "U-SCA", true, "format"},
+		{"empty code", "US", "", true, "format"},
+		{"just dash", "US", "--", true, "format"},
+
+		// unknown country prefix
+		{"ZZ prefix", "ZZ", "ZZ-AA", true, "unknown country prefix"},
+		{"QQ prefix", "QQ", "QQ-01", true, "unknown country prefix"},
+
+		// valid prefix + valid country but nonexistent subdivision
+		{"US-ZZ nonexistent", "US", "US-ZZ", true, "not valid ISO-3166-2"},
+		{"DE-ZZ nonexistent", "DE", "DE-ZZ", true, "not valid ISO-3166-2"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// test ValidateForCountry (typed)
+			err := ValidateForCountry(country.Alpha2Code(tt.countryCode), tt.code)
+			if tt.wantErr {
+				if err == nil {
+					t.Fatalf("expected error, got nil")
+				}
+				if tt.errContains != "" && !strings.Contains(err.Error(), tt.errContains) {
+					t.Fatalf("error %q should contain %q", err.Error(), tt.errContains)
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("expected no error, got %v", err)
+				}
+			}
+
+			// test ValidateForCountryStr (string)
+			err = ValidateForCountryStr(tt.countryCode, tt.code)
+			if tt.wantErr {
+				if err == nil {
+					t.Fatalf("expected error, got nil")
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("expected no error, got %v", err)
+				}
+			}
+		})
+	}
+}
+
+func TestValidateForCountryAllSubdivisions(t *testing.T) {
+	// every subdivision must pass validation for its own country
+	for _, sub := range subdivisionByCode {
+		if err := ValidateForCountry(sub.countryCode, sub.code.String()); err != nil {
+			t.Fatalf("subdivision %s should be valid for country %s: %v", sub.code, sub.countryCode, err)
+		}
+	}
+}
+
+func TestValidateForCountryCrossCountry(t *testing.T) {
+	// no subdivision should pass validation for a different country
+	// test a sample: all US subdivisions must fail for DE
+	usSubs, ok := ByCountryCodeStr("US")
+	if !ok {
+		t.Fatal("US subdivisions not found")
+	}
+
+	for _, sub := range usSubs {
+		if err := ValidateForCountry("DE", sub.code.String()); err == nil {
+			t.Fatalf("US subdivision %s should not be valid for DE", sub.code)
 		}
 	}
 }
