@@ -92,6 +92,18 @@ func (code Code) ValidateForCountryStr(countryCode string) error {
 	return code.ValidateForCountry(country.Alpha2Code(countryCode))
 }
 
+// AlphaCode returns the subdivision part of the ISO 3166-2 code after the hyphen.
+// For example, "US-CA" returns "CA", "CA-ON" returns "ON", "AU-NSW" returns "NSW".
+// If the code does not contain a hyphen, the full code string is returned.
+func (code Code) AlphaCode() string {
+	s := string(code)
+	idx := strings.IndexByte(s, '-')
+	if idx < 0 {
+		return s
+	}
+	return s[idx+1:]
+}
+
 // IsSet indicates if Code is set
 func (code Code) IsSet() bool {
 	return len(string(code)) > 0
