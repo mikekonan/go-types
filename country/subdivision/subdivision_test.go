@@ -215,27 +215,27 @@ func TestCodeUnmarshalJson(t *testing.T) {
 	}
 
 	var positive CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, USCA.Code())), &positive); err != nil || positive.Code != USCA.Code() {
+	if err := json.Unmarshal(fmt.Appendf(nil, `{"code":"%s"}`, USCA.Code()), &positive); err != nil || positive.Code != USCA.Code() {
 		t.FailNow()
 	}
 
 	var negative CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "XX-YY")), &negative); err == nil {
+	if err := json.Unmarshal(fmt.Appendf(nil, `{"code":"%s"}`, "XX-YY"), &negative); err == nil {
 		t.FailNow()
 	}
 
 	var lowercase CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "us-ca")), &lowercase); err != nil || lowercase.Code != USCA.Code() {
+	if err := json.Unmarshal(fmt.Appendf(nil, `{"code":"%s"}`, "us-ca"), &lowercase); err != nil || lowercase.Code != USCA.Code() {
 		t.FailNow()
 	}
 
 	var wrongCode CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "wrong code")), &wrongCode); err == nil {
+	if err := json.Unmarshal(fmt.Appendf(nil, `{"code":"%s"}`, "wrong code"), &wrongCode); err == nil {
 		t.FailNow()
 	}
 
 	var emptyCode CodeStruct
-	if err := json.Unmarshal([]byte(fmt.Sprintf(`{"code":"%s"}`, "")), &emptyCode); err != nil {
+	if err := json.Unmarshal(fmt.Appendf(nil, `{"code":"%s"}`, ""), &emptyCode); err != nil {
 		t.FailNow()
 	}
 }
@@ -503,5 +503,79 @@ func TestValidateForCountryCrossCountry(t *testing.T) {
 func TestTotalSubdivisionCount(t *testing.T) {
 	if len(subdivisionByCode) < 4000 {
 		t.Errorf("expected at least 4000 subdivisions, got %d", len(subdivisionByCode))
+	}
+}
+
+func TestCodeAlphaCode(t *testing.T) {
+	tests := []struct {
+		code string
+		want string
+	}{
+		{"US-CA", "CA"},
+		{"CA-ON", "ON"},
+		{"AU-NSW", "NSW"},
+		{"BR-SP", "SP"},
+		{"GB-ENG", "ENG"},
+		{"DE-BY", "BY"},
+		// empty string (zero-value) returns empty string
+		{"", ""},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.code, func(t *testing.T) {
+			got := Code(tt.code).AlphaCode()
+			if got != tt.want {
+				t.Errorf("Code(%q).AlphaCode() = %q, want %q", tt.code, got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCodeAlphaCodeNoDash(t *testing.T) {
+	// when no dash present, the full code is returned unchanged
+	got := Code("USCA").AlphaCode()
+	if got != "USCA" {
+		t.Errorf("Code(%q).AlphaCode() = %q, want %q", "USCA", got, "USCA")
+	}
+}
+
+func TestSubdivisionAlphaCode(t *testing.T) {
+	tests := []struct {
+		codeStr string
+		want    string
+	}{
+		{"US-CA", "CA"},
+		{"CA-ON", "ON"},
+		{"AU-NSW", "NSW"},
+		{"BR-SP", "SP"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.codeStr, func(t *testing.T) {
+			sub, ok := ByCodeStr(tt.codeStr)
+			if !ok {
+				t.Fatalf("ByCodeStr(%q) not found", tt.codeStr)
+			}
+			got := sub.AlphaCode()
+			if got != tt.want {
+				t.Errorf("Subdivision.AlphaCode() = %q, want %q", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestSubdivisionAlphaCodeAllEntries(t *testing.T) {
+	// every subdivision's AlphaCode must equal the part after the first '-' in CodeStr
+	for _, sub := range subdivisionByCode {
+		full := sub.CodeStr()
+		idx := strings.IndexByte(full, '-')
+		if idx < 0 {
+			continue
+		}
+		want := full[idx+1:]
+		got := sub.AlphaCode()
+		if got != want {
+			t.Errorf("subdivision %s: AlphaCode() = %q, want %q", full, got, want)
+		}
 	}
 }

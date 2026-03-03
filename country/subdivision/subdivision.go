@@ -44,6 +44,10 @@ func (s Subdivision) NameStr() string { return s.name.String() }
 // CodeStr returns subdivision code string
 func (s Subdivision) CodeStr() string { return s.code.String() }
 
+// AlphaCode returns the subdivision part of the ISO 3166-2 code after the hyphen.
+// For example, "US-CA" returns "CA", "CA-ON" returns "ON", "AU-NSW" returns "NSW".
+func (s Subdivision) AlphaCode() string { return s.code.AlphaCode() }
+
 // CountryCodeStr returns country alpha-2 code string
 func (s Subdivision) CountryCodeStr() string { return s.countryCode.String() }
 
