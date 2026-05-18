@@ -76,3 +76,23 @@ func Test_UnmarshalJSON(t *testing.T) {
 		}
 	}
 }
+
+func TestAll(t *testing.T) {
+	timezones := All()
+
+	if len(timezones) != len(timezonesByName) {
+		t.Fatalf("All() returned %d timezones, expected %d", len(timezones), len(timezonesByName))
+	}
+
+	for i := 1; i < len(timezones); i++ {
+		if timezones[i-1] >= timezones[i] {
+			t.Fatalf("All() must be sorted alphabetically, got %q before %q", timezones[i-1], timezones[i])
+		}
+	}
+
+	for _, tz := range timezones {
+		if _, ok := ByNameStr(string(tz)); !ok {
+			t.Fatalf("All() returned unknown timezone %q", tz)
+		}
+	}
+}

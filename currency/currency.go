@@ -8,6 +8,7 @@ Author Mikalai Konan(mikalai.konan@icloud.com).
 package currency
 
 import (
+	"sort"
 	"strings"
 )
 
@@ -215,4 +216,14 @@ func ByCountryErr(country Country) (c currencies, err error) {
 	}
 
 	return
+}
+
+// Codes returns all known ISO-4217 currency codes in alphabetical order.
+func Codes() []Code {
+	codes := make([]Code, 0, len(currenciesByCode))
+	for code := range currenciesByCode {
+		codes = append(codes, Code(code))
+	}
+	sort.Slice(codes, func(i, j int) bool { return codes[i] < codes[j] })
+	return codes
 }
