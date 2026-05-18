@@ -750,3 +750,23 @@ func TestCurrencyPlaces(t *testing.T) {
 		t.Fatalf("expected places to be %d, got %d", 2, c.Places())
 	}
 }
+
+func TestCodes(t *testing.T) {
+	codes := Codes()
+
+	if len(codes) != len(currenciesByCode) {
+		t.Fatalf("Codes() returned %d codes, expected %d", len(codes), len(currenciesByCode))
+	}
+
+	for i := 1; i < len(codes); i++ {
+		if codes[i-1] >= codes[i] {
+			t.Fatalf("Codes() must be sorted alphabetically, got %q before %q", codes[i-1], codes[i])
+		}
+	}
+
+	for _, code := range codes {
+		if _, ok := ByCodeStr(string(code)); !ok {
+			t.Fatalf("Codes() returned unknown code %q", code)
+		}
+	}
+}

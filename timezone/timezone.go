@@ -4,6 +4,7 @@ import (
 	"database/sql/driver"
 	"encoding/json"
 	"fmt"
+	"sort"
 )
 
 type Timezone string
@@ -65,4 +66,14 @@ func ByNameStrErr(timezoneStr string) (result Timezone, err error) {
 	}
 
 	return
+}
+
+// All returns all known IANA timezone names in alphabetical order.
+func All() []Timezone {
+	timezones := make([]Timezone, 0, len(timezonesByName))
+	for _, tz := range timezonesByName {
+		timezones = append(timezones, tz)
+	}
+	sort.Slice(timezones, func(i, j int) bool { return timezones[i] < timezones[j] })
+	return timezones
 }
